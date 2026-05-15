@@ -1,0 +1,40 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://docs.mhw-db.com"
+      }
+      description: "The Monster Hunter World API provides detailed information about the game, including items, monsters, armor, skills, events, and more. It allows users to access various resources related to the game in a structured format, facilitating data retrieval and integration into applications."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://mhw-db.com"
+        }
+        {
+          description: "Production server with localization"
+          url: "https://mhw-db.com/{language}"
+          variables: {
+            language: {
+              default: ""
+              description: "Language tag for localization"
+              enum: [
+                ""
+                "fr"
+                "de"
+                "zh"
+                "zh-Hant"
+              ]
+            }
+          }
+        }
+      ]
+      title: "Monster Hunter World API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

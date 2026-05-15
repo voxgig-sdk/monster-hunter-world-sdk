@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "ailment": {
+      "AILMENT00": {
+        "description": "s32",
+        "id": "AILMENT00",
+        "name": "s34",
+        "protection": {},
+        "recovery": {}
+      },
+      "AILMENT01": {
+        "description": "s64",
+        "id": "AILMENT01",
+        "name": "s66",
+        "protection": {},
+        "recovery": {}
+      },
+      "AILMENT02": {
+        "description": "s96",
+        "id": "AILMENT02",
+        "name": "s98",
+        "protection": {},
+        "recovery": {}
+      }
+    }
+  },
+  "new": {
+    "ailment": {
+      "ailment_ref01": {
+        "description": "sc8",
+        "name": "sca",
+        "protection": {},
+        "recovery": {}
+      }
+    }
+  }
+}

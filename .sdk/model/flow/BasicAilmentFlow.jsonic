@@ -1,0 +1,44 @@
+# BasicAilmentFlow
+
+main: kit: flow: BasicAilmentFlow:
+{
+  entity: "ailment",
+  kind: "basic",
+  name: "BasicAilmentFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "ailment_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "ailment_ref01",
+        srcdatavar: "ailment_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "ailment01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-ailment_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAilmentFlow"
+}

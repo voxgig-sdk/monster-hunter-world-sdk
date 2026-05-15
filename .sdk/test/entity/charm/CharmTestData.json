@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "charm": {
+      "CHARM00": {
+        "crafting": {},
+        "id": "CHARM00",
+        "name": "s34",
+        "rarity": "s35",
+        "skill": []
+      },
+      "CHARM01": {
+        "crafting": {},
+        "id": "CHARM01",
+        "name": "s66",
+        "rarity": "s67",
+        "skill": []
+      },
+      "CHARM02": {
+        "crafting": {},
+        "id": "CHARM02",
+        "name": "s98",
+        "rarity": "s99",
+        "skill": []
+      }
+    }
+  },
+  "new": {
+    "charm": {
+      "charm_ref01": {
+        "crafting": {},
+        "name": "sca",
+        "rarity": "scb",
+        "skill": []
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "armor_set": {
+      "ARMOR_SET00": {
+        "bonus": {},
+        "id": "ARMOR_SET00",
+        "name": "s34",
+        "piece": [],
+        "rank": "s36"
+      },
+      "ARMOR_SET01": {
+        "bonus": {},
+        "id": "ARMOR_SET01",
+        "name": "s66",
+        "piece": [],
+        "rank": "s68"
+      },
+      "ARMOR_SET02": {
+        "bonus": {},
+        "id": "ARMOR_SET02",
+        "name": "s98",
+        "piece": [],
+        "rank": "s9a"
+      }
+    }
+  },
+  "new": {
+    "armor_set": {
+      "armor_set_ref01": {
+        "bonus": {},
+        "name": "sca",
+        "piece": [],
+        "rank": "scc"
+      }
+    }
+  }
+}

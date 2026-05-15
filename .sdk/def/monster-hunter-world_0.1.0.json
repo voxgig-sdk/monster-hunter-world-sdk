@@ -1,0 +1,1980 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Monster Hunter World API",
+    "description": "The Monster Hunter World API provides detailed information about the game, including items, monsters, armor, skills, events, and more. It allows users to access various resources related to the game in a structured format, facilitating data retrieval and integration into applications.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://docs.mhw-db.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://mhw-db.com",
+      "description": "Production server"
+    },
+    {
+      "url": "https://mhw-db.com/{language}",
+      "description": "Production server with localization",
+      "variables": {
+        "language": {
+          "default": "",
+          "description": "Language tag for localization",
+          "enum": [
+            "",
+            "fr",
+            "de",
+            "zh",
+            "zh-Hant"
+          ]
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/ailments": {
+      "get": {
+        "summary": "Get All Ailments",
+        "description": "Retrieves all ailments in Monster Hunter World",
+        "operationId": "getAllAilments",
+        "tags": [
+          "Ailments"
+        ],
+        "parameters": [
+          {
+            "name": "p",
+            "in": "query",
+            "description": "Projection parameter for filtering returned fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Query parameter for searching",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Ailment"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ailments/{id}": {
+      "get": {
+        "summary": "Get a Specific Ailment",
+        "description": "Retrieves a specific ailment by its ID",
+        "operationId": "getAilmentById",
+        "tags": [
+          "Ailments"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the ailment to retrieve",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "p",
+            "in": "query",
+            "description": "Projection parameter for filtering returned fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ailment"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Ailment not found"
+          }
+        }
+      }
+    },
+    "/armor": {
+      "get": {
+        "summary": "Get All Armor Pieces",
+        "description": "Retrieves all armor pieces in Monster Hunter World",
+        "operationId": "getAllArmor",
+        "tags": [
+          "Armor"
+        ],
+        "parameters": [
+          {
+            "name": "p",
+            "in": "query",
+            "description": "Projection parameter for filtering returned fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Query parameter for searching",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Armor"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/armor/{id}": {
+      "get": {
+        "summary": "Get a Specific Armor Piece",
+        "description": "Retrieves an armor piece by its ID",
+        "operationId": "getArmorById",
+        "tags": [
+          "Armor"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the armor piece to retrieve",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "p",
+            "in": "query",
+            "description": "Projection parameter for filtering returned fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Armor"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Armor piece not found"
+          }
+        }
+      }
+    },
+    "/armor/sets": {
+      "get": {
+        "summary": "Get All Armor Sets",
+        "description": "Retrieves all armor sets in Monster Hunter World",
+        "operationId": "getAllArmorSets",
+        "tags": [
+          "Armor Sets"
+        ],
+        "parameters": [
+          {
+            "name": "p",
+            "in": "query",
+            "description": "Projection parameter for filtering returned fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Query parameter for searching",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ArmorSet"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/armor/sets/{id}": {
+      "get": {
+        "summary": "Get a Specific Armor Set",
+        "description": "Retrieves a specific armor set by its ID",
+        "operationId": "getArmorSetById",
+        "tags": [
+          "Armor Sets"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the armor set to retrieve",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "p",
+            "in": "query",
+            "description": "Projection parameter for filtering returned fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArmorSet"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Armor set not found"
+          }
+        }
+      }
+    },
+    "/charms": {
+      "get": {
+        "summary": "Get All Charms",
+        "description": "Retrieves all charms in Monster Hunter World",
+        "operationId": "getAllCharms",
+        "tags": [
+          "Charms"
+        ],
+        "parameters": [
+          {
+            "name": "p",
+            "in": "query",
+            "description": "Projection parameter for filtering returned fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Query parameter for searching",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Charm"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/charms/{id}": {
+      "get": {
+        "summary": "Get a Specific Charm",
+        "description": "Retrieves a specific charm by its ID",
+        "operationId": "getCharmById",
+        "tags": [
+          "Charms"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the charm to retrieve",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "p",
+            "in": "query",
+            "description": "Projection parameter for filtering returned fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Charm"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Charm not found"
+          }
+        }
+      }
+    },
+    "/decorations": {
+      "get": {
+        "summary": "Get All Decorations",
+        "description": "Retrieves all decorations in Monster Hunter World",
+        "operationId": "getAllDecorations",
+        "tags": [
+          "Decorations"
+        ],
+        "parameters": [
+          {
+            "name": "p",
+            "in": "query",
+            "description": "Projection parameter for filtering returned fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Query parameter for searching",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Decoration"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/decorations/{id}": {
+      "get": {
+        "summary": "Get a Specific Decoration",
+        "description": "Retrieves a specific decoration by its ID",
+        "operationId": "getDecorationById",
+        "tags": [
+          "Decorations"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the decoration to retrieve",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "p",
+            "in": "query",
+            "description": "Projection parameter for filtering returned fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Decoration"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Decoration not found"
+          }
+        }
+      }
+    },
+    "/events": {
+      "get": {
+        "summary": "Get All Events",
+        "description": "Retrieves all events in Monster Hunter World",
+        "operationId": "getAllEvents",
+        "tags": [
+          "Events"
+        ],
+        "parameters": [
+          {
+            "name": "p",
+            "in": "query",
+            "description": "Projection parameter for filtering returned fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Query parameter for searching",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Event"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events/{id}": {
+      "get": {
+        "summary": "Get a Specific Event",
+        "description": "Retrieves a specific event by its ID",
+        "operationId": "getEventById",
+        "tags": [
+          "Events"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the event to retrieve",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "p",
+            "in": "query",
+            "description": "Projection parameter for filtering returned fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Event not found"
+          }
+        }
+      }
+    },
+    "/items": {
+      "get": {
+        "summary": "Get All Items",
+        "description": "Retrieves all items in Monster Hunter World",
+        "operationId": "getAllItems",
+        "tags": [
+          "Items"
+        ],
+        "parameters": [
+          {
+            "name": "p",
+            "in": "query",
+            "description": "Projection parameter for filtering returned fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Query parameter for searching",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Item"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/items/{id}": {
+      "get": {
+        "summary": "Get a Specific Item",
+        "description": "Retrieves a specific item by its ID",
+        "operationId": "getItemById",
+        "tags": [
+          "Items"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the item to retrieve",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "p",
+            "in": "query",
+            "description": "Projection parameter for filtering returned fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Item"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Item not found"
+          }
+        }
+      }
+    },
+    "/locations": {
+      "get": {
+        "summary": "Get All Locations",
+        "description": "Retrieves all locations in Monster Hunter World",
+        "operationId": "getAllLocations",
+        "tags": [
+          "Locations"
+        ],
+        "parameters": [
+          {
+            "name": "p",
+            "in": "query",
+            "description": "Projection parameter for filtering returned fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Query parameter for searching",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Location"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/locations/{id}": {
+      "get": {
+        "summary": "Get a Specific Location",
+        "description": "Retrieves a specific location by its ID",
+        "operationId": "getLocationById",
+        "tags": [
+          "Locations"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the location to retrieve",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "p",
+            "in": "query",
+            "description": "Projection parameter for filtering returned fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Location"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Location not found"
+          }
+        }
+      }
+    },
+    "/monsters": {
+      "get": {
+        "summary": "Get All Monsters",
+        "description": "Retrieves all monsters in Monster Hunter World",
+        "operationId": "getAllMonsters",
+        "tags": [
+          "Monsters"
+        ],
+        "parameters": [
+          {
+            "name": "p",
+            "in": "query",
+            "description": "Projection parameter for filtering returned fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Query parameter for searching",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Monster"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/monsters/{id}": {
+      "get": {
+        "summary": "Get a Specific Monster",
+        "description": "Retrieves a specific monster by its ID",
+        "operationId": "getMonsterById",
+        "tags": [
+          "Monsters"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the monster to retrieve",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "p",
+            "in": "query",
+            "description": "Projection parameter for filtering returned fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Monster"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Monster not found"
+          }
+        }
+      }
+    },
+    "/motion-values": {
+      "get": {
+        "summary": "Get All Motion Values",
+        "description": "Retrieves all motion values in Monster Hunter World",
+        "operationId": "getAllMotionValues",
+        "tags": [
+          "Motion Values"
+        ],
+        "parameters": [
+          {
+            "name": "p",
+            "in": "query",
+            "description": "Projection parameter for filtering returned fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Query parameter for searching",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MotionValue"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/motion-values/{id}": {
+      "get": {
+        "summary": "Get a Specific Motion Value",
+        "description": "Retrieves a specific motion value by its ID",
+        "operationId": "getMotionValueById",
+        "tags": [
+          "Motion Values"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the motion value to retrieve",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "p",
+            "in": "query",
+            "description": "Projection parameter for filtering returned fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MotionValue"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Motion value not found"
+          }
+        }
+      }
+    },
+    "/skills": {
+      "get": {
+        "summary": "Get All Skills",
+        "description": "Retrieves all skills in Monster Hunter World",
+        "operationId": "getAllSkills",
+        "tags": [
+          "Skills"
+        ],
+        "parameters": [
+          {
+            "name": "p",
+            "in": "query",
+            "description": "Projection parameter for filtering returned fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Query parameter for searching",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Skill"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/skills/{id}": {
+      "get": {
+        "summary": "Get a Specific Skill",
+        "description": "Retrieves a specific skill by its ID",
+        "operationId": "getSkillById",
+        "tags": [
+          "Skills"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the skill to retrieve",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "p",
+            "in": "query",
+            "description": "Projection parameter for filtering returned fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Skill"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Skill not found"
+          }
+        }
+      }
+    },
+    "/weapons": {
+      "get": {
+        "summary": "Get All Weapons",
+        "description": "Retrieves all weapons in Monster Hunter World",
+        "operationId": "getAllWeapons",
+        "tags": [
+          "Weapons"
+        ],
+        "parameters": [
+          {
+            "name": "p",
+            "in": "query",
+            "description": "Projection parameter for filtering returned fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Query parameter for searching",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Weapon"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/weapons/{id}": {
+      "get": {
+        "summary": "Get a Specific Weapon",
+        "description": "Retrieves a specific weapon by its ID",
+        "operationId": "getWeaponById",
+        "tags": [
+          "Weapons"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the weapon to retrieve",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "p",
+            "in": "query",
+            "description": "Projection parameter for filtering returned fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Weapon"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Weapon not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Ailment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The ID of the ailment"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the ailment"
+          },
+          "description": {
+            "type": "string",
+            "description": "A short description of the ailment"
+          },
+          "recovery": {
+            "$ref": "#/components/schemas/Recovery"
+          },
+          "protection": {
+            "$ref": "#/components/schemas/Protection"
+          }
+        }
+      },
+      "Recovery": {
+        "type": "object",
+        "properties": {
+          "actions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "crouch",
+                "dodge"
+              ]
+            },
+            "description": "An array of actions that can be taken to remove the ailment"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Item"
+            },
+            "description": "An array of items that can remove the ailment"
+          }
+        }
+      },
+      "Protection": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Item"
+            },
+            "description": "An array of items that can prevent the ailment"
+          },
+          "skills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Skill"
+            },
+            "description": "An array of skills that can prevent the ailment"
+          }
+        }
+      },
+      "Armor": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The ID of the armor piece"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the armor piece"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "head",
+              "chest",
+              "gloves",
+              "waist",
+              "legs"
+            ],
+            "description": "The slot the armor piece fits in"
+          },
+          "rank": {
+            "type": "string",
+            "enum": [
+              "low",
+              "high"
+            ],
+            "description": "The rank of the armor piece"
+          },
+          "rarity": {
+            "type": "integer",
+            "description": "The rarity of the armor piece"
+          },
+          "defense": {
+            "$ref": "#/components/schemas/Defense"
+          },
+          "resistances": {
+            "$ref": "#/components/schemas/Resistances"
+          },
+          "slots": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Slot"
+            },
+            "description": "An array of decoration slot information"
+          },
+          "attributes": {
+            "type": "object",
+            "description": "Dictionary of attribute modifiers attached to the armor piece"
+          },
+          "skills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SkillRank"
+            },
+            "description": "An array of skill ranks granted by the armor"
+          },
+          "armorSet": {
+            "$ref": "#/components/schemas/SetInfo"
+          },
+          "assets": {
+            "$ref": "#/components/schemas/ArmorAssets"
+          },
+          "crafting": {
+            "$ref": "#/components/schemas/ArmorCraftingInfo"
+          }
+        }
+      },
+      "Defense": {
+        "type": "object",
+        "properties": {
+          "base": {
+            "type": "integer",
+            "description": "The armor's base defense value"
+          },
+          "max": {
+            "type": "integer",
+            "description": "The armor's defense value at max level"
+          },
+          "augmented": {
+            "type": "integer",
+            "description": "The armor's defense value when augmented"
+          }
+        }
+      },
+      "Resistances": {
+        "type": "object",
+        "properties": {
+          "fire": {
+            "type": "integer",
+            "description": "The armor's fire resistance"
+          },
+          "water": {
+            "type": "integer",
+            "description": "The armor's water resistance"
+          },
+          "ice": {
+            "type": "integer",
+            "description": "The armor's ice resistance"
+          },
+          "thunder": {
+            "type": "integer",
+            "description": "The armor's thunder resistance"
+          },
+          "dragon": {
+            "type": "integer",
+            "description": "The armor's dragon resistance"
+          }
+        }
+      },
+      "Slot": {
+        "type": "object",
+        "properties": {
+          "rank": {
+            "type": "integer",
+            "description": "The rank of the decoration slot"
+          }
+        }
+      },
+      "SkillRank": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The ID of the skill rank"
+          },
+          "level": {
+            "type": "integer",
+            "description": "The level of the skill"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the skill at this level"
+          },
+          "modifiers": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Array of modifiers for the skill"
+          },
+          "skill": {
+            "type": "integer",
+            "description": "The skill ID reference"
+          },
+          "skillName": {
+            "type": "string",
+            "description": "The name of the skill"
+          }
+        }
+      },
+      "SetInfo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The ID of the armor set"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the armor set"
+          },
+          "rank": {
+            "type": "string",
+            "enum": [
+              "low",
+              "high"
+            ],
+            "description": "The rank of the armor set"
+          },
+          "pieces": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "description": "An array of IDs of all armor pieces in the set"
+          }
+        }
+      },
+      "ArmorAssets": {
+        "type": "object",
+        "properties": {
+          "imageMale": {
+            "type": "string",
+            "nullable": true,
+            "description": "URL to the male preview image, or null if one does not exist"
+          },
+          "imageFemale": {
+            "type": "string",
+            "nullable": true,
+            "description": "URL to the female preview image, or null if one does not exist"
+          }
+        }
+      },
+      "ArmorCraftingInfo": {
+        "type": "object",
+        "properties": {
+          "materials": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CraftingCost"
+            },
+            "description": "An array of crafting material costs"
+          }
+        }
+      },
+      "CraftingCost": {
+        "type": "object",
+        "properties": {
+          "quantity": {
+            "type": "integer",
+            "description": "The quantity of the item required"
+          },
+          "item": {
+            "$ref": "#/components/schemas/Item"
+          }
+        }
+      },
+      "ArmorSet": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The ID of the armor set"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the armor set"
+          },
+          "rank": {
+            "type": "string",
+            "enum": [
+              "low",
+              "high"
+            ],
+            "description": "The rank of the armor set"
+          },
+          "pieces": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Armor"
+            },
+            "description": "Array of armor pieces in the set"
+          },
+          "bonus": {
+            "type": "object",
+            "nullable": true,
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              },
+              "ranks": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "pieces": {
+                      "type": "integer"
+                    },
+                    "skill": {
+                      "$ref": "#/components/schemas/SkillRank"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "The set bonus, if any"
+          }
+        }
+      },
+      "Item": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The ID of the item"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the item"
+          },
+          "description": {
+            "type": "string",
+            "description": "A description of the item"
+          },
+          "rarity": {
+            "type": "integer",
+            "description": "The rarity of the item"
+          },
+          "carryLimit": {
+            "type": "integer",
+            "description": "The maximum number of this item that can be carried"
+          },
+          "sellPrice": {
+            "type": "integer",
+            "description": "The price when selling the item"
+          },
+          "buyPrice": {
+            "type": "integer",
+            "description": "The price when buying the item"
+          },
+          "value": {
+            "type": "integer",
+            "description": "The value of the item"
+          }
+        }
+      },
+      "Charm": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The ID of the charm"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the charm"
+          },
+          "rarity": {
+            "type": "integer",
+            "description": "The rarity of the charm"
+          },
+          "skills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SkillRank"
+            },
+            "description": "An array of skill ranks granted by the charm"
+          },
+          "crafting": {
+            "type": "object",
+            "properties": {
+              "materials": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CraftingCost"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Decoration": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The ID of the decoration"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the decoration"
+          },
+          "rarity": {
+            "type": "integer",
+            "description": "The rarity of the decoration"
+          },
+          "slot": {
+            "type": "integer",
+            "description": "The slot rank required for the decoration"
+          },
+          "skills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SkillRank"
+            },
+            "description": "An array of skill ranks granted by the decoration"
+          }
+        }
+      },
+      "Event": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The ID of the event"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the event"
+          },
+          "platform": {
+            "type": "string",
+            "description": "The platform for the event"
+          },
+          "exclusive": {
+            "type": "string",
+            "nullable": true,
+            "description": "Whether the event is exclusive to a platform"
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of event"
+          },
+          "expansion": {
+            "type": "string",
+            "description": "The expansion the event belongs to"
+          },
+          "description": {
+            "type": "string",
+            "description": "A description of the event"
+          },
+          "requirements": {
+            "type": "string",
+            "description": "Requirements for the event"
+          },
+          "questRank": {
+            "type": "string",
+            "description": "The quest rank of the event"
+          },
+          "successConditions": {
+            "type": "string",
+            "description": "Conditions for success"
+          },
+          "startTimestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The start time of the event"
+          },
+          "endTimestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The end time of the event"
+          },
+          "location": {
+            "$ref": "#/components/schemas/Location"
+          }
+        }
+      },
+      "Location": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The ID of the location"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the location"
+          },
+          "zoneCount": {
+            "type": "integer",
+            "description": "The number of zones in the location"
+          },
+          "camps": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "zone": {
+                  "type": "integer"
+                }
+              }
+            },
+            "description": "An array of camps in the location"
+          }
+        }
+      },
+      "Monster": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The ID of the monster"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the monster"
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of monster"
+          },
+          "species": {
+            "type": "string",
+            "description": "The species of the monster"
+          },
+          "description": {
+            "type": "string",
+            "description": "A description of the monster"
+          },
+          "elements": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Elements the monster uses"
+          },
+          "ailments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Ailment"
+            },
+            "description": "Ailments the monster can inflict"
+          },
+          "locations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Location"
+            },
+            "description": "Locations where the monster can be found"
+          },
+          "resistances": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "element": {
+                  "type": "string"
+                },
+                "condition": {
+                  "type": "string",
+                  "nullable": true
+                }
+              }
+            },
+            "description": "Resistances of the monster"
+          },
+          "weaknesses": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "element": {
+                  "type": "string"
+                },
+                "stars": {
+                  "type": "integer"
+                },
+                "condition": {
+                  "type": "string",
+                  "nullable": true
+                }
+              }
+            },
+            "description": "Weaknesses of the monster"
+          },
+          "rewards": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "item": {
+                  "$ref": "#/components/schemas/Item"
+                },
+                "conditions": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            },
+            "description": "Rewards obtained from the monster"
+          }
+        }
+      },
+      "Skill": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The ID of the skill"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the skill"
+          },
+          "description": {
+            "type": "string",
+            "description": "A description of the skill"
+          },
+          "ranks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SkillRank"
+            },
+            "description": "An array of skill ranks"
+          }
+        }
+      },
+      "Weapon": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The ID of the weapon"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the weapon"
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of weapon"
+          },
+          "rarity": {
+            "type": "integer",
+            "description": "The rarity of the weapon"
+          },
+          "attack": {
+            "type": "object",
+            "properties": {
+              "display": {
+                "type": "integer"
+              },
+              "raw": {
+                "type": "integer"
+              }
+            },
+            "description": "Attack values for the weapon"
+          },
+          "slots": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Slot"
+            },
+            "description": "An array of decoration slot information"
+          },
+          "elements": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "damage": {
+                  "type": "integer"
+                },
+                "hidden": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "description": "Elemental damage information"
+          },
+          "crafting": {
+            "type": "object",
+            "properties": {
+              "craftable": {
+                "type": "boolean"
+              },
+              "previous": {
+                "type": "integer",
+                "nullable": true
+              },
+              "branches": {
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                }
+              },
+              "craftingMaterials": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CraftingCost"
+                }
+              },
+              "upgradeMaterials": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CraftingCost"
+                }
+              }
+            },
+            "description": "Crafting information for the weapon"
+          },
+          "assets": {
+            "type": "object",
+            "properties": {
+              "icon": {
+                "type": "string",
+                "nullable": true
+              },
+              "image": {
+                "type": "string",
+                "nullable": true
+              }
+            },
+            "description": "Asset URLs for the weapon"
+          },
+          "damageType": {
+            "type": "string",
+            "description": "The damage type of the weapon"
+          },
+          "attributes": {
+            "type": "object",
+            "description": "Additional weapon attributes"
+          }
+        }
+      },
+      "MotionValue": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The ID of the motion value"
+          },
+          "weaponType": {
+            "type": "string",
+            "description": "The type of weapon"
+          },
+          "damageType": {
+            "type": "string",
+            "description": "The type of damage"
+          },
+          "stun": {
+            "type": "integer",
+            "description": "Stun value"
+          },
+          "exhaust": {
+            "type": "integer",
+            "description": "Exhaust value"
+          },
+          "hits": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "number"
+                }
+              }
+            },
+            "description": "Hit information"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Ailments",
+      "description": "Operations related to ailments"
+    },
+    {
+      "name": "Armor",
+      "description": "Operations related to armor pieces"
+    },
+    {
+      "name": "Armor Sets",
+      "description": "Operations related to armor sets"
+    },
+    {
+      "name": "Charms",
+      "description": "Operations related to charms"
+    },
+    {
+      "name": "Decorations",
+      "description": "Operations related to decorations"
+    },
+    {
+      "name": "Events",
+      "description": "Operations related to events"
+    },
+    {
+      "name": "Items",
+      "description": "Operations related to items"
+    },
+    {
+      "name": "Locations",
+      "description": "Operations related to locations"
+    },
+    {
+      "name": "Monsters",
+      "description": "Operations related to monsters"
+    },
+    {
+      "name": "Motion Values",
+      "description": "Operations related to motion values"
+    },
+    {
+      "name": "Skills",
+      "description": "Operations related to skills"
+    },
+    {
+      "name": "Weapons",
+      "description": "Operations related to weapons"
+    }
+  ]
+}

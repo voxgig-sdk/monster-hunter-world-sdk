@@ -1,0 +1,61 @@
+{
+  "existing": {
+    "weapon": {
+      "WEAPON00": {
+        "asset": {},
+        "attack": {},
+        "attribute": {},
+        "crafting": {},
+        "damage_type": "s72",
+        "element": [],
+        "id": "WEAPON00",
+        "name": "s75",
+        "rarity": "s76",
+        "slot": [],
+        "type": "s78"
+      },
+      "WEAPON01": {
+        "asset": {},
+        "attack": {},
+        "attribute": {},
+        "crafting": {},
+        "damage_type": "se0",
+        "element": [],
+        "id": "WEAPON01",
+        "name": "se3",
+        "rarity": "se4",
+        "slot": [],
+        "type": "se6"
+      },
+      "WEAPON02": {
+        "asset": {},
+        "attack": {},
+        "attribute": {},
+        "crafting": {},
+        "damage_type": "s14e",
+        "element": [],
+        "id": "WEAPON02",
+        "name": "s151",
+        "rarity": "s152",
+        "slot": [],
+        "type": "s154"
+      }
+    }
+  },
+  "new": {
+    "weapon": {
+      "weapon_ref01": {
+        "asset": {},
+        "attack": {},
+        "attribute": {},
+        "crafting": {},
+        "damage_type": "s1bc",
+        "element": [],
+        "name": "s1bf",
+        "rarity": "s1c0",
+        "slot": [],
+        "type": "s1c2"
+      }
+    }
+  }
+}

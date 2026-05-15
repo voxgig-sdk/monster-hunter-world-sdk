@@ -1,0 +1,44 @@
+# BasicCharmFlow
+
+main: kit: flow: BasicCharmFlow:
+{
+  entity: "charm",
+  kind: "basic",
+  name: "BasicCharmFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "charm_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "charm_ref01",
+        srcdatavar: "charm_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "charm01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-charm_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCharmFlow"
+}

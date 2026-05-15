@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "motion_value": {
+      "MOTION_VALUE00": {
+        "damage_type": "s3c",
+        "exhaust": "s3d",
+        "hit": [],
+        "id": "MOTION_VALUE00",
+        "stun": "s40",
+        "weapon_type": "s41"
+      },
+      "MOTION_VALUE01": {
+        "damage_type": "s78",
+        "exhaust": "s79",
+        "hit": [],
+        "id": "MOTION_VALUE01",
+        "stun": "s7c",
+        "weapon_type": "s7d"
+      },
+      "MOTION_VALUE02": {
+        "damage_type": "sb4",
+        "exhaust": "sb5",
+        "hit": [],
+        "id": "MOTION_VALUE02",
+        "stun": "sb8",
+        "weapon_type": "sb9"
+      }
+    }
+  },
+  "new": {
+    "motion_value": {
+      "motion_value_ref01": {
+        "damage_type": "sf0",
+        "exhaust": "sf1",
+        "hit": [],
+        "stun": "sf4",
+        "weapon_type": "sf5"
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "decoration": {
+      "DECORATION00": {
+        "id": "DECORATION00",
+        "name": "s33",
+        "rarity": "s34",
+        "skill": [],
+        "slot": "s36"
+      },
+      "DECORATION01": {
+        "id": "DECORATION01",
+        "name": "s65",
+        "rarity": "s66",
+        "skill": [],
+        "slot": "s68"
+      },
+      "DECORATION02": {
+        "id": "DECORATION02",
+        "name": "s97",
+        "rarity": "s98",
+        "skill": [],
+        "slot": "s9a"
+      }
+    }
+  },
+  "new": {
+    "decoration": {
+      "decoration_ref01": {
+        "name": "sc9",
+        "rarity": "sca",
+        "skill": [],
+        "slot": "scc"
+      }
+    }
+  }
+}

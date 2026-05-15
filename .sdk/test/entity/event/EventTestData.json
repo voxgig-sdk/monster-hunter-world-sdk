@@ -1,0 +1,69 @@
+{
+  "existing": {
+    "event": {
+      "EVENT00": {
+        "description": "s82",
+        "end_timestamp": "s83",
+        "exclusive": "s84",
+        "expansion": "s85",
+        "id": "EVENT00",
+        "location": {},
+        "name": "s88",
+        "platform": "s89",
+        "quest_rank": "s8a",
+        "requirement": "s8b",
+        "start_timestamp": "s8c",
+        "success_condition": "s8d",
+        "type": "s8e"
+      },
+      "EVENT01": {
+        "description": "s104",
+        "end_timestamp": "s105",
+        "exclusive": "s106",
+        "expansion": "s107",
+        "id": "EVENT01",
+        "location": {},
+        "name": "s10a",
+        "platform": "s10b",
+        "quest_rank": "s10c",
+        "requirement": "s10d",
+        "start_timestamp": "s10e",
+        "success_condition": "s10f",
+        "type": "s110"
+      },
+      "EVENT02": {
+        "description": "s186",
+        "end_timestamp": "s187",
+        "exclusive": "s188",
+        "expansion": "s189",
+        "id": "EVENT02",
+        "location": {},
+        "name": "s18c",
+        "platform": "s18d",
+        "quest_rank": "s18e",
+        "requirement": "s18f",
+        "start_timestamp": "s190",
+        "success_condition": "s191",
+        "type": "s192"
+      }
+    }
+  },
+  "new": {
+    "event": {
+      "event_ref01": {
+        "description": "s208",
+        "end_timestamp": "s209",
+        "exclusive": "s20a",
+        "expansion": "s20b",
+        "location": {},
+        "name": "s20e",
+        "platform": "s20f",
+        "quest_rank": "s210",
+        "requirement": "s211",
+        "start_timestamp": "s212",
+        "success_condition": "s213",
+        "type": "s214"
+      }
+    }
+  }
+}

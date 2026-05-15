@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "skill": {
+      "SKILL00": {
+        "description": "s28",
+        "id": "SKILL00",
+        "name": "s2a",
+        "rank": []
+      },
+      "SKILL01": {
+        "description": "s50",
+        "id": "SKILL01",
+        "name": "s52",
+        "rank": []
+      },
+      "SKILL02": {
+        "description": "s78",
+        "id": "SKILL02",
+        "name": "s7a",
+        "rank": []
+      }
+    }
+  },
+  "new": {
+    "skill": {
+      "skill_ref01": {
+        "description": "sa0",
+        "name": "sa2",
+        "rank": []
+      }
+    }
+  }
+}

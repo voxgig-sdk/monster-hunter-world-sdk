@@ -1,0 +1,44 @@
+# BasicArmorFlow
+
+main: kit: flow: BasicArmorFlow:
+{
+  entity: "armor",
+  kind: "basic",
+  name: "BasicArmorFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "armor_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "armor_ref01",
+        srcdatavar: "armor_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "armor01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-armor_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicArmorFlow"
+}

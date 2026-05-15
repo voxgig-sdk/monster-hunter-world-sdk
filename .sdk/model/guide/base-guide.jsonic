@@ -1,0 +1,116 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 12
+  metrics: count: path: 24
+  metrics: count: method: 24
+
+  entity: ailment: {
+    path: "/ailments": {
+      op: list: method: *GET
+    }
+    path: "/ailments/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: armor: {
+    path: "/armor": {
+      op: list: method: *GET
+    }
+    path: "/armor/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: armor_set: {
+    path: "/armor/sets": {
+      op: list: method: *GET
+    }
+    path: "/armor/sets/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: charm: {
+    path: "/charms": {
+      op: list: method: *GET
+    }
+    path: "/charms/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: decoration: {
+    path: "/decorations": {
+      op: list: method: *GET
+    }
+    path: "/decorations/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: event: {
+    path: "/events": {
+      op: list: method: *GET
+    }
+    path: "/events/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: item: {
+    path: "/items": {
+      op: list: method: *GET
+    }
+    path: "/items/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: location: {
+    path: "/locations": {
+      op: list: method: *GET
+    }
+    path: "/locations/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: monster: {
+    path: "/monsters": {
+      op: list: method: *GET
+    }
+    path: "/monsters/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: motion_value: {
+    path: "/motion-values": {
+      op: list: method: *GET
+    }
+    path: "/motion-values/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: skill: {
+    path: "/skills": {
+      op: list: method: *GET
+    }
+    path: "/skills/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: weapon: {
+    path: "/weapons": {
+      op: list: method: *GET
+    }
+    path: "/weapons/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+}
