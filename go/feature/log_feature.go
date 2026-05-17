@@ -4,7 +4,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/voxgig-sdk/monster-hunter-world-sdk/core"
+	"github.com/voxgig-sdk/monster-hunter-world-sdk/go/core"
 )
 
 type LogFeature struct {

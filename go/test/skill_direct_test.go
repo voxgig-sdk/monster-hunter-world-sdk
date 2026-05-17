@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/monster-hunter-world-sdk"
-	"github.com/voxgig-sdk/monster-hunter-world-sdk/core"
+	sdk "github.com/voxgig-sdk/monster-hunter-world-sdk/go"
+	"github.com/voxgig-sdk/monster-hunter-world-sdk/go/core"
 )
 
 func TestSkillDirect(t *testing.T) {

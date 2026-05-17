@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/monster-hunter-world-sdk/core"
+	"github.com/voxgig-sdk/monster-hunter-world-sdk/go/core"
 )
 
 type BaseFeature struct {

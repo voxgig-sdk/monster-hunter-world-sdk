@@ -1,9 +1,9 @@
 package utility
 
 import (
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/monster-hunter-world-sdk/go/utility/struct"
 
-	"github.com/voxgig-sdk/monster-hunter-world-sdk/core"
+	"github.com/voxgig-sdk/monster-hunter-world-sdk/go/core"
 )
 
 func makeFetchDefUtil(ctx *core.Context) (map[string]any, error) {

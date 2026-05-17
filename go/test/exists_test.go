@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/monster-hunter-world-sdk"
+	sdk "github.com/voxgig-sdk/monster-hunter-world-sdk/go"
 )
 
 func TestExists(t *testing.T) {

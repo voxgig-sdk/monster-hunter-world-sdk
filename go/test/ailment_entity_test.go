@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/monster-hunter-world-sdk"
-	"github.com/voxgig-sdk/monster-hunter-world-sdk/core"
+	sdk "github.com/voxgig-sdk/monster-hunter-world-sdk/go"
+	"github.com/voxgig-sdk/monster-hunter-world-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/monster-hunter-world-sdk/go/utility/struct"
 )
 
 func TestAilmentEntity(t *testing.T) {
