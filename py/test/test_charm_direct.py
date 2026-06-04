@@ -109,14 +109,12 @@ def _charm_direct_setup(mockres):
     env = runner.env_override({
         "MONSTERHUNTERWORLD_TEST_CHARM_ENTID": {},
         "MONSTERHUNTERWORLD_TEST_LIVE": "FALSE",
-        "MONSTERHUNTERWORLD_APIKEY": "NONE",
     })
 
     live = env.get("MONSTERHUNTERWORLD_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("MONSTERHUNTERWORLD_APIKEY"),
         }
         client = MonsterHunterWorldSDK(merged_opts)
         return {

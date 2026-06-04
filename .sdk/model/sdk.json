@@ -33,7 +33,26 @@
           }
         ],
         "title": "Monster Hunter World API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Query Monster Hunter World game data — monsters, weapons, armor, skills, items, and events",
+        "homepage": "https://docs.mhw-db.com/",
+        "docs_url": "https://docs.mhw-db.com/",
+        "about_md": "The [Monster Hunter World API](https://docs.mhw-db.com/) is a community-maintained REST service that exposes the equipment, creatures, skills, and game mechanics from Capcom's *Monster Hunter: World*. The project has entered maintenance mode and will not receive further feature work, but the endpoints remain available at `https://mhw-db.com`.\n\nWhat you get from the API:\n\n- Monsters with weaknesses, ailments, and drop tables\n- All 14 weapon types with detailed stats and motion values\n- Armor pieces, full armor sets, and set bonuses\n- Charms with upgrade trees, decorations (jewels), and skill modifiers\n- Items (consumables, crafting materials), locations with camp sites, and limited-time events\n\nNo authentication is required and no rate limits are documented. CORS is disabled, so calls generally need to go through a server-side proxy rather than directly from a browser. Responses can be localized to English (default), French, German, Simplified Chinese, or Traditional Chinese via optional language tag prefixes in the URL path. A successor project for *Monster Hunter Wilds* is available at [docs.wilds.mhdb.io](https://docs.wilds.mhdb.io).",
+        "entity_desc": {
+          "ailment": "Status effects (poison, paralysis, etc.) along with recovery items and methods.",
+          "armor": "Individual armor pieces with stats, skills, and crafting requirements.",
+          "armor_set": "Full armor sets that group pieces and expose set bonuses.",
+          "charm": "Equippable charms with their upgrade trees and granted skills.",
+          "decoration": "Jewels that slot into armor or weapons to grant additional skill points.",
+          "event": "Limited-time in-game quests and event metadata.",
+          "item": "Consumables and crafting materials used throughout the game.",
+          "location": "Maps and their camp sites where hunts take place.",
+          "monster": "Enemy creatures with elemental weaknesses, ailment susceptibilities, and drop tables.",
+          "motion_value": "Per-attack motion-value data describing how weapon moves scale damage.",
+          "skill": "Player ability modifiers granted by armor, charms, and decorations.",
+          "weapon": "Entries for all 14 weapon types with sharpness, element, and stat details."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -41,7 +60,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "ailment": {

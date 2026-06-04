@@ -15,9 +15,6 @@ module MonsterHunterWorldConfig
       },
       "options" => {
         "base" => "https://mhw-db.com",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
