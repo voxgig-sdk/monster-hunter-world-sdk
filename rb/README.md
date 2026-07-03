@@ -10,13 +10,13 @@ The Ruby SDK for the MonsterHunterWorld API — an entity-oriented client using 
 
 ## Install
 ```bash
-gem install monster-hunter-world-sdk
+gem install voxgig-sdk-monster-hunter-world
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "monster-hunter-world-sdk"
+gem "voxgig-sdk-monster-hunter-world"
 ```
 
 Then run:

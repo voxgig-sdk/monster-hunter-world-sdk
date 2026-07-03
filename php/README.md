@@ -10,7 +10,7 @@ The PHP SDK for the MonsterHunterWorld API — an entity-oriented client using P
 
 ## Install
 ```bash
-composer require voxgig/monster-hunter-world-sdk
+composer require voxgig-sdk/monster-hunter-world
 ```
 
 

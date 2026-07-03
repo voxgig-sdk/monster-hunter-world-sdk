@@ -10,7 +10,7 @@ The Python SDK for the MonsterHunterWorld API — an entity-oriented client foll
 
 ## Install
 ```bash
-pip install monster-hunter-world-sdk
+pip install voxgig-sdk-monster-hunter-world
 ```
 
 Or install from source:

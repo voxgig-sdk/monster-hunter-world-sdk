@@ -10,7 +10,7 @@ The Lua SDK for the MonsterHunterWorld API — an entity-oriented client using L
 
 ## Install
 ```bash
-luarocks install monster-hunter-world-sdk
+luarocks install voxgig-sdk-monster-hunter-world
 ```
 
 If the module is not yet published, add the source directory to

@@ -10,7 +10,7 @@ The TypeScript SDK for the MonsterHunterWorld API — a type-safe, entity-orient
 
 ## Install
 ```bash
-npm install monster-hunter-world
+npm install @voxgig-sdk/monster-hunter-world
 ```
 ## Tutorial: your first API call
 
