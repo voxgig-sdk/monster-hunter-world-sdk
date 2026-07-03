@@ -120,6 +120,7 @@ function basicSetup(extra?: any) {
     'MONSTER_HUNTER_WORLD_TEST_EVENT_ENTID': idmap,
     'MONSTER_HUNTER_WORLD_TEST_LIVE': 'FALSE',
     'MONSTER_HUNTER_WORLD_TEST_EXPLAIN': 'FALSE',
+    'MONSTER_HUNTER_WORLD_APIKEY': 'NONE',
   })
 
   idmap = env['MONSTER_HUNTER_WORLD_TEST_EVENT_ENTID']
@@ -129,6 +130,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new MonsterHunterWorldSDK(merge([
       {
+        apikey: env.MONSTER_HUNTER_WORLD_APIKEY,
       },
       extra
     ]))

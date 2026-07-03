@@ -194,12 +194,14 @@ func armor_setDirectSetup(mockres any) *armor_setDirectSetupResult {
 	env := envOverride(map[string]any{
 		"MONSTERHUNTERWORLD_TEST_ARMOR_SET_ENTID": map[string]any{},
 		"MONSTERHUNTERWORLD_TEST_LIVE":    "FALSE",
+		"MONSTERHUNTERWORLD_APIKEY":       "NONE",
 	})
 
 	live := env["MONSTERHUNTERWORLD_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["MONSTERHUNTERWORLD_APIKEY"],
 		}
 		client := sdk.NewMonsterHunterWorldSDK(mergedOpts)
 

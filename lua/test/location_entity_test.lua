@@ -102,6 +102,7 @@ function location_basic_setup(extra)
     ["MONSTERHUNTERWORLD_TEST_LOCATION_ENTID"] = idmap,
     ["MONSTERHUNTERWORLD_TEST_LIVE"] = "FALSE",
     ["MONSTERHUNTERWORLD_TEST_EXPLAIN"] = "FALSE",
+    ["MONSTERHUNTERWORLD_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -113,6 +114,7 @@ function location_basic_setup(extra)
   if env["MONSTERHUNTERWORLD_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["MONSTERHUNTERWORLD_APIKEY"],
       },
       extra or {},
     })

@@ -123,12 +123,14 @@ function motion_value_direct_setup($mockres)
     $env = Runner::env_override([
         "MONSTERHUNTERWORLD_TEST_MOTION_VALUE_ENTID" => [],
         "MONSTERHUNTERWORLD_TEST_LIVE" => "FALSE",
+        "MONSTERHUNTERWORLD_APIKEY" => "NONE",
     ]);
 
     $live = $env["MONSTERHUNTERWORLD_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
+            "apikey" => $env["MONSTERHUNTERWORLD_APIKEY"],
         ];
         $client = new MonsterHunterWorldSDK($merged_opts);
         return [

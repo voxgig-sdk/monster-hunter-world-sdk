@@ -117,12 +117,14 @@ function ailment_direct_setup(mockres)
   local env = runner.env_override({
     ["MONSTERHUNTERWORLD_TEST_AILMENT_ENTID"] = {},
     ["MONSTERHUNTERWORLD_TEST_LIVE"] = "FALSE",
+    ["MONSTERHUNTERWORLD_APIKEY"] = "NONE",
   })
 
   local live = env["MONSTERHUNTERWORLD_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["MONSTERHUNTERWORLD_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

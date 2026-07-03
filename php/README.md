@@ -1,6 +1,11 @@
 # MonsterHunterWorld PHP SDK
 
-The PHP SDK for the MonsterHunterWorld API. Provides an entity-oriented interface using PHP conventions.
+
+
+The PHP SDK for the MonsterHunterWorld API — an entity-oriented client using PHP conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -20,13 +25,15 @@ loading a specific record.
 <?php
 require_once 'monsterhunterworld_sdk.php';
 
-$client = new MonsterHunterWorldSDK([]);
+$client = new MonsterHunterWorldSDK([
+    "apikey" => getenv("MONSTER-HUNTER-WORLD_APIKEY"),
+]);
 ```
 
 ### 2. List ailments
 
 ```php
-[$result, $err] = $client->Ailment(null)->list(null, null);
+[$result, $err] = $client->Ailment()->list();
 if ($err) { throw new \Exception($err); }
 
 if (is_array($result)) {
@@ -40,7 +47,7 @@ if (is_array($result)) {
 ### 3. Load a ailment
 
 ```php
-[$result, $err] = $client->Ailment(null)->load(["id" => "example_id"], null);
+[$result, $err] = $client->Ailment()->load(["id" => "example_id"]);
 if ($err) { throw new \Exception($err); }
 print_r($result);
 ```
@@ -86,11 +93,9 @@ print_r($fetchdef["headers"]);
 Create a mock client for unit testing — no server required:
 
 ```php
-$client = MonsterHunterWorldSDK::test(null, null);
+$client = MonsterHunterWorldSDK::test();
 
-[$result, $err] = $client->MonsterHunterWorld(null)->load(
-    ["id" => "test01"], null
-);
+[$result, $err] = $client->MonsterHunterWorld()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -125,6 +130,7 @@ Create a `.env.local` file at the project root:
 
 ```
 MONSTER-HUNTER-WORLD_TEST_LIVE=TRUE
+MONSTER-HUNTER-WORLD_APIKEY=<your-key>
 ```
 
 Then run:
@@ -147,6 +153,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

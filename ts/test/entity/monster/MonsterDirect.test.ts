@@ -136,12 +136,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'MONSTERHUNTERWORLD_TEST_MONSTER_ENTID': {},
     'MONSTERHUNTERWORLD_TEST_LIVE': 'FALSE',
+    'MONSTERHUNTERWORLD_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.MONSTERHUNTERWORLD_TEST_LIVE
 
   if (live) {
     const client = new MonsterHunterWorldSDK({
+      apikey: env.MONSTERHUNTERWORLD_APIKEY,
     })
 
     let idmap: any = env['MONSTERHUNTERWORLD_TEST_MONSTER_ENTID']

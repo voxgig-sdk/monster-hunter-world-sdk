@@ -1,6 +1,11 @@
 # MonsterHunterWorld TypeScript SDK
 
-The TypeScript SDK for the MonsterHunterWorld API. Provides a type-safe, entity-oriented interface with full async/await support.
+
+
+The TypeScript SDK for the MonsterHunterWorld API — a type-safe, entity-oriented client with full async/await support.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -17,7 +22,9 @@ loading a specific record.
 ```ts
 import { MonsterHunterWorldSDK } from 'monster-hunter-world'
 
-const client = new MonsterHunterWorldSDK({})
+const client = new MonsterHunterWorldSDK({
+  apikey: process.env.MONSTER-HUNTER-WORLD_APIKEY,
+})
 ```
 
 ### 2. List ailments
@@ -92,7 +99,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new MonsterHunterWorldSDK()
+const client = new MonsterHunterWorldSDK({ apikey: '...' })
 const testClient = client.tester()
 ```
 
@@ -128,6 +135,7 @@ const logger = {
 }
 
 const client = new MonsterHunterWorldSDK({
+  apikey: '...',
   extend: [logger],
 })
 ```
@@ -138,6 +146,7 @@ Create a `.env.local` file at the project root:
 
 ```
 MONSTER-HUNTER-WORLD_TEST_LIVE=TRUE
+MONSTER-HUNTER-WORLD_APIKEY=<your-key>
 ```
 
 Then run:
@@ -155,6 +164,7 @@ cd ts && npm test
 
 ```ts
 new MonsterHunterWorldSDK(options?: {
+  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -165,6 +175,7 @@ new MonsterHunterWorldSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
