@@ -45,6 +45,7 @@ class ArmorEntity
     end
   end
 
+  # @return [Armor, Hash] the current Armor data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class ArmorEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Armor fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Armor.
+  #
+  # @param reqmatch [ArmorLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Armor, Hash] the loaded Armor; raises MonsterHunterWorldError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class ArmorEntity
 
 
   
+  # List Armor items matching the given filter.
+  #
+  # @param reqmatch [ArmorListMatch, Hash, nil] match filter (any subset of Armor fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Armor>, Array] the matching Armor items; raises MonsterHunterWorldError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

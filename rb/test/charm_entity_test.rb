@@ -43,16 +43,14 @@ class CharmEntityTest < Minitest::Test
     charm_ref01_ent = client.Charm(nil)
     charm_ref01_match = {}
 
-    charm_ref01_list_result, err = charm_ref01_ent.list(charm_ref01_match, nil)
-    assert_nil err
+    charm_ref01_list_result = charm_ref01_ent.list(charm_ref01_match, nil)
     assert charm_ref01_list_result.is_a?(Array)
 
     # LOAD
     charm_ref01_match_dt0 = {
       "id" => charm_ref01_data["id"],
     }
-    charm_ref01_data_dt0_loaded, err = charm_ref01_ent.load(charm_ref01_match_dt0, nil)
-    assert_nil err
+    charm_ref01_data_dt0_loaded = charm_ref01_ent.load(charm_ref01_match_dt0, nil)
     charm_ref01_data_dt0_load_result = Helpers.to_map(charm_ref01_data_dt0_loaded)
     assert !charm_ref01_data_dt0_load_result.nil?
     assert_equal charm_ref01_data_dt0_load_result["id"], charm_ref01_data["id"]
@@ -93,7 +91,6 @@ def charm_basic_setup(extra)
     "MONSTERHUNTERWORLD_TEST_CHARM_ENTID" => idmap,
     "MONSTERHUNTERWORLD_TEST_LIVE" => "FALSE",
     "MONSTERHUNTERWORLD_TEST_EXPLAIN" => "FALSE",
-    "MONSTERHUNTERWORLD_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def charm_basic_setup(extra)
   if env["MONSTERHUNTERWORLD_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["MONSTERHUNTERWORLD_APIKEY"],
       },
       extra || {},
     ])

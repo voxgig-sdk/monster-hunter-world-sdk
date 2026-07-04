@@ -55,6 +55,9 @@ class AilmentEntity
         return new AilmentEntity($this->_client, $opts);
     }
 
+    /**
+     * @param Ailment|array $args Ailment data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class AilmentEntity
         }
     }
 
+    /**
+     * @return Ailment|array The current Ailment data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of Ailment fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class AilmentEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of Ailment fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class AilmentEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single Ailment.
+     *
+     * @param AilmentLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed AilmentLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Ailment|array The loaded Ailment as an assoc-array at the
+     *   SDK boundary; throws MonsterHunterWorldError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -110,7 +131,16 @@ class AilmentEntity
 
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List Ailment items matching the given filter.
+     *
+     * @param AilmentListMatch|array|null $reqmatch Match filter (any subset
+     *   of Ailment fields) as an assoc-array; AilmentListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Ailment[]|array A list of Ailment items as assoc-arrays at
+     *   the SDK boundary; throws MonsterHunterWorldError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -138,7 +168,7 @@ class AilmentEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

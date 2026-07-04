@@ -50,16 +50,14 @@ class WeaponEntityTest extends TestCase
         $weapon_ref01_ent = $client->Weapon(null);
         $weapon_ref01_match = [];
 
-        [$weapon_ref01_list_result, $err] = $weapon_ref01_ent->list($weapon_ref01_match, null);
-        $this->assertNull($err);
+        $weapon_ref01_list_result = $weapon_ref01_ent->list($weapon_ref01_match, null);
         $this->assertIsArray($weapon_ref01_list_result);
 
         // LOAD
         $weapon_ref01_match_dt0 = [
             "id" => $weapon_ref01_data["id"],
         ];
-        [$weapon_ref01_data_dt0_loaded, $err] = $weapon_ref01_ent->load($weapon_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $weapon_ref01_data_dt0_loaded = $weapon_ref01_ent->load($weapon_ref01_match_dt0, null);
         $weapon_ref01_data_dt0_load_result = Helpers::to_map($weapon_ref01_data_dt0_loaded);
         $this->assertNotNull($weapon_ref01_data_dt0_load_result);
         $this->assertEquals($weapon_ref01_data_dt0_load_result["id"], $weapon_ref01_data["id"]);
@@ -96,7 +94,6 @@ function weapon_basic_setup($extra)
         "MONSTERHUNTERWORLD_TEST_WEAPON_ENTID" => $idmap,
         "MONSTERHUNTERWORLD_TEST_LIVE" => "FALSE",
         "MONSTERHUNTERWORLD_TEST_EXPLAIN" => "FALSE",
-        "MONSTERHUNTERWORLD_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function weapon_basic_setup($extra)
     if ($env["MONSTERHUNTERWORLD_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["MONSTERHUNTERWORLD_APIKEY"],
             ],
             $extra ?? [],
         ]);

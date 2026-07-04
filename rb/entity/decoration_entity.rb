@@ -45,6 +45,7 @@ class DecorationEntity
     end
   end
 
+  # @return [Decoration, Hash] the current Decoration data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class DecorationEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Decoration fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Decoration.
+  #
+  # @param reqmatch [DecorationLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Decoration, Hash] the loaded Decoration; raises MonsterHunterWorldError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class DecorationEntity
 
 
   
+  # List Decoration items matching the given filter.
+  #
+  # @param reqmatch [DecorationListMatch, Hash, nil] match filter (any subset of Decoration fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Decoration>, Array] the matching Decoration items; raises MonsterHunterWorldError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

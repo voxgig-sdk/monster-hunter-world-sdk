@@ -50,16 +50,14 @@ class ArmorEntityTest extends TestCase
         $armor_ref01_ent = $client->Armor(null);
         $armor_ref01_match = [];
 
-        [$armor_ref01_list_result, $err] = $armor_ref01_ent->list($armor_ref01_match, null);
-        $this->assertNull($err);
+        $armor_ref01_list_result = $armor_ref01_ent->list($armor_ref01_match, null);
         $this->assertIsArray($armor_ref01_list_result);
 
         // LOAD
         $armor_ref01_match_dt0 = [
             "id" => $armor_ref01_data["id"],
         ];
-        [$armor_ref01_data_dt0_loaded, $err] = $armor_ref01_ent->load($armor_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $armor_ref01_data_dt0_loaded = $armor_ref01_ent->load($armor_ref01_match_dt0, null);
         $armor_ref01_data_dt0_load_result = Helpers::to_map($armor_ref01_data_dt0_loaded);
         $this->assertNotNull($armor_ref01_data_dt0_load_result);
         $this->assertEquals($armor_ref01_data_dt0_load_result["id"], $armor_ref01_data["id"]);
@@ -96,7 +94,6 @@ function armor_basic_setup($extra)
         "MONSTERHUNTERWORLD_TEST_ARMOR_ENTID" => $idmap,
         "MONSTERHUNTERWORLD_TEST_LIVE" => "FALSE",
         "MONSTERHUNTERWORLD_TEST_EXPLAIN" => "FALSE",
-        "MONSTERHUNTERWORLD_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function armor_basic_setup($extra)
     if ($env["MONSTERHUNTERWORLD_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["MONSTERHUNTERWORLD_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch ArmorSetLoadMatch
+---@param ctrl? table
+---@return ArmorSet
+---@return string? err
 function ArmorSetEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch ArmorSetListMatch
+---@param ctrl? table
+---@return ArmorSet[]
+---@return string? err
 function ArmorSetEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

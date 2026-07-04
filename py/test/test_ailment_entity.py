@@ -50,16 +50,14 @@ class TestAilmentEntity:
         ailment_ref01_ent = client.Ailment(None)
         ailment_ref01_match = {}
 
-        ailment_ref01_list_result, err = ailment_ref01_ent.list(ailment_ref01_match, None)
-        assert err is None
+        ailment_ref01_list_result = ailment_ref01_ent.list(ailment_ref01_match, None)
         assert isinstance(ailment_ref01_list_result, list)
 
         # LOAD
         ailment_ref01_match_dt0 = {
             "id": ailment_ref01_data["id"],
         }
-        ailment_ref01_data_dt0_loaded, err = ailment_ref01_ent.load(ailment_ref01_match_dt0, None)
-        assert err is None
+        ailment_ref01_data_dt0_loaded = ailment_ref01_ent.load(ailment_ref01_match_dt0, None)
         ailment_ref01_data_dt0_load_result = helpers.to_map(ailment_ref01_data_dt0_loaded)
         assert ailment_ref01_data_dt0_load_result is not None
         assert ailment_ref01_data_dt0_load_result["id"] == ailment_ref01_data["id"]
@@ -102,7 +100,6 @@ def _ailment_basic_setup(extra):
         "MONSTERHUNTERWORLD_TEST_AILMENT_ENTID": idmap,
         "MONSTERHUNTERWORLD_TEST_LIVE": "FALSE",
         "MONSTERHUNTERWORLD_TEST_EXPLAIN": "FALSE",
-        "MONSTERHUNTERWORLD_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _ailment_basic_setup(extra):
     if env.get("MONSTERHUNTERWORLD_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("MONSTERHUNTERWORLD_APIKEY"),
             },
             extra or {},
         ])

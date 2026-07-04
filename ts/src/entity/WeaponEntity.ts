@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Weapon,
+  WeaponLoadMatch,
+  WeaponListMatch,
+} from '../MonsterHunterWorldTypes'
 
 // TODO: needs Entity superclass
-class WeaponEntity extends MonsterHunterWorldEntityBase {
+class WeaponEntity extends MonsterHunterWorldEntityBase<Weapon> {
 
   constructor(client: MonsterHunterWorldSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class WeaponEntity extends MonsterHunterWorldEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: WeaponLoadMatch, ctrl?: Control): Promise<Weapon> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class WeaponEntity extends MonsterHunterWorldEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Weapon> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: WeaponListMatch, ctrl?: Control): Promise<Weapon[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class WeaponEntity extends MonsterHunterWorldEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Weapon[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

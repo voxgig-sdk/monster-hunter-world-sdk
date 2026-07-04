@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  MotionValue,
+  MotionValueLoadMatch,
+  MotionValueListMatch,
+} from '../MonsterHunterWorldTypes'
 
 // TODO: needs Entity superclass
-class MotionValueEntity extends MonsterHunterWorldEntityBase {
+class MotionValueEntity extends MonsterHunterWorldEntityBase<MotionValue> {
 
   constructor(client: MonsterHunterWorldSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class MotionValueEntity extends MonsterHunterWorldEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: MotionValueLoadMatch, ctrl?: Control): Promise<MotionValue> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class MotionValueEntity extends MonsterHunterWorldEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<MotionValue> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: MotionValueListMatch, ctrl?: Control): Promise<MotionValue[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class MotionValueEntity extends MonsterHunterWorldEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<MotionValue[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

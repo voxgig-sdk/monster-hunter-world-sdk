@@ -43,16 +43,14 @@ class ArmorSetEntityTest < Minitest::Test
     armor_set_ref01_ent = client.ArmorSet(nil)
     armor_set_ref01_match = {}
 
-    armor_set_ref01_list_result, err = armor_set_ref01_ent.list(armor_set_ref01_match, nil)
-    assert_nil err
+    armor_set_ref01_list_result = armor_set_ref01_ent.list(armor_set_ref01_match, nil)
     assert armor_set_ref01_list_result.is_a?(Array)
 
     # LOAD
     armor_set_ref01_match_dt0 = {
       "id" => armor_set_ref01_data["id"],
     }
-    armor_set_ref01_data_dt0_loaded, err = armor_set_ref01_ent.load(armor_set_ref01_match_dt0, nil)
-    assert_nil err
+    armor_set_ref01_data_dt0_loaded = armor_set_ref01_ent.load(armor_set_ref01_match_dt0, nil)
     armor_set_ref01_data_dt0_load_result = Helpers.to_map(armor_set_ref01_data_dt0_loaded)
     assert !armor_set_ref01_data_dt0_load_result.nil?
     assert_equal armor_set_ref01_data_dt0_load_result["id"], armor_set_ref01_data["id"]
@@ -93,7 +91,6 @@ def armor_set_basic_setup(extra)
     "MONSTERHUNTERWORLD_TEST_ARMOR_SET_ENTID" => idmap,
     "MONSTERHUNTERWORLD_TEST_LIVE" => "FALSE",
     "MONSTERHUNTERWORLD_TEST_EXPLAIN" => "FALSE",
-    "MONSTERHUNTERWORLD_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def armor_set_basic_setup(extra)
   if env["MONSTERHUNTERWORLD_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["MONSTERHUNTERWORLD_APIKEY"],
       },
       extra || {},
     ])

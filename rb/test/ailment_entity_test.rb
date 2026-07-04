@@ -43,16 +43,14 @@ class AilmentEntityTest < Minitest::Test
     ailment_ref01_ent = client.Ailment(nil)
     ailment_ref01_match = {}
 
-    ailment_ref01_list_result, err = ailment_ref01_ent.list(ailment_ref01_match, nil)
-    assert_nil err
+    ailment_ref01_list_result = ailment_ref01_ent.list(ailment_ref01_match, nil)
     assert ailment_ref01_list_result.is_a?(Array)
 
     # LOAD
     ailment_ref01_match_dt0 = {
       "id" => ailment_ref01_data["id"],
     }
-    ailment_ref01_data_dt0_loaded, err = ailment_ref01_ent.load(ailment_ref01_match_dt0, nil)
-    assert_nil err
+    ailment_ref01_data_dt0_loaded = ailment_ref01_ent.load(ailment_ref01_match_dt0, nil)
     ailment_ref01_data_dt0_load_result = Helpers.to_map(ailment_ref01_data_dt0_loaded)
     assert !ailment_ref01_data_dt0_load_result.nil?
     assert_equal ailment_ref01_data_dt0_load_result["id"], ailment_ref01_data["id"]
@@ -93,7 +91,6 @@ def ailment_basic_setup(extra)
     "MONSTERHUNTERWORLD_TEST_AILMENT_ENTID" => idmap,
     "MONSTERHUNTERWORLD_TEST_LIVE" => "FALSE",
     "MONSTERHUNTERWORLD_TEST_EXPLAIN" => "FALSE",
-    "MONSTERHUNTERWORLD_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def ailment_basic_setup(extra)
   if env["MONSTERHUNTERWORLD_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["MONSTERHUNTERWORLD_APIKEY"],
       },
       extra || {},
     ])

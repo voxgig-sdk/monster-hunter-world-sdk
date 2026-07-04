@@ -55,6 +55,9 @@ class MotionValueEntity
         return new MotionValueEntity($this->_client, $opts);
     }
 
+    /**
+     * @param MotionValue|array $args MotionValue data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class MotionValueEntity
         }
     }
 
+    /**
+     * @return MotionValue|array The current MotionValue data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of MotionValue fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class MotionValueEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of MotionValue fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class MotionValueEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single MotionValue.
+     *
+     * @param MotionValueLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed MotionValueLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return MotionValue|array The loaded MotionValue as an assoc-array at the
+     *   SDK boundary; throws MonsterHunterWorldError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -110,7 +131,16 @@ class MotionValueEntity
 
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List MotionValue items matching the given filter.
+     *
+     * @param MotionValueListMatch|array|null $reqmatch Match filter (any subset
+     *   of MotionValue fields) as an assoc-array; MotionValueListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return MotionValue[]|array A list of MotionValue items as assoc-arrays at
+     *   the SDK boundary; throws MonsterHunterWorldError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -138,7 +168,7 @@ class MotionValueEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

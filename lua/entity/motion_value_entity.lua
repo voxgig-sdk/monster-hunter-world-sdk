@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch MotionValueLoadMatch
+---@param ctrl? table
+---@return MotionValue
+---@return string? err
 function MotionValueEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch MotionValueListMatch
+---@param ctrl? table
+---@return MotionValue[]
+---@return string? err
 function MotionValueEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

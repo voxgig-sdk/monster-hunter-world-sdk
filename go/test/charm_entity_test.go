@@ -135,7 +135,6 @@ func charmBasicSetup(extra map[string]any) *entityTestSetup {
 		"MONSTERHUNTERWORLD_TEST_CHARM_ENTID": idmap,
 		"MONSTERHUNTERWORLD_TEST_LIVE":      "FALSE",
 		"MONSTERHUNTERWORLD_TEST_EXPLAIN":   "FALSE",
-		"MONSTERHUNTERWORLD_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["MONSTERHUNTERWORLD_TEST_CHARM_ENTID"])
@@ -146,7 +145,6 @@ func charmBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["MONSTERHUNTERWORLD_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["MONSTERHUNTERWORLD_APIKEY"],
 			},
 			extra,
 		})

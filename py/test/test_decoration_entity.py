@@ -50,16 +50,14 @@ class TestDecorationEntity:
         decoration_ref01_ent = client.Decoration(None)
         decoration_ref01_match = {}
 
-        decoration_ref01_list_result, err = decoration_ref01_ent.list(decoration_ref01_match, None)
-        assert err is None
+        decoration_ref01_list_result = decoration_ref01_ent.list(decoration_ref01_match, None)
         assert isinstance(decoration_ref01_list_result, list)
 
         # LOAD
         decoration_ref01_match_dt0 = {
             "id": decoration_ref01_data["id"],
         }
-        decoration_ref01_data_dt0_loaded, err = decoration_ref01_ent.load(decoration_ref01_match_dt0, None)
-        assert err is None
+        decoration_ref01_data_dt0_loaded = decoration_ref01_ent.load(decoration_ref01_match_dt0, None)
         decoration_ref01_data_dt0_load_result = helpers.to_map(decoration_ref01_data_dt0_loaded)
         assert decoration_ref01_data_dt0_load_result is not None
         assert decoration_ref01_data_dt0_load_result["id"] == decoration_ref01_data["id"]
@@ -102,7 +100,6 @@ def _decoration_basic_setup(extra):
         "MONSTERHUNTERWORLD_TEST_DECORATION_ENTID": idmap,
         "MONSTERHUNTERWORLD_TEST_LIVE": "FALSE",
         "MONSTERHUNTERWORLD_TEST_EXPLAIN": "FALSE",
-        "MONSTERHUNTERWORLD_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _decoration_basic_setup(extra):
     if env.get("MONSTERHUNTERWORLD_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("MONSTERHUNTERWORLD_APIKEY"),
             },
             extra or {},
         ])

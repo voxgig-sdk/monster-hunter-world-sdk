@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Charm,
+  CharmLoadMatch,
+  CharmListMatch,
+} from '../MonsterHunterWorldTypes'
 
 // TODO: needs Entity superclass
-class CharmEntity extends MonsterHunterWorldEntityBase {
+class CharmEntity extends MonsterHunterWorldEntityBase<Charm> {
 
   constructor(client: MonsterHunterWorldSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class CharmEntity extends MonsterHunterWorldEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: CharmLoadMatch, ctrl?: Control): Promise<Charm> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class CharmEntity extends MonsterHunterWorldEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Charm> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: CharmListMatch, ctrl?: Control): Promise<Charm[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class CharmEntity extends MonsterHunterWorldEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Charm[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

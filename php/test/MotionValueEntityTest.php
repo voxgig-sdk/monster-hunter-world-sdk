@@ -50,16 +50,14 @@ class MotionValueEntityTest extends TestCase
         $motion_value_ref01_ent = $client->MotionValue(null);
         $motion_value_ref01_match = [];
 
-        [$motion_value_ref01_list_result, $err] = $motion_value_ref01_ent->list($motion_value_ref01_match, null);
-        $this->assertNull($err);
+        $motion_value_ref01_list_result = $motion_value_ref01_ent->list($motion_value_ref01_match, null);
         $this->assertIsArray($motion_value_ref01_list_result);
 
         // LOAD
         $motion_value_ref01_match_dt0 = [
             "id" => $motion_value_ref01_data["id"],
         ];
-        [$motion_value_ref01_data_dt0_loaded, $err] = $motion_value_ref01_ent->load($motion_value_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $motion_value_ref01_data_dt0_loaded = $motion_value_ref01_ent->load($motion_value_ref01_match_dt0, null);
         $motion_value_ref01_data_dt0_load_result = Helpers::to_map($motion_value_ref01_data_dt0_loaded);
         $this->assertNotNull($motion_value_ref01_data_dt0_load_result);
         $this->assertEquals($motion_value_ref01_data_dt0_load_result["id"], $motion_value_ref01_data["id"]);
@@ -96,7 +94,6 @@ function motion_value_basic_setup($extra)
         "MONSTERHUNTERWORLD_TEST_MOTION_VALUE_ENTID" => $idmap,
         "MONSTERHUNTERWORLD_TEST_LIVE" => "FALSE",
         "MONSTERHUNTERWORLD_TEST_EXPLAIN" => "FALSE",
-        "MONSTERHUNTERWORLD_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function motion_value_basic_setup($extra)
     if ($env["MONSTERHUNTERWORLD_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["MONSTERHUNTERWORLD_APIKEY"],
             ],
             $extra ?? [],
         ]);

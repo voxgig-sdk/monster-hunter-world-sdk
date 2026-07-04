@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch DecorationLoadMatch
+---@param ctrl? table
+---@return Decoration
+---@return string? err
 function DecorationEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch DecorationListMatch
+---@param ctrl? table
+---@return Decoration[]
+---@return string? err
 function DecorationEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

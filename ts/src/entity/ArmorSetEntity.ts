@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  ArmorSet,
+  ArmorSetLoadMatch,
+  ArmorSetListMatch,
+} from '../MonsterHunterWorldTypes'
 
 // TODO: needs Entity superclass
-class ArmorSetEntity extends MonsterHunterWorldEntityBase {
+class ArmorSetEntity extends MonsterHunterWorldEntityBase<ArmorSet> {
 
   constructor(client: MonsterHunterWorldSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class ArmorSetEntity extends MonsterHunterWorldEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: ArmorSetLoadMatch, ctrl?: Control): Promise<ArmorSet> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class ArmorSetEntity extends MonsterHunterWorldEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<ArmorSet> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: ArmorSetListMatch, ctrl?: Control): Promise<ArmorSet[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class ArmorSetEntity extends MonsterHunterWorldEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<ArmorSet[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

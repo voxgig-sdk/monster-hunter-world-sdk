@@ -50,16 +50,14 @@ class CharmEntityTest extends TestCase
         $charm_ref01_ent = $client->Charm(null);
         $charm_ref01_match = [];
 
-        [$charm_ref01_list_result, $err] = $charm_ref01_ent->list($charm_ref01_match, null);
-        $this->assertNull($err);
+        $charm_ref01_list_result = $charm_ref01_ent->list($charm_ref01_match, null);
         $this->assertIsArray($charm_ref01_list_result);
 
         // LOAD
         $charm_ref01_match_dt0 = [
             "id" => $charm_ref01_data["id"],
         ];
-        [$charm_ref01_data_dt0_loaded, $err] = $charm_ref01_ent->load($charm_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $charm_ref01_data_dt0_loaded = $charm_ref01_ent->load($charm_ref01_match_dt0, null);
         $charm_ref01_data_dt0_load_result = Helpers::to_map($charm_ref01_data_dt0_loaded);
         $this->assertNotNull($charm_ref01_data_dt0_load_result);
         $this->assertEquals($charm_ref01_data_dt0_load_result["id"], $charm_ref01_data["id"]);
@@ -96,7 +94,6 @@ function charm_basic_setup($extra)
         "MONSTERHUNTERWORLD_TEST_CHARM_ENTID" => $idmap,
         "MONSTERHUNTERWORLD_TEST_LIVE" => "FALSE",
         "MONSTERHUNTERWORLD_TEST_EXPLAIN" => "FALSE",
-        "MONSTERHUNTERWORLD_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function charm_basic_setup($extra)
     if ($env["MONSTERHUNTERWORLD_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["MONSTERHUNTERWORLD_APIKEY"],
             ],
             $extra ?? [],
         ]);

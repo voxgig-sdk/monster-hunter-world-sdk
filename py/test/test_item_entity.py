@@ -50,16 +50,14 @@ class TestItemEntity:
         item_ref01_ent = client.Item(None)
         item_ref01_match = {}
 
-        item_ref01_list_result, err = item_ref01_ent.list(item_ref01_match, None)
-        assert err is None
+        item_ref01_list_result = item_ref01_ent.list(item_ref01_match, None)
         assert isinstance(item_ref01_list_result, list)
 
         # LOAD
         item_ref01_match_dt0 = {
             "id": item_ref01_data["id"],
         }
-        item_ref01_data_dt0_loaded, err = item_ref01_ent.load(item_ref01_match_dt0, None)
-        assert err is None
+        item_ref01_data_dt0_loaded = item_ref01_ent.load(item_ref01_match_dt0, None)
         item_ref01_data_dt0_load_result = helpers.to_map(item_ref01_data_dt0_loaded)
         assert item_ref01_data_dt0_load_result is not None
         assert item_ref01_data_dt0_load_result["id"] == item_ref01_data["id"]
@@ -102,7 +100,6 @@ def _item_basic_setup(extra):
         "MONSTERHUNTERWORLD_TEST_ITEM_ENTID": idmap,
         "MONSTERHUNTERWORLD_TEST_LIVE": "FALSE",
         "MONSTERHUNTERWORLD_TEST_EXPLAIN": "FALSE",
-        "MONSTERHUNTERWORLD_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _item_basic_setup(extra):
     if env.get("MONSTERHUNTERWORLD_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("MONSTERHUNTERWORLD_APIKEY"),
             },
             extra or {},
         ])

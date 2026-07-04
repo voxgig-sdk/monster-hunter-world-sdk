@@ -1,7 +1,14 @@
 # MonsterHunterWorld SDK ArmorSet entity
 
+from __future__ import annotations
+
 from utility.voxgig_struct import voxgig_struct as vs
 from core import helpers
+from monsterhunterworld_types import (
+    ArmorSet,
+    ArmorSetLoadMatch,
+    ArmorSetListMatch,
+)
 
 
 class ArmorSetEntity:
@@ -44,7 +51,7 @@ class ArmorSetEntity:
             self._data = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetData")
 
-    def data_get(self):
+    def data_get(self) -> ArmorSet:
         self._utility.feature_hook(self._entctx, "GetData")
         return vs.clone(self._data)
 
@@ -53,12 +60,12 @@ class ArmorSetEntity:
             self._match = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetMatch")
 
-    def match_get(self):
+    def match_get(self) -> ArmorSet:
         self._utility.feature_hook(self._entctx, "GetMatch")
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch, ctrl=None):
+    def load(self, reqmatch: ArmorSetLoadMatch, ctrl=None) -> ArmorSet:
         utility = self._utility
         ctx = utility.make_context({
             "opname": "load",
@@ -80,7 +87,7 @@ class ArmorSetEntity:
 
 
     
-    def list(self, reqmatch, ctrl=None):
+    def list(self, reqmatch: ArmorSetListMatch, ctrl=None) -> list[ArmorSet]:
         utility = self._utility
         ctx = utility.make_context({
             "opname": "list",

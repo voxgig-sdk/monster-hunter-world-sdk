@@ -9,9 +9,12 @@ The TypeScript SDK for the MonsterHunterWorld API — a type-safe, entity-orient
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/monster-hunter-world
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/monster-hunter-world-sdk/releases](https://github.com/voxgig-sdk/monster-hunter-world-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { MonsterHunterWorldSDK } from 'monster-hunter-world'
+import { MonsterHunterWorldSDK } from '@voxgig-sdk/monster-hunter-world'
 
-const client = new MonsterHunterWorldSDK({
-  apikey: process.env.MONSTER-HUNTER-WORLD_APIKEY,
-})
+const client = new MonsterHunterWorldSDK()
 ```
 
 ### 2. List ailments
 
 ```ts
-const result = await client.Ailment().list()
+const result = await client.ailment.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -39,10 +40,10 @@ if (result.ok) {
 }
 ```
 
-### 3. Load a ailment
+### 3. Load an ailment
 
 ```ts
-const result = await client.Ailment().load({ id: 'example_id' })
+const result = await client.ailment.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -91,7 +92,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = MonsterHunterWorldSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.ailment.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -99,7 +100,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new MonsterHunterWorldSDK({ apikey: '...' })
+const client = new MonsterHunterWorldSDK()
 const testClient = client.tester()
 ```
 
@@ -108,7 +109,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.ailment
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -135,7 +136,6 @@ const logger = {
 }
 
 const client = new MonsterHunterWorldSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -145,8 +145,7 @@ const client = new MonsterHunterWorldSDK({
 Create a `.env.local` file at the project root:
 
 ```
-MONSTER-HUNTER-WORLD_TEST_LIVE=TRUE
-MONSTER-HUNTER-WORLD_APIKEY=<your-key>
+MONSTER_HUNTER_WORLD_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -164,7 +163,6 @@ cd ts && npm test
 
 ```ts
 new MonsterHunterWorldSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -175,7 +173,6 @@ new MonsterHunterWorldSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -477,7 +474,7 @@ API path: `/weapons`
 
 ### Ailment
 
-Create an instance: `const ailment = client.Ailment()`
+Create an instance: `const ailment = client.ailment`
 
 #### Operations
 
@@ -499,19 +496,19 @@ Create an instance: `const ailment = client.Ailment()`
 #### Example: Load
 
 ```ts
-const ailment = await client.Ailment().load({ id: 'ailment_id' })
+const ailment = await client.ailment.load({ id: 'ailment_id' })
 ```
 
 #### Example: List
 
 ```ts
-const ailments = await client.Ailment().list()
+const ailments = await client.ailment.list()
 ```
 
 
 ### Armor
 
-Create an instance: `const armor = client.Armor()`
+Create an instance: `const armor = client.armor`
 
 #### Operations
 
@@ -541,19 +538,19 @@ Create an instance: `const armor = client.Armor()`
 #### Example: Load
 
 ```ts
-const armor = await client.Armor().load({ id: 'armor_id' })
+const armor = await client.armor.load({ id: 'armor_id' })
 ```
 
 #### Example: List
 
 ```ts
-const armors = await client.Armor().list()
+const armors = await client.armor.list()
 ```
 
 
 ### ArmorSet
 
-Create an instance: `const armor_set = client.ArmorSet()`
+Create an instance: `const armor_set = client.armor_set`
 
 #### Operations
 
@@ -575,19 +572,19 @@ Create an instance: `const armor_set = client.ArmorSet()`
 #### Example: Load
 
 ```ts
-const armor_set = await client.ArmorSet().load({ id: 'armor_set_id' })
+const armor_set = await client.armor_set.load({ id: 'armor_set_id' })
 ```
 
 #### Example: List
 
 ```ts
-const armor_sets = await client.ArmorSet().list()
+const armor_sets = await client.armor_set.list()
 ```
 
 
 ### Charm
 
-Create an instance: `const charm = client.Charm()`
+Create an instance: `const charm = client.charm`
 
 #### Operations
 
@@ -609,19 +606,19 @@ Create an instance: `const charm = client.Charm()`
 #### Example: Load
 
 ```ts
-const charm = await client.Charm().load({ id: 'charm_id' })
+const charm = await client.charm.load({ id: 'charm_id' })
 ```
 
 #### Example: List
 
 ```ts
-const charms = await client.Charm().list()
+const charms = await client.charm.list()
 ```
 
 
 ### Decoration
 
-Create an instance: `const decoration = client.Decoration()`
+Create an instance: `const decoration = client.decoration`
 
 #### Operations
 
@@ -643,19 +640,19 @@ Create an instance: `const decoration = client.Decoration()`
 #### Example: Load
 
 ```ts
-const decoration = await client.Decoration().load({ id: 'decoration_id' })
+const decoration = await client.decoration.load({ id: 'decoration_id' })
 ```
 
 #### Example: List
 
 ```ts
-const decorations = await client.Decoration().list()
+const decorations = await client.decoration.list()
 ```
 
 
 ### Event
 
-Create an instance: `const event = client.Event()`
+Create an instance: `const event = client.event`
 
 #### Operations
 
@@ -685,19 +682,19 @@ Create an instance: `const event = client.Event()`
 #### Example: Load
 
 ```ts
-const event = await client.Event().load({ id: 'event_id' })
+const event = await client.event.load({ id: 'event_id' })
 ```
 
 #### Example: List
 
 ```ts
-const events = await client.Event().list()
+const events = await client.event.list()
 ```
 
 
 ### Item
 
-Create an instance: `const item = client.Item()`
+Create an instance: `const item = client.item`
 
 #### Operations
 
@@ -722,19 +719,19 @@ Create an instance: `const item = client.Item()`
 #### Example: Load
 
 ```ts
-const item = await client.Item().load({ id: 'item_id' })
+const item = await client.item.load({ id: 'item_id' })
 ```
 
 #### Example: List
 
 ```ts
-const items = await client.Item().list()
+const items = await client.item.list()
 ```
 
 
 ### Location
 
-Create an instance: `const location = client.Location()`
+Create an instance: `const location = client.location`
 
 #### Operations
 
@@ -755,19 +752,19 @@ Create an instance: `const location = client.Location()`
 #### Example: Load
 
 ```ts
-const location = await client.Location().load({ id: 'location_id' })
+const location = await client.location.load({ id: 'location_id' })
 ```
 
 #### Example: List
 
 ```ts
-const locations = await client.Location().list()
+const locations = await client.location.list()
 ```
 
 
 ### Monster
 
-Create an instance: `const monster = client.Monster()`
+Create an instance: `const monster = client.monster`
 
 #### Operations
 
@@ -795,19 +792,19 @@ Create an instance: `const monster = client.Monster()`
 #### Example: Load
 
 ```ts
-const monster = await client.Monster().load({ id: 'monster_id' })
+const monster = await client.monster.load({ id: 'monster_id' })
 ```
 
 #### Example: List
 
 ```ts
-const monsters = await client.Monster().list()
+const monsters = await client.monster.list()
 ```
 
 
 ### MotionValue
 
-Create an instance: `const motion_value = client.MotionValue()`
+Create an instance: `const motion_value = client.motion_value`
 
 #### Operations
 
@@ -830,19 +827,19 @@ Create an instance: `const motion_value = client.MotionValue()`
 #### Example: Load
 
 ```ts
-const motion_value = await client.MotionValue().load({ id: 'motion_value_id' })
+const motion_value = await client.motion_value.load({ id: 'motion_value_id' })
 ```
 
 #### Example: List
 
 ```ts
-const motion_values = await client.MotionValue().list()
+const motion_values = await client.motion_value.list()
 ```
 
 
 ### Skill
 
-Create an instance: `const skill = client.Skill()`
+Create an instance: `const skill = client.skill`
 
 #### Operations
 
@@ -863,19 +860,19 @@ Create an instance: `const skill = client.Skill()`
 #### Example: Load
 
 ```ts
-const skill = await client.Skill().load({ id: 'skill_id' })
+const skill = await client.skill.load({ id: 'skill_id' })
 ```
 
 #### Example: List
 
 ```ts
-const skills = await client.Skill().list()
+const skills = await client.skill.list()
 ```
 
 
 ### Weapon
 
-Create an instance: `const weapon = client.Weapon()`
+Create an instance: `const weapon = client.weapon`
 
 #### Operations
 
@@ -903,13 +900,13 @@ Create an instance: `const weapon = client.Weapon()`
 #### Example: Load
 
 ```ts
-const weapon = await client.Weapon().load({ id: 'weapon_id' })
+const weapon = await client.weapon.load({ id: 'weapon_id' })
 ```
 
 #### Example: List
 
 ```ts
-const weapons = await client.Weapon().list()
+const weapons = await client.weapon.list()
 ```
 
 
@@ -970,7 +967,7 @@ monster-hunter-world/
 Import the SDK from the package root:
 
 ```ts
-import { MonsterHunterWorldSDK } from 'monster-hunter-world'
+import { MonsterHunterWorldSDK } from '@voxgig-sdk/monster-hunter-world'
 ```
 
 ### Entity state
@@ -980,11 +977,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const ailment = client.ailment
+await ailment.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// ailment.data() now returns the loaded ailment data
+// ailment.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

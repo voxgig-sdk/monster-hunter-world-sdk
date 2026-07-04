@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Decoration,
+  DecorationLoadMatch,
+  DecorationListMatch,
+} from '../MonsterHunterWorldTypes'
 
 // TODO: needs Entity superclass
-class DecorationEntity extends MonsterHunterWorldEntityBase {
+class DecorationEntity extends MonsterHunterWorldEntityBase<Decoration> {
 
   constructor(client: MonsterHunterWorldSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class DecorationEntity extends MonsterHunterWorldEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: DecorationLoadMatch, ctrl?: Control): Promise<Decoration> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class DecorationEntity extends MonsterHunterWorldEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Decoration> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: DecorationListMatch, ctrl?: Control): Promise<Decoration[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class DecorationEntity extends MonsterHunterWorldEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Decoration[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

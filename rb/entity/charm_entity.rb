@@ -45,6 +45,7 @@ class CharmEntity
     end
   end
 
+  # @return [Charm, Hash] the current Charm data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class CharmEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Charm fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Charm.
+  #
+  # @param reqmatch [CharmLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Charm, Hash] the loaded Charm; raises MonsterHunterWorldError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class CharmEntity
 
 
   
+  # List Charm items matching the given filter.
+  #
+  # @param reqmatch [CharmListMatch, Hash, nil] match filter (any subset of Charm fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Charm>, Array] the matching Charm items; raises MonsterHunterWorldError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

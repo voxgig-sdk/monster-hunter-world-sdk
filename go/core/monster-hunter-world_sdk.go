@@ -245,61 +245,97 @@ func (sdk *MonsterHunterWorldSDK) Direct(fetchargs map[string]any) (map[string]a
 }
 
 
+// Ailment returns a Ailment entity bound to this client.
+// Idiomatic usage: client.Ailment(nil).List(nil, nil) or
+// client.Ailment(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MonsterHunterWorldSDK) Ailment(data map[string]any) MonsterHunterWorldEntity {
 	return NewAilmentEntityFunc(sdk, data)
 }
 
 
+// Armor returns a Armor entity bound to this client.
+// Idiomatic usage: client.Armor(nil).List(nil, nil) or
+// client.Armor(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MonsterHunterWorldSDK) Armor(data map[string]any) MonsterHunterWorldEntity {
 	return NewArmorEntityFunc(sdk, data)
 }
 
 
+// ArmorSet returns a ArmorSet entity bound to this client.
+// Idiomatic usage: client.ArmorSet(nil).List(nil, nil) or
+// client.ArmorSet(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MonsterHunterWorldSDK) ArmorSet(data map[string]any) MonsterHunterWorldEntity {
 	return NewArmorSetEntityFunc(sdk, data)
 }
 
 
+// Charm returns a Charm entity bound to this client.
+// Idiomatic usage: client.Charm(nil).List(nil, nil) or
+// client.Charm(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MonsterHunterWorldSDK) Charm(data map[string]any) MonsterHunterWorldEntity {
 	return NewCharmEntityFunc(sdk, data)
 }
 
 
+// Decoration returns a Decoration entity bound to this client.
+// Idiomatic usage: client.Decoration(nil).List(nil, nil) or
+// client.Decoration(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MonsterHunterWorldSDK) Decoration(data map[string]any) MonsterHunterWorldEntity {
 	return NewDecorationEntityFunc(sdk, data)
 }
 
 
+// Event returns a Event entity bound to this client.
+// Idiomatic usage: client.Event(nil).List(nil, nil) or
+// client.Event(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MonsterHunterWorldSDK) Event(data map[string]any) MonsterHunterWorldEntity {
 	return NewEventEntityFunc(sdk, data)
 }
 
 
+// Item returns a Item entity bound to this client.
+// Idiomatic usage: client.Item(nil).List(nil, nil) or
+// client.Item(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MonsterHunterWorldSDK) Item(data map[string]any) MonsterHunterWorldEntity {
 	return NewItemEntityFunc(sdk, data)
 }
 
 
+// Location returns a Location entity bound to this client.
+// Idiomatic usage: client.Location(nil).List(nil, nil) or
+// client.Location(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MonsterHunterWorldSDK) Location(data map[string]any) MonsterHunterWorldEntity {
 	return NewLocationEntityFunc(sdk, data)
 }
 
 
+// Monster returns a Monster entity bound to this client.
+// Idiomatic usage: client.Monster(nil).List(nil, nil) or
+// client.Monster(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MonsterHunterWorldSDK) Monster(data map[string]any) MonsterHunterWorldEntity {
 	return NewMonsterEntityFunc(sdk, data)
 }
 
 
+// MotionValue returns a MotionValue entity bound to this client.
+// Idiomatic usage: client.MotionValue(nil).List(nil, nil) or
+// client.MotionValue(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MonsterHunterWorldSDK) MotionValue(data map[string]any) MonsterHunterWorldEntity {
 	return NewMotionValueEntityFunc(sdk, data)
 }
 
 
+// Skill returns a Skill entity bound to this client.
+// Idiomatic usage: client.Skill(nil).List(nil, nil) or
+// client.Skill(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MonsterHunterWorldSDK) Skill(data map[string]any) MonsterHunterWorldEntity {
 	return NewSkillEntityFunc(sdk, data)
 }
 
 
+// Weapon returns a Weapon entity bound to this client.
+// Idiomatic usage: client.Weapon(nil).List(nil, nil) or
+// client.Weapon(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MonsterHunterWorldSDK) Weapon(data map[string]any) MonsterHunterWorldEntity {
 	return NewWeaponEntityFunc(sdk, data)
 }

@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Ailment,
+  AilmentLoadMatch,
+  AilmentListMatch,
+} from '../MonsterHunterWorldTypes'
 
 // TODO: needs Entity superclass
-class AilmentEntity extends MonsterHunterWorldEntityBase {
+class AilmentEntity extends MonsterHunterWorldEntityBase<Ailment> {
 
   constructor(client: MonsterHunterWorldSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class AilmentEntity extends MonsterHunterWorldEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: AilmentLoadMatch, ctrl?: Control): Promise<Ailment> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class AilmentEntity extends MonsterHunterWorldEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Ailment> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: AilmentListMatch, ctrl?: Control): Promise<Ailment[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class AilmentEntity extends MonsterHunterWorldEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Ailment[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

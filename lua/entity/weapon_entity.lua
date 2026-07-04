@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch WeaponLoadMatch
+---@param ctrl? table
+---@return Weapon
+---@return string? err
 function WeaponEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch WeaponListMatch
+---@param ctrl? table
+---@return Weapon[]
+---@return string? err
 function WeaponEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -55,6 +55,9 @@ class ArmorEntity
         return new ArmorEntity($this->_client, $opts);
     }
 
+    /**
+     * @param Armor|array $args Armor data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class ArmorEntity
         }
     }
 
+    /**
+     * @return Armor|array The current Armor data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of Armor fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class ArmorEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of Armor fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class ArmorEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single Armor.
+     *
+     * @param ArmorLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed ArmorLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Armor|array The loaded Armor as an assoc-array at the
+     *   SDK boundary; throws MonsterHunterWorldError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -110,7 +131,16 @@ class ArmorEntity
 
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List Armor items matching the given filter.
+     *
+     * @param ArmorListMatch|array|null $reqmatch Match filter (any subset
+     *   of Armor fields) as an assoc-array; ArmorListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Armor[]|array A list of Armor items as assoc-arrays at
+     *   the SDK boundary; throws MonsterHunterWorldError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -138,7 +168,7 @@ class ArmorEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

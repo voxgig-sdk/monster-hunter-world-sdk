@@ -45,6 +45,7 @@ class WeaponEntity
     end
   end
 
+  # @return [Weapon, Hash] the current Weapon data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class WeaponEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Weapon fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Weapon.
+  #
+  # @param reqmatch [WeaponLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Weapon, Hash] the loaded Weapon; raises MonsterHunterWorldError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class WeaponEntity
 
 
   
+  # List Weapon items matching the given filter.
+  #
+  # @param reqmatch [WeaponListMatch, Hash, nil] match filter (any subset of Weapon fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Weapon>, Array] the matching Weapon items; raises MonsterHunterWorldError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

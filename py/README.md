@@ -9,11 +9,9 @@ The Python SDK for the MonsterHunterWorld API — an entity-oriented client foll
 
 
 ## Install
-```bash
-pip install voxgig-sdk-monster-hunter-world
-```
-
-Or install from source:
+This package is not yet published to PyPI. Install it from the GitHub
+release tag (`py/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/monster-hunter-world-sdk/releases)) or
+from a source checkout:
 
 ```bash
 pip install -e .
@@ -28,34 +26,31 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from monsterhunterworld_sdk import MonsterHunterWorldSDK
 
-client = MonsterHunterWorldSDK({
-    "apikey": os.environ.get("MONSTER-HUNTER-WORLD_APIKEY"),
-})
+client = MonsterHunterWorldSDK()
 ```
 
 ### 2. List ailments
 
 ```python
-result, err = client.Ailment().list()
-if err:
-    raise Exception(err)
-
-if isinstance(result, list):
+try:
+    result = client.ailment.list()
     for item in result:
         d = item.data_get()
         print(d["id"], d["name"])
+except Exception as err:
+    print(f"list failed: {err}")
 ```
 
-### 3. Load a ailment
+### 3. Load an ailment
 
 ```python
-result, err = client.Ailment().load({"id": "example_id"})
-if err:
-    raise Exception(err)
-print(result)
+try:
+    result = client.ailment.load({"id": "example_id"})
+    print(result)
+except Exception as err:
+    print(f"load failed: {err}")
 ```
 
 
@@ -66,29 +61,28 @@ print(result)
 For endpoints not covered by entity methods:
 
 ```python
-result, err = client.direct({
+result = client.direct({
     "path": "/api/resource/{id}",
     "method": "GET",
     "params": {"id": "example"},
 })
-if err:
-    raise Exception(err)
 
 if result["ok"]:
     print(result["status"])  # 200
     print(result["data"])    # response body
+else:
+    print(result["err"])     # error value
 ```
 
 ### Prepare a request without sending it
 
 ```python
-fetchdef, err = client.prepare({
+# prepare() returns the fetch definition and raises on error.
+fetchdef = client.prepare({
     "path": "/api/resource/{id}",
     "method": "DELETE",
     "params": {"id": "example"},
 })
-if err:
-    raise Exception(err)
 
 print(fetchdef["url"])
 print(fetchdef["method"])
@@ -102,7 +96,7 @@ Create a mock client for unit testing — no server required:
 ```python
 client = MonsterHunterWorldSDK.test()
 
-result, err = client.MonsterHunterWorld().load({"id": "test01"})
+result = client.ailment.load({"id": "test01"})
 # result contains mock response data
 ```
 
@@ -132,8 +126,7 @@ client = MonsterHunterWorldSDK({
 Create a `.env.local` file at the project root:
 
 ```
-MONSTER-HUNTER-WORLD_TEST_LIVE=TRUE
-MONSTER-HUNTER-WORLD_APIKEY=<your-key>
+MONSTER_HUNTER_WORLD_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -157,7 +150,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |
@@ -179,8 +171,8 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | --- | --- | --- |
 | `options_map` | `() -> dict` | Deep copy of current SDK options. |
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
-| `prepare` | `(fetchargs) -> (dict, err)` | Build an HTTP request definition without sending. |
-| `direct` | `(fetchargs) -> (dict, err)` | Build and send an HTTP request. |
+| `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
+| `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
 | `Ailment` | `(data) -> AilmentEntity` | Create a Ailment entity instance. |
 | `Armor` | `(data) -> ArmorEntity` | Create a Armor entity instance. |
 | `ArmorSet` | `(data) -> ArmorSetEntity` | Create a ArmorSet entity instance. |
@@ -200,11 +192,11 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> (any, err)` | Load a single entity by match criteria. |
-| `list` | `(reqmatch, ctrl) -> (any, err)` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> (any, err)` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> (any, err)` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> (any, err)` | Remove an entity. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
+| `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
+| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
+| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
+| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -214,8 +206,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`dict` with these keys:
+Entity operations return the bare result data (a `dict` for single-entity
+ops, a `list` for `list`) and raise on error. Wrap calls in
+`try`/`except` to handle failures.
+
+The `direct()` escape hatch never raises — it returns a result `dict`
+you branch on via `result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -433,7 +429,7 @@ API path: `/weapons`
 
 ### Ailment
 
-Create an instance: `const ailment = client.Ailment()`
+Create an instance: `const ailment = client.ailment`
 
 #### Operations
 
@@ -455,19 +451,19 @@ Create an instance: `const ailment = client.Ailment()`
 #### Example: Load
 
 ```ts
-const ailment = await client.Ailment().load({ id: 'ailment_id' })
+const ailment = await client.ailment.load({ id: 'ailment_id' })
 ```
 
 #### Example: List
 
 ```ts
-const ailments = await client.Ailment().list()
+const ailments = await client.ailment.list()
 ```
 
 
 ### Armor
 
-Create an instance: `const armor = client.Armor()`
+Create an instance: `const armor = client.armor`
 
 #### Operations
 
@@ -497,19 +493,19 @@ Create an instance: `const armor = client.Armor()`
 #### Example: Load
 
 ```ts
-const armor = await client.Armor().load({ id: 'armor_id' })
+const armor = await client.armor.load({ id: 'armor_id' })
 ```
 
 #### Example: List
 
 ```ts
-const armors = await client.Armor().list()
+const armors = await client.armor.list()
 ```
 
 
 ### ArmorSet
 
-Create an instance: `const armor_set = client.ArmorSet()`
+Create an instance: `const armor_set = client.armor_set`
 
 #### Operations
 
@@ -531,19 +527,19 @@ Create an instance: `const armor_set = client.ArmorSet()`
 #### Example: Load
 
 ```ts
-const armor_set = await client.ArmorSet().load({ id: 'armor_set_id' })
+const armor_set = await client.armor_set.load({ id: 'armor_set_id' })
 ```
 
 #### Example: List
 
 ```ts
-const armor_sets = await client.ArmorSet().list()
+const armor_sets = await client.armor_set.list()
 ```
 
 
 ### Charm
 
-Create an instance: `const charm = client.Charm()`
+Create an instance: `const charm = client.charm`
 
 #### Operations
 
@@ -565,19 +561,19 @@ Create an instance: `const charm = client.Charm()`
 #### Example: Load
 
 ```ts
-const charm = await client.Charm().load({ id: 'charm_id' })
+const charm = await client.charm.load({ id: 'charm_id' })
 ```
 
 #### Example: List
 
 ```ts
-const charms = await client.Charm().list()
+const charms = await client.charm.list()
 ```
 
 
 ### Decoration
 
-Create an instance: `const decoration = client.Decoration()`
+Create an instance: `const decoration = client.decoration`
 
 #### Operations
 
@@ -599,19 +595,19 @@ Create an instance: `const decoration = client.Decoration()`
 #### Example: Load
 
 ```ts
-const decoration = await client.Decoration().load({ id: 'decoration_id' })
+const decoration = await client.decoration.load({ id: 'decoration_id' })
 ```
 
 #### Example: List
 
 ```ts
-const decorations = await client.Decoration().list()
+const decorations = await client.decoration.list()
 ```
 
 
 ### Event
 
-Create an instance: `const event = client.Event()`
+Create an instance: `const event = client.event`
 
 #### Operations
 
@@ -641,19 +637,19 @@ Create an instance: `const event = client.Event()`
 #### Example: Load
 
 ```ts
-const event = await client.Event().load({ id: 'event_id' })
+const event = await client.event.load({ id: 'event_id' })
 ```
 
 #### Example: List
 
 ```ts
-const events = await client.Event().list()
+const events = await client.event.list()
 ```
 
 
 ### Item
 
-Create an instance: `const item = client.Item()`
+Create an instance: `const item = client.item`
 
 #### Operations
 
@@ -678,19 +674,19 @@ Create an instance: `const item = client.Item()`
 #### Example: Load
 
 ```ts
-const item = await client.Item().load({ id: 'item_id' })
+const item = await client.item.load({ id: 'item_id' })
 ```
 
 #### Example: List
 
 ```ts
-const items = await client.Item().list()
+const items = await client.item.list()
 ```
 
 
 ### Location
 
-Create an instance: `const location = client.Location()`
+Create an instance: `const location = client.location`
 
 #### Operations
 
@@ -711,19 +707,19 @@ Create an instance: `const location = client.Location()`
 #### Example: Load
 
 ```ts
-const location = await client.Location().load({ id: 'location_id' })
+const location = await client.location.load({ id: 'location_id' })
 ```
 
 #### Example: List
 
 ```ts
-const locations = await client.Location().list()
+const locations = await client.location.list()
 ```
 
 
 ### Monster
 
-Create an instance: `const monster = client.Monster()`
+Create an instance: `const monster = client.monster`
 
 #### Operations
 
@@ -751,19 +747,19 @@ Create an instance: `const monster = client.Monster()`
 #### Example: Load
 
 ```ts
-const monster = await client.Monster().load({ id: 'monster_id' })
+const monster = await client.monster.load({ id: 'monster_id' })
 ```
 
 #### Example: List
 
 ```ts
-const monsters = await client.Monster().list()
+const monsters = await client.monster.list()
 ```
 
 
 ### MotionValue
 
-Create an instance: `const motion_value = client.MotionValue()`
+Create an instance: `const motion_value = client.motion_value`
 
 #### Operations
 
@@ -786,19 +782,19 @@ Create an instance: `const motion_value = client.MotionValue()`
 #### Example: Load
 
 ```ts
-const motion_value = await client.MotionValue().load({ id: 'motion_value_id' })
+const motion_value = await client.motion_value.load({ id: 'motion_value_id' })
 ```
 
 #### Example: List
 
 ```ts
-const motion_values = await client.MotionValue().list()
+const motion_values = await client.motion_value.list()
 ```
 
 
 ### Skill
 
-Create an instance: `const skill = client.Skill()`
+Create an instance: `const skill = client.skill`
 
 #### Operations
 
@@ -819,19 +815,19 @@ Create an instance: `const skill = client.Skill()`
 #### Example: Load
 
 ```ts
-const skill = await client.Skill().load({ id: 'skill_id' })
+const skill = await client.skill.load({ id: 'skill_id' })
 ```
 
 #### Example: List
 
 ```ts
-const skills = await client.Skill().list()
+const skills = await client.skill.list()
 ```
 
 
 ### Weapon
 
-Create an instance: `const weapon = client.Weapon()`
+Create an instance: `const weapon = client.weapon`
 
 #### Operations
 
@@ -859,13 +855,13 @@ Create an instance: `const weapon = client.Weapon()`
 #### Example: Load
 
 ```ts
-const weapon = await client.Weapon().load({ id: 'weapon_id' })
+const weapon = await client.weapon.load({ id: 'weapon_id' })
 ```
 
 #### Example: List
 
 ```ts
-const weapons = await client.Weapon().list()
+const weapons = await client.weapon.list()
 ```
 
 
@@ -939,11 +935,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-moon = client.Moon()
-moon.load({"planet_id": "earth", "id": "luna"})
+ailment = client.ailment
+ailment.load({"id": "example_id"})
 
-# moon.data_get() now returns the loaded moon data
-# moon.match_get() returns the last match criteria
+# ailment.data_get() now returns the loaded ailment data
+# ailment.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

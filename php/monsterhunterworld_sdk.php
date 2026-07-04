@@ -103,7 +103,7 @@ class MonsterHunterWorldSDK
         return $this->_rootctx;
     }
 
-    public function prepare(array $fetchargs = []): array
+    public function prepare(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
         $fetchargs = $fetchargs ?? [];
@@ -149,19 +149,27 @@ class MonsterHunterWorldSDK
 
         [$_, $err] = ($utility->prepare_auth)($ctx);
         if ($err) {
-            return [null, $err];
+            return ($utility->make_error)($ctx, $err);
         }
 
-        return ($utility->make_fetch_def)($ctx);
+        [$fetchdef, $fd_err] = ($utility->make_fetch_def)($ctx);
+        if ($fd_err) {
+            return ($utility->make_error)($ctx, $fd_err);
+        }
+        return $fetchdef;
     }
 
-    public function direct(array $fetchargs = []): array
+    public function direct(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
 
-        [$fetchdef, $err] = $this->prepare($fetchargs);
-        if ($err) {
-            return [["ok" => false, "err" => $err], null];
+        // direct() is the raw-HTTP escape hatch: it never throws, it returns
+        // an {ok, err, ...} dict. prepare() now raises on error, so catch it
+        // and surface the failure through the dict instead.
+        try {
+            $fetchdef = $this->prepare($fetchargs);
+        } catch (\Throwable $err) {
+            return ["ok" => false, "err" => $err];
         }
 
         $fetchargs = $fetchargs ?? [];
@@ -176,14 +184,14 @@ class MonsterHunterWorldSDK
         [$fetched, $fetch_err] = ($utility->fetcher)($ctx, $url, $fetchdef);
 
         if ($fetch_err) {
-            return [["ok" => false, "err" => $fetch_err], null];
+            return ["ok" => false, "err" => $fetch_err];
         }
 
         if ($fetched === null) {
-            return [[
+            return [
                 "ok" => false,
                 "err" => $ctx->make_error("direct_no_response", "response: undefined"),
-            ], null];
+            ];
         }
 
         if (is_array($fetched)) {
@@ -208,101 +216,233 @@ class MonsterHunterWorldSDK
                 }
             }
 
-            return [[
+            return [
                 "ok" => $status >= 200 && $status < 300,
                 "status" => $status,
                 "headers" => Struct::getprop($fetched, "headers"),
                 "data" => $json_data,
-            ], null];
+            ];
         }
 
-        return [[
+        return [
             "ok" => false,
             "err" => $ctx->make_error("direct_invalid", "invalid response type"),
-        ], null];
+        ];
     }
 
 
-    public function Ailment($data = null)
+    private $_ailment = null;
+
+    // Idiomatic facade: $client->ailment()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Ailment() (PHP method
+    // names are case-insensitive).
+    public function ailment($data = null)
     {
         require_once __DIR__ . '/entity/ailment_entity.php';
+        if ($data === null) {
+            if ($this->_ailment === null) {
+                $this->_ailment = new AilmentEntity($this, null);
+            }
+            return $this->_ailment;
+        }
         return new AilmentEntity($this, $data);
     }
 
 
-    public function Armor($data = null)
+    private $_armor = null;
+
+    // Idiomatic facade: $client->armor()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Armor() (PHP method
+    // names are case-insensitive).
+    public function armor($data = null)
     {
         require_once __DIR__ . '/entity/armor_entity.php';
+        if ($data === null) {
+            if ($this->_armor === null) {
+                $this->_armor = new ArmorEntity($this, null);
+            }
+            return $this->_armor;
+        }
         return new ArmorEntity($this, $data);
     }
 
 
-    public function ArmorSet($data = null)
+    private $_armor_set = null;
+
+    // Idiomatic facade: $client->armor_set()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias ArmorSet() (PHP method
+    // names are case-insensitive).
+    public function armor_set($data = null)
     {
         require_once __DIR__ . '/entity/armor_set_entity.php';
+        if ($data === null) {
+            if ($this->_armor_set === null) {
+                $this->_armor_set = new ArmorSetEntity($this, null);
+            }
+            return $this->_armor_set;
+        }
         return new ArmorSetEntity($this, $data);
     }
 
 
-    public function Charm($data = null)
+    private $_charm = null;
+
+    // Idiomatic facade: $client->charm()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Charm() (PHP method
+    // names are case-insensitive).
+    public function charm($data = null)
     {
         require_once __DIR__ . '/entity/charm_entity.php';
+        if ($data === null) {
+            if ($this->_charm === null) {
+                $this->_charm = new CharmEntity($this, null);
+            }
+            return $this->_charm;
+        }
         return new CharmEntity($this, $data);
     }
 
 
-    public function Decoration($data = null)
+    private $_decoration = null;
+
+    // Idiomatic facade: $client->decoration()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Decoration() (PHP method
+    // names are case-insensitive).
+    public function decoration($data = null)
     {
         require_once __DIR__ . '/entity/decoration_entity.php';
+        if ($data === null) {
+            if ($this->_decoration === null) {
+                $this->_decoration = new DecorationEntity($this, null);
+            }
+            return $this->_decoration;
+        }
         return new DecorationEntity($this, $data);
     }
 
 
-    public function Event($data = null)
+    private $_event = null;
+
+    // Idiomatic facade: $client->event()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Event() (PHP method
+    // names are case-insensitive).
+    public function event($data = null)
     {
         require_once __DIR__ . '/entity/event_entity.php';
+        if ($data === null) {
+            if ($this->_event === null) {
+                $this->_event = new EventEntity($this, null);
+            }
+            return $this->_event;
+        }
         return new EventEntity($this, $data);
     }
 
 
-    public function Item($data = null)
+    private $_item = null;
+
+    // Idiomatic facade: $client->item()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Item() (PHP method
+    // names are case-insensitive).
+    public function item($data = null)
     {
         require_once __DIR__ . '/entity/item_entity.php';
+        if ($data === null) {
+            if ($this->_item === null) {
+                $this->_item = new ItemEntity($this, null);
+            }
+            return $this->_item;
+        }
         return new ItemEntity($this, $data);
     }
 
 
-    public function Location($data = null)
+    private $_location = null;
+
+    // Idiomatic facade: $client->location()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Location() (PHP method
+    // names are case-insensitive).
+    public function location($data = null)
     {
         require_once __DIR__ . '/entity/location_entity.php';
+        if ($data === null) {
+            if ($this->_location === null) {
+                $this->_location = new LocationEntity($this, null);
+            }
+            return $this->_location;
+        }
         return new LocationEntity($this, $data);
     }
 
 
-    public function Monster($data = null)
+    private $_monster = null;
+
+    // Idiomatic facade: $client->monster()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Monster() (PHP method
+    // names are case-insensitive).
+    public function monster($data = null)
     {
         require_once __DIR__ . '/entity/monster_entity.php';
+        if ($data === null) {
+            if ($this->_monster === null) {
+                $this->_monster = new MonsterEntity($this, null);
+            }
+            return $this->_monster;
+        }
         return new MonsterEntity($this, $data);
     }
 
 
-    public function MotionValue($data = null)
+    private $_motion_value = null;
+
+    // Idiomatic facade: $client->motion_value()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias MotionValue() (PHP method
+    // names are case-insensitive).
+    public function motion_value($data = null)
     {
         require_once __DIR__ . '/entity/motion_value_entity.php';
+        if ($data === null) {
+            if ($this->_motion_value === null) {
+                $this->_motion_value = new MotionValueEntity($this, null);
+            }
+            return $this->_motion_value;
+        }
         return new MotionValueEntity($this, $data);
     }
 
 
-    public function Skill($data = null)
+    private $_skill = null;
+
+    // Idiomatic facade: $client->skill()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Skill() (PHP method
+    // names are case-insensitive).
+    public function skill($data = null)
     {
         require_once __DIR__ . '/entity/skill_entity.php';
+        if ($data === null) {
+            if ($this->_skill === null) {
+                $this->_skill = new SkillEntity($this, null);
+            }
+            return $this->_skill;
+        }
         return new SkillEntity($this, $data);
     }
 
 
-    public function Weapon($data = null)
+    private $_weapon = null;
+
+    // Idiomatic facade: $client->weapon()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Weapon() (PHP method
+    // names are case-insensitive).
+    public function weapon($data = null)
     {
         require_once __DIR__ . '/entity/weapon_entity.php';
+        if ($data === null) {
+            if ($this->_weapon === null) {
+                $this->_weapon = new WeaponEntity($this, null);
+            }
+            return $this->_weapon;
+        }
         return new WeaponEntity($this, $data);
     }
 

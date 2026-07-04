@@ -13,6 +13,8 @@ import { MotionValueEntity } from './entity/MotionValueEntity'
 import { SkillEntity } from './entity/SkillEntity'
 import { WeaponEntity } from './entity/WeaponEntity'
 
+export type * from './MonsterHunterWorldTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -213,72 +215,168 @@ class MonsterHunterWorldSDK {
 
 
 
+  _ailment?: AilmentEntity
+
+  // Idiomatic facade: `client.ailment.list()` / `client.ailment.load({ id })`.
+  get ailment(): AilmentEntity {
+    return (this._ailment ??= new AilmentEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.ailment` instead. */
   Ailment(data?: any) {
     const self = this
     return new AilmentEntity(self,data)
   }
 
 
+  _armor?: ArmorEntity
+
+  // Idiomatic facade: `client.armor.list()` / `client.armor.load({ id })`.
+  get armor(): ArmorEntity {
+    return (this._armor ??= new ArmorEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.armor` instead. */
   Armor(data?: any) {
     const self = this
     return new ArmorEntity(self,data)
   }
 
 
+  _armor_set?: ArmorSetEntity
+
+  // Idiomatic facade: `client.armor_set.list()` / `client.armor_set.load({ id })`.
+  get armor_set(): ArmorSetEntity {
+    return (this._armor_set ??= new ArmorSetEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.armor_set` instead. */
   ArmorSet(data?: any) {
     const self = this
     return new ArmorSetEntity(self,data)
   }
 
 
+  _charm?: CharmEntity
+
+  // Idiomatic facade: `client.charm.list()` / `client.charm.load({ id })`.
+  get charm(): CharmEntity {
+    return (this._charm ??= new CharmEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.charm` instead. */
   Charm(data?: any) {
     const self = this
     return new CharmEntity(self,data)
   }
 
 
+  _decoration?: DecorationEntity
+
+  // Idiomatic facade: `client.decoration.list()` / `client.decoration.load({ id })`.
+  get decoration(): DecorationEntity {
+    return (this._decoration ??= new DecorationEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.decoration` instead. */
   Decoration(data?: any) {
     const self = this
     return new DecorationEntity(self,data)
   }
 
 
+  _event?: EventEntity
+
+  // Idiomatic facade: `client.event.list()` / `client.event.load({ id })`.
+  get event(): EventEntity {
+    return (this._event ??= new EventEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.event` instead. */
   Event(data?: any) {
     const self = this
     return new EventEntity(self,data)
   }
 
 
+  _item?: ItemEntity
+
+  // Idiomatic facade: `client.item.list()` / `client.item.load({ id })`.
+  get item(): ItemEntity {
+    return (this._item ??= new ItemEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.item` instead. */
   Item(data?: any) {
     const self = this
     return new ItemEntity(self,data)
   }
 
 
+  _location?: LocationEntity
+
+  // Idiomatic facade: `client.location.list()` / `client.location.load({ id })`.
+  get location(): LocationEntity {
+    return (this._location ??= new LocationEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.location` instead. */
   Location(data?: any) {
     const self = this
     return new LocationEntity(self,data)
   }
 
 
+  _monster?: MonsterEntity
+
+  // Idiomatic facade: `client.monster.list()` / `client.monster.load({ id })`.
+  get monster(): MonsterEntity {
+    return (this._monster ??= new MonsterEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.monster` instead. */
   Monster(data?: any) {
     const self = this
     return new MonsterEntity(self,data)
   }
 
 
+  _motion_value?: MotionValueEntity
+
+  // Idiomatic facade: `client.motion_value.list()` / `client.motion_value.load({ id })`.
+  get motion_value(): MotionValueEntity {
+    return (this._motion_value ??= new MotionValueEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.motion_value` instead. */
   MotionValue(data?: any) {
     const self = this
     return new MotionValueEntity(self,data)
   }
 
 
+  _skill?: SkillEntity
+
+  // Idiomatic facade: `client.skill.list()` / `client.skill.load({ id })`.
+  get skill(): SkillEntity {
+    return (this._skill ??= new SkillEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.skill` instead. */
   Skill(data?: any) {
     const self = this
     return new SkillEntity(self,data)
   }
 
 
+  _weapon?: WeaponEntity
+
+  // Idiomatic facade: `client.weapon.list()` / `client.weapon.load({ id })`.
+  get weapon(): WeaponEntity {
+    return (this._weapon ??= new WeaponEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.weapon` instead. */
   Weapon(data?: any) {
     const self = this
     return new WeaponEntity(self,data)

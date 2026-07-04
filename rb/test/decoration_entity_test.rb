@@ -43,16 +43,14 @@ class DecorationEntityTest < Minitest::Test
     decoration_ref01_ent = client.Decoration(nil)
     decoration_ref01_match = {}
 
-    decoration_ref01_list_result, err = decoration_ref01_ent.list(decoration_ref01_match, nil)
-    assert_nil err
+    decoration_ref01_list_result = decoration_ref01_ent.list(decoration_ref01_match, nil)
     assert decoration_ref01_list_result.is_a?(Array)
 
     # LOAD
     decoration_ref01_match_dt0 = {
       "id" => decoration_ref01_data["id"],
     }
-    decoration_ref01_data_dt0_loaded, err = decoration_ref01_ent.load(decoration_ref01_match_dt0, nil)
-    assert_nil err
+    decoration_ref01_data_dt0_loaded = decoration_ref01_ent.load(decoration_ref01_match_dt0, nil)
     decoration_ref01_data_dt0_load_result = Helpers.to_map(decoration_ref01_data_dt0_loaded)
     assert !decoration_ref01_data_dt0_load_result.nil?
     assert_equal decoration_ref01_data_dt0_load_result["id"], decoration_ref01_data["id"]
@@ -93,7 +91,6 @@ def decoration_basic_setup(extra)
     "MONSTERHUNTERWORLD_TEST_DECORATION_ENTID" => idmap,
     "MONSTERHUNTERWORLD_TEST_LIVE" => "FALSE",
     "MONSTERHUNTERWORLD_TEST_EXPLAIN" => "FALSE",
-    "MONSTERHUNTERWORLD_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def decoration_basic_setup(extra)
   if env["MONSTERHUNTERWORLD_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["MONSTERHUNTERWORLD_APIKEY"],
       },
       extra || {},
     ])

@@ -85,6 +85,27 @@ func (e *WeaponEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Weapon; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *WeaponEntity) DataTyped(data ...Weapon) Weapon {
+	if len(data) > 0 {
+		return typedFrom[Weapon](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Weapon](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Weapon (all fields
+// optional at the wire level).
+func (e *WeaponEntity) MatchTyped(match ...Weapon) Weapon {
+	if len(match) > 0 {
+		return typedFrom[Weapon](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Weapon](e.Match())
+}
+
 
 func (e *WeaponEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -111,6 +132,17 @@ func (e *WeaponEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, 
 	})
 }
 
+// LoadTyped is the statically-typed variant of Load: it takes an
+// WeaponLoadMatch and returns an Weapon. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *WeaponEntity) LoadTyped(reqmatch WeaponLoadMatch, ctrl map[string]any) (Weapon, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return Weapon{}, err
+	}
+	return typedFrom[Weapon](res), nil
+}
+
 
 
 
@@ -131,6 +163,17 @@ func (e *WeaponEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, 
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// WeaponListMatch and returns []Weapon. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *WeaponEntity) ListTyped(reqmatch WeaponListMatch, ctrl map[string]any) ([]Weapon, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[Weapon](res), nil
 }
 
 

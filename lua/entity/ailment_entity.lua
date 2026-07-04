@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch AilmentLoadMatch
+---@param ctrl? table
+---@return Ailment
+---@return string? err
 function AilmentEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch AilmentListMatch
+---@param ctrl? table
+---@return Ailment[]
+---@return string? err
 function AilmentEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

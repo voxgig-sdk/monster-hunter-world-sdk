@@ -9,12 +9,9 @@ The Lua SDK for the MonsterHunterWorld API — an entity-oriented client using L
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-monster-hunter-world
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/monster-hunter-world-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("monster-hunter-world_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("MONSTER-HUNTER-WORLD_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 2. List ailments
 
 ```lua
-local result, err = client:Ailment():list()
+local result, err = client:ailment():list()
 if err then error(err) end
 
 if type(result) == "table" then
@@ -50,10 +45,10 @@ if type(result) == "table" then
 end
 ```
 
-### 3. Load a ailment
+### 3. Load an ailment
 
 ```lua
-local result, err = client:Ailment():load({ id = "example_id" })
+local result, err = client:ailment():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -101,7 +96,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:MonsterHunterWorld():load({ id = "test01" })
+local result, err = client:ailment():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -134,8 +129,7 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-MONSTER-HUNTER-WORLD_TEST_LIVE=TRUE
-MONSTER-HUNTER-WORLD_APIKEY=<your-key>
+MONSTER_HUNTER_WORLD_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -158,7 +152,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -434,7 +427,7 @@ API path: `/weapons`
 
 ### Ailment
 
-Create an instance: `const ailment = client.Ailment()`
+Create an instance: `const ailment = client.ailment`
 
 #### Operations
 
@@ -456,19 +449,19 @@ Create an instance: `const ailment = client.Ailment()`
 #### Example: Load
 
 ```ts
-const ailment = await client.Ailment().load({ id: 'ailment_id' })
+const ailment = await client.ailment.load({ id: 'ailment_id' })
 ```
 
 #### Example: List
 
 ```ts
-const ailments = await client.Ailment().list()
+const ailments = await client.ailment.list()
 ```
 
 
 ### Armor
 
-Create an instance: `const armor = client.Armor()`
+Create an instance: `const armor = client.armor`
 
 #### Operations
 
@@ -498,19 +491,19 @@ Create an instance: `const armor = client.Armor()`
 #### Example: Load
 
 ```ts
-const armor = await client.Armor().load({ id: 'armor_id' })
+const armor = await client.armor.load({ id: 'armor_id' })
 ```
 
 #### Example: List
 
 ```ts
-const armors = await client.Armor().list()
+const armors = await client.armor.list()
 ```
 
 
 ### ArmorSet
 
-Create an instance: `const armor_set = client.ArmorSet()`
+Create an instance: `const armor_set = client.armor_set`
 
 #### Operations
 
@@ -532,19 +525,19 @@ Create an instance: `const armor_set = client.ArmorSet()`
 #### Example: Load
 
 ```ts
-const armor_set = await client.ArmorSet().load({ id: 'armor_set_id' })
+const armor_set = await client.armor_set.load({ id: 'armor_set_id' })
 ```
 
 #### Example: List
 
 ```ts
-const armor_sets = await client.ArmorSet().list()
+const armor_sets = await client.armor_set.list()
 ```
 
 
 ### Charm
 
-Create an instance: `const charm = client.Charm()`
+Create an instance: `const charm = client.charm`
 
 #### Operations
 
@@ -566,19 +559,19 @@ Create an instance: `const charm = client.Charm()`
 #### Example: Load
 
 ```ts
-const charm = await client.Charm().load({ id: 'charm_id' })
+const charm = await client.charm.load({ id: 'charm_id' })
 ```
 
 #### Example: List
 
 ```ts
-const charms = await client.Charm().list()
+const charms = await client.charm.list()
 ```
 
 
 ### Decoration
 
-Create an instance: `const decoration = client.Decoration()`
+Create an instance: `const decoration = client.decoration`
 
 #### Operations
 
@@ -600,19 +593,19 @@ Create an instance: `const decoration = client.Decoration()`
 #### Example: Load
 
 ```ts
-const decoration = await client.Decoration().load({ id: 'decoration_id' })
+const decoration = await client.decoration.load({ id: 'decoration_id' })
 ```
 
 #### Example: List
 
 ```ts
-const decorations = await client.Decoration().list()
+const decorations = await client.decoration.list()
 ```
 
 
 ### Event
 
-Create an instance: `const event = client.Event()`
+Create an instance: `const event = client.event`
 
 #### Operations
 
@@ -642,19 +635,19 @@ Create an instance: `const event = client.Event()`
 #### Example: Load
 
 ```ts
-const event = await client.Event().load({ id: 'event_id' })
+const event = await client.event.load({ id: 'event_id' })
 ```
 
 #### Example: List
 
 ```ts
-const events = await client.Event().list()
+const events = await client.event.list()
 ```
 
 
 ### Item
 
-Create an instance: `const item = client.Item()`
+Create an instance: `const item = client.item`
 
 #### Operations
 
@@ -679,19 +672,19 @@ Create an instance: `const item = client.Item()`
 #### Example: Load
 
 ```ts
-const item = await client.Item().load({ id: 'item_id' })
+const item = await client.item.load({ id: 'item_id' })
 ```
 
 #### Example: List
 
 ```ts
-const items = await client.Item().list()
+const items = await client.item.list()
 ```
 
 
 ### Location
 
-Create an instance: `const location = client.Location()`
+Create an instance: `const location = client.location`
 
 #### Operations
 
@@ -712,19 +705,19 @@ Create an instance: `const location = client.Location()`
 #### Example: Load
 
 ```ts
-const location = await client.Location().load({ id: 'location_id' })
+const location = await client.location.load({ id: 'location_id' })
 ```
 
 #### Example: List
 
 ```ts
-const locations = await client.Location().list()
+const locations = await client.location.list()
 ```
 
 
 ### Monster
 
-Create an instance: `const monster = client.Monster()`
+Create an instance: `const monster = client.monster`
 
 #### Operations
 
@@ -752,19 +745,19 @@ Create an instance: `const monster = client.Monster()`
 #### Example: Load
 
 ```ts
-const monster = await client.Monster().load({ id: 'monster_id' })
+const monster = await client.monster.load({ id: 'monster_id' })
 ```
 
 #### Example: List
 
 ```ts
-const monsters = await client.Monster().list()
+const monsters = await client.monster.list()
 ```
 
 
 ### MotionValue
 
-Create an instance: `const motion_value = client.MotionValue()`
+Create an instance: `const motion_value = client.motion_value`
 
 #### Operations
 
@@ -787,19 +780,19 @@ Create an instance: `const motion_value = client.MotionValue()`
 #### Example: Load
 
 ```ts
-const motion_value = await client.MotionValue().load({ id: 'motion_value_id' })
+const motion_value = await client.motion_value.load({ id: 'motion_value_id' })
 ```
 
 #### Example: List
 
 ```ts
-const motion_values = await client.MotionValue().list()
+const motion_values = await client.motion_value.list()
 ```
 
 
 ### Skill
 
-Create an instance: `const skill = client.Skill()`
+Create an instance: `const skill = client.skill`
 
 #### Operations
 
@@ -820,19 +813,19 @@ Create an instance: `const skill = client.Skill()`
 #### Example: Load
 
 ```ts
-const skill = await client.Skill().load({ id: 'skill_id' })
+const skill = await client.skill.load({ id: 'skill_id' })
 ```
 
 #### Example: List
 
 ```ts
-const skills = await client.Skill().list()
+const skills = await client.skill.list()
 ```
 
 
 ### Weapon
 
-Create an instance: `const weapon = client.Weapon()`
+Create an instance: `const weapon = client.weapon`
 
 #### Operations
 
@@ -860,13 +853,13 @@ Create an instance: `const weapon = client.Weapon()`
 #### Example: Load
 
 ```ts
-const weapon = await client.Weapon().load({ id: 'weapon_id' })
+const weapon = await client.weapon.load({ id: 'weapon_id' })
 ```
 
 #### Example: List
 
 ```ts
-const weapons = await client.Weapon().list()
+const weapons = await client.weapon.list()
 ```
 
 
@@ -941,11 +934,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local ailment = client:ailment()
+ailment:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- ailment:data_get() now returns the loaded ailment data
+-- ailment:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -244,72 +244,228 @@ end
 
 
 
+-- Idiomatic facade: client:ailment():list() / client:ailment():load({ id = ... })
+function MonsterHunterWorldSDK:ailment(data)
+  local EntityMod = require("entity.ailment_entity")
+  if data == nil then
+    if self._ailment == nil then
+      self._ailment = EntityMod.new(self, nil)
+    end
+    return self._ailment
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:ailment() instead.
 function MonsterHunterWorldSDK:Ailment(data)
   local EntityMod = require("entity.ailment_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:armor():list() / client:armor():load({ id = ... })
+function MonsterHunterWorldSDK:armor(data)
+  local EntityMod = require("entity.armor_entity")
+  if data == nil then
+    if self._armor == nil then
+      self._armor = EntityMod.new(self, nil)
+    end
+    return self._armor
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:armor() instead.
 function MonsterHunterWorldSDK:Armor(data)
   local EntityMod = require("entity.armor_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:armor_set():list() / client:armor_set():load({ id = ... })
+function MonsterHunterWorldSDK:armor_set(data)
+  local EntityMod = require("entity.armor_set_entity")
+  if data == nil then
+    if self._armor_set == nil then
+      self._armor_set = EntityMod.new(self, nil)
+    end
+    return self._armor_set
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:armor_set() instead.
 function MonsterHunterWorldSDK:ArmorSet(data)
   local EntityMod = require("entity.armor_set_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:charm():list() / client:charm():load({ id = ... })
+function MonsterHunterWorldSDK:charm(data)
+  local EntityMod = require("entity.charm_entity")
+  if data == nil then
+    if self._charm == nil then
+      self._charm = EntityMod.new(self, nil)
+    end
+    return self._charm
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:charm() instead.
 function MonsterHunterWorldSDK:Charm(data)
   local EntityMod = require("entity.charm_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:decoration():list() / client:decoration():load({ id = ... })
+function MonsterHunterWorldSDK:decoration(data)
+  local EntityMod = require("entity.decoration_entity")
+  if data == nil then
+    if self._decoration == nil then
+      self._decoration = EntityMod.new(self, nil)
+    end
+    return self._decoration
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:decoration() instead.
 function MonsterHunterWorldSDK:Decoration(data)
   local EntityMod = require("entity.decoration_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:event():list() / client:event():load({ id = ... })
+function MonsterHunterWorldSDK:event(data)
+  local EntityMod = require("entity.event_entity")
+  if data == nil then
+    if self._event == nil then
+      self._event = EntityMod.new(self, nil)
+    end
+    return self._event
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:event() instead.
 function MonsterHunterWorldSDK:Event(data)
   local EntityMod = require("entity.event_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:item():list() / client:item():load({ id = ... })
+function MonsterHunterWorldSDK:item(data)
+  local EntityMod = require("entity.item_entity")
+  if data == nil then
+    if self._item == nil then
+      self._item = EntityMod.new(self, nil)
+    end
+    return self._item
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:item() instead.
 function MonsterHunterWorldSDK:Item(data)
   local EntityMod = require("entity.item_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:location():list() / client:location():load({ id = ... })
+function MonsterHunterWorldSDK:location(data)
+  local EntityMod = require("entity.location_entity")
+  if data == nil then
+    if self._location == nil then
+      self._location = EntityMod.new(self, nil)
+    end
+    return self._location
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:location() instead.
 function MonsterHunterWorldSDK:Location(data)
   local EntityMod = require("entity.location_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:monster():list() / client:monster():load({ id = ... })
+function MonsterHunterWorldSDK:monster(data)
+  local EntityMod = require("entity.monster_entity")
+  if data == nil then
+    if self._monster == nil then
+      self._monster = EntityMod.new(self, nil)
+    end
+    return self._monster
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:monster() instead.
 function MonsterHunterWorldSDK:Monster(data)
   local EntityMod = require("entity.monster_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:motion_value():list() / client:motion_value():load({ id = ... })
+function MonsterHunterWorldSDK:motion_value(data)
+  local EntityMod = require("entity.motion_value_entity")
+  if data == nil then
+    if self._motion_value == nil then
+      self._motion_value = EntityMod.new(self, nil)
+    end
+    return self._motion_value
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:motion_value() instead.
 function MonsterHunterWorldSDK:MotionValue(data)
   local EntityMod = require("entity.motion_value_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:skill():list() / client:skill():load({ id = ... })
+function MonsterHunterWorldSDK:skill(data)
+  local EntityMod = require("entity.skill_entity")
+  if data == nil then
+    if self._skill == nil then
+      self._skill = EntityMod.new(self, nil)
+    end
+    return self._skill
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:skill() instead.
 function MonsterHunterWorldSDK:Skill(data)
   local EntityMod = require("entity.skill_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:weapon():list() / client:weapon():load({ id = ... })
+function MonsterHunterWorldSDK:weapon(data)
+  local EntityMod = require("entity.weapon_entity")
+  if data == nil then
+    if self._weapon == nil then
+      self._weapon = EntityMod.new(self, nil)
+    end
+    return self._weapon
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:weapon() instead.
 function MonsterHunterWorldSDK:Weapon(data)
   local EntityMod = require("entity.weapon_entity")
   return EntityMod.new(self, data)

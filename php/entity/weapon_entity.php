@@ -55,6 +55,9 @@ class WeaponEntity
         return new WeaponEntity($this->_client, $opts);
     }
 
+    /**
+     * @param Weapon|array $args Weapon data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class WeaponEntity
         }
     }
 
+    /**
+     * @return Weapon|array The current Weapon data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of Weapon fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class WeaponEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of Weapon fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class WeaponEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single Weapon.
+     *
+     * @param WeaponLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed WeaponLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Weapon|array The loaded Weapon as an assoc-array at the
+     *   SDK boundary; throws MonsterHunterWorldError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -110,7 +131,16 @@ class WeaponEntity
 
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List Weapon items matching the given filter.
+     *
+     * @param WeaponListMatch|array|null $reqmatch Match filter (any subset
+     *   of Weapon fields) as an assoc-array; WeaponListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Weapon[]|array A list of Weapon items as assoc-arrays at
+     *   the SDK boundary; throws MonsterHunterWorldError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -138,7 +168,7 @@ class WeaponEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

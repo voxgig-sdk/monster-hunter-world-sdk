@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch CharmLoadMatch
+---@param ctrl? table
+---@return Charm
+---@return string? err
 function CharmEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch CharmListMatch
+---@param ctrl? table
+---@return Charm[]
+---@return string? err
 function CharmEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

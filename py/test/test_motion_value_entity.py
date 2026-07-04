@@ -50,16 +50,14 @@ class TestMotionValueEntity:
         motion_value_ref01_ent = client.MotionValue(None)
         motion_value_ref01_match = {}
 
-        motion_value_ref01_list_result, err = motion_value_ref01_ent.list(motion_value_ref01_match, None)
-        assert err is None
+        motion_value_ref01_list_result = motion_value_ref01_ent.list(motion_value_ref01_match, None)
         assert isinstance(motion_value_ref01_list_result, list)
 
         # LOAD
         motion_value_ref01_match_dt0 = {
             "id": motion_value_ref01_data["id"],
         }
-        motion_value_ref01_data_dt0_loaded, err = motion_value_ref01_ent.load(motion_value_ref01_match_dt0, None)
-        assert err is None
+        motion_value_ref01_data_dt0_loaded = motion_value_ref01_ent.load(motion_value_ref01_match_dt0, None)
         motion_value_ref01_data_dt0_load_result = helpers.to_map(motion_value_ref01_data_dt0_loaded)
         assert motion_value_ref01_data_dt0_load_result is not None
         assert motion_value_ref01_data_dt0_load_result["id"] == motion_value_ref01_data["id"]
@@ -102,7 +100,6 @@ def _motion_value_basic_setup(extra):
         "MONSTERHUNTERWORLD_TEST_MOTION_VALUE_ENTID": idmap,
         "MONSTERHUNTERWORLD_TEST_LIVE": "FALSE",
         "MONSTERHUNTERWORLD_TEST_EXPLAIN": "FALSE",
-        "MONSTERHUNTERWORLD_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _motion_value_basic_setup(extra):
     if env.get("MONSTERHUNTERWORLD_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("MONSTERHUNTERWORLD_APIKEY"),
             },
             extra or {},
         ])
