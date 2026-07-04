@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:ailment():list() / client:ailment():load({ id = ... })
-function MonsterHunterWorldSDK:ailment(data)
+-- Idiomatic facade: client:Ailment():list() / client:Ailment():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MonsterHunterWorldSDK:Ailment(data)
   local EntityMod = require("entity.ailment_entity")
   if data == nil then
     if self._ailment == nil then
@@ -256,15 +257,10 @@ function MonsterHunterWorldSDK:ailment(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:ailment() instead.
-function MonsterHunterWorldSDK:Ailment(data)
-  local EntityMod = require("entity.ailment_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:armor():list() / client:armor():load({ id = ... })
-function MonsterHunterWorldSDK:armor(data)
+-- Idiomatic facade: client:Armor():list() / client:Armor():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MonsterHunterWorldSDK:Armor(data)
   local EntityMod = require("entity.armor_entity")
   if data == nil then
     if self._armor == nil then
@@ -275,15 +271,10 @@ function MonsterHunterWorldSDK:armor(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:armor() instead.
-function MonsterHunterWorldSDK:Armor(data)
-  local EntityMod = require("entity.armor_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:armor_set():list() / client:armor_set():load({ id = ... })
-function MonsterHunterWorldSDK:armor_set(data)
+-- Idiomatic facade: client:ArmorSet():list() / client:ArmorSet():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MonsterHunterWorldSDK:ArmorSet(data)
   local EntityMod = require("entity.armor_set_entity")
   if data == nil then
     if self._armor_set == nil then
@@ -294,15 +285,10 @@ function MonsterHunterWorldSDK:armor_set(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:armor_set() instead.
-function MonsterHunterWorldSDK:ArmorSet(data)
-  local EntityMod = require("entity.armor_set_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:charm():list() / client:charm():load({ id = ... })
-function MonsterHunterWorldSDK:charm(data)
+-- Idiomatic facade: client:Charm():list() / client:Charm():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MonsterHunterWorldSDK:Charm(data)
   local EntityMod = require("entity.charm_entity")
   if data == nil then
     if self._charm == nil then
@@ -313,15 +299,10 @@ function MonsterHunterWorldSDK:charm(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:charm() instead.
-function MonsterHunterWorldSDK:Charm(data)
-  local EntityMod = require("entity.charm_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:decoration():list() / client:decoration():load({ id = ... })
-function MonsterHunterWorldSDK:decoration(data)
+-- Idiomatic facade: client:Decoration():list() / client:Decoration():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MonsterHunterWorldSDK:Decoration(data)
   local EntityMod = require("entity.decoration_entity")
   if data == nil then
     if self._decoration == nil then
@@ -332,15 +313,10 @@ function MonsterHunterWorldSDK:decoration(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:decoration() instead.
-function MonsterHunterWorldSDK:Decoration(data)
-  local EntityMod = require("entity.decoration_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:event():list() / client:event():load({ id = ... })
-function MonsterHunterWorldSDK:event(data)
+-- Idiomatic facade: client:Event():list() / client:Event():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MonsterHunterWorldSDK:Event(data)
   local EntityMod = require("entity.event_entity")
   if data == nil then
     if self._event == nil then
@@ -351,15 +327,10 @@ function MonsterHunterWorldSDK:event(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:event() instead.
-function MonsterHunterWorldSDK:Event(data)
-  local EntityMod = require("entity.event_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:item():list() / client:item():load({ id = ... })
-function MonsterHunterWorldSDK:item(data)
+-- Idiomatic facade: client:Item():list() / client:Item():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MonsterHunterWorldSDK:Item(data)
   local EntityMod = require("entity.item_entity")
   if data == nil then
     if self._item == nil then
@@ -370,15 +341,10 @@ function MonsterHunterWorldSDK:item(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:item() instead.
-function MonsterHunterWorldSDK:Item(data)
-  local EntityMod = require("entity.item_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:location():list() / client:location():load({ id = ... })
-function MonsterHunterWorldSDK:location(data)
+-- Idiomatic facade: client:Location():list() / client:Location():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MonsterHunterWorldSDK:Location(data)
   local EntityMod = require("entity.location_entity")
   if data == nil then
     if self._location == nil then
@@ -389,15 +355,10 @@ function MonsterHunterWorldSDK:location(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:location() instead.
-function MonsterHunterWorldSDK:Location(data)
-  local EntityMod = require("entity.location_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:monster():list() / client:monster():load({ id = ... })
-function MonsterHunterWorldSDK:monster(data)
+-- Idiomatic facade: client:Monster():list() / client:Monster():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MonsterHunterWorldSDK:Monster(data)
   local EntityMod = require("entity.monster_entity")
   if data == nil then
     if self._monster == nil then
@@ -408,15 +369,10 @@ function MonsterHunterWorldSDK:monster(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:monster() instead.
-function MonsterHunterWorldSDK:Monster(data)
-  local EntityMod = require("entity.monster_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:motion_value():list() / client:motion_value():load({ id = ... })
-function MonsterHunterWorldSDK:motion_value(data)
+-- Idiomatic facade: client:MotionValue():list() / client:MotionValue():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MonsterHunterWorldSDK:MotionValue(data)
   local EntityMod = require("entity.motion_value_entity")
   if data == nil then
     if self._motion_value == nil then
@@ -427,15 +383,10 @@ function MonsterHunterWorldSDK:motion_value(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:motion_value() instead.
-function MonsterHunterWorldSDK:MotionValue(data)
-  local EntityMod = require("entity.motion_value_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:skill():list() / client:skill():load({ id = ... })
-function MonsterHunterWorldSDK:skill(data)
+-- Idiomatic facade: client:Skill():list() / client:Skill():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MonsterHunterWorldSDK:Skill(data)
   local EntityMod = require("entity.skill_entity")
   if data == nil then
     if self._skill == nil then
@@ -446,15 +397,10 @@ function MonsterHunterWorldSDK:skill(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:skill() instead.
-function MonsterHunterWorldSDK:Skill(data)
-  local EntityMod = require("entity.skill_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:weapon():list() / client:weapon():load({ id = ... })
-function MonsterHunterWorldSDK:weapon(data)
+-- Idiomatic facade: client:Weapon():list() / client:Weapon():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MonsterHunterWorldSDK:Weapon(data)
   local EntityMod = require("entity.weapon_entity")
   if data == nil then
     if self._weapon == nil then
@@ -462,12 +408,6 @@ function MonsterHunterWorldSDK:weapon(data)
     end
     return self._weapon
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:weapon() instead.
-function MonsterHunterWorldSDK:Weapon(data)
-  local EntityMod = require("entity.weapon_entity")
   return EntityMod.new(self, data)
 end
 

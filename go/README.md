@@ -30,53 +30,39 @@ go mod edit -replace github.com/voxgig-sdk/monster-hunter-world-sdk/go=../monste
 This tutorial walks through creating a client, listing entities, and
 loading a specific record.
 
-### 1. Create a client
+### Quickstart
+
+A complete program: create a client, then call the entity operations.
+Each operation returns `(value, error)` — the value is the data itself
+(there is no `{ok, data}` wrapper), so check `err` and use the value
+directly.
 
 ```go
 package main
 
 import (
     "fmt"
-
     sdk "github.com/voxgig-sdk/monster-hunter-world-sdk/go"
-    "github.com/voxgig-sdk/monster-hunter-world-sdk/go/core"
 )
 
 func main() {
     client := sdk.New()
-```
 
-### 2. List ailments
-
-```go
-    result, err := client.Ailment(nil).List(nil, nil)
+    // List ailment records — the value is the array of records itself.
+    ailments, err := client.Ailment(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
-
-    rm := core.ToMapAny(result)
-    if rm["ok"] == true {
-        for _, item := range rm["data"].([]any) {
-            p := core.ToMapAny(item)
-            fmt.Println(p["id"], p["name"])
-        }
+    for _, item := range ailments.([]any) {
+        fmt.Println(item)
     }
-```
 
-### 3. Load an ailment
-
-```go
-    result, err = client.Ailment(nil).Load(
-        map[string]any{"id": "example_id"}, nil,
-    )
+    // Load a single ailment — the value is the loaded record.
+    ailment, err := client.Ailment(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
-
-    rm = core.ToMapAny(result)
-    if rm["ok"] == true {
-        fmt.Println(rm["data"])
-    }
+    fmt.Println(ailment)
 }
 ```
 
@@ -127,10 +113,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-result, err := client.Ailment(nil).Load(
+ailment, err := client.Ailment(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
-// result contains mock response data
+if err != nil {
+    panic(err)
+}
+fmt.Println(ailment) // the loaded mock data
 ```
 
 ### Use a custom fetch function
@@ -207,13 +196,13 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GetUtility` | `() *Utility` | Copy of the SDK utility object. |
 | `Prepare` | `(fetchargs map[string]any) (map[string]any, error)` | Build an HTTP request definition without sending. |
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
-| `Ailment` | `(data map[string]any) MonsterHunterWorldEntity` | Create a Ailment entity instance. |
-| `Armor` | `(data map[string]any) MonsterHunterWorldEntity` | Create a Armor entity instance. |
-| `ArmorSet` | `(data map[string]any) MonsterHunterWorldEntity` | Create a ArmorSet entity instance. |
+| `Ailment` | `(data map[string]any) MonsterHunterWorldEntity` | Create an Ailment entity instance. |
+| `Armor` | `(data map[string]any) MonsterHunterWorldEntity` | Create an Armor entity instance. |
+| `ArmorSet` | `(data map[string]any) MonsterHunterWorldEntity` | Create an ArmorSet entity instance. |
 | `Charm` | `(data map[string]any) MonsterHunterWorldEntity` | Create a Charm entity instance. |
 | `Decoration` | `(data map[string]any) MonsterHunterWorldEntity` | Create a Decoration entity instance. |
-| `Event` | `(data map[string]any) MonsterHunterWorldEntity` | Create a Event entity instance. |
-| `Item` | `(data map[string]any) MonsterHunterWorldEntity` | Create a Item entity instance. |
+| `Event` | `(data map[string]any) MonsterHunterWorldEntity` | Create an Event entity instance. |
+| `Item` | `(data map[string]any) MonsterHunterWorldEntity` | Create an Item entity instance. |
 | `Location` | `(data map[string]any) MonsterHunterWorldEntity` | Create a Location entity instance. |
 | `Monster` | `(data map[string]any) MonsterHunterWorldEntity` | Create a Monster entity instance. |
 | `MotionValue` | `(data map[string]any) MonsterHunterWorldEntity` | Create a MotionValue entity instance. |
@@ -238,17 +227,24 @@ All entities implement the `MonsterHunterWorldEntity` interface.
 
 ### Result shape
 
-Entity operations return `(any, error)`. The `any` value is a
-`map[string]any` with these keys:
+Entity operations return `(value, error)`. The `value` is the
+operation's data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `"ok"` | `bool` | `true` if the HTTP status is 2xx. |
-| `"status"` | `int` | HTTP status code. |
-| `"headers"` | `map[string]any` | Response headers. |
-| `"data"` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `List` | a `[]any` of entity records |
 
-On error, `"ok"` is `false` and `"err"` contains the error value.
+Check `err` first, then use the value directly (or the typed
+`...Typed` variants, which return the entity's model struct and a typed
+slice):
+
+    ailment, err := client.Ailment(nil).Load(map[string]any{"id": "example_id"}, nil)
+    if err != nil { /* handle */ }
+    // ailment is the loaded record
+
+Only `Direct()` returns a response envelope — a `map[string]any` with
+`"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
 
@@ -479,13 +475,21 @@ Create an instance: `ailment := client.Ailment(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Ailment(nil).Load(map[string]any{"id": "ailment_id"}, nil)
+ailment, err := client.Ailment(nil).Load(map[string]any{"id": "ailment_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(ailment) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Ailment(nil).List(nil, nil)
+ailments, err := client.Ailment(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(ailments) // the array of records
 ```
 
 
@@ -521,13 +525,21 @@ Create an instance: `armor := client.Armor(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Armor(nil).Load(map[string]any{"id": "armor_id"}, nil)
+armor, err := client.Armor(nil).Load(map[string]any{"id": "armor_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(armor) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Armor(nil).List(nil, nil)
+armors, err := client.Armor(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(armors) // the array of records
 ```
 
 
@@ -555,13 +567,21 @@ Create an instance: `armor_set := client.ArmorSet(nil)`
 #### Example: Load
 
 ```go
-result, err := client.ArmorSet(nil).Load(map[string]any{"id": "armor_set_id"}, nil)
+armor_set, err := client.ArmorSet(nil).Load(map[string]any{"id": "armor_set_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(armor_set) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.ArmorSet(nil).List(nil, nil)
+armor_sets, err := client.ArmorSet(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(armor_sets) // the array of records
 ```
 
 
@@ -589,13 +609,21 @@ Create an instance: `charm := client.Charm(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Charm(nil).Load(map[string]any{"id": "charm_id"}, nil)
+charm, err := client.Charm(nil).Load(map[string]any{"id": "charm_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(charm) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Charm(nil).List(nil, nil)
+charms, err := client.Charm(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(charms) // the array of records
 ```
 
 
@@ -623,13 +651,21 @@ Create an instance: `decoration := client.Decoration(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Decoration(nil).Load(map[string]any{"id": "decoration_id"}, nil)
+decoration, err := client.Decoration(nil).Load(map[string]any{"id": "decoration_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(decoration) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Decoration(nil).List(nil, nil)
+decorations, err := client.Decoration(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(decorations) // the array of records
 ```
 
 
@@ -665,13 +701,21 @@ Create an instance: `event := client.Event(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Event(nil).Load(map[string]any{"id": "event_id"}, nil)
+event, err := client.Event(nil).Load(map[string]any{"id": "event_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(event) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Event(nil).List(nil, nil)
+events, err := client.Event(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(events) // the array of records
 ```
 
 
@@ -702,13 +746,21 @@ Create an instance: `item := client.Item(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Item(nil).Load(map[string]any{"id": "item_id"}, nil)
+item, err := client.Item(nil).Load(map[string]any{"id": "item_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(item) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Item(nil).List(nil, nil)
+items, err := client.Item(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(items) // the array of records
 ```
 
 
@@ -735,13 +787,21 @@ Create an instance: `location := client.Location(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Location(nil).Load(map[string]any{"id": "location_id"}, nil)
+location, err := client.Location(nil).Load(map[string]any{"id": "location_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(location) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Location(nil).List(nil, nil)
+locations, err := client.Location(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(locations) // the array of records
 ```
 
 
@@ -775,13 +835,21 @@ Create an instance: `monster := client.Monster(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Monster(nil).Load(map[string]any{"id": "monster_id"}, nil)
+monster, err := client.Monster(nil).Load(map[string]any{"id": "monster_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(monster) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Monster(nil).List(nil, nil)
+monsters, err := client.Monster(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(monsters) // the array of records
 ```
 
 
@@ -810,13 +878,21 @@ Create an instance: `motion_value := client.MotionValue(nil)`
 #### Example: Load
 
 ```go
-result, err := client.MotionValue(nil).Load(map[string]any{"id": "motion_value_id"}, nil)
+motion_value, err := client.MotionValue(nil).Load(map[string]any{"id": "motion_value_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(motion_value) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.MotionValue(nil).List(nil, nil)
+motion_values, err := client.MotionValue(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(motion_values) // the array of records
 ```
 
 
@@ -843,13 +919,21 @@ Create an instance: `skill := client.Skill(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Skill(nil).Load(map[string]any{"id": "skill_id"}, nil)
+skill, err := client.Skill(nil).Load(map[string]any{"id": "skill_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(skill) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Skill(nil).List(nil, nil)
+skills, err := client.Skill(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(skills) // the array of records
 ```
 
 
@@ -883,13 +967,21 @@ Create an instance: `weapon := client.Weapon(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Weapon(nil).Load(map[string]any{"id": "weapon_id"}, nil)
+weapon, err := client.Weapon(nil).Load(map[string]any{"id": "weapon_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(weapon) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Weapon(nil).List(nil, nil)
+weapons, err := client.Weapon(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(weapons) // the array of records
 ```
 
 

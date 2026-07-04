@@ -208,156 +208,84 @@ class MonsterHunterWorldSDK
   end
 
 
-  # Idiomatic facade: client.ailment.list / client.ailment.load({ "id" => ... })
-  def ailment
-    require_relative 'entity/ailment_entity'
-    @ailment ||= AilmentEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.ailment instead.
+  # Canonical facade: client.Ailment.list / client.Ailment.load({ "id" => ... })
   def Ailment(data = nil)
     require_relative 'entity/ailment_entity'
     AilmentEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.armor.list / client.armor.load({ "id" => ... })
-  def armor
-    require_relative 'entity/armor_entity'
-    @armor ||= ArmorEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.armor instead.
+  # Canonical facade: client.Armor.list / client.Armor.load({ "id" => ... })
   def Armor(data = nil)
     require_relative 'entity/armor_entity'
     ArmorEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.armor_set.list / client.armor_set.load({ "id" => ... })
-  def armor_set
-    require_relative 'entity/armor_set_entity'
-    @armor_set ||= ArmorSetEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.armor_set instead.
+  # Canonical facade: client.ArmorSet.list / client.ArmorSet.load({ "id" => ... })
   def ArmorSet(data = nil)
     require_relative 'entity/armor_set_entity'
     ArmorSetEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.charm.list / client.charm.load({ "id" => ... })
-  def charm
-    require_relative 'entity/charm_entity'
-    @charm ||= CharmEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.charm instead.
+  # Canonical facade: client.Charm.list / client.Charm.load({ "id" => ... })
   def Charm(data = nil)
     require_relative 'entity/charm_entity'
     CharmEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.decoration.list / client.decoration.load({ "id" => ... })
-  def decoration
-    require_relative 'entity/decoration_entity'
-    @decoration ||= DecorationEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.decoration instead.
+  # Canonical facade: client.Decoration.list / client.Decoration.load({ "id" => ... })
   def Decoration(data = nil)
     require_relative 'entity/decoration_entity'
     DecorationEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.event.list / client.event.load({ "id" => ... })
-  def event
-    require_relative 'entity/event_entity'
-    @event ||= EventEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.event instead.
+  # Canonical facade: client.Event.list / client.Event.load({ "id" => ... })
   def Event(data = nil)
     require_relative 'entity/event_entity'
     EventEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.item.list / client.item.load({ "id" => ... })
-  def item
-    require_relative 'entity/item_entity'
-    @item ||= ItemEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.item instead.
+  # Canonical facade: client.Item.list / client.Item.load({ "id" => ... })
   def Item(data = nil)
     require_relative 'entity/item_entity'
     ItemEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.location.list / client.location.load({ "id" => ... })
-  def location
-    require_relative 'entity/location_entity'
-    @location ||= LocationEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.location instead.
+  # Canonical facade: client.Location.list / client.Location.load({ "id" => ... })
   def Location(data = nil)
     require_relative 'entity/location_entity'
     LocationEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.monster.list / client.monster.load({ "id" => ... })
-  def monster
-    require_relative 'entity/monster_entity'
-    @monster ||= MonsterEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.monster instead.
+  # Canonical facade: client.Monster.list / client.Monster.load({ "id" => ... })
   def Monster(data = nil)
     require_relative 'entity/monster_entity'
     MonsterEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.motion_value.list / client.motion_value.load({ "id" => ... })
-  def motion_value
-    require_relative 'entity/motion_value_entity'
-    @motion_value ||= MotionValueEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.motion_value instead.
+  # Canonical facade: client.MotionValue.list / client.MotionValue.load({ "id" => ... })
   def MotionValue(data = nil)
     require_relative 'entity/motion_value_entity'
     MotionValueEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.skill.list / client.skill.load({ "id" => ... })
-  def skill
-    require_relative 'entity/skill_entity'
-    @skill ||= SkillEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.skill instead.
+  # Canonical facade: client.Skill.list / client.Skill.load({ "id" => ... })
   def Skill(data = nil)
     require_relative 'entity/skill_entity'
     SkillEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.weapon.list / client.weapon.load({ "id" => ... })
-  def weapon
-    require_relative 'entity/weapon_entity'
-    @weapon ||= WeaponEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.weapon instead.
+  # Canonical facade: client.Weapon.list / client.Weapon.load({ "id" => ... })
   def Weapon(data = nil)
     require_relative 'entity/weapon_entity'
     WeaponEntity.new(self, data)

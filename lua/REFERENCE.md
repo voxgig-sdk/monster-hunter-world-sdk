@@ -127,7 +127,7 @@ same parameters as `direct()`.
 ## AilmentEntity
 
 ```lua
-local ailment = client:ailment(nil)
+local ailment = client:Ailment(nil)
 ```
 
 ### Fields
@@ -147,7 +147,7 @@ local ailment = client:ailment(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:ailment():list()
+local results, err = client:Ailment():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -155,7 +155,7 @@ local results, err = client:ailment():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ailment():load({ id = "ailment_id" })
+local result, err = client:Ailment():load({ id = "ailment_id" })
 ```
 
 ### Common Methods
@@ -191,7 +191,7 @@ Return the entity name.
 ## ArmorEntity
 
 ```lua
-local armor = client:armor(nil)
+local armor = client:Armor(nil)
 ```
 
 ### Fields
@@ -219,7 +219,7 @@ local armor = client:armor(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:armor():list()
+local results, err = client:Armor():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -227,7 +227,7 @@ local results, err = client:armor():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:armor():load({ id = "armor_id" })
+local result, err = client:Armor():load({ id = "armor_id" })
 ```
 
 ### Common Methods
@@ -263,7 +263,7 @@ Return the entity name.
 ## ArmorSetEntity
 
 ```lua
-local armor_set = client:armor_set(nil)
+local armor_set = client:ArmorSet(nil)
 ```
 
 ### Fields
@@ -283,7 +283,7 @@ local armor_set = client:armor_set(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:armor_set():list()
+local results, err = client:ArmorSet():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -291,7 +291,7 @@ local results, err = client:armor_set():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:armor_set():load({ id = "armor_set_id" })
+local result, err = client:ArmorSet():load({ id = "armor_set_id" })
 ```
 
 ### Common Methods
@@ -327,7 +327,7 @@ Return the entity name.
 ## CharmEntity
 
 ```lua
-local charm = client:charm(nil)
+local charm = client:Charm(nil)
 ```
 
 ### Fields
@@ -347,7 +347,7 @@ local charm = client:charm(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:charm():list()
+local results, err = client:Charm():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -355,7 +355,7 @@ local results, err = client:charm():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:charm():load({ id = "charm_id" })
+local result, err = client:Charm():load({ id = "charm_id" })
 ```
 
 ### Common Methods
@@ -391,7 +391,7 @@ Return the entity name.
 ## DecorationEntity
 
 ```lua
-local decoration = client:decoration(nil)
+local decoration = client:Decoration(nil)
 ```
 
 ### Fields
@@ -411,7 +411,7 @@ local decoration = client:decoration(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:decoration():list()
+local results, err = client:Decoration():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -419,7 +419,7 @@ local results, err = client:decoration():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:decoration():load({ id = "decoration_id" })
+local result, err = client:Decoration():load({ id = "decoration_id" })
 ```
 
 ### Common Methods
@@ -455,7 +455,7 @@ Return the entity name.
 ## EventEntity
 
 ```lua
-local event = client:event(nil)
+local event = client:Event(nil)
 ```
 
 ### Fields
@@ -483,7 +483,7 @@ local event = client:event(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:event():list()
+local results, err = client:Event():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -491,7 +491,7 @@ local results, err = client:event():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:event():load({ id = "event_id" })
+local result, err = client:Event():load({ id = "event_id" })
 ```
 
 ### Common Methods
@@ -527,7 +527,7 @@ Return the entity name.
 ## ItemEntity
 
 ```lua
-local item = client:item(nil)
+local item = client:Item(nil)
 ```
 
 ### Fields
@@ -550,7 +550,7 @@ local item = client:item(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:item():list()
+local results, err = client:Item():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -558,7 +558,7 @@ local results, err = client:item():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:item():load({ id = "item_id" })
+local result, err = client:Item():load({ id = "item_id" })
 ```
 
 ### Common Methods
@@ -594,7 +594,7 @@ Return the entity name.
 ## LocationEntity
 
 ```lua
-local location = client:location(nil)
+local location = client:Location(nil)
 ```
 
 ### Fields
@@ -613,7 +613,7 @@ local location = client:location(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:location():list()
+local results, err = client:Location():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -621,7 +621,7 @@ local results, err = client:location():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:location():load({ id = "location_id" })
+local result, err = client:Location():load({ id = "location_id" })
 ```
 
 ### Common Methods
@@ -657,7 +657,7 @@ Return the entity name.
 ## MonsterEntity
 
 ```lua
-local monster = client:monster(nil)
+local monster = client:Monster(nil)
 ```
 
 ### Fields
@@ -683,7 +683,7 @@ local monster = client:monster(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:monster():list()
+local results, err = client:Monster():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -691,7 +691,7 @@ local results, err = client:monster():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:monster():load({ id = "monster_id" })
+local result, err = client:Monster():load({ id = "monster_id" })
 ```
 
 ### Common Methods
@@ -727,7 +727,7 @@ Return the entity name.
 ## MotionValueEntity
 
 ```lua
-local motion_value = client:motion_value(nil)
+local motion_value = client:MotionValue(nil)
 ```
 
 ### Fields
@@ -748,7 +748,7 @@ local motion_value = client:motion_value(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:motion_value():list()
+local results, err = client:MotionValue():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -756,7 +756,7 @@ local results, err = client:motion_value():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:motion_value():load({ id = "motion_value_id" })
+local result, err = client:MotionValue():load({ id = "motion_value_id" })
 ```
 
 ### Common Methods
@@ -792,7 +792,7 @@ Return the entity name.
 ## SkillEntity
 
 ```lua
-local skill = client:skill(nil)
+local skill = client:Skill(nil)
 ```
 
 ### Fields
@@ -811,7 +811,7 @@ local skill = client:skill(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:skill():list()
+local results, err = client:Skill():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -819,7 +819,7 @@ local results, err = client:skill():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:skill():load({ id = "skill_id" })
+local result, err = client:Skill():load({ id = "skill_id" })
 ```
 
 ### Common Methods
@@ -855,7 +855,7 @@ Return the entity name.
 ## WeaponEntity
 
 ```lua
-local weapon = client:weapon(nil)
+local weapon = client:Weapon(nil)
 ```
 
 ### Fields
@@ -881,7 +881,7 @@ local weapon = client:weapon(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:weapon():list()
+local results, err = client:Weapon():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -889,7 +889,7 @@ local results, err = client:weapon():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:weapon():load({ id = "weapon_id" })
+local result, err = client:Weapon():load({ id = "weapon_id" })
 ```
 
 ### Common Methods

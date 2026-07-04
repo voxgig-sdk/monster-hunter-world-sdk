@@ -233,10 +233,10 @@ class MonsterHunterWorldSDK
 
     private $_ailment = null;
 
-    // Idiomatic facade: $client->ailment()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Ailment() (PHP method
-    // names are case-insensitive).
-    public function ailment($data = null)
+    // Canonical facade: $client->Ailment()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->ailment()
+    // resolves here too.
+    public function Ailment($data = null)
     {
         require_once __DIR__ . '/entity/ailment_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class MonsterHunterWorldSDK
 
     private $_armor = null;
 
-    // Idiomatic facade: $client->armor()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Armor() (PHP method
-    // names are case-insensitive).
-    public function armor($data = null)
+    // Canonical facade: $client->Armor()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->armor()
+    // resolves here too.
+    public function Armor($data = null)
     {
         require_once __DIR__ . '/entity/armor_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class MonsterHunterWorldSDK
 
     private $_armor_set = null;
 
-    // Idiomatic facade: $client->armor_set()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias ArmorSet() (PHP method
-    // names are case-insensitive).
-    public function armor_set($data = null)
+    // Canonical facade: $client->ArmorSet()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->armor_set()
+    // resolves here too.
+    public function ArmorSet($data = null)
     {
         require_once __DIR__ . '/entity/armor_set_entity.php';
         if ($data === null) {
@@ -287,10 +287,10 @@ class MonsterHunterWorldSDK
 
     private $_charm = null;
 
-    // Idiomatic facade: $client->charm()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Charm() (PHP method
-    // names are case-insensitive).
-    public function charm($data = null)
+    // Canonical facade: $client->Charm()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->charm()
+    // resolves here too.
+    public function Charm($data = null)
     {
         require_once __DIR__ . '/entity/charm_entity.php';
         if ($data === null) {
@@ -305,10 +305,10 @@ class MonsterHunterWorldSDK
 
     private $_decoration = null;
 
-    // Idiomatic facade: $client->decoration()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Decoration() (PHP method
-    // names are case-insensitive).
-    public function decoration($data = null)
+    // Canonical facade: $client->Decoration()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->decoration()
+    // resolves here too.
+    public function Decoration($data = null)
     {
         require_once __DIR__ . '/entity/decoration_entity.php';
         if ($data === null) {
@@ -323,10 +323,10 @@ class MonsterHunterWorldSDK
 
     private $_event = null;
 
-    // Idiomatic facade: $client->event()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Event() (PHP method
-    // names are case-insensitive).
-    public function event($data = null)
+    // Canonical facade: $client->Event()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->event()
+    // resolves here too.
+    public function Event($data = null)
     {
         require_once __DIR__ . '/entity/event_entity.php';
         if ($data === null) {
@@ -341,10 +341,10 @@ class MonsterHunterWorldSDK
 
     private $_item = null;
 
-    // Idiomatic facade: $client->item()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Item() (PHP method
-    // names are case-insensitive).
-    public function item($data = null)
+    // Canonical facade: $client->Item()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->item()
+    // resolves here too.
+    public function Item($data = null)
     {
         require_once __DIR__ . '/entity/item_entity.php';
         if ($data === null) {
@@ -359,10 +359,10 @@ class MonsterHunterWorldSDK
 
     private $_location = null;
 
-    // Idiomatic facade: $client->location()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Location() (PHP method
-    // names are case-insensitive).
-    public function location($data = null)
+    // Canonical facade: $client->Location()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->location()
+    // resolves here too.
+    public function Location($data = null)
     {
         require_once __DIR__ . '/entity/location_entity.php';
         if ($data === null) {
@@ -377,10 +377,10 @@ class MonsterHunterWorldSDK
 
     private $_monster = null;
 
-    // Idiomatic facade: $client->monster()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Monster() (PHP method
-    // names are case-insensitive).
-    public function monster($data = null)
+    // Canonical facade: $client->Monster()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->monster()
+    // resolves here too.
+    public function Monster($data = null)
     {
         require_once __DIR__ . '/entity/monster_entity.php';
         if ($data === null) {
@@ -395,10 +395,10 @@ class MonsterHunterWorldSDK
 
     private $_motion_value = null;
 
-    // Idiomatic facade: $client->motion_value()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias MotionValue() (PHP method
-    // names are case-insensitive).
-    public function motion_value($data = null)
+    // Canonical facade: $client->MotionValue()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->motion_value()
+    // resolves here too.
+    public function MotionValue($data = null)
     {
         require_once __DIR__ . '/entity/motion_value_entity.php';
         if ($data === null) {
@@ -413,10 +413,10 @@ class MonsterHunterWorldSDK
 
     private $_skill = null;
 
-    // Idiomatic facade: $client->skill()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Skill() (PHP method
-    // names are case-insensitive).
-    public function skill($data = null)
+    // Canonical facade: $client->Skill()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->skill()
+    // resolves here too.
+    public function Skill($data = null)
     {
         require_once __DIR__ . '/entity/skill_entity.php';
         if ($data === null) {
@@ -431,10 +431,10 @@ class MonsterHunterWorldSDK
 
     private $_weapon = null;
 
-    // Idiomatic facade: $client->weapon()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Weapon() (PHP method
-    // names are case-insensitive).
-    public function weapon($data = null)
+    // Canonical facade: $client->Weapon()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->weapon()
+    // resolves here too.
+    public function Weapon($data = null)
     {
         require_once __DIR__ . '/entity/weapon_entity.php';
         if ($data === null) {

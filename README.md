@@ -26,9 +26,11 @@ import { MonsterHunterWorldSDK } from '@voxgig-sdk/monster-hunter-world'
 
 const client = new MonsterHunterWorldSDK()
 
-// List all ailments
-const ailments = await client.ailment.list()
-console.log(ailments.data)
+// List all ailments (returns Ailment[])
+const ailments = await client.Ailment().list()
+for (const ailment of ailments) {
+  console.log(ailment)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -94,12 +96,13 @@ from monsterhunterworld_sdk import MonsterHunterWorldSDK
 
 client = MonsterHunterWorldSDK()
 
-# List all ailments
-ailments = client.ailment.list()
-print(ailments)
+# List all ailments (returns a list, raises on error)
+ailments = client.Ailment().list({})
+for ailment in ailments:
+    print(ailment)
 
-# Load a specific ailment
-ailment = client.ailment.load({"id": "example_id"})
+# Load a specific ailment (returns the record, raises on error)
+ailment = client.Ailment().load({"id": "example_id"})
 print(ailment)
 ```
 
@@ -111,12 +114,12 @@ require_once 'monsterhunterworld_sdk.php';
 
 $client = new MonsterHunterWorldSDK();
 
-// List all ailments (throws on error)
-$ailments = $client->ailment()->list();
+// List all ailments (returns an array; throws on error)
+$ailments = $client->Ailment()->list();
 print_r($ailments);
 
-// Load a specific ailment
-$ailment = $client->ailment()->load(["id" => "example_id"]);
+// Load a specific ailment (returns the bare record; throws on error)
+$ailment = $client->Ailment()->load(["id" => "example_id"]);
 print_r($ailment);
 ```
 
@@ -139,12 +142,12 @@ require_relative "MonsterHunterWorld_sdk"
 
 client = MonsterHunterWorldSDK.new
 
-# List all ailments
-ailments = client.ailment.list
+# List all ailments (returns an Array; raises on error)
+ailments = client.Ailment.list
 puts ailments
 
-# Load a specific ailment
-ailment = client.ailment.load({ "id" => "example_id" })
+# Load a specific ailment (returns the bare record; raises on error)
+ailment = client.Ailment.load({ "id" => "example_id" })
 puts ailment
 ```
 
@@ -156,11 +159,11 @@ local sdk = require("monster-hunter-world_sdk")
 local client = sdk.new()
 
 -- List all ailments
-local ailments, err = client:ailment():list()
+local ailments, err = client:Ailment():list()
 print(ailments)
 
 -- Load a specific ailment
-local ailment, err = client:ailment():load({ id = "example_id" })
+local ailment, err = client:Ailment():load({ id = "example_id" })
 print(ailment)
 ```
 
@@ -173,22 +176,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = MonsterHunterWorldSDK.test()
-const result = await client.ailment.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const ailment = await client.Ailment().load({ id: 1 })
+// ailment is a bare Ailment populated with mock data
+console.log(ailment)
 ```
 
 ### Python
 
 ```python
 client = MonsterHunterWorldSDK.test()
-result = client.ailment.load({"id": "test01"})
+ailment = client.Ailment().load({"id": "test01"})
+print(ailment)
 ```
 
 ### PHP
 
 ```php
-$client = MonsterHunterWorldSDK::test();
-$result = $client->ailment()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = MonsterHunterWorldSDK::test([
+    "entity" => ["ailment" => ["test01" => ["id" => "test01"]]],
+]);
+$ailment = $client->Ailment()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -203,15 +211,18 @@ result, err := client.Ailment(nil).Load(
 ### Ruby
 
 ```ruby
-client = MonsterHunterWorldSDK.test
-result = client.ailment.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = MonsterHunterWorldSDK.test({
+  "entity" => { "ailment" => { "test01" => { "id" => "test01" } } },
+})
+ailment = client.Ailment.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:ailment():load({ id = "test01" })
+local result, err = client:Ailment():load({ id = "test01" })
 ```
 
 ## How it works
@@ -259,6 +270,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

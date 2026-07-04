@@ -220,201 +220,81 @@ class MonsterHunterWorldSDK:
         }
 
 
-    @property
-    def ailment(self):
-        """Idiomatic facade: client.ailment.list() / client.ailment.load({"id": ...})."""
-        from entity.ailment_entity import AilmentEntity
-        cached = getattr(self, "_ailment", None)
-        if cached is None:
-            cached = AilmentEntity(self, None)
-            self._ailment = cached
-        return cached
-
-    def Ailment(self, data=None):
-        # Deprecated: use client.ailment instead.
+    def Ailment(self, data=None) -> "AilmentEntity":
+        """Entity factory: client.Ailment().list({}) / client.Ailment().load({"id": ...})."""
         from entity.ailment_entity import AilmentEntity
         return AilmentEntity(self, data)
 
 
-    @property
-    def armor(self):
-        """Idiomatic facade: client.armor.list() / client.armor.load({"id": ...})."""
-        from entity.armor_entity import ArmorEntity
-        cached = getattr(self, "_armor", None)
-        if cached is None:
-            cached = ArmorEntity(self, None)
-            self._armor = cached
-        return cached
-
-    def Armor(self, data=None):
-        # Deprecated: use client.armor instead.
+    def Armor(self, data=None) -> "ArmorEntity":
+        """Entity factory: client.Armor().list({}) / client.Armor().load({"id": ...})."""
         from entity.armor_entity import ArmorEntity
         return ArmorEntity(self, data)
 
 
-    @property
-    def armor_set(self):
-        """Idiomatic facade: client.armor_set.list() / client.armor_set.load({"id": ...})."""
-        from entity.armor_set_entity import ArmorSetEntity
-        cached = getattr(self, "_armor_set", None)
-        if cached is None:
-            cached = ArmorSetEntity(self, None)
-            self._armor_set = cached
-        return cached
-
-    def ArmorSet(self, data=None):
-        # Deprecated: use client.armor_set instead.
+    def ArmorSet(self, data=None) -> "ArmorSetEntity":
+        """Entity factory: client.ArmorSet().list({}) / client.ArmorSet().load({"id": ...})."""
         from entity.armor_set_entity import ArmorSetEntity
         return ArmorSetEntity(self, data)
 
 
-    @property
-    def charm(self):
-        """Idiomatic facade: client.charm.list() / client.charm.load({"id": ...})."""
-        from entity.charm_entity import CharmEntity
-        cached = getattr(self, "_charm", None)
-        if cached is None:
-            cached = CharmEntity(self, None)
-            self._charm = cached
-        return cached
-
-    def Charm(self, data=None):
-        # Deprecated: use client.charm instead.
+    def Charm(self, data=None) -> "CharmEntity":
+        """Entity factory: client.Charm().list({}) / client.Charm().load({"id": ...})."""
         from entity.charm_entity import CharmEntity
         return CharmEntity(self, data)
 
 
-    @property
-    def decoration(self):
-        """Idiomatic facade: client.decoration.list() / client.decoration.load({"id": ...})."""
-        from entity.decoration_entity import DecorationEntity
-        cached = getattr(self, "_decoration", None)
-        if cached is None:
-            cached = DecorationEntity(self, None)
-            self._decoration = cached
-        return cached
-
-    def Decoration(self, data=None):
-        # Deprecated: use client.decoration instead.
+    def Decoration(self, data=None) -> "DecorationEntity":
+        """Entity factory: client.Decoration().list({}) / client.Decoration().load({"id": ...})."""
         from entity.decoration_entity import DecorationEntity
         return DecorationEntity(self, data)
 
 
-    @property
-    def event(self):
-        """Idiomatic facade: client.event.list() / client.event.load({"id": ...})."""
-        from entity.event_entity import EventEntity
-        cached = getattr(self, "_event", None)
-        if cached is None:
-            cached = EventEntity(self, None)
-            self._event = cached
-        return cached
-
-    def Event(self, data=None):
-        # Deprecated: use client.event instead.
+    def Event(self, data=None) -> "EventEntity":
+        """Entity factory: client.Event().list({}) / client.Event().load({"id": ...})."""
         from entity.event_entity import EventEntity
         return EventEntity(self, data)
 
 
-    @property
-    def item(self):
-        """Idiomatic facade: client.item.list() / client.item.load({"id": ...})."""
-        from entity.item_entity import ItemEntity
-        cached = getattr(self, "_item", None)
-        if cached is None:
-            cached = ItemEntity(self, None)
-            self._item = cached
-        return cached
-
-    def Item(self, data=None):
-        # Deprecated: use client.item instead.
+    def Item(self, data=None) -> "ItemEntity":
+        """Entity factory: client.Item().list({}) / client.Item().load({"id": ...})."""
         from entity.item_entity import ItemEntity
         return ItemEntity(self, data)
 
 
-    @property
-    def location(self):
-        """Idiomatic facade: client.location.list() / client.location.load({"id": ...})."""
-        from entity.location_entity import LocationEntity
-        cached = getattr(self, "_location", None)
-        if cached is None:
-            cached = LocationEntity(self, None)
-            self._location = cached
-        return cached
-
-    def Location(self, data=None):
-        # Deprecated: use client.location instead.
+    def Location(self, data=None) -> "LocationEntity":
+        """Entity factory: client.Location().list({}) / client.Location().load({"id": ...})."""
         from entity.location_entity import LocationEntity
         return LocationEntity(self, data)
 
 
-    @property
-    def monster(self):
-        """Idiomatic facade: client.monster.list() / client.monster.load({"id": ...})."""
-        from entity.monster_entity import MonsterEntity
-        cached = getattr(self, "_monster", None)
-        if cached is None:
-            cached = MonsterEntity(self, None)
-            self._monster = cached
-        return cached
-
-    def Monster(self, data=None):
-        # Deprecated: use client.monster instead.
+    def Monster(self, data=None) -> "MonsterEntity":
+        """Entity factory: client.Monster().list({}) / client.Monster().load({"id": ...})."""
         from entity.monster_entity import MonsterEntity
         return MonsterEntity(self, data)
 
 
-    @property
-    def motion_value(self):
-        """Idiomatic facade: client.motion_value.list() / client.motion_value.load({"id": ...})."""
-        from entity.motion_value_entity import MotionValueEntity
-        cached = getattr(self, "_motion_value", None)
-        if cached is None:
-            cached = MotionValueEntity(self, None)
-            self._motion_value = cached
-        return cached
-
-    def MotionValue(self, data=None):
-        # Deprecated: use client.motion_value instead.
+    def MotionValue(self, data=None) -> "MotionValueEntity":
+        """Entity factory: client.MotionValue().list({}) / client.MotionValue().load({"id": ...})."""
         from entity.motion_value_entity import MotionValueEntity
         return MotionValueEntity(self, data)
 
 
-    @property
-    def skill(self):
-        """Idiomatic facade: client.skill.list() / client.skill.load({"id": ...})."""
-        from entity.skill_entity import SkillEntity
-        cached = getattr(self, "_skill", None)
-        if cached is None:
-            cached = SkillEntity(self, None)
-            self._skill = cached
-        return cached
-
-    def Skill(self, data=None):
-        # Deprecated: use client.skill instead.
+    def Skill(self, data=None) -> "SkillEntity":
+        """Entity factory: client.Skill().list({}) / client.Skill().load({"id": ...})."""
         from entity.skill_entity import SkillEntity
         return SkillEntity(self, data)
 
 
-    @property
-    def weapon(self):
-        """Idiomatic facade: client.weapon.list() / client.weapon.load({"id": ...})."""
-        from entity.weapon_entity import WeaponEntity
-        cached = getattr(self, "_weapon", None)
-        if cached is None:
-            cached = WeaponEntity(self, None)
-            self._weapon = cached
-        return cached
-
-    def Weapon(self, data=None):
-        # Deprecated: use client.weapon instead.
+    def Weapon(self, data=None) -> "WeaponEntity":
+        """Entity factory: client.Weapon().list({}) / client.Weapon().load({"id": ...})."""
         from entity.weapon_entity import WeaponEntity
         return WeaponEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "MonsterHunterWorldSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -434,3 +314,20 @@ class MonsterHunterWorldSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.ailment_entity import AilmentEntity
+    from entity.armor_entity import ArmorEntity
+    from entity.armor_set_entity import ArmorSetEntity
+    from entity.charm_entity import CharmEntity
+    from entity.decoration_entity import DecorationEntity
+    from entity.event_entity import EventEntity
+    from entity.item_entity import ItemEntity
+    from entity.location_entity import LocationEntity
+    from entity.monster_entity import MonsterEntity
+    from entity.motion_value_entity import MotionValueEntity
+    from entity.skill_entity import SkillEntity
+    from entity.weapon_entity import WeaponEntity

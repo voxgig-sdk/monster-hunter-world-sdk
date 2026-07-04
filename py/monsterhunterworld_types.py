@@ -4,345 +4,313 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Ailment:
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    protection: Optional[dict] = None
-    recovery: Optional[dict] = None
+class Ailment(TypedDict, total=False):
+    description: str
+    id: int
+    name: str
+    protection: dict
+    recovery: dict
 
 
-@dataclass
-class AilmentLoadMatch:
+class AilmentLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class AilmentListMatch:
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    protection: Optional[dict] = None
-    recovery: Optional[dict] = None
+class AilmentListMatch(TypedDict, total=False):
+    description: str
+    id: int
+    name: str
+    protection: dict
+    recovery: dict
 
 
-@dataclass
-class Armor:
-    armor_set: Optional[dict] = None
-    asset: Optional[dict] = None
-    attribute: Optional[dict] = None
-    crafting: Optional[dict] = None
-    defense: Optional[dict] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    rank: Optional[str] = None
-    rarity: Optional[int] = None
-    resistance: Optional[dict] = None
-    skill: Optional[list] = None
-    slot: Optional[list] = None
-    type: Optional[str] = None
+class Armor(TypedDict, total=False):
+    armor_set: dict
+    asset: dict
+    attribute: dict
+    crafting: dict
+    defense: dict
+    id: int
+    name: str
+    rank: str
+    rarity: int
+    resistance: dict
+    skill: list
+    slot: list
+    type: str
 
 
-@dataclass
-class ArmorLoadMatch:
+class ArmorLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class ArmorListMatch:
-    armor_set: Optional[dict] = None
-    asset: Optional[dict] = None
-    attribute: Optional[dict] = None
-    crafting: Optional[dict] = None
-    defense: Optional[dict] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    rank: Optional[str] = None
-    rarity: Optional[int] = None
-    resistance: Optional[dict] = None
-    skill: Optional[list] = None
-    slot: Optional[list] = None
-    type: Optional[str] = None
+class ArmorListMatch(TypedDict, total=False):
+    armor_set: dict
+    asset: dict
+    attribute: dict
+    crafting: dict
+    defense: dict
+    id: int
+    name: str
+    rank: str
+    rarity: int
+    resistance: dict
+    skill: list
+    slot: list
+    type: str
 
 
-@dataclass
-class ArmorSet:
-    bonus: Optional[dict] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    piece: Optional[list] = None
-    rank: Optional[str] = None
+class ArmorSet(TypedDict, total=False):
+    bonus: dict
+    id: int
+    name: str
+    piece: list
+    rank: str
 
 
-@dataclass
-class ArmorSetLoadMatch:
+class ArmorSetLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class ArmorSetListMatch:
-    bonus: Optional[dict] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    piece: Optional[list] = None
-    rank: Optional[str] = None
+class ArmorSetListMatch(TypedDict, total=False):
+    bonus: dict
+    id: int
+    name: str
+    piece: list
+    rank: str
 
 
-@dataclass
-class Charm:
-    crafting: Optional[dict] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    rarity: Optional[int] = None
-    skill: Optional[list] = None
+class Charm(TypedDict, total=False):
+    crafting: dict
+    id: int
+    name: str
+    rarity: int
+    skill: list
 
 
-@dataclass
-class CharmLoadMatch:
+class CharmLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class CharmListMatch:
-    crafting: Optional[dict] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    rarity: Optional[int] = None
-    skill: Optional[list] = None
+class CharmListMatch(TypedDict, total=False):
+    crafting: dict
+    id: int
+    name: str
+    rarity: int
+    skill: list
 
 
-@dataclass
-class Decoration:
-    id: Optional[int] = None
-    name: Optional[str] = None
-    rarity: Optional[int] = None
-    skill: Optional[list] = None
-    slot: Optional[int] = None
+class Decoration(TypedDict, total=False):
+    id: int
+    name: str
+    rarity: int
+    skill: list
+    slot: int
 
 
-@dataclass
-class DecorationLoadMatch:
+class DecorationLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class DecorationListMatch:
-    id: Optional[int] = None
-    name: Optional[str] = None
-    rarity: Optional[int] = None
-    skill: Optional[list] = None
-    slot: Optional[int] = None
+class DecorationListMatch(TypedDict, total=False):
+    id: int
+    name: str
+    rarity: int
+    skill: list
+    slot: int
 
 
-@dataclass
-class Event:
-    description: Optional[str] = None
-    end_timestamp: Optional[str] = None
-    exclusive: Optional[str] = None
-    expansion: Optional[str] = None
-    id: Optional[int] = None
-    location: Optional[dict] = None
-    name: Optional[str] = None
-    platform: Optional[str] = None
-    quest_rank: Optional[str] = None
-    requirement: Optional[str] = None
-    start_timestamp: Optional[str] = None
-    success_condition: Optional[str] = None
-    type: Optional[str] = None
+class Event(TypedDict, total=False):
+    description: str
+    end_timestamp: str
+    exclusive: str
+    expansion: str
+    id: int
+    location: dict
+    name: str
+    platform: str
+    quest_rank: str
+    requirement: str
+    start_timestamp: str
+    success_condition: str
+    type: str
 
 
-@dataclass
-class EventLoadMatch:
+class EventLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class EventListMatch:
-    description: Optional[str] = None
-    end_timestamp: Optional[str] = None
-    exclusive: Optional[str] = None
-    expansion: Optional[str] = None
-    id: Optional[int] = None
-    location: Optional[dict] = None
-    name: Optional[str] = None
-    platform: Optional[str] = None
-    quest_rank: Optional[str] = None
-    requirement: Optional[str] = None
-    start_timestamp: Optional[str] = None
-    success_condition: Optional[str] = None
-    type: Optional[str] = None
+class EventListMatch(TypedDict, total=False):
+    description: str
+    end_timestamp: str
+    exclusive: str
+    expansion: str
+    id: int
+    location: dict
+    name: str
+    platform: str
+    quest_rank: str
+    requirement: str
+    start_timestamp: str
+    success_condition: str
+    type: str
 
 
-@dataclass
-class Item:
-    buy_price: Optional[int] = None
-    carry_limit: Optional[int] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    rarity: Optional[int] = None
-    sell_price: Optional[int] = None
-    value: Optional[int] = None
+class Item(TypedDict, total=False):
+    buy_price: int
+    carry_limit: int
+    description: str
+    id: int
+    name: str
+    rarity: int
+    sell_price: int
+    value: int
 
 
-@dataclass
-class ItemLoadMatch:
+class ItemLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class ItemListMatch:
-    buy_price: Optional[int] = None
-    carry_limit: Optional[int] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    rarity: Optional[int] = None
-    sell_price: Optional[int] = None
-    value: Optional[int] = None
+class ItemListMatch(TypedDict, total=False):
+    buy_price: int
+    carry_limit: int
+    description: str
+    id: int
+    name: str
+    rarity: int
+    sell_price: int
+    value: int
 
 
-@dataclass
-class Location:
-    camp: Optional[list] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    zone_count: Optional[int] = None
+class Location(TypedDict, total=False):
+    camp: list
+    id: int
+    name: str
+    zone_count: int
 
 
-@dataclass
-class LocationLoadMatch:
+class LocationLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class LocationListMatch:
-    camp: Optional[list] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    zone_count: Optional[int] = None
+class LocationListMatch(TypedDict, total=False):
+    camp: list
+    id: int
+    name: str
+    zone_count: int
 
 
-@dataclass
-class Monster:
-    ailment: Optional[list] = None
-    description: Optional[str] = None
-    element: Optional[list] = None
-    id: Optional[int] = None
-    location: Optional[list] = None
-    name: Optional[str] = None
-    resistance: Optional[list] = None
-    reward: Optional[list] = None
-    species: Optional[str] = None
-    type: Optional[str] = None
-    weakness: Optional[list] = None
+class Monster(TypedDict, total=False):
+    ailment: list
+    description: str
+    element: list
+    id: int
+    location: list
+    name: str
+    resistance: list
+    reward: list
+    species: str
+    type: str
+    weakness: list
 
 
-@dataclass
-class MonsterLoadMatch:
+class MonsterLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class MonsterListMatch:
-    ailment: Optional[list] = None
-    description: Optional[str] = None
-    element: Optional[list] = None
-    id: Optional[int] = None
-    location: Optional[list] = None
-    name: Optional[str] = None
-    resistance: Optional[list] = None
-    reward: Optional[list] = None
-    species: Optional[str] = None
-    type: Optional[str] = None
-    weakness: Optional[list] = None
+class MonsterListMatch(TypedDict, total=False):
+    ailment: list
+    description: str
+    element: list
+    id: int
+    location: list
+    name: str
+    resistance: list
+    reward: list
+    species: str
+    type: str
+    weakness: list
 
 
-@dataclass
-class MotionValue:
-    damage_type: Optional[str] = None
-    exhaust: Optional[int] = None
-    hit: Optional[list] = None
-    id: Optional[int] = None
-    stun: Optional[int] = None
-    weapon_type: Optional[str] = None
+class MotionValue(TypedDict, total=False):
+    damage_type: str
+    exhaust: int
+    hit: list
+    id: int
+    stun: int
+    weapon_type: str
 
 
-@dataclass
-class MotionValueLoadMatch:
+class MotionValueLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class MotionValueListMatch:
-    damage_type: Optional[str] = None
-    exhaust: Optional[int] = None
-    hit: Optional[list] = None
-    id: Optional[int] = None
-    stun: Optional[int] = None
-    weapon_type: Optional[str] = None
+class MotionValueListMatch(TypedDict, total=False):
+    damage_type: str
+    exhaust: int
+    hit: list
+    id: int
+    stun: int
+    weapon_type: str
 
 
-@dataclass
-class Skill:
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    rank: Optional[list] = None
+class Skill(TypedDict, total=False):
+    description: str
+    id: int
+    name: str
+    rank: list
 
 
-@dataclass
-class SkillLoadMatch:
+class SkillLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class SkillListMatch:
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    rank: Optional[list] = None
+class SkillListMatch(TypedDict, total=False):
+    description: str
+    id: int
+    name: str
+    rank: list
 
 
-@dataclass
-class Weapon:
-    asset: Optional[dict] = None
-    attack: Optional[dict] = None
-    attribute: Optional[dict] = None
-    crafting: Optional[dict] = None
-    damage_type: Optional[str] = None
-    element: Optional[list] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    rarity: Optional[int] = None
-    slot: Optional[list] = None
-    type: Optional[str] = None
+class Weapon(TypedDict, total=False):
+    asset: dict
+    attack: dict
+    attribute: dict
+    crafting: dict
+    damage_type: str
+    element: list
+    id: int
+    name: str
+    rarity: int
+    slot: list
+    type: str
 
 
-@dataclass
-class WeaponLoadMatch:
+class WeaponLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class WeaponListMatch:
-    asset: Optional[dict] = None
-    attack: Optional[dict] = None
-    attribute: Optional[dict] = None
-    crafting: Optional[dict] = None
-    damage_type: Optional[str] = None
-    element: Optional[list] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    rarity: Optional[int] = None
-    slot: Optional[list] = None
-    type: Optional[str] = None
-
+class WeaponListMatch(TypedDict, total=False):
+    asset: dict
+    attack: dict
+    attribute: dict
+    crafting: dict
+    damage_type: str
+    element: list
+    id: int
+    name: str
+    rarity: int
+    slot: list
+    type: str

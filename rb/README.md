@@ -28,16 +28,14 @@ require_relative "MonsterHunterWorld_sdk"
 client = MonsterHunterWorldSDK.new
 ```
 
-### 2. List ailments
+### 2. List ailment records
 
 ```ruby
 begin
-  result = client.ailment.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Ailment records — iterate directly.
+  ailments = client.Ailment.list
+  ailments.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,8 +46,9 @@ end
 
 ```ruby
 begin
-  result = client.ailment.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Ailment record (raises on error).
+  ailment = client.Ailment.load({ "id" => "example_id" })
+  puts ailment
 rescue => err
   warn "load failed: #{err}"
 end
@@ -96,13 +95,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = MonsterHunterWorldSDK.test
+client = MonsterHunterWorldSDK.test({
+  "entity" => { "ailment" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.ailment.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+ailment = client.Ailment.load({ "id" => "test01" })
+puts ailment
 ```
 
 ### Use a custom fetch function
@@ -178,13 +181,13 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
-| `Ailment` | `(data) -> AilmentEntity` | Create a Ailment entity instance. |
-| `Armor` | `(data) -> ArmorEntity` | Create a Armor entity instance. |
-| `ArmorSet` | `(data) -> ArmorSetEntity` | Create a ArmorSet entity instance. |
+| `Ailment` | `(data) -> AilmentEntity` | Create an Ailment entity instance. |
+| `Armor` | `(data) -> ArmorEntity` | Create an Armor entity instance. |
+| `ArmorSet` | `(data) -> ArmorSetEntity` | Create an ArmorSet entity instance. |
 | `Charm` | `(data) -> CharmEntity` | Create a Charm entity instance. |
 | `Decoration` | `(data) -> DecorationEntity` | Create a Decoration entity instance. |
-| `Event` | `(data) -> EventEntity` | Create a Event entity instance. |
-| `Item` | `(data) -> ItemEntity` | Create a Item entity instance. |
+| `Event` | `(data) -> EventEntity` | Create an Event entity instance. |
+| `Item` | `(data) -> ItemEntity` | Create an Item entity instance. |
 | `Location` | `(data) -> LocationEntity` | Create a Location entity instance. |
 | `Monster` | `(data) -> MonsterEntity` | Create a Monster entity instance. |
 | `MotionValue` | `(data) -> MotionValueEntity` | Create a MotionValue entity instance. |
@@ -433,7 +436,7 @@ API path: `/weapons`
 
 ### Ailment
 
-Create an instance: `const ailment = client.ailment`
+Create an instance: `ailment = client.Ailment`
 
 #### Operations
 
@@ -454,20 +457,22 @@ Create an instance: `const ailment = client.ailment`
 
 #### Example: Load
 
-```ts
-const ailment = await client.ailment.load({ id: 'ailment_id' })
+```ruby
+# load returns the bare Ailment record (raises on error).
+ailment = client.Ailment.load({ "id" => "ailment_id" })
 ```
 
 #### Example: List
 
-```ts
-const ailments = await client.ailment.list()
+```ruby
+# list returns an Array of Ailment records (raises on error).
+ailments = client.Ailment.list
 ```
 
 
 ### Armor
 
-Create an instance: `const armor = client.armor`
+Create an instance: `armor = client.Armor`
 
 #### Operations
 
@@ -496,20 +501,22 @@ Create an instance: `const armor = client.armor`
 
 #### Example: Load
 
-```ts
-const armor = await client.armor.load({ id: 'armor_id' })
+```ruby
+# load returns the bare Armor record (raises on error).
+armor = client.Armor.load({ "id" => "armor_id" })
 ```
 
 #### Example: List
 
-```ts
-const armors = await client.armor.list()
+```ruby
+# list returns an Array of Armor records (raises on error).
+armors = client.Armor.list
 ```
 
 
 ### ArmorSet
 
-Create an instance: `const armor_set = client.armor_set`
+Create an instance: `armor_set = client.ArmorSet`
 
 #### Operations
 
@@ -530,20 +537,22 @@ Create an instance: `const armor_set = client.armor_set`
 
 #### Example: Load
 
-```ts
-const armor_set = await client.armor_set.load({ id: 'armor_set_id' })
+```ruby
+# load returns the bare ArmorSet record (raises on error).
+armor_set = client.ArmorSet.load({ "id" => "armor_set_id" })
 ```
 
 #### Example: List
 
-```ts
-const armor_sets = await client.armor_set.list()
+```ruby
+# list returns an Array of ArmorSet records (raises on error).
+armor_sets = client.ArmorSet.list
 ```
 
 
 ### Charm
 
-Create an instance: `const charm = client.charm`
+Create an instance: `charm = client.Charm`
 
 #### Operations
 
@@ -564,20 +573,22 @@ Create an instance: `const charm = client.charm`
 
 #### Example: Load
 
-```ts
-const charm = await client.charm.load({ id: 'charm_id' })
+```ruby
+# load returns the bare Charm record (raises on error).
+charm = client.Charm.load({ "id" => "charm_id" })
 ```
 
 #### Example: List
 
-```ts
-const charms = await client.charm.list()
+```ruby
+# list returns an Array of Charm records (raises on error).
+charms = client.Charm.list
 ```
 
 
 ### Decoration
 
-Create an instance: `const decoration = client.decoration`
+Create an instance: `decoration = client.Decoration`
 
 #### Operations
 
@@ -598,20 +609,22 @@ Create an instance: `const decoration = client.decoration`
 
 #### Example: Load
 
-```ts
-const decoration = await client.decoration.load({ id: 'decoration_id' })
+```ruby
+# load returns the bare Decoration record (raises on error).
+decoration = client.Decoration.load({ "id" => "decoration_id" })
 ```
 
 #### Example: List
 
-```ts
-const decorations = await client.decoration.list()
+```ruby
+# list returns an Array of Decoration records (raises on error).
+decorations = client.Decoration.list
 ```
 
 
 ### Event
 
-Create an instance: `const event = client.event`
+Create an instance: `event = client.Event`
 
 #### Operations
 
@@ -640,20 +653,22 @@ Create an instance: `const event = client.event`
 
 #### Example: Load
 
-```ts
-const event = await client.event.load({ id: 'event_id' })
+```ruby
+# load returns the bare Event record (raises on error).
+event = client.Event.load({ "id" => "event_id" })
 ```
 
 #### Example: List
 
-```ts
-const events = await client.event.list()
+```ruby
+# list returns an Array of Event records (raises on error).
+events = client.Event.list
 ```
 
 
 ### Item
 
-Create an instance: `const item = client.item`
+Create an instance: `item = client.Item`
 
 #### Operations
 
@@ -677,20 +692,22 @@ Create an instance: `const item = client.item`
 
 #### Example: Load
 
-```ts
-const item = await client.item.load({ id: 'item_id' })
+```ruby
+# load returns the bare Item record (raises on error).
+item = client.Item.load({ "id" => "item_id" })
 ```
 
 #### Example: List
 
-```ts
-const items = await client.item.list()
+```ruby
+# list returns an Array of Item records (raises on error).
+items = client.Item.list
 ```
 
 
 ### Location
 
-Create an instance: `const location = client.location`
+Create an instance: `location = client.Location`
 
 #### Operations
 
@@ -710,20 +727,22 @@ Create an instance: `const location = client.location`
 
 #### Example: Load
 
-```ts
-const location = await client.location.load({ id: 'location_id' })
+```ruby
+# load returns the bare Location record (raises on error).
+location = client.Location.load({ "id" => "location_id" })
 ```
 
 #### Example: List
 
-```ts
-const locations = await client.location.list()
+```ruby
+# list returns an Array of Location records (raises on error).
+locations = client.Location.list
 ```
 
 
 ### Monster
 
-Create an instance: `const monster = client.monster`
+Create an instance: `monster = client.Monster`
 
 #### Operations
 
@@ -750,20 +769,22 @@ Create an instance: `const monster = client.monster`
 
 #### Example: Load
 
-```ts
-const monster = await client.monster.load({ id: 'monster_id' })
+```ruby
+# load returns the bare Monster record (raises on error).
+monster = client.Monster.load({ "id" => "monster_id" })
 ```
 
 #### Example: List
 
-```ts
-const monsters = await client.monster.list()
+```ruby
+# list returns an Array of Monster records (raises on error).
+monsters = client.Monster.list
 ```
 
 
 ### MotionValue
 
-Create an instance: `const motion_value = client.motion_value`
+Create an instance: `motion_value = client.MotionValue`
 
 #### Operations
 
@@ -785,20 +806,22 @@ Create an instance: `const motion_value = client.motion_value`
 
 #### Example: Load
 
-```ts
-const motion_value = await client.motion_value.load({ id: 'motion_value_id' })
+```ruby
+# load returns the bare MotionValue record (raises on error).
+motion_value = client.MotionValue.load({ "id" => "motion_value_id" })
 ```
 
 #### Example: List
 
-```ts
-const motion_values = await client.motion_value.list()
+```ruby
+# list returns an Array of MotionValue records (raises on error).
+motion_values = client.MotionValue.list
 ```
 
 
 ### Skill
 
-Create an instance: `const skill = client.skill`
+Create an instance: `skill = client.Skill`
 
 #### Operations
 
@@ -818,20 +841,22 @@ Create an instance: `const skill = client.skill`
 
 #### Example: Load
 
-```ts
-const skill = await client.skill.load({ id: 'skill_id' })
+```ruby
+# load returns the bare Skill record (raises on error).
+skill = client.Skill.load({ "id" => "skill_id" })
 ```
 
 #### Example: List
 
-```ts
-const skills = await client.skill.list()
+```ruby
+# list returns an Array of Skill records (raises on error).
+skills = client.Skill.list
 ```
 
 
 ### Weapon
 
-Create an instance: `const weapon = client.weapon`
+Create an instance: `weapon = client.Weapon`
 
 #### Operations
 
@@ -858,14 +883,16 @@ Create an instance: `const weapon = client.weapon`
 
 #### Example: Load
 
-```ts
-const weapon = await client.weapon.load({ id: 'weapon_id' })
+```ruby
+# load returns the bare Weapon record (raises on error).
+weapon = client.Weapon.load({ "id" => "weapon_id" })
 ```
 
 #### Example: List
 
-```ts
-const weapons = await client.weapon.list()
+```ruby
+# list returns an Array of Weapon records (raises on error).
+weapons = client.Weapon.list
 ```
 
 
@@ -940,7 +967,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-ailment = client.ailment
+ailment = client.Ailment
 ailment.load({ "id" => "example_id" })
 
 # ailment.data_get now returns the loaded ailment data

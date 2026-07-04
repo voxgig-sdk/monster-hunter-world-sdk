@@ -28,25 +28,28 @@ import { MonsterHunterWorldSDK } from '@voxgig-sdk/monster-hunter-world'
 const client = new MonsterHunterWorldSDK()
 ```
 
-### 2. List ailments
+### 2. List ailment records
+
+`list()` resolves to an array of Ailment objects — iterate it directly:
 
 ```ts
-const result = await client.ailment.list()
+const ailments = await client.Ailment().list()
 
-if (result.ok) {
-  for (const item of result.data) {
-    console.log(item.id, item.name)
-  }
+for (const ailment of ailments) {
+  console.log(ailment)
 }
 ```
 
 ### 3. Load an ailment
 
-```ts
-const result = await client.ailment.load({ id: 'example_id' })
+`load()` returns the entity directly and throws on failure:
 
-if (result.ok) {
-  console.log(result.data)
+```ts
+try {
+  const ailment = await client.Ailment().load({ id: 'example_id' })
+  console.log(ailment)
+} catch (err) {
+  console.error('load failed:', err)
 }
 ```
 
@@ -64,6 +67,9 @@ const result = await client.direct({
   params: { id: 'example' },
 })
 
+if (result instanceof Error) {
+  throw result
+}
 if (result.ok) {
   console.log(result.status)  // 200
   console.log(result.data)    // response body
@@ -92,9 +98,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = MonsterHunterWorldSDK.test()
 
-const result = await client.ailment.load({ id: 'test01' })
-// result.ok === true
-// result.data contains mock response data
+const ailment = await client.Ailment().load({ id: 'test01' })
+// ailment is a bare entity populated with mock response data
+console.log(ailment)
 ```
 
 You can also use the instance method:
@@ -109,7 +115,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.ailment
+const entity = client.Ailment()
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -187,13 +193,13 @@ new MonsterHunterWorldSDK(options?: {
 | `utility()` | `Utility` | Deep copy of the SDK utility object. |
 | `prepare(fetchargs?)` | `Promise<FetchDef>` | Build an HTTP request definition without sending it. |
 | `direct(fetchargs?)` | `Promise<DirectResult>` | Build and send an HTTP request. |
-| `Ailment(data?)` | `AilmentEntity` | Create a Ailment entity instance. |
-| `Armor(data?)` | `ArmorEntity` | Create a Armor entity instance. |
-| `ArmorSet(data?)` | `ArmorSetEntity` | Create a ArmorSet entity instance. |
+| `Ailment(data?)` | `AilmentEntity` | Create an Ailment entity instance. |
+| `Armor(data?)` | `ArmorEntity` | Create an Armor entity instance. |
+| `ArmorSet(data?)` | `ArmorSetEntity` | Create an ArmorSet entity instance. |
 | `Charm(data?)` | `CharmEntity` | Create a Charm entity instance. |
 | `Decoration(data?)` | `DecorationEntity` | Create a Decoration entity instance. |
-| `Event(data?)` | `EventEntity` | Create a Event entity instance. |
-| `Item(data?)` | `ItemEntity` | Create a Item entity instance. |
+| `Event(data?)` | `EventEntity` | Create an Event entity instance. |
+| `Item(data?)` | `ItemEntity` | Create an Item entity instance. |
 | `Location(data?)` | `LocationEntity` | Create a Location entity instance. |
 | `Monster(data?)` | `MonsterEntity` | Create a Monster entity instance. |
 | `MotionValue(data?)` | `MotionValueEntity` | Create a MotionValue entity instance. |
@@ -215,29 +221,30 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `load(reqmatch?, ctrl?): Promise<Result>` | Load a single entity by match criteria. |
-| `list` | `list(reqmatch?, ctrl?): Promise<Result>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Result>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Result>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<Result>` | Remove an entity. |
+| `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
+| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
+| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
+| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
+| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
 | `data` | `data(data?): any` | Get or set entity data. |
 | `match` | `match(match?): any` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): MonsterHunterWorldSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
 
-#### Result shape
+#### Return values
 
-All entity operations return a Result object:
+Entity operations resolve to the entity data directly — there is no
+result envelope:
 
-```ts
-{
-  ok: boolean      // true if the HTTP status is 2xx
-  status: number   // HTTP status code
-  headers: object  // response headers
-  data: any        // parsed JSON response body
-}
-```
+- `load`, `create` and `update` resolve to a single entity object.
+- `list` resolves to an **array** of entity objects (iterate it directly;
+  there is no `.data` and no `.ok`).
+- `remove` resolves to `void`.
+
+On a failed request these methods **throw**, so wrap calls in
+`try`/`catch` to handle errors. Only `direct()` returns the result
+envelope described below.
 
 ### DirectResult shape
 
@@ -474,7 +481,7 @@ API path: `/weapons`
 
 ### Ailment
 
-Create an instance: `const ailment = client.ailment`
+Create an instance: `const ailment = client.Ailment()`
 
 #### Operations
 
@@ -496,19 +503,19 @@ Create an instance: `const ailment = client.ailment`
 #### Example: Load
 
 ```ts
-const ailment = await client.ailment.load({ id: 'ailment_id' })
+const ailment = await client.Ailment().load({ id: 'ailment_id' })
 ```
 
 #### Example: List
 
 ```ts
-const ailments = await client.ailment.list()
+const ailments = await client.Ailment().list()
 ```
 
 
 ### Armor
 
-Create an instance: `const armor = client.armor`
+Create an instance: `const armor = client.Armor()`
 
 #### Operations
 
@@ -538,19 +545,19 @@ Create an instance: `const armor = client.armor`
 #### Example: Load
 
 ```ts
-const armor = await client.armor.load({ id: 'armor_id' })
+const armor = await client.Armor().load({ id: 'armor_id' })
 ```
 
 #### Example: List
 
 ```ts
-const armors = await client.armor.list()
+const armors = await client.Armor().list()
 ```
 
 
 ### ArmorSet
 
-Create an instance: `const armor_set = client.armor_set`
+Create an instance: `const armor_set = client.ArmorSet()`
 
 #### Operations
 
@@ -572,19 +579,19 @@ Create an instance: `const armor_set = client.armor_set`
 #### Example: Load
 
 ```ts
-const armor_set = await client.armor_set.load({ id: 'armor_set_id' })
+const armor_set = await client.ArmorSet().load({ id: 'armor_set_id' })
 ```
 
 #### Example: List
 
 ```ts
-const armor_sets = await client.armor_set.list()
+const armor_sets = await client.ArmorSet().list()
 ```
 
 
 ### Charm
 
-Create an instance: `const charm = client.charm`
+Create an instance: `const charm = client.Charm()`
 
 #### Operations
 
@@ -606,19 +613,19 @@ Create an instance: `const charm = client.charm`
 #### Example: Load
 
 ```ts
-const charm = await client.charm.load({ id: 'charm_id' })
+const charm = await client.Charm().load({ id: 'charm_id' })
 ```
 
 #### Example: List
 
 ```ts
-const charms = await client.charm.list()
+const charms = await client.Charm().list()
 ```
 
 
 ### Decoration
 
-Create an instance: `const decoration = client.decoration`
+Create an instance: `const decoration = client.Decoration()`
 
 #### Operations
 
@@ -640,19 +647,19 @@ Create an instance: `const decoration = client.decoration`
 #### Example: Load
 
 ```ts
-const decoration = await client.decoration.load({ id: 'decoration_id' })
+const decoration = await client.Decoration().load({ id: 'decoration_id' })
 ```
 
 #### Example: List
 
 ```ts
-const decorations = await client.decoration.list()
+const decorations = await client.Decoration().list()
 ```
 
 
 ### Event
 
-Create an instance: `const event = client.event`
+Create an instance: `const event = client.Event()`
 
 #### Operations
 
@@ -682,19 +689,19 @@ Create an instance: `const event = client.event`
 #### Example: Load
 
 ```ts
-const event = await client.event.load({ id: 'event_id' })
+const event = await client.Event().load({ id: 'event_id' })
 ```
 
 #### Example: List
 
 ```ts
-const events = await client.event.list()
+const events = await client.Event().list()
 ```
 
 
 ### Item
 
-Create an instance: `const item = client.item`
+Create an instance: `const item = client.Item()`
 
 #### Operations
 
@@ -719,19 +726,19 @@ Create an instance: `const item = client.item`
 #### Example: Load
 
 ```ts
-const item = await client.item.load({ id: 'item_id' })
+const item = await client.Item().load({ id: 'item_id' })
 ```
 
 #### Example: List
 
 ```ts
-const items = await client.item.list()
+const items = await client.Item().list()
 ```
 
 
 ### Location
 
-Create an instance: `const location = client.location`
+Create an instance: `const location = client.Location()`
 
 #### Operations
 
@@ -752,19 +759,19 @@ Create an instance: `const location = client.location`
 #### Example: Load
 
 ```ts
-const location = await client.location.load({ id: 'location_id' })
+const location = await client.Location().load({ id: 'location_id' })
 ```
 
 #### Example: List
 
 ```ts
-const locations = await client.location.list()
+const locations = await client.Location().list()
 ```
 
 
 ### Monster
 
-Create an instance: `const monster = client.monster`
+Create an instance: `const monster = client.Monster()`
 
 #### Operations
 
@@ -792,19 +799,19 @@ Create an instance: `const monster = client.monster`
 #### Example: Load
 
 ```ts
-const monster = await client.monster.load({ id: 'monster_id' })
+const monster = await client.Monster().load({ id: 'monster_id' })
 ```
 
 #### Example: List
 
 ```ts
-const monsters = await client.monster.list()
+const monsters = await client.Monster().list()
 ```
 
 
 ### MotionValue
 
-Create an instance: `const motion_value = client.motion_value`
+Create an instance: `const motion_value = client.MotionValue()`
 
 #### Operations
 
@@ -827,19 +834,19 @@ Create an instance: `const motion_value = client.motion_value`
 #### Example: Load
 
 ```ts
-const motion_value = await client.motion_value.load({ id: 'motion_value_id' })
+const motion_value = await client.MotionValue().load({ id: 'motion_value_id' })
 ```
 
 #### Example: List
 
 ```ts
-const motion_values = await client.motion_value.list()
+const motion_values = await client.MotionValue().list()
 ```
 
 
 ### Skill
 
-Create an instance: `const skill = client.skill`
+Create an instance: `const skill = client.Skill()`
 
 #### Operations
 
@@ -860,19 +867,19 @@ Create an instance: `const skill = client.skill`
 #### Example: Load
 
 ```ts
-const skill = await client.skill.load({ id: 'skill_id' })
+const skill = await client.Skill().load({ id: 'skill_id' })
 ```
 
 #### Example: List
 
 ```ts
-const skills = await client.skill.list()
+const skills = await client.Skill().list()
 ```
 
 
 ### Weapon
 
-Create an instance: `const weapon = client.weapon`
+Create an instance: `const weapon = client.Weapon()`
 
 #### Operations
 
@@ -900,13 +907,13 @@ Create an instance: `const weapon = client.weapon`
 #### Example: Load
 
 ```ts
-const weapon = await client.weapon.load({ id: 'weapon_id' })
+const weapon = await client.Weapon().load({ id: 'weapon_id' })
 ```
 
 #### Example: List
 
 ```ts
-const weapons = await client.weapon.list()
+const weapons = await client.Weapon().list()
 ```
 
 
@@ -977,7 +984,7 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const ailment = client.ailment
+const ailment = client.Ailment()
 await ailment.load({ id: "example_id" })
 
 // ailment.data() now returns the loaded ailment data

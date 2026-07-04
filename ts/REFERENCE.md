@@ -241,7 +241,7 @@ Alias for `MonsterHunterWorldSDK.test()`.
 ## AilmentEntity
 
 ```ts
-const ailment = client.ailment
+const ailment = client.Ailment()
 ```
 
 ### Fields
@@ -261,7 +261,7 @@ const ailment = client.ailment
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ailment.list()
+const results = await client.Ailment().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -269,7 +269,7 @@ const results = await client.ailment.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ailment.load({ id: 'ailment_id' })
+const result = await client.Ailment().load({ id: 'ailment_id' })
 ```
 
 ### Common Methods
@@ -303,7 +303,7 @@ Return a copy of the entity options.
 ## ArmorEntity
 
 ```ts
-const armor = client.armor
+const armor = client.Armor()
 ```
 
 ### Fields
@@ -331,7 +331,7 @@ const armor = client.armor
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.armor.list()
+const results = await client.Armor().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -339,7 +339,7 @@ const results = await client.armor.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.armor.load({ id: 'armor_id' })
+const result = await client.Armor().load({ id: 'armor_id' })
 ```
 
 ### Common Methods
@@ -373,7 +373,7 @@ Return a copy of the entity options.
 ## ArmorSetEntity
 
 ```ts
-const armor_set = client.armor_set
+const armor_set = client.ArmorSet()
 ```
 
 ### Fields
@@ -393,7 +393,7 @@ const armor_set = client.armor_set
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.armor_set.list()
+const results = await client.ArmorSet().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -401,7 +401,7 @@ const results = await client.armor_set.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.armor_set.load({ id: 'armor_set_id' })
+const result = await client.ArmorSet().load({ id: 'armor_set_id' })
 ```
 
 ### Common Methods
@@ -435,7 +435,7 @@ Return a copy of the entity options.
 ## CharmEntity
 
 ```ts
-const charm = client.charm
+const charm = client.Charm()
 ```
 
 ### Fields
@@ -455,7 +455,7 @@ const charm = client.charm
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.charm.list()
+const results = await client.Charm().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -463,7 +463,7 @@ const results = await client.charm.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.charm.load({ id: 'charm_id' })
+const result = await client.Charm().load({ id: 'charm_id' })
 ```
 
 ### Common Methods
@@ -497,7 +497,7 @@ Return a copy of the entity options.
 ## DecorationEntity
 
 ```ts
-const decoration = client.decoration
+const decoration = client.Decoration()
 ```
 
 ### Fields
@@ -517,7 +517,7 @@ const decoration = client.decoration
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.decoration.list()
+const results = await client.Decoration().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -525,7 +525,7 @@ const results = await client.decoration.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.decoration.load({ id: 'decoration_id' })
+const result = await client.Decoration().load({ id: 'decoration_id' })
 ```
 
 ### Common Methods
@@ -559,7 +559,7 @@ Return a copy of the entity options.
 ## EventEntity
 
 ```ts
-const event = client.event
+const event = client.Event()
 ```
 
 ### Fields
@@ -587,7 +587,7 @@ const event = client.event
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.event.list()
+const results = await client.Event().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -595,7 +595,7 @@ const results = await client.event.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.event.load({ id: 'event_id' })
+const result = await client.Event().load({ id: 'event_id' })
 ```
 
 ### Common Methods
@@ -629,7 +629,7 @@ Return a copy of the entity options.
 ## ItemEntity
 
 ```ts
-const item = client.item
+const item = client.Item()
 ```
 
 ### Fields
@@ -652,7 +652,7 @@ const item = client.item
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.item.list()
+const results = await client.Item().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -660,7 +660,7 @@ const results = await client.item.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.item.load({ id: 'item_id' })
+const result = await client.Item().load({ id: 'item_id' })
 ```
 
 ### Common Methods
@@ -694,7 +694,7 @@ Return a copy of the entity options.
 ## LocationEntity
 
 ```ts
-const location = client.location
+const location = client.Location()
 ```
 
 ### Fields
@@ -713,7 +713,7 @@ const location = client.location
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.location.list()
+const results = await client.Location().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -721,7 +721,7 @@ const results = await client.location.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.location.load({ id: 'location_id' })
+const result = await client.Location().load({ id: 'location_id' })
 ```
 
 ### Common Methods
@@ -755,7 +755,7 @@ Return a copy of the entity options.
 ## MonsterEntity
 
 ```ts
-const monster = client.monster
+const monster = client.Monster()
 ```
 
 ### Fields
@@ -781,7 +781,7 @@ const monster = client.monster
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.monster.list()
+const results = await client.Monster().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -789,7 +789,7 @@ const results = await client.monster.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.monster.load({ id: 'monster_id' })
+const result = await client.Monster().load({ id: 'monster_id' })
 ```
 
 ### Common Methods
@@ -823,7 +823,7 @@ Return a copy of the entity options.
 ## MotionValueEntity
 
 ```ts
-const motion_value = client.motion_value
+const motion_value = client.MotionValue()
 ```
 
 ### Fields
@@ -844,7 +844,7 @@ const motion_value = client.motion_value
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.motion_value.list()
+const results = await client.MotionValue().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -852,7 +852,7 @@ const results = await client.motion_value.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.motion_value.load({ id: 'motion_value_id' })
+const result = await client.MotionValue().load({ id: 'motion_value_id' })
 ```
 
 ### Common Methods
@@ -886,7 +886,7 @@ Return a copy of the entity options.
 ## SkillEntity
 
 ```ts
-const skill = client.skill
+const skill = client.Skill()
 ```
 
 ### Fields
@@ -905,7 +905,7 @@ const skill = client.skill
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.skill.list()
+const results = await client.Skill().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -913,7 +913,7 @@ const results = await client.skill.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.skill.load({ id: 'skill_id' })
+const result = await client.Skill().load({ id: 'skill_id' })
 ```
 
 ### Common Methods
@@ -947,7 +947,7 @@ Return a copy of the entity options.
 ## WeaponEntity
 
 ```ts
-const weapon = client.weapon
+const weapon = client.Weapon()
 ```
 
 ### Fields
@@ -973,7 +973,7 @@ const weapon = client.weapon
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.weapon.list()
+const results = await client.Weapon().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -981,7 +981,7 @@ const results = await client.weapon.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.weapon.load({ id: 'weapon_id' })
+const result = await client.Weapon().load({ id: 'weapon_id' })
 ```
 
 ### Common Methods
