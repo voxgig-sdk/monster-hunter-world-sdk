@@ -141,11 +141,11 @@ ailment := client.Ailment(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `protection` | ``$OBJECT`` | No |  |
-| `recovery` | ``$OBJECT`` | No |  |
+| `description` | `string` | No |  |
+| `id` | `int` | No |  |
+| `name` | `string` | No |  |
+| `protection` | `map[string]any` | No |  |
+| `recovery` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -199,19 +199,19 @@ armor := client.Armor(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `armor_set` | ``$OBJECT`` | No |  |
-| `asset` | ``$OBJECT`` | No |  |
-| `attribute` | ``$OBJECT`` | No |  |
-| `crafting` | ``$OBJECT`` | No |  |
-| `defense` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `rank` | ``$STRING`` | No |  |
-| `rarity` | ``$INTEGER`` | No |  |
-| `resistance` | ``$OBJECT`` | No |  |
-| `skill` | ``$ARRAY`` | No |  |
-| `slot` | ``$ARRAY`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `armor_set` | `map[string]any` | No |  |
+| `asset` | `map[string]any` | No |  |
+| `attribute` | `map[string]any` | No |  |
+| `crafting` | `map[string]any` | No |  |
+| `defense` | `map[string]any` | No |  |
+| `id` | `int` | No |  |
+| `name` | `string` | No |  |
+| `rank` | `string` | No |  |
+| `rarity` | `int` | No |  |
+| `resistance` | `map[string]any` | No |  |
+| `skill` | `[]any` | No |  |
+| `slot` | `[]any` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -265,11 +265,11 @@ armor_set := client.ArmorSet(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bonus` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `piece` | ``$ARRAY`` | No |  |
-| `rank` | ``$STRING`` | No |  |
+| `bonus` | `map[string]any` | No |  |
+| `id` | `int` | No |  |
+| `name` | `string` | No |  |
+| `piece` | `[]any` | No |  |
+| `rank` | `string` | No |  |
 
 ### Operations
 
@@ -323,11 +323,11 @@ charm := client.Charm(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `crafting` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `rarity` | ``$INTEGER`` | No |  |
-| `skill` | ``$ARRAY`` | No |  |
+| `crafting` | `map[string]any` | No |  |
+| `id` | `int` | No |  |
+| `name` | `string` | No |  |
+| `rarity` | `int` | No |  |
+| `skill` | `[]any` | No |  |
 
 ### Operations
 
@@ -381,11 +381,11 @@ decoration := client.Decoration(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `rarity` | ``$INTEGER`` | No |  |
-| `skill` | ``$ARRAY`` | No |  |
-| `slot` | ``$INTEGER`` | No |  |
+| `id` | `int` | No |  |
+| `name` | `string` | No |  |
+| `rarity` | `int` | No |  |
+| `skill` | `[]any` | No |  |
+| `slot` | `int` | No |  |
 
 ### Operations
 
@@ -439,19 +439,19 @@ event := client.Event(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `end_timestamp` | ``$STRING`` | No |  |
-| `exclusive` | ``$STRING`` | No |  |
-| `expansion` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `location` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `platform` | ``$STRING`` | No |  |
-| `quest_rank` | ``$STRING`` | No |  |
-| `requirement` | ``$STRING`` | No |  |
-| `start_timestamp` | ``$STRING`` | No |  |
-| `success_condition` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `end_timestamp` | `string` | No |  |
+| `exclusive` | `string` | No |  |
+| `expansion` | `string` | No |  |
+| `id` | `int` | No |  |
+| `location` | `map[string]any` | No |  |
+| `name` | `string` | No |  |
+| `platform` | `string` | No |  |
+| `quest_rank` | `string` | No |  |
+| `requirement` | `string` | No |  |
+| `start_timestamp` | `string` | No |  |
+| `success_condition` | `string` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -505,14 +505,14 @@ item := client.Item(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `buy_price` | ``$INTEGER`` | No |  |
-| `carry_limit` | ``$INTEGER`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `rarity` | ``$INTEGER`` | No |  |
-| `sell_price` | ``$INTEGER`` | No |  |
-| `value` | ``$INTEGER`` | No |  |
+| `buy_price` | `int` | No |  |
+| `carry_limit` | `int` | No |  |
+| `description` | `string` | No |  |
+| `id` | `int` | No |  |
+| `name` | `string` | No |  |
+| `rarity` | `int` | No |  |
+| `sell_price` | `int` | No |  |
+| `value` | `int` | No |  |
 
 ### Operations
 
@@ -566,10 +566,10 @@ location := client.Location(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `camp` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `zone_count` | ``$INTEGER`` | No |  |
+| `camp` | `[]any` | No |  |
+| `id` | `int` | No |  |
+| `name` | `string` | No |  |
+| `zone_count` | `int` | No |  |
 
 ### Operations
 
@@ -623,17 +623,17 @@ monster := client.Monster(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ailment` | ``$ARRAY`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `element` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `location` | ``$ARRAY`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `resistance` | ``$ARRAY`` | No |  |
-| `reward` | ``$ARRAY`` | No |  |
-| `species` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `weakness` | ``$ARRAY`` | No |  |
+| `ailment` | `[]any` | No |  |
+| `description` | `string` | No |  |
+| `element` | `[]any` | No |  |
+| `id` | `int` | No |  |
+| `location` | `[]any` | No |  |
+| `name` | `string` | No |  |
+| `resistance` | `[]any` | No |  |
+| `reward` | `[]any` | No |  |
+| `species` | `string` | No |  |
+| `type` | `string` | No |  |
+| `weakness` | `[]any` | No |  |
 
 ### Operations
 
@@ -687,12 +687,12 @@ motion_value := client.MotionValue(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `damage_type` | ``$STRING`` | No |  |
-| `exhaust` | ``$INTEGER`` | No |  |
-| `hit` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `stun` | ``$INTEGER`` | No |  |
-| `weapon_type` | ``$STRING`` | No |  |
+| `damage_type` | `string` | No |  |
+| `exhaust` | `int` | No |  |
+| `hit` | `[]any` | No |  |
+| `id` | `int` | No |  |
+| `stun` | `int` | No |  |
+| `weapon_type` | `string` | No |  |
 
 ### Operations
 
@@ -746,10 +746,10 @@ skill := client.Skill(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `rank` | ``$ARRAY`` | No |  |
+| `description` | `string` | No |  |
+| `id` | `int` | No |  |
+| `name` | `string` | No |  |
+| `rank` | `[]any` | No |  |
 
 ### Operations
 
@@ -803,17 +803,17 @@ weapon := client.Weapon(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asset` | ``$OBJECT`` | No |  |
-| `attack` | ``$OBJECT`` | No |  |
-| `attribute` | ``$OBJECT`` | No |  |
-| `crafting` | ``$OBJECT`` | No |  |
-| `damage_type` | ``$STRING`` | No |  |
-| `element` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `rarity` | ``$INTEGER`` | No |  |
-| `slot` | ``$ARRAY`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `asset` | `map[string]any` | No |  |
+| `attack` | `map[string]any` | No |  |
+| `attribute` | `map[string]any` | No |  |
+| `crafting` | `map[string]any` | No |  |
+| `damage_type` | `string` | No |  |
+| `element` | `[]any` | No |  |
+| `id` | `int` | No |  |
+| `name` | `string` | No |  |
+| `rarity` | `int` | No |  |
+| `slot` | `[]any` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 

@@ -4,6 +4,8 @@
 
 The Lua SDK for the MonsterHunterWorld API — an entity-oriented client using Lua conventions.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client:Ailment()` — each with the same small set of operations (`list`, `load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -41,7 +43,7 @@ local ailments, err = client:Ailment():list()
 if err then error(err) end
 
 for _, item in ipairs(ailments) do
-  print(item["id"], item["name"])
+  print(item["id"], item["description"])
 end
 ```
 
@@ -51,6 +53,28 @@ end
 local ailment, err = client:Ailment():load({ id = "example_id" })
 if err then error(err) end
 print(ailment)
+```
+
+
+## Error handling
+
+Entity operations return `(value, err)`. Check `err` before using
+the value:
+
+```lua
+local ailments, err = client:Ailment():list()
+if err then error(err) end
+```
+
+`direct` follows the same `(value, err)` convention:
+
+```lua
+local result, err = client:direct({
+  path = "/api/resource/{id}",
+  method = "GET",
+  params = { id = "example_id" },
+})
+if err then error(err) end
 ```
 
 
@@ -96,8 +120,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Ailment():load({ id = "test01" })
--- result is the loaded data; err is set on failure
+local result, err = client:Ailment():list()
+-- result is the returned data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -196,9 +220,6 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any, err` | Load a single entity by match criteria. |
 | `list` | `(reqmatch, ctrl) -> any, err` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> any, err` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> any, err` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> any, err` | Remove an entity. |
 | `data_get` | `() -> table` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> table` | Get entity match criteria. |
@@ -213,7 +234,7 @@ data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `load` | the entity record (a `table`) |
 | `list` | an array (`table`) of entity records |
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
@@ -445,11 +466,11 @@ Create an instance: `local ailment = client:Ailment(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `protection` | ``$OBJECT`` |  |
-| `recovery` | ``$OBJECT`` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `protection` | `table` |  |
+| `recovery` | `table` |  |
 
 #### Example: Load
 
@@ -479,19 +500,19 @@ Create an instance: `local armor = client:Armor(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `armor_set` | ``$OBJECT`` |  |
-| `asset` | ``$OBJECT`` |  |
-| `attribute` | ``$OBJECT`` |  |
-| `crafting` | ``$OBJECT`` |  |
-| `defense` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rank` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `resistance` | ``$OBJECT`` |  |
-| `skill` | ``$ARRAY`` |  |
-| `slot` | ``$ARRAY`` |  |
-| `type` | ``$STRING`` |  |
+| `armor_set` | `table` |  |
+| `asset` | `table` |  |
+| `attribute` | `table` |  |
+| `crafting` | `table` |  |
+| `defense` | `table` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `rank` | `string` |  |
+| `rarity` | `number` |  |
+| `resistance` | `table` |  |
+| `skill` | `table` |  |
+| `slot` | `table` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
@@ -521,11 +542,11 @@ Create an instance: `local armor_set = client:ArmorSet(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `bonus` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `piece` | ``$ARRAY`` |  |
-| `rank` | ``$STRING`` |  |
+| `bonus` | `table` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `piece` | `table` |  |
+| `rank` | `string` |  |
 
 #### Example: Load
 
@@ -555,11 +576,11 @@ Create an instance: `local charm = client:Charm(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `crafting` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `skill` | ``$ARRAY`` |  |
+| `crafting` | `table` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `rarity` | `number` |  |
+| `skill` | `table` |  |
 
 #### Example: Load
 
@@ -589,11 +610,11 @@ Create an instance: `local decoration = client:Decoration(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `skill` | ``$ARRAY`` |  |
-| `slot` | ``$INTEGER`` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `rarity` | `number` |  |
+| `skill` | `table` |  |
+| `slot` | `number` |  |
 
 #### Example: Load
 
@@ -623,19 +644,19 @@ Create an instance: `local event = client:Event(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `end_timestamp` | ``$STRING`` |  |
-| `exclusive` | ``$STRING`` |  |
-| `expansion` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `location` | ``$OBJECT`` |  |
-| `name` | ``$STRING`` |  |
-| `platform` | ``$STRING`` |  |
-| `quest_rank` | ``$STRING`` |  |
-| `requirement` | ``$STRING`` |  |
-| `start_timestamp` | ``$STRING`` |  |
-| `success_condition` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `end_timestamp` | `string` |  |
+| `exclusive` | `string` |  |
+| `expansion` | `string` |  |
+| `id` | `number` |  |
+| `location` | `table` |  |
+| `name` | `string` |  |
+| `platform` | `string` |  |
+| `quest_rank` | `string` |  |
+| `requirement` | `string` |  |
+| `start_timestamp` | `string` |  |
+| `success_condition` | `string` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
@@ -665,14 +686,14 @@ Create an instance: `local item = client:Item(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `buy_price` | ``$INTEGER`` |  |
-| `carry_limit` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `sell_price` | ``$INTEGER`` |  |
-| `value` | ``$INTEGER`` |  |
+| `buy_price` | `number` |  |
+| `carry_limit` | `number` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `rarity` | `number` |  |
+| `sell_price` | `number` |  |
+| `value` | `number` |  |
 
 #### Example: Load
 
@@ -702,10 +723,10 @@ Create an instance: `local location = client:Location(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `camp` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `zone_count` | ``$INTEGER`` |  |
+| `camp` | `table` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `zone_count` | `number` |  |
 
 #### Example: Load
 
@@ -735,17 +756,17 @@ Create an instance: `local monster = client:Monster(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ailment` | ``$ARRAY`` |  |
-| `description` | ``$STRING`` |  |
-| `element` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `location` | ``$ARRAY`` |  |
-| `name` | ``$STRING`` |  |
-| `resistance` | ``$ARRAY`` |  |
-| `reward` | ``$ARRAY`` |  |
-| `species` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
-| `weakness` | ``$ARRAY`` |  |
+| `ailment` | `table` |  |
+| `description` | `string` |  |
+| `element` | `table` |  |
+| `id` | `number` |  |
+| `location` | `table` |  |
+| `name` | `string` |  |
+| `resistance` | `table` |  |
+| `reward` | `table` |  |
+| `species` | `string` |  |
+| `type` | `string` |  |
+| `weakness` | `table` |  |
 
 #### Example: Load
 
@@ -775,12 +796,12 @@ Create an instance: `local motion_value = client:MotionValue(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `damage_type` | ``$STRING`` |  |
-| `exhaust` | ``$INTEGER`` |  |
-| `hit` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `stun` | ``$INTEGER`` |  |
-| `weapon_type` | ``$STRING`` |  |
+| `damage_type` | `string` |  |
+| `exhaust` | `number` |  |
+| `hit` | `table` |  |
+| `id` | `number` |  |
+| `stun` | `number` |  |
+| `weapon_type` | `string` |  |
 
 #### Example: Load
 
@@ -810,10 +831,10 @@ Create an instance: `local skill = client:Skill(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rank` | ``$ARRAY`` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `rank` | `table` |  |
 
 #### Example: Load
 
@@ -843,17 +864,17 @@ Create an instance: `local weapon = client:Weapon(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asset` | ``$OBJECT`` |  |
-| `attack` | ``$OBJECT`` |  |
-| `attribute` | ``$OBJECT`` |  |
-| `crafting` | ``$OBJECT`` |  |
-| `damage_type` | ``$STRING`` |  |
-| `element` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `slot` | ``$ARRAY`` |  |
-| `type` | ``$STRING`` |  |
+| `asset` | `table` |  |
+| `attack` | `table` |  |
+| `attribute` | `table` |  |
+| `crafting` | `table` |  |
+| `damage_type` | `string` |  |
+| `element` | `table` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `rarity` | `number` |  |
+| `slot` | `table` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
@@ -868,12 +889,16 @@ local weapons, err = client:Weapon():list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -890,8 +915,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as a second return value.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -935,14 +961,14 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
 local ailment = client:Ailment()
-ailment:load({ id = "example_id" })
+ailment:list()
 
--- ailment:data_get() now returns the loaded ailment data
+-- ailment:data_get() now returns the ailment data from the last list
 -- ailment:match_get() returns the last match criteria
 ```
 

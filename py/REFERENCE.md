@@ -8,7 +8,7 @@ Complete API reference for the MonsterHunterWorld Python SDK.
 ### Constructor
 
 ```python
-from monster-hunter-world_sdk import MonsterHunterWorldSDK
+from monsterhunterworld_sdk import MonsterHunterWorldSDK
 
 client = MonsterHunterWorldSDK(options)
 ```
@@ -131,20 +131,20 @@ ailment = client.Ailment()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `protection` | ``$OBJECT`` | No |  |
-| `recovery` | ``$OBJECT`` | No |  |
+| `description` | `str` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
+| `protection` | `dict` | No |  |
+| `recovery` | `dict` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Ailment().list({})
+results = client.Ailment().list()
 for ailment in results:
     print(ailment)
 ```
@@ -196,28 +196,28 @@ armor = client.Armor()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `armor_set` | ``$OBJECT`` | No |  |
-| `asset` | ``$OBJECT`` | No |  |
-| `attribute` | ``$OBJECT`` | No |  |
-| `crafting` | ``$OBJECT`` | No |  |
-| `defense` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `rank` | ``$STRING`` | No |  |
-| `rarity` | ``$INTEGER`` | No |  |
-| `resistance` | ``$OBJECT`` | No |  |
-| `skill` | ``$ARRAY`` | No |  |
-| `slot` | ``$ARRAY`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `armor_set` | `dict` | No |  |
+| `asset` | `dict` | No |  |
+| `attribute` | `dict` | No |  |
+| `crafting` | `dict` | No |  |
+| `defense` | `dict` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
+| `rank` | `str` | No |  |
+| `rarity` | `int` | No |  |
+| `resistance` | `dict` | No |  |
+| `skill` | `list` | No |  |
+| `slot` | `list` | No |  |
+| `type` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Armor().list({})
+results = client.Armor().list()
 for armor in results:
     print(armor)
 ```
@@ -269,20 +269,20 @@ armor_set = client.ArmorSet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bonus` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `piece` | ``$ARRAY`` | No |  |
-| `rank` | ``$STRING`` | No |  |
+| `bonus` | `dict` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
+| `piece` | `list` | No |  |
+| `rank` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ArmorSet().list({})
+results = client.ArmorSet().list()
 for armor_set in results:
     print(armor_set)
 ```
@@ -334,20 +334,20 @@ charm = client.Charm()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `crafting` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `rarity` | ``$INTEGER`` | No |  |
-| `skill` | ``$ARRAY`` | No |  |
+| `crafting` | `dict` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
+| `rarity` | `int` | No |  |
+| `skill` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Charm().list({})
+results = client.Charm().list()
 for charm in results:
     print(charm)
 ```
@@ -399,20 +399,20 @@ decoration = client.Decoration()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `rarity` | ``$INTEGER`` | No |  |
-| `skill` | ``$ARRAY`` | No |  |
-| `slot` | ``$INTEGER`` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
+| `rarity` | `int` | No |  |
+| `skill` | `list` | No |  |
+| `slot` | `int` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Decoration().list({})
+results = client.Decoration().list()
 for decoration in results:
     print(decoration)
 ```
@@ -464,28 +464,28 @@ event = client.Event()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `end_timestamp` | ``$STRING`` | No |  |
-| `exclusive` | ``$STRING`` | No |  |
-| `expansion` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `location` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `platform` | ``$STRING`` | No |  |
-| `quest_rank` | ``$STRING`` | No |  |
-| `requirement` | ``$STRING`` | No |  |
-| `start_timestamp` | ``$STRING`` | No |  |
-| `success_condition` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `description` | `str` | No |  |
+| `end_timestamp` | `str` | No |  |
+| `exclusive` | `str` | No |  |
+| `expansion` | `str` | No |  |
+| `id` | `int` | No |  |
+| `location` | `dict` | No |  |
+| `name` | `str` | No |  |
+| `platform` | `str` | No |  |
+| `quest_rank` | `str` | No |  |
+| `requirement` | `str` | No |  |
+| `start_timestamp` | `str` | No |  |
+| `success_condition` | `str` | No |  |
+| `type` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Event().list({})
+results = client.Event().list()
 for event in results:
     print(event)
 ```
@@ -537,23 +537,23 @@ item = client.Item()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `buy_price` | ``$INTEGER`` | No |  |
-| `carry_limit` | ``$INTEGER`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `rarity` | ``$INTEGER`` | No |  |
-| `sell_price` | ``$INTEGER`` | No |  |
-| `value` | ``$INTEGER`` | No |  |
+| `buy_price` | `int` | No |  |
+| `carry_limit` | `int` | No |  |
+| `description` | `str` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
+| `rarity` | `int` | No |  |
+| `sell_price` | `int` | No |  |
+| `value` | `int` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Item().list({})
+results = client.Item().list()
 for item in results:
     print(item)
 ```
@@ -605,19 +605,19 @@ location = client.Location()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `camp` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `zone_count` | ``$INTEGER`` | No |  |
+| `camp` | `list` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
+| `zone_count` | `int` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Location().list({})
+results = client.Location().list()
 for location in results:
     print(location)
 ```
@@ -669,26 +669,26 @@ monster = client.Monster()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ailment` | ``$ARRAY`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `element` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `location` | ``$ARRAY`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `resistance` | ``$ARRAY`` | No |  |
-| `reward` | ``$ARRAY`` | No |  |
-| `species` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `weakness` | ``$ARRAY`` | No |  |
+| `ailment` | `list` | No |  |
+| `description` | `str` | No |  |
+| `element` | `list` | No |  |
+| `id` | `int` | No |  |
+| `location` | `list` | No |  |
+| `name` | `str` | No |  |
+| `resistance` | `list` | No |  |
+| `reward` | `list` | No |  |
+| `species` | `str` | No |  |
+| `type` | `str` | No |  |
+| `weakness` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Monster().list({})
+results = client.Monster().list()
 for monster in results:
     print(monster)
 ```
@@ -740,21 +740,21 @@ motion_value = client.MotionValue()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `damage_type` | ``$STRING`` | No |  |
-| `exhaust` | ``$INTEGER`` | No |  |
-| `hit` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `stun` | ``$INTEGER`` | No |  |
-| `weapon_type` | ``$STRING`` | No |  |
+| `damage_type` | `str` | No |  |
+| `exhaust` | `int` | No |  |
+| `hit` | `list` | No |  |
+| `id` | `int` | No |  |
+| `stun` | `int` | No |  |
+| `weapon_type` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.MotionValue().list({})
+results = client.MotionValue().list()
 for motion_value in results:
     print(motion_value)
 ```
@@ -806,19 +806,19 @@ skill = client.Skill()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `rank` | ``$ARRAY`` | No |  |
+| `description` | `str` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
+| `rank` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Skill().list({})
+results = client.Skill().list()
 for skill in results:
     print(skill)
 ```
@@ -870,26 +870,26 @@ weapon = client.Weapon()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asset` | ``$OBJECT`` | No |  |
-| `attack` | ``$OBJECT`` | No |  |
-| `attribute` | ``$OBJECT`` | No |  |
-| `crafting` | ``$OBJECT`` | No |  |
-| `damage_type` | ``$STRING`` | No |  |
-| `element` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `rarity` | ``$INTEGER`` | No |  |
-| `slot` | ``$ARRAY`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `asset` | `dict` | No |  |
+| `attack` | `dict` | No |  |
+| `attribute` | `dict` | No |  |
+| `crafting` | `dict` | No |  |
+| `damage_type` | `str` | No |  |
+| `element` | `list` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
+| `rarity` | `int` | No |  |
+| `slot` | `list` | No |  |
+| `type` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Weapon().list({})
+results = client.Weapon().list()
 for weapon in results:
     print(weapon)
 ```

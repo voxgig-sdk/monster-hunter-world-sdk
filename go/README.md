@@ -4,6 +4,8 @@
 
 The Golang SDK for the MonsterHunterWorld API — an entity-oriented client using standard Go conventions. No generics required; data flows as `map[string]any`.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client.Ailment(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -58,12 +60,41 @@ func main() {
     }
 
     // Load a single ailment — the value is the loaded record.
-    ailment, err := client.Ailment(nil).Load(map[string]any{"id": "example_id"}, nil)
+    ailment, err := client.Ailment(nil).Load(map[string]any{"id": 1}, nil)
     if err != nil {
         panic(err)
     }
     fmt.Println(ailment)
 }
+```
+
+
+## Error handling
+
+Every entity operation returns `(value, error)`. Check `err` before
+using the value — there is no exception to catch:
+
+```go
+ailments, err := client.Ailment(nil).List(nil, nil)
+if err != nil {
+    // handle err
+    return
+}
+_ = ailments
+```
+
+`Direct` follows the same `(value, error)` convention:
+
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
+    "method": "GET",
+    "params": map[string]any{"id": "example_id"},
+})
+if err != nil {
+    // handle err
+}
+_ = result
 ```
 
 
@@ -113,13 +144,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-ailment, err := client.Ailment(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+ailment, err := client.Ailment(nil).List(
+    nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(ailment) // the loaded mock data
+fmt.Println(ailment) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -217,9 +248,6 @@ All entities implement the `MonsterHunterWorldEntity` interface.
 | --- | --- | --- |
 | `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria. |
 | `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria. |
-| `Create` | `(reqdata, ctrl map[string]any) (any, error)` | Create a new entity. |
-| `Update` | `(reqdata, ctrl map[string]any) (any, error)` | Update an existing entity. |
-| `Remove` | `(reqmatch, ctrl map[string]any) (any, error)` | Remove an entity. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -232,16 +260,16 @@ operation's data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `Load` | the entity record (`map[string]any`) |
 | `List` | a `[]any` of entity records |
 
 Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    ailment, err := client.Ailment(nil).Load(map[string]any{"id": "example_id"}, nil)
+    ailment, err := client.Ailment(nil).List(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // ailment is the loaded record
+    // ailment is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -466,11 +494,11 @@ Create an instance: `ailment := client.Ailment(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `protection` | ``$OBJECT`` |  |
-| `recovery` | ``$OBJECT`` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `protection` | `map[string]any` |  |
+| `recovery` | `map[string]any` |  |
 
 #### Example: Load
 
@@ -508,19 +536,19 @@ Create an instance: `armor := client.Armor(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `armor_set` | ``$OBJECT`` |  |
-| `asset` | ``$OBJECT`` |  |
-| `attribute` | ``$OBJECT`` |  |
-| `crafting` | ``$OBJECT`` |  |
-| `defense` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rank` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `resistance` | ``$OBJECT`` |  |
-| `skill` | ``$ARRAY`` |  |
-| `slot` | ``$ARRAY`` |  |
-| `type` | ``$STRING`` |  |
+| `armor_set` | `map[string]any` |  |
+| `asset` | `map[string]any` |  |
+| `attribute` | `map[string]any` |  |
+| `crafting` | `map[string]any` |  |
+| `defense` | `map[string]any` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `rank` | `string` |  |
+| `rarity` | `int` |  |
+| `resistance` | `map[string]any` |  |
+| `skill` | `[]any` |  |
+| `slot` | `[]any` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
@@ -558,11 +586,11 @@ Create an instance: `armor_set := client.ArmorSet(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `bonus` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `piece` | ``$ARRAY`` |  |
-| `rank` | ``$STRING`` |  |
+| `bonus` | `map[string]any` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `piece` | `[]any` |  |
+| `rank` | `string` |  |
 
 #### Example: Load
 
@@ -600,11 +628,11 @@ Create an instance: `charm := client.Charm(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `crafting` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `skill` | ``$ARRAY`` |  |
+| `crafting` | `map[string]any` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `rarity` | `int` |  |
+| `skill` | `[]any` |  |
 
 #### Example: Load
 
@@ -642,11 +670,11 @@ Create an instance: `decoration := client.Decoration(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `skill` | ``$ARRAY`` |  |
-| `slot` | ``$INTEGER`` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `rarity` | `int` |  |
+| `skill` | `[]any` |  |
+| `slot` | `int` |  |
 
 #### Example: Load
 
@@ -684,19 +712,19 @@ Create an instance: `event := client.Event(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `end_timestamp` | ``$STRING`` |  |
-| `exclusive` | ``$STRING`` |  |
-| `expansion` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `location` | ``$OBJECT`` |  |
-| `name` | ``$STRING`` |  |
-| `platform` | ``$STRING`` |  |
-| `quest_rank` | ``$STRING`` |  |
-| `requirement` | ``$STRING`` |  |
-| `start_timestamp` | ``$STRING`` |  |
-| `success_condition` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `end_timestamp` | `string` |  |
+| `exclusive` | `string` |  |
+| `expansion` | `string` |  |
+| `id` | `int` |  |
+| `location` | `map[string]any` |  |
+| `name` | `string` |  |
+| `platform` | `string` |  |
+| `quest_rank` | `string` |  |
+| `requirement` | `string` |  |
+| `start_timestamp` | `string` |  |
+| `success_condition` | `string` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
@@ -734,14 +762,14 @@ Create an instance: `item := client.Item(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `buy_price` | ``$INTEGER`` |  |
-| `carry_limit` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `sell_price` | ``$INTEGER`` |  |
-| `value` | ``$INTEGER`` |  |
+| `buy_price` | `int` |  |
+| `carry_limit` | `int` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `rarity` | `int` |  |
+| `sell_price` | `int` |  |
+| `value` | `int` |  |
 
 #### Example: Load
 
@@ -779,10 +807,10 @@ Create an instance: `location := client.Location(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `camp` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `zone_count` | ``$INTEGER`` |  |
+| `camp` | `[]any` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `zone_count` | `int` |  |
 
 #### Example: Load
 
@@ -820,17 +848,17 @@ Create an instance: `monster := client.Monster(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ailment` | ``$ARRAY`` |  |
-| `description` | ``$STRING`` |  |
-| `element` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `location` | ``$ARRAY`` |  |
-| `name` | ``$STRING`` |  |
-| `resistance` | ``$ARRAY`` |  |
-| `reward` | ``$ARRAY`` |  |
-| `species` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
-| `weakness` | ``$ARRAY`` |  |
+| `ailment` | `[]any` |  |
+| `description` | `string` |  |
+| `element` | `[]any` |  |
+| `id` | `int` |  |
+| `location` | `[]any` |  |
+| `name` | `string` |  |
+| `resistance` | `[]any` |  |
+| `reward` | `[]any` |  |
+| `species` | `string` |  |
+| `type` | `string` |  |
+| `weakness` | `[]any` |  |
 
 #### Example: Load
 
@@ -868,12 +896,12 @@ Create an instance: `motion_value := client.MotionValue(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `damage_type` | ``$STRING`` |  |
-| `exhaust` | ``$INTEGER`` |  |
-| `hit` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `stun` | ``$INTEGER`` |  |
-| `weapon_type` | ``$STRING`` |  |
+| `damage_type` | `string` |  |
+| `exhaust` | `int` |  |
+| `hit` | `[]any` |  |
+| `id` | `int` |  |
+| `stun` | `int` |  |
+| `weapon_type` | `string` |  |
 
 #### Example: Load
 
@@ -911,10 +939,10 @@ Create an instance: `skill := client.Skill(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rank` | ``$ARRAY`` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `rank` | `[]any` |  |
 
 #### Example: Load
 
@@ -952,17 +980,17 @@ Create an instance: `weapon := client.Weapon(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asset` | ``$OBJECT`` |  |
-| `attack` | ``$OBJECT`` |  |
-| `attribute` | ``$OBJECT`` |  |
-| `crafting` | ``$OBJECT`` |  |
-| `damage_type` | ``$STRING`` |  |
-| `element` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `slot` | ``$ARRAY`` |  |
-| `type` | ``$STRING`` |  |
+| `asset` | `map[string]any` |  |
+| `attack` | `map[string]any` |  |
+| `attribute` | `map[string]any` |  |
+| `crafting` | `map[string]any` |  |
+| `damage_type` | `string` |  |
+| `element` | `[]any` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `rarity` | `int` |  |
+| `slot` | `[]any` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
@@ -985,12 +1013,16 @@ fmt.Println(weapons) // the array of records
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -1007,9 +1039,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller. An unexpected panic triggers the
-`PreUnexpected` hook.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -1050,14 +1082,14 @@ like `core.ToMapAny`.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `Load`, the entity
+Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
 ailment := client.Ailment(nil)
-ailment.Load(map[string]any{"id": "example_id"}, nil)
+ailment.List(nil, nil)
 
-// ailment.Data() now returns the loaded ailment data
+// ailment.Data() now returns the ailment data from the last list
 // ailment.Match() returns the last match criteria
 ```
 

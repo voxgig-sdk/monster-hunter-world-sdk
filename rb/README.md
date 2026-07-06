@@ -4,6 +4,8 @@
 
 The Ruby SDK for the MonsterHunterWorld API — an entity-oriented client using idiomatic Ruby conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Ailment` — with named operations (`list`/`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -35,7 +37,7 @@ begin
   # list returns an Array of Ailment records — iterate directly.
   ailments = client.Ailment.list
   ailments.each do |item|
-    puts "#{item["id"]} #{item["name"]}"
+    puts "#{item["id"]} #{item["description"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -52,6 +54,33 @@ begin
 rescue => err
   warn "load failed: #{err}"
 end
+```
+
+
+## Error handling
+
+Entity operations raise on failure, so rescue them:
+
+```ruby
+begin
+  ailments = client.Ailment.list()
+rescue => err
+  warn "list failed: #{err}"
+end
+```
+
+`direct` does **not** raise — it returns the result hash. Branch on
+`ok`; on failure `status` holds the HTTP status (for error responses) and
+`err` holds a transport error, so read both defensively:
+
+```ruby
+result = client.direct({
+  "path" => "/api/resource/{id}",
+  "method" => "GET",
+  "params" => { "id" => "example_id" },
+})
+
+warn "request failed: #{result["err"] || "HTTP #{result["status"]}"}" unless result["ok"]
 ```
 
 
@@ -72,7 +101,9 @@ if result["ok"]
   puts result["status"]  # 200
   puts result["data"]    # response body
 else
-  warn result["err"]
+  # On an HTTP error status there is no err (only a transport failure sets
+  # it), so fall back to the status code.
+  warn(result["err"] || "HTTP #{result["status"]}")
 end
 ```
 
@@ -103,8 +134,8 @@ client = MonsterHunterWorldSDK.test({
   "entity" => { "ailment" => { "test01" => { "id" => "test01" } } },
 })
 
-# load returns the bare mock record (raises on error).
-ailment = client.Ailment.load({ "id" => "test01" })
+# Entity ops return the bare mock record (raises on error).
+ailment = client.Ailment.list()
 puts ailment
 ```
 
@@ -201,10 +232,7 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
-| `list` | `(reqmatch, ctrl) -> Array` | List entities matching the criteria. Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
+| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all). Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -449,11 +477,11 @@ Create an instance: `ailment = client.Ailment`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `protection` | ``$OBJECT`` |  |
-| `recovery` | ``$OBJECT`` |  |
+| `description` | `String` |  |
+| `id` | `Integer` |  |
+| `name` | `String` |  |
+| `protection` | `Hash` |  |
+| `recovery` | `Hash` |  |
 
 #### Example: Load
 
@@ -485,19 +513,19 @@ Create an instance: `armor = client.Armor`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `armor_set` | ``$OBJECT`` |  |
-| `asset` | ``$OBJECT`` |  |
-| `attribute` | ``$OBJECT`` |  |
-| `crafting` | ``$OBJECT`` |  |
-| `defense` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rank` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `resistance` | ``$OBJECT`` |  |
-| `skill` | ``$ARRAY`` |  |
-| `slot` | ``$ARRAY`` |  |
-| `type` | ``$STRING`` |  |
+| `armor_set` | `Hash` |  |
+| `asset` | `Hash` |  |
+| `attribute` | `Hash` |  |
+| `crafting` | `Hash` |  |
+| `defense` | `Hash` |  |
+| `id` | `Integer` |  |
+| `name` | `String` |  |
+| `rank` | `String` |  |
+| `rarity` | `Integer` |  |
+| `resistance` | `Hash` |  |
+| `skill` | `Array` |  |
+| `slot` | `Array` |  |
+| `type` | `String` |  |
 
 #### Example: Load
 
@@ -529,11 +557,11 @@ Create an instance: `armor_set = client.ArmorSet`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `bonus` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `piece` | ``$ARRAY`` |  |
-| `rank` | ``$STRING`` |  |
+| `bonus` | `Hash` |  |
+| `id` | `Integer` |  |
+| `name` | `String` |  |
+| `piece` | `Array` |  |
+| `rank` | `String` |  |
 
 #### Example: Load
 
@@ -565,11 +593,11 @@ Create an instance: `charm = client.Charm`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `crafting` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `skill` | ``$ARRAY`` |  |
+| `crafting` | `Hash` |  |
+| `id` | `Integer` |  |
+| `name` | `String` |  |
+| `rarity` | `Integer` |  |
+| `skill` | `Array` |  |
 
 #### Example: Load
 
@@ -601,11 +629,11 @@ Create an instance: `decoration = client.Decoration`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `skill` | ``$ARRAY`` |  |
-| `slot` | ``$INTEGER`` |  |
+| `id` | `Integer` |  |
+| `name` | `String` |  |
+| `rarity` | `Integer` |  |
+| `skill` | `Array` |  |
+| `slot` | `Integer` |  |
 
 #### Example: Load
 
@@ -637,19 +665,19 @@ Create an instance: `event = client.Event`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `end_timestamp` | ``$STRING`` |  |
-| `exclusive` | ``$STRING`` |  |
-| `expansion` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `location` | ``$OBJECT`` |  |
-| `name` | ``$STRING`` |  |
-| `platform` | ``$STRING`` |  |
-| `quest_rank` | ``$STRING`` |  |
-| `requirement` | ``$STRING`` |  |
-| `start_timestamp` | ``$STRING`` |  |
-| `success_condition` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `description` | `String` |  |
+| `end_timestamp` | `String` |  |
+| `exclusive` | `String` |  |
+| `expansion` | `String` |  |
+| `id` | `Integer` |  |
+| `location` | `Hash` |  |
+| `name` | `String` |  |
+| `platform` | `String` |  |
+| `quest_rank` | `String` |  |
+| `requirement` | `String` |  |
+| `start_timestamp` | `String` |  |
+| `success_condition` | `String` |  |
+| `type` | `String` |  |
 
 #### Example: Load
 
@@ -681,14 +709,14 @@ Create an instance: `item = client.Item`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `buy_price` | ``$INTEGER`` |  |
-| `carry_limit` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `sell_price` | ``$INTEGER`` |  |
-| `value` | ``$INTEGER`` |  |
+| `buy_price` | `Integer` |  |
+| `carry_limit` | `Integer` |  |
+| `description` | `String` |  |
+| `id` | `Integer` |  |
+| `name` | `String` |  |
+| `rarity` | `Integer` |  |
+| `sell_price` | `Integer` |  |
+| `value` | `Integer` |  |
 
 #### Example: Load
 
@@ -720,10 +748,10 @@ Create an instance: `location = client.Location`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `camp` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `zone_count` | ``$INTEGER`` |  |
+| `camp` | `Array` |  |
+| `id` | `Integer` |  |
+| `name` | `String` |  |
+| `zone_count` | `Integer` |  |
 
 #### Example: Load
 
@@ -755,17 +783,17 @@ Create an instance: `monster = client.Monster`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ailment` | ``$ARRAY`` |  |
-| `description` | ``$STRING`` |  |
-| `element` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `location` | ``$ARRAY`` |  |
-| `name` | ``$STRING`` |  |
-| `resistance` | ``$ARRAY`` |  |
-| `reward` | ``$ARRAY`` |  |
-| `species` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
-| `weakness` | ``$ARRAY`` |  |
+| `ailment` | `Array` |  |
+| `description` | `String` |  |
+| `element` | `Array` |  |
+| `id` | `Integer` |  |
+| `location` | `Array` |  |
+| `name` | `String` |  |
+| `resistance` | `Array` |  |
+| `reward` | `Array` |  |
+| `species` | `String` |  |
+| `type` | `String` |  |
+| `weakness` | `Array` |  |
 
 #### Example: Load
 
@@ -797,12 +825,12 @@ Create an instance: `motion_value = client.MotionValue`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `damage_type` | ``$STRING`` |  |
-| `exhaust` | ``$INTEGER`` |  |
-| `hit` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `stun` | ``$INTEGER`` |  |
-| `weapon_type` | ``$STRING`` |  |
+| `damage_type` | `String` |  |
+| `exhaust` | `Integer` |  |
+| `hit` | `Array` |  |
+| `id` | `Integer` |  |
+| `stun` | `Integer` |  |
+| `weapon_type` | `String` |  |
 
 #### Example: Load
 
@@ -834,10 +862,10 @@ Create an instance: `skill = client.Skill`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rank` | ``$ARRAY`` |  |
+| `description` | `String` |  |
+| `id` | `Integer` |  |
+| `name` | `String` |  |
+| `rank` | `Array` |  |
 
 #### Example: Load
 
@@ -869,17 +897,17 @@ Create an instance: `weapon = client.Weapon`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asset` | ``$OBJECT`` |  |
-| `attack` | ``$OBJECT`` |  |
-| `attribute` | ``$OBJECT`` |  |
-| `crafting` | ``$OBJECT`` |  |
-| `damage_type` | ``$STRING`` |  |
-| `element` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `slot` | ``$ARRAY`` |  |
-| `type` | ``$STRING`` |  |
+| `asset` | `Hash` |  |
+| `attack` | `Hash` |  |
+| `attribute` | `Hash` |  |
+| `crafting` | `Hash` |  |
+| `damage_type` | `String` |  |
+| `element` | `Array` |  |
+| `id` | `Integer` |  |
+| `name` | `String` |  |
+| `rarity` | `Integer` |  |
+| `slot` | `Array` |  |
+| `type` | `String` |  |
 
 #### Example: Load
 
@@ -896,12 +924,16 @@ weapons = client.Weapon.list
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -918,8 +950,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as a second return value.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -963,14 +996,14 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
 ailment = client.Ailment
-ailment.load({ "id" => "example_id" })
+ailment.list()
 
-# ailment.data_get now returns the loaded ailment data
+# ailment.data_get now returns the ailment data from the last list
 # ailment.match_get returns the last match criteria
 ```
 

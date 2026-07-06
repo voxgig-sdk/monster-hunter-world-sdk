@@ -221,73 +221,73 @@ class MonsterHunterWorldSDK:
 
 
     def Ailment(self, data=None) -> "AilmentEntity":
-        """Entity factory: client.Ailment().list({}) / client.Ailment().load({"id": ...})."""
+        """Entity factory: client.Ailment().list() / client.Ailment().load({"id": ...})."""
         from entity.ailment_entity import AilmentEntity
         return AilmentEntity(self, data)
 
 
     def Armor(self, data=None) -> "ArmorEntity":
-        """Entity factory: client.Armor().list({}) / client.Armor().load({"id": ...})."""
+        """Entity factory: client.Armor().list() / client.Armor().load({"id": ...})."""
         from entity.armor_entity import ArmorEntity
         return ArmorEntity(self, data)
 
 
     def ArmorSet(self, data=None) -> "ArmorSetEntity":
-        """Entity factory: client.ArmorSet().list({}) / client.ArmorSet().load({"id": ...})."""
+        """Entity factory: client.ArmorSet().list() / client.ArmorSet().load({"id": ...})."""
         from entity.armor_set_entity import ArmorSetEntity
         return ArmorSetEntity(self, data)
 
 
     def Charm(self, data=None) -> "CharmEntity":
-        """Entity factory: client.Charm().list({}) / client.Charm().load({"id": ...})."""
+        """Entity factory: client.Charm().list() / client.Charm().load({"id": ...})."""
         from entity.charm_entity import CharmEntity
         return CharmEntity(self, data)
 
 
     def Decoration(self, data=None) -> "DecorationEntity":
-        """Entity factory: client.Decoration().list({}) / client.Decoration().load({"id": ...})."""
+        """Entity factory: client.Decoration().list() / client.Decoration().load({"id": ...})."""
         from entity.decoration_entity import DecorationEntity
         return DecorationEntity(self, data)
 
 
     def Event(self, data=None) -> "EventEntity":
-        """Entity factory: client.Event().list({}) / client.Event().load({"id": ...})."""
+        """Entity factory: client.Event().list() / client.Event().load({"id": ...})."""
         from entity.event_entity import EventEntity
         return EventEntity(self, data)
 
 
     def Item(self, data=None) -> "ItemEntity":
-        """Entity factory: client.Item().list({}) / client.Item().load({"id": ...})."""
+        """Entity factory: client.Item().list() / client.Item().load({"id": ...})."""
         from entity.item_entity import ItemEntity
         return ItemEntity(self, data)
 
 
     def Location(self, data=None) -> "LocationEntity":
-        """Entity factory: client.Location().list({}) / client.Location().load({"id": ...})."""
+        """Entity factory: client.Location().list() / client.Location().load({"id": ...})."""
         from entity.location_entity import LocationEntity
         return LocationEntity(self, data)
 
 
     def Monster(self, data=None) -> "MonsterEntity":
-        """Entity factory: client.Monster().list({}) / client.Monster().load({"id": ...})."""
+        """Entity factory: client.Monster().list() / client.Monster().load({"id": ...})."""
         from entity.monster_entity import MonsterEntity
         return MonsterEntity(self, data)
 
 
     def MotionValue(self, data=None) -> "MotionValueEntity":
-        """Entity factory: client.MotionValue().list({}) / client.MotionValue().load({"id": ...})."""
+        """Entity factory: client.MotionValue().list() / client.MotionValue().load({"id": ...})."""
         from entity.motion_value_entity import MotionValueEntity
         return MotionValueEntity(self, data)
 
 
     def Skill(self, data=None) -> "SkillEntity":
-        """Entity factory: client.Skill().list({}) / client.Skill().load({"id": ...})."""
+        """Entity factory: client.Skill().list() / client.Skill().load({"id": ...})."""
         from entity.skill_entity import SkillEntity
         return SkillEntity(self, data)
 
 
     def Weapon(self, data=None) -> "WeaponEntity":
-        """Entity factory: client.Weapon().list({}) / client.Weapon().load({"id": ...})."""
+        """Entity factory: client.Weapon().list() / client.Weapon().load({"id": ...})."""
         from entity.weapon_entity import WeaponEntity
         return WeaponEntity(self, data)
 

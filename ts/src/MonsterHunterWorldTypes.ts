@@ -17,7 +17,13 @@ export interface AilmentLoadMatch {
   id: number
 }
 
-export type AilmentListMatch = Partial<Ailment>
+export interface AilmentListMatch {
+  description?: string
+  id?: number
+  name?: string
+  protection?: Record<string, any>
+  recovery?: Record<string, any>
+}
 
 export interface Armor {
   armor_set?: Record<string, any>
@@ -39,7 +45,21 @@ export interface ArmorLoadMatch {
   id: number
 }
 
-export type ArmorListMatch = Partial<Armor>
+export interface ArmorListMatch {
+  armor_set?: Record<string, any>
+  asset?: Record<string, any>
+  attribute?: Record<string, any>
+  crafting?: Record<string, any>
+  defense?: Record<string, any>
+  id?: number
+  name?: string
+  rank?: string
+  rarity?: number
+  resistance?: Record<string, any>
+  skill?: any[]
+  slot?: any[]
+  type?: string
+}
 
 export interface ArmorSet {
   bonus?: Record<string, any>
@@ -53,7 +73,13 @@ export interface ArmorSetLoadMatch {
   id: number
 }
 
-export type ArmorSetListMatch = Partial<ArmorSet>
+export interface ArmorSetListMatch {
+  bonus?: Record<string, any>
+  id?: number
+  name?: string
+  piece?: any[]
+  rank?: string
+}
 
 export interface Charm {
   crafting?: Record<string, any>
@@ -67,7 +93,13 @@ export interface CharmLoadMatch {
   id: number
 }
 
-export type CharmListMatch = Partial<Charm>
+export interface CharmListMatch {
+  crafting?: Record<string, any>
+  id?: number
+  name?: string
+  rarity?: number
+  skill?: any[]
+}
 
 export interface Decoration {
   id?: number
@@ -81,7 +113,13 @@ export interface DecorationLoadMatch {
   id: number
 }
 
-export type DecorationListMatch = Partial<Decoration>
+export interface DecorationListMatch {
+  id?: number
+  name?: string
+  rarity?: number
+  skill?: any[]
+  slot?: number
+}
 
 export interface Event {
   description?: string
@@ -103,7 +141,21 @@ export interface EventLoadMatch {
   id: number
 }
 
-export type EventListMatch = Partial<Event>
+export interface EventListMatch {
+  description?: string
+  end_timestamp?: string
+  exclusive?: string
+  expansion?: string
+  id?: number
+  location?: Record<string, any>
+  name?: string
+  platform?: string
+  quest_rank?: string
+  requirement?: string
+  start_timestamp?: string
+  success_condition?: string
+  type?: string
+}
 
 export interface Item {
   buy_price?: number
@@ -120,7 +172,16 @@ export interface ItemLoadMatch {
   id: number
 }
 
-export type ItemListMatch = Partial<Item>
+export interface ItemListMatch {
+  buy_price?: number
+  carry_limit?: number
+  description?: string
+  id?: number
+  name?: string
+  rarity?: number
+  sell_price?: number
+  value?: number
+}
 
 export interface Location {
   camp?: any[]
@@ -133,7 +194,12 @@ export interface LocationLoadMatch {
   id: number
 }
 
-export type LocationListMatch = Partial<Location>
+export interface LocationListMatch {
+  camp?: any[]
+  id?: number
+  name?: string
+  zone_count?: number
+}
 
 export interface Monster {
   ailment?: any[]
@@ -153,7 +219,19 @@ export interface MonsterLoadMatch {
   id: number
 }
 
-export type MonsterListMatch = Partial<Monster>
+export interface MonsterListMatch {
+  ailment?: any[]
+  description?: string
+  element?: any[]
+  id?: number
+  location?: any[]
+  name?: string
+  resistance?: any[]
+  reward?: any[]
+  species?: string
+  type?: string
+  weakness?: any[]
+}
 
 export interface MotionValue {
   damage_type?: string
@@ -168,7 +246,14 @@ export interface MotionValueLoadMatch {
   id: number
 }
 
-export type MotionValueListMatch = Partial<MotionValue>
+export interface MotionValueListMatch {
+  damage_type?: string
+  exhaust?: number
+  hit?: any[]
+  id?: number
+  stun?: number
+  weapon_type?: string
+}
 
 export interface Skill {
   description?: string
@@ -181,7 +266,12 @@ export interface SkillLoadMatch {
   id: number
 }
 
-export type SkillListMatch = Partial<Skill>
+export interface SkillListMatch {
+  description?: string
+  id?: number
+  name?: string
+  rank?: any[]
+}
 
 export interface Weapon {
   asset?: Record<string, any>
@@ -201,5 +291,17 @@ export interface WeaponLoadMatch {
   id: number
 }
 
-export type WeaponListMatch = Partial<Weapon>
+export interface WeaponListMatch {
+  asset?: Record<string, any>
+  attack?: Record<string, any>
+  attribute?: Record<string, any>
+  crafting?: Record<string, any>
+  damage_type?: string
+  element?: any[]
+  id?: number
+  name?: string
+  rarity?: number
+  slot?: any[]
+  type?: string
+}
 

@@ -4,6 +4,11 @@
 
 The Python SDK for the MonsterHunterWorld API — an entity-oriented client following Pythonic conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Ailment()` — each
+carrying a small, uniform set of operations (`list`, `load`) instead of raw URL
+paths and query strings. You work with named resources and verbs, which
+keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -38,7 +43,7 @@ error — iterate it directly.
 
 ```python
 try:
-    ailments = client.Ailment().list({})
+    ailments = client.Ailment().list()
     for ailment in ailments:
         print(ailment)
 except Exception as err:
@@ -55,6 +60,34 @@ try:
     print(ailment)
 except Exception as err:
     print(f"load failed: {err}")
+```
+
+
+## Error handling
+
+Entity operations raise on failure, so wrap them in `try` / `except`:
+
+```python
+try:
+    ailments = client.Ailment().list()
+    print(ailments)
+except Exception as err:
+    print(f"list failed: {err}")
+```
+
+`direct()` does **not** raise — it returns the result envelope. Branch
+on `ok`; on failure `status` holds the HTTP status (for error responses)
+and `err` holds a transport error, so read both defensively:
+
+```python
+result = client.direct({
+    "path": "/api/resource/{id}",
+    "method": "GET",
+    "params": {"id": "example_id"},
+})
+
+if not result["ok"]:
+    print("request failed:", result.get("status"), result.get("err"))
 ```
 
 
@@ -75,7 +108,10 @@ if result["ok"]:
     print(result["status"])  # 200
     print(result["data"])    # response body
 else:
-    print(result["err"])     # error value
+    # A non-2xx response carries status + data (the error body); a
+    # transport-level failure carries err instead. Only one is present, so
+    # read both with .get() rather than indexing a key that may be absent.
+    print(result.get("status"), result.get("err"))
 ```
 
 ### Prepare a request without sending it
@@ -101,7 +137,7 @@ Create a mock client for unit testing — no server required:
 client = MonsterHunterWorldSDK.test()
 
 # Entity ops return the bare record and raise on error.
-ailment = client.Ailment().load({"id": "test01"})
+ailment = client.Ailment().list()
 # ailment contains the mock response record
 ```
 
@@ -199,9 +235,6 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
 | `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -440,18 +473,18 @@ Create an instance: `ailment = client.Ailment()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `protection` | ``$OBJECT`` |  |
-| `recovery` | ``$OBJECT`` |  |
+| `description` | `str` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
+| `protection` | `dict` |  |
+| `recovery` | `dict` |  |
 
 #### Example: Load
 
@@ -462,7 +495,7 @@ ailment = client.Ailment().load({"id": "ailment_id"})
 #### Example: List
 
 ```python
-ailments = client.Ailment().list({})
+ailments = client.Ailment().list()
 ```
 
 
@@ -474,26 +507,26 @@ Create an instance: `armor = client.Armor()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `armor_set` | ``$OBJECT`` |  |
-| `asset` | ``$OBJECT`` |  |
-| `attribute` | ``$OBJECT`` |  |
-| `crafting` | ``$OBJECT`` |  |
-| `defense` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rank` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `resistance` | ``$OBJECT`` |  |
-| `skill` | ``$ARRAY`` |  |
-| `slot` | ``$ARRAY`` |  |
-| `type` | ``$STRING`` |  |
+| `armor_set` | `dict` |  |
+| `asset` | `dict` |  |
+| `attribute` | `dict` |  |
+| `crafting` | `dict` |  |
+| `defense` | `dict` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
+| `rank` | `str` |  |
+| `rarity` | `int` |  |
+| `resistance` | `dict` |  |
+| `skill` | `list` |  |
+| `slot` | `list` |  |
+| `type` | `str` |  |
 
 #### Example: Load
 
@@ -504,7 +537,7 @@ armor = client.Armor().load({"id": "armor_id"})
 #### Example: List
 
 ```python
-armors = client.Armor().list({})
+armors = client.Armor().list()
 ```
 
 
@@ -516,18 +549,18 @@ Create an instance: `armor_set = client.ArmorSet()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `bonus` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `piece` | ``$ARRAY`` |  |
-| `rank` | ``$STRING`` |  |
+| `bonus` | `dict` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
+| `piece` | `list` |  |
+| `rank` | `str` |  |
 
 #### Example: Load
 
@@ -538,7 +571,7 @@ armor_set = client.ArmorSet().load({"id": "armor_set_id"})
 #### Example: List
 
 ```python
-armor_sets = client.ArmorSet().list({})
+armor_sets = client.ArmorSet().list()
 ```
 
 
@@ -550,18 +583,18 @@ Create an instance: `charm = client.Charm()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `crafting` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `skill` | ``$ARRAY`` |  |
+| `crafting` | `dict` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
+| `rarity` | `int` |  |
+| `skill` | `list` |  |
 
 #### Example: Load
 
@@ -572,7 +605,7 @@ charm = client.Charm().load({"id": "charm_id"})
 #### Example: List
 
 ```python
-charms = client.Charm().list({})
+charms = client.Charm().list()
 ```
 
 
@@ -584,18 +617,18 @@ Create an instance: `decoration = client.Decoration()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `skill` | ``$ARRAY`` |  |
-| `slot` | ``$INTEGER`` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
+| `rarity` | `int` |  |
+| `skill` | `list` |  |
+| `slot` | `int` |  |
 
 #### Example: Load
 
@@ -606,7 +639,7 @@ decoration = client.Decoration().load({"id": "decoration_id"})
 #### Example: List
 
 ```python
-decorations = client.Decoration().list({})
+decorations = client.Decoration().list()
 ```
 
 
@@ -618,26 +651,26 @@ Create an instance: `event = client.Event()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `end_timestamp` | ``$STRING`` |  |
-| `exclusive` | ``$STRING`` |  |
-| `expansion` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `location` | ``$OBJECT`` |  |
-| `name` | ``$STRING`` |  |
-| `platform` | ``$STRING`` |  |
-| `quest_rank` | ``$STRING`` |  |
-| `requirement` | ``$STRING`` |  |
-| `start_timestamp` | ``$STRING`` |  |
-| `success_condition` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `description` | `str` |  |
+| `end_timestamp` | `str` |  |
+| `exclusive` | `str` |  |
+| `expansion` | `str` |  |
+| `id` | `int` |  |
+| `location` | `dict` |  |
+| `name` | `str` |  |
+| `platform` | `str` |  |
+| `quest_rank` | `str` |  |
+| `requirement` | `str` |  |
+| `start_timestamp` | `str` |  |
+| `success_condition` | `str` |  |
+| `type` | `str` |  |
 
 #### Example: Load
 
@@ -648,7 +681,7 @@ event = client.Event().load({"id": "event_id"})
 #### Example: List
 
 ```python
-events = client.Event().list({})
+events = client.Event().list()
 ```
 
 
@@ -660,21 +693,21 @@ Create an instance: `item = client.Item()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `buy_price` | ``$INTEGER`` |  |
-| `carry_limit` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `sell_price` | ``$INTEGER`` |  |
-| `value` | ``$INTEGER`` |  |
+| `buy_price` | `int` |  |
+| `carry_limit` | `int` |  |
+| `description` | `str` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
+| `rarity` | `int` |  |
+| `sell_price` | `int` |  |
+| `value` | `int` |  |
 
 #### Example: Load
 
@@ -685,7 +718,7 @@ item = client.Item().load({"id": "item_id"})
 #### Example: List
 
 ```python
-items = client.Item().list({})
+items = client.Item().list()
 ```
 
 
@@ -697,17 +730,17 @@ Create an instance: `location = client.Location()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `camp` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `zone_count` | ``$INTEGER`` |  |
+| `camp` | `list` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
+| `zone_count` | `int` |  |
 
 #### Example: Load
 
@@ -718,7 +751,7 @@ location = client.Location().load({"id": "location_id"})
 #### Example: List
 
 ```python
-locations = client.Location().list({})
+locations = client.Location().list()
 ```
 
 
@@ -730,24 +763,24 @@ Create an instance: `monster = client.Monster()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ailment` | ``$ARRAY`` |  |
-| `description` | ``$STRING`` |  |
-| `element` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `location` | ``$ARRAY`` |  |
-| `name` | ``$STRING`` |  |
-| `resistance` | ``$ARRAY`` |  |
-| `reward` | ``$ARRAY`` |  |
-| `species` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
-| `weakness` | ``$ARRAY`` |  |
+| `ailment` | `list` |  |
+| `description` | `str` |  |
+| `element` | `list` |  |
+| `id` | `int` |  |
+| `location` | `list` |  |
+| `name` | `str` |  |
+| `resistance` | `list` |  |
+| `reward` | `list` |  |
+| `species` | `str` |  |
+| `type` | `str` |  |
+| `weakness` | `list` |  |
 
 #### Example: Load
 
@@ -758,7 +791,7 @@ monster = client.Monster().load({"id": "monster_id"})
 #### Example: List
 
 ```python
-monsters = client.Monster().list({})
+monsters = client.Monster().list()
 ```
 
 
@@ -770,19 +803,19 @@ Create an instance: `motion_value = client.MotionValue()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `damage_type` | ``$STRING`` |  |
-| `exhaust` | ``$INTEGER`` |  |
-| `hit` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `stun` | ``$INTEGER`` |  |
-| `weapon_type` | ``$STRING`` |  |
+| `damage_type` | `str` |  |
+| `exhaust` | `int` |  |
+| `hit` | `list` |  |
+| `id` | `int` |  |
+| `stun` | `int` |  |
+| `weapon_type` | `str` |  |
 
 #### Example: Load
 
@@ -793,7 +826,7 @@ motion_value = client.MotionValue().load({"id": "motion_value_id"})
 #### Example: List
 
 ```python
-motion_values = client.MotionValue().list({})
+motion_values = client.MotionValue().list()
 ```
 
 
@@ -805,17 +838,17 @@ Create an instance: `skill = client.Skill()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rank` | ``$ARRAY`` |  |
+| `description` | `str` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
+| `rank` | `list` |  |
 
 #### Example: Load
 
@@ -826,7 +859,7 @@ skill = client.Skill().load({"id": "skill_id"})
 #### Example: List
 
 ```python
-skills = client.Skill().list({})
+skills = client.Skill().list()
 ```
 
 
@@ -838,24 +871,24 @@ Create an instance: `weapon = client.Weapon()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asset` | ``$OBJECT`` |  |
-| `attack` | ``$OBJECT`` |  |
-| `attribute` | ``$OBJECT`` |  |
-| `crafting` | ``$OBJECT`` |  |
-| `damage_type` | ``$STRING`` |  |
-| `element` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `slot` | ``$ARRAY`` |  |
-| `type` | ``$STRING`` |  |
+| `asset` | `dict` |  |
+| `attack` | `dict` |  |
+| `attribute` | `dict` |  |
+| `crafting` | `dict` |  |
+| `damage_type` | `str` |  |
+| `element` | `list` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
+| `rarity` | `int` |  |
+| `slot` | `list` |  |
+| `type` | `str` |  |
 
 #### Example: Load
 
@@ -866,16 +899,20 @@ weapon = client.Weapon().load({"id": "weapon_id"})
 #### Example: List
 
 ```python
-weapons = client.Weapon().list({})
+weapons = client.Weapon().list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -892,8 +929,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return tuple.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -936,14 +974,14 @@ Import entity or utility modules directly only when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
 ailment = client.Ailment()
-ailment.load({"id": "example_id"})
+ailment.list()
 
-# ailment.data_get() now returns the loaded ailment data
+# ailment.data_get() now returns the ailment data from the last list
 # ailment.match_get() returns the last match criteria
 ```
 

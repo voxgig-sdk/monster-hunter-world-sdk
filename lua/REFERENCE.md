@@ -134,11 +134,11 @@ local ailment = client:Ailment(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `protection` | ``$OBJECT`` | No |  |
-| `recovery` | ``$OBJECT`` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `protection` | `table` | No |  |
+| `recovery` | `table` | No |  |
 
 ### Operations
 
@@ -198,19 +198,19 @@ local armor = client:Armor(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `armor_set` | ``$OBJECT`` | No |  |
-| `asset` | ``$OBJECT`` | No |  |
-| `attribute` | ``$OBJECT`` | No |  |
-| `crafting` | ``$OBJECT`` | No |  |
-| `defense` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `rank` | ``$STRING`` | No |  |
-| `rarity` | ``$INTEGER`` | No |  |
-| `resistance` | ``$OBJECT`` | No |  |
-| `skill` | ``$ARRAY`` | No |  |
-| `slot` | ``$ARRAY`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `armor_set` | `table` | No |  |
+| `asset` | `table` | No |  |
+| `attribute` | `table` | No |  |
+| `crafting` | `table` | No |  |
+| `defense` | `table` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `rank` | `string` | No |  |
+| `rarity` | `number` | No |  |
+| `resistance` | `table` | No |  |
+| `skill` | `table` | No |  |
+| `slot` | `table` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -270,11 +270,11 @@ local armor_set = client:ArmorSet(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bonus` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `piece` | ``$ARRAY`` | No |  |
-| `rank` | ``$STRING`` | No |  |
+| `bonus` | `table` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `piece` | `table` | No |  |
+| `rank` | `string` | No |  |
 
 ### Operations
 
@@ -334,11 +334,11 @@ local charm = client:Charm(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `crafting` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `rarity` | ``$INTEGER`` | No |  |
-| `skill` | ``$ARRAY`` | No |  |
+| `crafting` | `table` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `rarity` | `number` | No |  |
+| `skill` | `table` | No |  |
 
 ### Operations
 
@@ -398,11 +398,11 @@ local decoration = client:Decoration(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `rarity` | ``$INTEGER`` | No |  |
-| `skill` | ``$ARRAY`` | No |  |
-| `slot` | ``$INTEGER`` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `rarity` | `number` | No |  |
+| `skill` | `table` | No |  |
+| `slot` | `number` | No |  |
 
 ### Operations
 
@@ -462,19 +462,19 @@ local event = client:Event(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `end_timestamp` | ``$STRING`` | No |  |
-| `exclusive` | ``$STRING`` | No |  |
-| `expansion` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `location` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `platform` | ``$STRING`` | No |  |
-| `quest_rank` | ``$STRING`` | No |  |
-| `requirement` | ``$STRING`` | No |  |
-| `start_timestamp` | ``$STRING`` | No |  |
-| `success_condition` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `end_timestamp` | `string` | No |  |
+| `exclusive` | `string` | No |  |
+| `expansion` | `string` | No |  |
+| `id` | `number` | No |  |
+| `location` | `table` | No |  |
+| `name` | `string` | No |  |
+| `platform` | `string` | No |  |
+| `quest_rank` | `string` | No |  |
+| `requirement` | `string` | No |  |
+| `start_timestamp` | `string` | No |  |
+| `success_condition` | `string` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -534,14 +534,14 @@ local item = client:Item(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `buy_price` | ``$INTEGER`` | No |  |
-| `carry_limit` | ``$INTEGER`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `rarity` | ``$INTEGER`` | No |  |
-| `sell_price` | ``$INTEGER`` | No |  |
-| `value` | ``$INTEGER`` | No |  |
+| `buy_price` | `number` | No |  |
+| `carry_limit` | `number` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `rarity` | `number` | No |  |
+| `sell_price` | `number` | No |  |
+| `value` | `number` | No |  |
 
 ### Operations
 
@@ -601,10 +601,10 @@ local location = client:Location(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `camp` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `zone_count` | ``$INTEGER`` | No |  |
+| `camp` | `table` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `zone_count` | `number` | No |  |
 
 ### Operations
 
@@ -664,17 +664,17 @@ local monster = client:Monster(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ailment` | ``$ARRAY`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `element` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `location` | ``$ARRAY`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `resistance` | ``$ARRAY`` | No |  |
-| `reward` | ``$ARRAY`` | No |  |
-| `species` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `weakness` | ``$ARRAY`` | No |  |
+| `ailment` | `table` | No |  |
+| `description` | `string` | No |  |
+| `element` | `table` | No |  |
+| `id` | `number` | No |  |
+| `location` | `table` | No |  |
+| `name` | `string` | No |  |
+| `resistance` | `table` | No |  |
+| `reward` | `table` | No |  |
+| `species` | `string` | No |  |
+| `type` | `string` | No |  |
+| `weakness` | `table` | No |  |
 
 ### Operations
 
@@ -734,12 +734,12 @@ local motion_value = client:MotionValue(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `damage_type` | ``$STRING`` | No |  |
-| `exhaust` | ``$INTEGER`` | No |  |
-| `hit` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `stun` | ``$INTEGER`` | No |  |
-| `weapon_type` | ``$STRING`` | No |  |
+| `damage_type` | `string` | No |  |
+| `exhaust` | `number` | No |  |
+| `hit` | `table` | No |  |
+| `id` | `number` | No |  |
+| `stun` | `number` | No |  |
+| `weapon_type` | `string` | No |  |
 
 ### Operations
 
@@ -799,10 +799,10 @@ local skill = client:Skill(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `rank` | ``$ARRAY`` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `rank` | `table` | No |  |
 
 ### Operations
 
@@ -862,17 +862,17 @@ local weapon = client:Weapon(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asset` | ``$OBJECT`` | No |  |
-| `attack` | ``$OBJECT`` | No |  |
-| `attribute` | ``$OBJECT`` | No |  |
-| `crafting` | ``$OBJECT`` | No |  |
-| `damage_type` | ``$STRING`` | No |  |
-| `element` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `rarity` | ``$INTEGER`` | No |  |
-| `slot` | ``$ARRAY`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `asset` | `table` | No |  |
+| `attack` | `table` | No |  |
+| `attribute` | `table` | No |  |
+| `crafting` | `table` | No |  |
+| `damage_type` | `string` | No |  |
+| `element` | `table` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `rarity` | `number` | No |  |
+| `slot` | `table` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 

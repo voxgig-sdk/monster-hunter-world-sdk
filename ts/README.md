@@ -4,6 +4,11 @@
 
 The TypeScript SDK for the MonsterHunterWorld API — a type-safe, entity-oriented client with full async/await support.
 
+The API is exposed as capitalised, semantic **Entities** — e.g.
+`client.Ailment()` — each with a small set of operations (`list`, `load`)
+instead of raw URL paths and query parameters. This keeps the surface
+predictable and low-friction for both humans and AI agents.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -46,10 +51,39 @@ for (const ailment of ailments) {
 
 ```ts
 try {
-  const ailment = await client.Ailment().load({ id: 'example_id' })
+  const ailment = await client.Ailment().load({ id: 1 })
   console.log(ailment)
 } catch (err) {
   console.error('load failed:', err)
+}
+```
+
+
+## Error handling
+
+Entity operations reject on failure, so wrap them in `try` / `catch`:
+
+```ts
+try {
+  const ailments = await client.Ailment().list()
+  console.log(ailments)
+} catch (err) {
+  console.error('list failed:', err)
+}
+```
+
+The low-level `direct()` method does **not** throw — it returns the
+value or an `Error`, so check the result before using it:
+
+```ts
+const result = await client.direct({
+  path: '/api/resource/{id}',
+  method: 'GET',
+  params: { id: 'example_id' },
+})
+
+if (result instanceof Error) {
+  throw result
 }
 ```
 
@@ -98,7 +132,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = MonsterHunterWorldSDK.test()
 
-const ailment = await client.Ailment().load({ id: 'test01' })
+const ailment = await client.Ailment().list()
 // ailment is a bare entity populated with mock response data
 console.log(ailment)
 ```
@@ -117,12 +151,12 @@ Entity instances remember their last match and data:
 ```ts
 const entity = client.Ailment()
 
-// First call sets internal match
-await entity.load({ id: 'example' })
+// First call runs the operation and stores its result
+await entity.list()
 
-// Subsequent calls reuse the stored match
+// Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data.id) // 'example'
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -223,11 +257,8 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
 | `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
-| `data` | `data(data?): any` | Get or set entity data. |
-| `match` | `match(match?): any` | Get or set entity match criteria. |
+| `data` | `data(data?: Partial<Entity>): Entity` | Get or set entity data. |
+| `match` | `match(match?: Partial<Entity>): Partial<Entity>` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): MonsterHunterWorldSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
@@ -237,10 +268,9 @@ All entities share the same interface.
 Entity operations resolve to the entity data directly — there is no
 result envelope:
 
-- `load`, `create` and `update` resolve to a single entity object.
+- `load` resolves to a single entity object.
 - `list` resolves to an **array** of entity objects (iterate it directly;
   there is no `.data` and no `.ok`).
-- `remove` resolves to `void`.
 
 On a failed request these methods **throw**, so wrap calls in
 `try`/`catch` to handle errors. Only `direct()` returns the result
@@ -494,16 +524,16 @@ Create an instance: `const ailment = client.Ailment()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `protection` | ``$OBJECT`` |  |
-| `recovery` | ``$OBJECT`` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `protection` | `Record<string, any>` |  |
+| `recovery` | `Record<string, any>` |  |
 
 #### Example: Load
 
 ```ts
-const ailment = await client.Ailment().load({ id: 'ailment_id' })
+const ailment = await client.Ailment().load({ id: 1 })
 ```
 
 #### Example: List
@@ -528,24 +558,24 @@ Create an instance: `const armor = client.Armor()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `armor_set` | ``$OBJECT`` |  |
-| `asset` | ``$OBJECT`` |  |
-| `attribute` | ``$OBJECT`` |  |
-| `crafting` | ``$OBJECT`` |  |
-| `defense` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rank` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `resistance` | ``$OBJECT`` |  |
-| `skill` | ``$ARRAY`` |  |
-| `slot` | ``$ARRAY`` |  |
-| `type` | ``$STRING`` |  |
+| `armor_set` | `Record<string, any>` |  |
+| `asset` | `Record<string, any>` |  |
+| `attribute` | `Record<string, any>` |  |
+| `crafting` | `Record<string, any>` |  |
+| `defense` | `Record<string, any>` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `rank` | `string` |  |
+| `rarity` | `number` |  |
+| `resistance` | `Record<string, any>` |  |
+| `skill` | `any[]` |  |
+| `slot` | `any[]` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const armor = await client.Armor().load({ id: 'armor_id' })
+const armor = await client.Armor().load({ id: 1 })
 ```
 
 #### Example: List
@@ -570,16 +600,16 @@ Create an instance: `const armor_set = client.ArmorSet()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `bonus` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `piece` | ``$ARRAY`` |  |
-| `rank` | ``$STRING`` |  |
+| `bonus` | `Record<string, any>` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `piece` | `any[]` |  |
+| `rank` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const armor_set = await client.ArmorSet().load({ id: 'armor_set_id' })
+const armor_set = await client.ArmorSet().load({ id: 1 })
 ```
 
 #### Example: List
@@ -604,16 +634,16 @@ Create an instance: `const charm = client.Charm()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `crafting` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `skill` | ``$ARRAY`` |  |
+| `crafting` | `Record<string, any>` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `rarity` | `number` |  |
+| `skill` | `any[]` |  |
 
 #### Example: Load
 
 ```ts
-const charm = await client.Charm().load({ id: 'charm_id' })
+const charm = await client.Charm().load({ id: 1 })
 ```
 
 #### Example: List
@@ -638,16 +668,16 @@ Create an instance: `const decoration = client.Decoration()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `skill` | ``$ARRAY`` |  |
-| `slot` | ``$INTEGER`` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `rarity` | `number` |  |
+| `skill` | `any[]` |  |
+| `slot` | `number` |  |
 
 #### Example: Load
 
 ```ts
-const decoration = await client.Decoration().load({ id: 'decoration_id' })
+const decoration = await client.Decoration().load({ id: 1 })
 ```
 
 #### Example: List
@@ -672,24 +702,24 @@ Create an instance: `const event = client.Event()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `end_timestamp` | ``$STRING`` |  |
-| `exclusive` | ``$STRING`` |  |
-| `expansion` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `location` | ``$OBJECT`` |  |
-| `name` | ``$STRING`` |  |
-| `platform` | ``$STRING`` |  |
-| `quest_rank` | ``$STRING`` |  |
-| `requirement` | ``$STRING`` |  |
-| `start_timestamp` | ``$STRING`` |  |
-| `success_condition` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `end_timestamp` | `string` |  |
+| `exclusive` | `string` |  |
+| `expansion` | `string` |  |
+| `id` | `number` |  |
+| `location` | `Record<string, any>` |  |
+| `name` | `string` |  |
+| `platform` | `string` |  |
+| `quest_rank` | `string` |  |
+| `requirement` | `string` |  |
+| `start_timestamp` | `string` |  |
+| `success_condition` | `string` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const event = await client.Event().load({ id: 'event_id' })
+const event = await client.Event().load({ id: 1 })
 ```
 
 #### Example: List
@@ -714,19 +744,19 @@ Create an instance: `const item = client.Item()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `buy_price` | ``$INTEGER`` |  |
-| `carry_limit` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `sell_price` | ``$INTEGER`` |  |
-| `value` | ``$INTEGER`` |  |
+| `buy_price` | `number` |  |
+| `carry_limit` | `number` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `rarity` | `number` |  |
+| `sell_price` | `number` |  |
+| `value` | `number` |  |
 
 #### Example: Load
 
 ```ts
-const item = await client.Item().load({ id: 'item_id' })
+const item = await client.Item().load({ id: 1 })
 ```
 
 #### Example: List
@@ -751,15 +781,15 @@ Create an instance: `const location = client.Location()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `camp` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `zone_count` | ``$INTEGER`` |  |
+| `camp` | `any[]` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `zone_count` | `number` |  |
 
 #### Example: Load
 
 ```ts
-const location = await client.Location().load({ id: 'location_id' })
+const location = await client.Location().load({ id: 1 })
 ```
 
 #### Example: List
@@ -784,22 +814,22 @@ Create an instance: `const monster = client.Monster()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ailment` | ``$ARRAY`` |  |
-| `description` | ``$STRING`` |  |
-| `element` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `location` | ``$ARRAY`` |  |
-| `name` | ``$STRING`` |  |
-| `resistance` | ``$ARRAY`` |  |
-| `reward` | ``$ARRAY`` |  |
-| `species` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
-| `weakness` | ``$ARRAY`` |  |
+| `ailment` | `any[]` |  |
+| `description` | `string` |  |
+| `element` | `any[]` |  |
+| `id` | `number` |  |
+| `location` | `any[]` |  |
+| `name` | `string` |  |
+| `resistance` | `any[]` |  |
+| `reward` | `any[]` |  |
+| `species` | `string` |  |
+| `type` | `string` |  |
+| `weakness` | `any[]` |  |
 
 #### Example: Load
 
 ```ts
-const monster = await client.Monster().load({ id: 'monster_id' })
+const monster = await client.Monster().load({ id: 1 })
 ```
 
 #### Example: List
@@ -824,17 +854,17 @@ Create an instance: `const motion_value = client.MotionValue()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `damage_type` | ``$STRING`` |  |
-| `exhaust` | ``$INTEGER`` |  |
-| `hit` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `stun` | ``$INTEGER`` |  |
-| `weapon_type` | ``$STRING`` |  |
+| `damage_type` | `string` |  |
+| `exhaust` | `number` |  |
+| `hit` | `any[]` |  |
+| `id` | `number` |  |
+| `stun` | `number` |  |
+| `weapon_type` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const motion_value = await client.MotionValue().load({ id: 'motion_value_id' })
+const motion_value = await client.MotionValue().load({ id: 1 })
 ```
 
 #### Example: List
@@ -859,15 +889,15 @@ Create an instance: `const skill = client.Skill()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rank` | ``$ARRAY`` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `rank` | `any[]` |  |
 
 #### Example: Load
 
 ```ts
-const skill = await client.Skill().load({ id: 'skill_id' })
+const skill = await client.Skill().load({ id: 1 })
 ```
 
 #### Example: List
@@ -892,22 +922,22 @@ Create an instance: `const weapon = client.Weapon()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asset` | ``$OBJECT`` |  |
-| `attack` | ``$OBJECT`` |  |
-| `attribute` | ``$OBJECT`` |  |
-| `crafting` | ``$OBJECT`` |  |
-| `damage_type` | ``$STRING`` |  |
-| `element` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `slot` | ``$ARRAY`` |  |
-| `type` | ``$STRING`` |  |
+| `asset` | `Record<string, any>` |  |
+| `attack` | `Record<string, any>` |  |
+| `attribute` | `Record<string, any>` |  |
+| `crafting` | `Record<string, any>` |  |
+| `damage_type` | `string` |  |
+| `element` | `any[]` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `rarity` | `number` |  |
+| `slot` | `any[]` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const weapon = await client.Weapon().load({ id: 'weapon_id' })
+const weapon = await client.Weapon().load({ id: 1 })
 ```
 
 #### Example: List
@@ -917,12 +947,16 @@ const weapons = await client.Weapon().list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -939,11 +973,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller.
-
-An unexpected exception triggers the `PreUnexpected` hook before
-propagating.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -979,16 +1011,16 @@ import { MonsterHunterWorldSDK } from '@voxgig-sdk/monster-hunter-world'
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
 const ailment = client.Ailment()
-await ailment.load({ id: "example_id" })
+await ailment.list()
 
-// ailment.data() now returns the loaded ailment data
-// ailment.match() returns { id: "example_id" }
+// ailment.data() now returns the ailment data from the last `list`
+// ailment.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

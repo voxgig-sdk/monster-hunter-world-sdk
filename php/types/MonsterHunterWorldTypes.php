@@ -28,7 +28,7 @@ class AilmentLoadMatch
     public int $id;
 }
 
-/** Match filter for Ailment#list (any subset of Ailment fields). */
+/** Request payload for Ailment#list. */
 class AilmentListMatch
 {
     public ?string $description = null;
@@ -62,7 +62,7 @@ class ArmorLoadMatch
     public int $id;
 }
 
-/** Match filter for Armor#list (any subset of Armor fields). */
+/** Request payload for Armor#list. */
 class ArmorListMatch
 {
     public ?array $armor_set = null;
@@ -96,7 +96,7 @@ class ArmorSetLoadMatch
     public int $id;
 }
 
-/** Match filter for ArmorSet#list (any subset of ArmorSet fields). */
+/** Request payload for ArmorSet#list. */
 class ArmorSetListMatch
 {
     public ?array $bonus = null;
@@ -122,7 +122,7 @@ class CharmLoadMatch
     public int $id;
 }
 
-/** Match filter for Charm#list (any subset of Charm fields). */
+/** Request payload for Charm#list. */
 class CharmListMatch
 {
     public ?array $crafting = null;
@@ -148,7 +148,7 @@ class DecorationLoadMatch
     public int $id;
 }
 
-/** Match filter for Decoration#list (any subset of Decoration fields). */
+/** Request payload for Decoration#list. */
 class DecorationListMatch
 {
     public ?int $id = null;
@@ -182,7 +182,7 @@ class EventLoadMatch
     public int $id;
 }
 
-/** Match filter for Event#list (any subset of Event fields). */
+/** Request payload for Event#list. */
 class EventListMatch
 {
     public ?string $description = null;
@@ -219,7 +219,7 @@ class ItemLoadMatch
     public int $id;
 }
 
-/** Match filter for Item#list (any subset of Item fields). */
+/** Request payload for Item#list. */
 class ItemListMatch
 {
     public ?int $buy_price = null;
@@ -247,7 +247,7 @@ class LocationLoadMatch
     public int $id;
 }
 
-/** Match filter for Location#list (any subset of Location fields). */
+/** Request payload for Location#list. */
 class LocationListMatch
 {
     public ?array $camp = null;
@@ -278,7 +278,7 @@ class MonsterLoadMatch
     public int $id;
 }
 
-/** Match filter for Monster#list (any subset of Monster fields). */
+/** Request payload for Monster#list. */
 class MonsterListMatch
 {
     public ?array $ailment = null;
@@ -311,7 +311,7 @@ class MotionValueLoadMatch
     public int $id;
 }
 
-/** Match filter for MotionValue#list (any subset of MotionValue fields). */
+/** Request payload for MotionValue#list. */
 class MotionValueListMatch
 {
     public ?string $damage_type = null;
@@ -337,7 +337,7 @@ class SkillLoadMatch
     public int $id;
 }
 
-/** Match filter for Skill#list (any subset of Skill fields). */
+/** Request payload for Skill#list. */
 class SkillListMatch
 {
     public ?string $description = null;
@@ -368,7 +368,7 @@ class WeaponLoadMatch
     public int $id;
 }
 
-/** Match filter for Weapon#list (any subset of Weapon fields). */
+/** Request payload for Weapon#list. */
 class WeaponListMatch
 {
     public ?array $asset = null;

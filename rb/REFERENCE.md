@@ -8,7 +8,7 @@ Complete API reference for the MonsterHunterWorld Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'monster-hunter-world_sdk'
+require_relative 'MonsterHunterWorld_sdk'
 
 client = MonsterHunterWorldSDK.new(options)
 ```
@@ -137,20 +137,20 @@ ailment = client.Ailment
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `protection` | ``$OBJECT`` | No |  |
-| `recovery` | ``$OBJECT`` | No |  |
+| `description` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `protection` | `Hash` | No |  |
+| `recovery` | `Hash` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Ailment.list(nil)
+results = client.Ailment.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -201,28 +201,28 @@ armor = client.Armor
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `armor_set` | ``$OBJECT`` | No |  |
-| `asset` | ``$OBJECT`` | No |  |
-| `attribute` | ``$OBJECT`` | No |  |
-| `crafting` | ``$OBJECT`` | No |  |
-| `defense` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `rank` | ``$STRING`` | No |  |
-| `rarity` | ``$INTEGER`` | No |  |
-| `resistance` | ``$OBJECT`` | No |  |
-| `skill` | ``$ARRAY`` | No |  |
-| `slot` | ``$ARRAY`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `armor_set` | `Hash` | No |  |
+| `asset` | `Hash` | No |  |
+| `attribute` | `Hash` | No |  |
+| `crafting` | `Hash` | No |  |
+| `defense` | `Hash` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `rank` | `String` | No |  |
+| `rarity` | `Integer` | No |  |
+| `resistance` | `Hash` | No |  |
+| `skill` | `Array` | No |  |
+| `slot` | `Array` | No |  |
+| `type` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Armor.list(nil)
+results = client.Armor.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -273,20 +273,20 @@ armor_set = client.ArmorSet
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bonus` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `piece` | ``$ARRAY`` | No |  |
-| `rank` | ``$STRING`` | No |  |
+| `bonus` | `Hash` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `piece` | `Array` | No |  |
+| `rank` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.ArmorSet.list(nil)
+results = client.ArmorSet.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -337,20 +337,20 @@ charm = client.Charm
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `crafting` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `rarity` | ``$INTEGER`` | No |  |
-| `skill` | ``$ARRAY`` | No |  |
+| `crafting` | `Hash` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `rarity` | `Integer` | No |  |
+| `skill` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Charm.list(nil)
+results = client.Charm.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -401,20 +401,20 @@ decoration = client.Decoration
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `rarity` | ``$INTEGER`` | No |  |
-| `skill` | ``$ARRAY`` | No |  |
-| `slot` | ``$INTEGER`` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `rarity` | `Integer` | No |  |
+| `skill` | `Array` | No |  |
+| `slot` | `Integer` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Decoration.list(nil)
+results = client.Decoration.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -465,28 +465,28 @@ event = client.Event
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `end_timestamp` | ``$STRING`` | No |  |
-| `exclusive` | ``$STRING`` | No |  |
-| `expansion` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `location` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `platform` | ``$STRING`` | No |  |
-| `quest_rank` | ``$STRING`` | No |  |
-| `requirement` | ``$STRING`` | No |  |
-| `start_timestamp` | ``$STRING`` | No |  |
-| `success_condition` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `description` | `String` | No |  |
+| `end_timestamp` | `String` | No |  |
+| `exclusive` | `String` | No |  |
+| `expansion` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `location` | `Hash` | No |  |
+| `name` | `String` | No |  |
+| `platform` | `String` | No |  |
+| `quest_rank` | `String` | No |  |
+| `requirement` | `String` | No |  |
+| `start_timestamp` | `String` | No |  |
+| `success_condition` | `String` | No |  |
+| `type` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Event.list(nil)
+results = client.Event.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -537,23 +537,23 @@ item = client.Item
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `buy_price` | ``$INTEGER`` | No |  |
-| `carry_limit` | ``$INTEGER`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `rarity` | ``$INTEGER`` | No |  |
-| `sell_price` | ``$INTEGER`` | No |  |
-| `value` | ``$INTEGER`` | No |  |
+| `buy_price` | `Integer` | No |  |
+| `carry_limit` | `Integer` | No |  |
+| `description` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `rarity` | `Integer` | No |  |
+| `sell_price` | `Integer` | No |  |
+| `value` | `Integer` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Item.list(nil)
+results = client.Item.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -604,19 +604,19 @@ location = client.Location
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `camp` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `zone_count` | ``$INTEGER`` | No |  |
+| `camp` | `Array` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `zone_count` | `Integer` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Location.list(nil)
+results = client.Location.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -667,26 +667,26 @@ monster = client.Monster
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ailment` | ``$ARRAY`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `element` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `location` | ``$ARRAY`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `resistance` | ``$ARRAY`` | No |  |
-| `reward` | ``$ARRAY`` | No |  |
-| `species` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `weakness` | ``$ARRAY`` | No |  |
+| `ailment` | `Array` | No |  |
+| `description` | `String` | No |  |
+| `element` | `Array` | No |  |
+| `id` | `Integer` | No |  |
+| `location` | `Array` | No |  |
+| `name` | `String` | No |  |
+| `resistance` | `Array` | No |  |
+| `reward` | `Array` | No |  |
+| `species` | `String` | No |  |
+| `type` | `String` | No |  |
+| `weakness` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Monster.list(nil)
+results = client.Monster.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -737,21 +737,21 @@ motion_value = client.MotionValue
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `damage_type` | ``$STRING`` | No |  |
-| `exhaust` | ``$INTEGER`` | No |  |
-| `hit` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `stun` | ``$INTEGER`` | No |  |
-| `weapon_type` | ``$STRING`` | No |  |
+| `damage_type` | `String` | No |  |
+| `exhaust` | `Integer` | No |  |
+| `hit` | `Array` | No |  |
+| `id` | `Integer` | No |  |
+| `stun` | `Integer` | No |  |
+| `weapon_type` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.MotionValue.list(nil)
+results = client.MotionValue.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -802,19 +802,19 @@ skill = client.Skill
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `rank` | ``$ARRAY`` | No |  |
+| `description` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `rank` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Skill.list(nil)
+results = client.Skill.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -865,26 +865,26 @@ weapon = client.Weapon
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asset` | ``$OBJECT`` | No |  |
-| `attack` | ``$OBJECT`` | No |  |
-| `attribute` | ``$OBJECT`` | No |  |
-| `crafting` | ``$OBJECT`` | No |  |
-| `damage_type` | ``$STRING`` | No |  |
-| `element` | ``$ARRAY`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `rarity` | ``$INTEGER`` | No |  |
-| `slot` | ``$ARRAY`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `asset` | `Hash` | No |  |
+| `attack` | `Hash` | No |  |
+| `attribute` | `Hash` | No |  |
+| `crafting` | `Hash` | No |  |
+| `damage_type` | `String` | No |  |
+| `element` | `Array` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `rarity` | `Integer` | No |  |
+| `slot` | `Array` | No |  |
+| `type` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Weapon.list(nil)
+results = client.Weapon.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`

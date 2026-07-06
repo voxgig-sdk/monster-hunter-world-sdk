@@ -42,7 +42,7 @@ AilmentLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Ailment#list (any subset of Ailment fields).
+# Request payload for Ailment#list.
 #
 # @!attribute [rw] description
 #   @return [String, nil]
@@ -133,7 +133,7 @@ ArmorLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Armor#list (any subset of Armor fields).
+# Request payload for Armor#list.
 #
 # @!attribute [rw] armor_set
 #   @return [Hash, nil]
@@ -224,7 +224,7 @@ ArmorSetLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for ArmorSet#list (any subset of ArmorSet fields).
+# Request payload for ArmorSet#list.
 #
 # @!attribute [rw] bonus
 #   @return [Hash, nil]
@@ -283,7 +283,7 @@ CharmLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Charm#list (any subset of Charm fields).
+# Request payload for Charm#list.
 #
 # @!attribute [rw] crafting
 #   @return [Hash, nil]
@@ -342,7 +342,7 @@ DecorationLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Decoration#list (any subset of Decoration fields).
+# Request payload for Decoration#list.
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
@@ -433,7 +433,7 @@ EventLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Event#list (any subset of Event fields).
+# Request payload for Event#list.
 #
 # @!attribute [rw] description
 #   @return [String, nil]
@@ -536,7 +536,7 @@ ItemLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Item#list (any subset of Item fields).
+# Request payload for Item#list.
 #
 # @!attribute [rw] buy_price
 #   @return [Integer, nil]
@@ -603,7 +603,7 @@ LocationLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Location#list (any subset of Location fields).
+# Request payload for Location#list.
 #
 # @!attribute [rw] camp
 #   @return [Array, nil]
@@ -682,7 +682,7 @@ MonsterLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Monster#list (any subset of Monster fields).
+# Request payload for Monster#list.
 #
 # @!attribute [rw] ailment
 #   @return [Array, nil]
@@ -769,7 +769,7 @@ MotionValueLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for MotionValue#list (any subset of MotionValue fields).
+# Request payload for MotionValue#list.
 #
 # @!attribute [rw] damage_type
 #   @return [String, nil]
@@ -828,7 +828,7 @@ SkillLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Skill#list (any subset of Skill fields).
+# Request payload for Skill#list.
 #
 # @!attribute [rw] description
 #   @return [String, nil]
@@ -907,7 +907,7 @@ WeaponLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Weapon#list (any subset of Weapon fields).
+# Request payload for Weapon#list.
 #
 # @!attribute [rw] asset
 #   @return [Hash, nil]

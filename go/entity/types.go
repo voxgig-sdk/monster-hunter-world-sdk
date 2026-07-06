@@ -22,8 +22,7 @@ type AilmentLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// AilmentListMatch mirrors the ailment fields as an all-optional match
-// filter (Go analog of Partial<Ailment>).
+// AilmentListMatch is the typed request payload for Ailment.ListTyped.
 type AilmentListMatch struct {
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
@@ -54,8 +53,7 @@ type ArmorLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// ArmorListMatch mirrors the armor fields as an all-optional match
-// filter (Go analog of Partial<Armor>).
+// ArmorListMatch is the typed request payload for Armor.ListTyped.
 type ArmorListMatch struct {
 	ArmorSet *map[string]any `json:"armor_set,omitempty"`
 	Asset *map[string]any `json:"asset,omitempty"`
@@ -86,8 +84,7 @@ type ArmorSetLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// ArmorSetListMatch mirrors the armor_set fields as an all-optional match
-// filter (Go analog of Partial<ArmorSet>).
+// ArmorSetListMatch is the typed request payload for ArmorSet.ListTyped.
 type ArmorSetListMatch struct {
 	Bonus *map[string]any `json:"bonus,omitempty"`
 	Id *int `json:"id,omitempty"`
@@ -110,8 +107,7 @@ type CharmLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// CharmListMatch mirrors the charm fields as an all-optional match
-// filter (Go analog of Partial<Charm>).
+// CharmListMatch is the typed request payload for Charm.ListTyped.
 type CharmListMatch struct {
 	Crafting *map[string]any `json:"crafting,omitempty"`
 	Id *int `json:"id,omitempty"`
@@ -134,8 +130,7 @@ type DecorationLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// DecorationListMatch mirrors the decoration fields as an all-optional match
-// filter (Go analog of Partial<Decoration>).
+// DecorationListMatch is the typed request payload for Decoration.ListTyped.
 type DecorationListMatch struct {
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -166,8 +161,7 @@ type EventLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// EventListMatch mirrors the event fields as an all-optional match
-// filter (Go analog of Partial<Event>).
+// EventListMatch is the typed request payload for Event.ListTyped.
 type EventListMatch struct {
 	Description *string `json:"description,omitempty"`
 	EndTimestamp *string `json:"end_timestamp,omitempty"`
@@ -201,8 +195,7 @@ type ItemLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// ItemListMatch mirrors the item fields as an all-optional match
-// filter (Go analog of Partial<Item>).
+// ItemListMatch is the typed request payload for Item.ListTyped.
 type ItemListMatch struct {
 	BuyPrice *int `json:"buy_price,omitempty"`
 	CarryLimit *int `json:"carry_limit,omitempty"`
@@ -227,8 +220,7 @@ type LocationLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// LocationListMatch mirrors the location fields as an all-optional match
-// filter (Go analog of Partial<Location>).
+// LocationListMatch is the typed request payload for Location.ListTyped.
 type LocationListMatch struct {
 	Camp *[]any `json:"camp,omitempty"`
 	Id *int `json:"id,omitempty"`
@@ -256,8 +248,7 @@ type MonsterLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// MonsterListMatch mirrors the monster fields as an all-optional match
-// filter (Go analog of Partial<Monster>).
+// MonsterListMatch is the typed request payload for Monster.ListTyped.
 type MonsterListMatch struct {
 	Ailment *[]any `json:"ailment,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -287,8 +278,7 @@ type MotionValueLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// MotionValueListMatch mirrors the motion_value fields as an all-optional match
-// filter (Go analog of Partial<MotionValue>).
+// MotionValueListMatch is the typed request payload for MotionValue.ListTyped.
 type MotionValueListMatch struct {
 	DamageType *string `json:"damage_type,omitempty"`
 	Exhaust *int `json:"exhaust,omitempty"`
@@ -311,8 +301,7 @@ type SkillLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// SkillListMatch mirrors the skill fields as an all-optional match
-// filter (Go analog of Partial<Skill>).
+// SkillListMatch is the typed request payload for Skill.ListTyped.
 type SkillListMatch struct {
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
@@ -340,8 +329,7 @@ type WeaponLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// WeaponListMatch mirrors the weapon fields as an all-optional match
-// filter (Go analog of Partial<Weapon>).
+// WeaponListMatch is the typed request payload for Weapon.ListTyped.
 type WeaponListMatch struct {
 	Asset *map[string]any `json:"asset,omitempty"`
 	Attack *map[string]any `json:"attack,omitempty"`

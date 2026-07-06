@@ -4,6 +4,8 @@
 
 The PHP SDK for the MonsterHunterWorld API — an entity-oriented client using PHP conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->Ailment()` — with named operations (`list`/`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -36,7 +38,7 @@ try {
     // list() returns an array of Ailment records — iterate directly.
     $ailments = $client->Ailment()->list();
     foreach ($ailments as $item) {
-        echo $item["id"] . " " . $item["name"] . "\n";
+        echo $item["id"] . " " . $item["description"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -52,6 +54,37 @@ try {
     print_r($ailment);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
+}
+```
+
+
+## Error handling
+
+Entity operations throw a `\Throwable` on failure, so wrap them in
+`try` / `catch`:
+
+```php
+try {
+    $ailments = $client->Ailment()->list();
+} catch (\Throwable $err) {
+    echo "Error: " . $err->getMessage();
+}
+```
+
+`direct()` does **not** throw — it returns the result array. Branch on
+`ok`; on failure `status` holds the HTTP status (for error responses) and
+`err` holds a transport error, so read both defensively:
+
+```php
+$result = $client->direct([
+    "path" => "/api/resource/{id}",
+    "method" => "GET",
+    "params" => ["id" => "example_id"],
+]);
+
+if (! $result["ok"]) {
+    $err = $result["err"] ?? null;
+    echo "request failed: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -75,7 +108,10 @@ if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
 } else {
-    echo "Error: " . $result["err"]->getMessage();
+    // On an HTTP error status there is no err (only a transport failure sets
+    // it), so fall back to the status code.
+    $err = $result["err"] ?? null;
+    echo "Error: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -104,8 +140,8 @@ $client = MonsterHunterWorldSDK::test([
     "entity" => ["ailment" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// load() returns the bare mock record (throws on error).
-$ailment = $client->Ailment()->load(["id" => "test01"]);
+// Entity ops return the bare mock record (throws on error).
+$ailment = $client->Ailment()->list();
 print_r($ailment);
 ```
 
@@ -205,10 +241,7 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `($reqmatch, $ctrl): array` | Load a single entity by match criteria. |
-| `list` | `($reqmatch, $ctrl): array` | List entities matching the criteria. |
-| `create` | `($reqdata, $ctrl): array` | Create a new entity. |
-| `update` | `($reqdata, $ctrl): array` | Update an existing entity. |
-| `remove` | `($reqmatch, $ctrl): array` | Remove an entity. |
+| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -454,11 +487,11 @@ Create an instance: `$ailment = $client->Ailment();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `protection` | ``$OBJECT`` |  |
-| `recovery` | ``$OBJECT`` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `protection` | `array` |  |
+| `recovery` | `array` |  |
 
 #### Example: Load
 
@@ -490,19 +523,19 @@ Create an instance: `$armor = $client->Armor();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `armor_set` | ``$OBJECT`` |  |
-| `asset` | ``$OBJECT`` |  |
-| `attribute` | ``$OBJECT`` |  |
-| `crafting` | ``$OBJECT`` |  |
-| `defense` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rank` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `resistance` | ``$OBJECT`` |  |
-| `skill` | ``$ARRAY`` |  |
-| `slot` | ``$ARRAY`` |  |
-| `type` | ``$STRING`` |  |
+| `armor_set` | `array` |  |
+| `asset` | `array` |  |
+| `attribute` | `array` |  |
+| `crafting` | `array` |  |
+| `defense` | `array` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `rank` | `string` |  |
+| `rarity` | `int` |  |
+| `resistance` | `array` |  |
+| `skill` | `array` |  |
+| `slot` | `array` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
@@ -534,11 +567,11 @@ Create an instance: `$armor_set = $client->ArmorSet();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `bonus` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `piece` | ``$ARRAY`` |  |
-| `rank` | ``$STRING`` |  |
+| `bonus` | `array` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `piece` | `array` |  |
+| `rank` | `string` |  |
 
 #### Example: Load
 
@@ -570,11 +603,11 @@ Create an instance: `$charm = $client->Charm();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `crafting` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `skill` | ``$ARRAY`` |  |
+| `crafting` | `array` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `rarity` | `int` |  |
+| `skill` | `array` |  |
 
 #### Example: Load
 
@@ -606,11 +639,11 @@ Create an instance: `$decoration = $client->Decoration();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `skill` | ``$ARRAY`` |  |
-| `slot` | ``$INTEGER`` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `rarity` | `int` |  |
+| `skill` | `array` |  |
+| `slot` | `int` |  |
 
 #### Example: Load
 
@@ -642,19 +675,19 @@ Create an instance: `$event = $client->Event();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `end_timestamp` | ``$STRING`` |  |
-| `exclusive` | ``$STRING`` |  |
-| `expansion` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `location` | ``$OBJECT`` |  |
-| `name` | ``$STRING`` |  |
-| `platform` | ``$STRING`` |  |
-| `quest_rank` | ``$STRING`` |  |
-| `requirement` | ``$STRING`` |  |
-| `start_timestamp` | ``$STRING`` |  |
-| `success_condition` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
+| `description` | `string` |  |
+| `end_timestamp` | `string` |  |
+| `exclusive` | `string` |  |
+| `expansion` | `string` |  |
+| `id` | `int` |  |
+| `location` | `array` |  |
+| `name` | `string` |  |
+| `platform` | `string` |  |
+| `quest_rank` | `string` |  |
+| `requirement` | `string` |  |
+| `start_timestamp` | `string` |  |
+| `success_condition` | `string` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
@@ -686,14 +719,14 @@ Create an instance: `$item = $client->Item();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `buy_price` | ``$INTEGER`` |  |
-| `carry_limit` | ``$INTEGER`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `sell_price` | ``$INTEGER`` |  |
-| `value` | ``$INTEGER`` |  |
+| `buy_price` | `int` |  |
+| `carry_limit` | `int` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `rarity` | `int` |  |
+| `sell_price` | `int` |  |
+| `value` | `int` |  |
 
 #### Example: Load
 
@@ -725,10 +758,10 @@ Create an instance: `$location = $client->Location();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `camp` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `zone_count` | ``$INTEGER`` |  |
+| `camp` | `array` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `zone_count` | `int` |  |
 
 #### Example: Load
 
@@ -760,17 +793,17 @@ Create an instance: `$monster = $client->Monster();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ailment` | ``$ARRAY`` |  |
-| `description` | ``$STRING`` |  |
-| `element` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `location` | ``$ARRAY`` |  |
-| `name` | ``$STRING`` |  |
-| `resistance` | ``$ARRAY`` |  |
-| `reward` | ``$ARRAY`` |  |
-| `species` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
-| `weakness` | ``$ARRAY`` |  |
+| `ailment` | `array` |  |
+| `description` | `string` |  |
+| `element` | `array` |  |
+| `id` | `int` |  |
+| `location` | `array` |  |
+| `name` | `string` |  |
+| `resistance` | `array` |  |
+| `reward` | `array` |  |
+| `species` | `string` |  |
+| `type` | `string` |  |
+| `weakness` | `array` |  |
 
 #### Example: Load
 
@@ -802,12 +835,12 @@ Create an instance: `$motion_value = $client->MotionValue();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `damage_type` | ``$STRING`` |  |
-| `exhaust` | ``$INTEGER`` |  |
-| `hit` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `stun` | ``$INTEGER`` |  |
-| `weapon_type` | ``$STRING`` |  |
+| `damage_type` | `string` |  |
+| `exhaust` | `int` |  |
+| `hit` | `array` |  |
+| `id` | `int` |  |
+| `stun` | `int` |  |
+| `weapon_type` | `string` |  |
 
 #### Example: Load
 
@@ -839,10 +872,10 @@ Create an instance: `$skill = $client->Skill();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rank` | ``$ARRAY`` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `rank` | `array` |  |
 
 #### Example: Load
 
@@ -874,17 +907,17 @@ Create an instance: `$weapon = $client->Weapon();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asset` | ``$OBJECT`` |  |
-| `attack` | ``$OBJECT`` |  |
-| `attribute` | ``$OBJECT`` |  |
-| `crafting` | ``$OBJECT`` |  |
-| `damage_type` | ``$STRING`` |  |
-| `element` | ``$ARRAY`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `rarity` | ``$INTEGER`` |  |
-| `slot` | ``$ARRAY`` |  |
-| `type` | ``$STRING`` |  |
+| `asset` | `array` |  |
+| `attack` | `array` |  |
+| `attribute` | `array` |  |
+| `crafting` | `array` |  |
+| `damage_type` | `string` |  |
+| `element` | `array` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `rarity` | `int` |  |
+| `slot` | `array` |  |
+| `type` | `string` |  |
 
 #### Example: Load
 
@@ -901,12 +934,16 @@ $weapons = $client->Weapon()->list();
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -923,8 +960,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return array.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -968,15 +1006,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
 $ailment = $client->Ailment();
-$ailment->load(["id" => "example_id"]);
+$ailment->list();
 
-// $ailment->dataGet() now returns the loaded ailment data
-// $ailment->matchGet() returns the last match criteria
+// $ailment->data_get() now returns the ailment data from the last list
+// $ailment->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

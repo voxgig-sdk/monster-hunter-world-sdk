@@ -65,8 +65,13 @@ class ArmorSetEntity:
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch: ArmorSetLoadMatch, ctrl=None) -> ArmorSet:
+    def load(self, reqmatch=None, ctrl=None) -> ArmorSet:
         utility = self._utility
+        # reqmatch is optional: an entity with no id-like key loads with no
+        # match. Treat None as an empty match so client.ArmorSet().load()
+        # works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "load",
             "ctrl": ctrl,
@@ -87,8 +92,12 @@ class ArmorSetEntity:
 
 
     
-    def list(self, reqmatch: ArmorSetListMatch, ctrl=None) -> list[ArmorSet]:
+    def list(self, reqmatch=None, ctrl=None) -> list[ArmorSet]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.ArmorSet().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,
