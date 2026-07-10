@@ -50,7 +50,7 @@ try {
 ```php
 try {
     // load() returns the bare Ailment record (throws on error).
-    $ailment = $client->Ailment()->load(["id" => "example_id"]);
+    $ailment = $client->Ailment()->load(["id" => 1]);
     print_r($ailment);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -497,7 +497,7 @@ Create an instance: `$ailment = $client->Ailment();`
 
 ```php
 // load() returns the bare Ailment record (throws on error).
-$ailment = $client->Ailment()->load(["id" => "ailment_id"]);
+$ailment = $client->Ailment()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -541,7 +541,7 @@ Create an instance: `$armor = $client->Armor();`
 
 ```php
 // load() returns the bare Armor record (throws on error).
-$armor = $client->Armor()->load(["id" => "armor_id"]);
+$armor = $client->Armor()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -577,7 +577,7 @@ Create an instance: `$armor_set = $client->ArmorSet();`
 
 ```php
 // load() returns the bare ArmorSet record (throws on error).
-$armor_set = $client->ArmorSet()->load(["id" => "armor_set_id"]);
+$armor_set = $client->ArmorSet()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -613,7 +613,7 @@ Create an instance: `$charm = $client->Charm();`
 
 ```php
 // load() returns the bare Charm record (throws on error).
-$charm = $client->Charm()->load(["id" => "charm_id"]);
+$charm = $client->Charm()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -649,7 +649,7 @@ Create an instance: `$decoration = $client->Decoration();`
 
 ```php
 // load() returns the bare Decoration record (throws on error).
-$decoration = $client->Decoration()->load(["id" => "decoration_id"]);
+$decoration = $client->Decoration()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -693,7 +693,7 @@ Create an instance: `$event = $client->Event();`
 
 ```php
 // load() returns the bare Event record (throws on error).
-$event = $client->Event()->load(["id" => "event_id"]);
+$event = $client->Event()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -732,7 +732,7 @@ Create an instance: `$item = $client->Item();`
 
 ```php
 // load() returns the bare Item record (throws on error).
-$item = $client->Item()->load(["id" => "item_id"]);
+$item = $client->Item()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -767,7 +767,7 @@ Create an instance: `$location = $client->Location();`
 
 ```php
 // load() returns the bare Location record (throws on error).
-$location = $client->Location()->load(["id" => "location_id"]);
+$location = $client->Location()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -809,7 +809,7 @@ Create an instance: `$monster = $client->Monster();`
 
 ```php
 // load() returns the bare Monster record (throws on error).
-$monster = $client->Monster()->load(["id" => "monster_id"]);
+$monster = $client->Monster()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -846,7 +846,7 @@ Create an instance: `$motion_value = $client->MotionValue();`
 
 ```php
 // load() returns the bare MotionValue record (throws on error).
-$motion_value = $client->MotionValue()->load(["id" => "motion_value_id"]);
+$motion_value = $client->MotionValue()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -881,7 +881,7 @@ Create an instance: `$skill = $client->Skill();`
 
 ```php
 // load() returns the bare Skill record (throws on error).
-$skill = $client->Skill()->load(["id" => "skill_id"]);
+$skill = $client->Skill()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -923,7 +923,7 @@ Create an instance: `$weapon = $client->Weapon();`
 
 ```php
 // load() returns the bare Weapon record (throws on error).
-$weapon = $client->Weapon()->load(["id" => "weapon_id"]);
+$weapon = $client->Weapon()->load(["id" => 1]);
 ```
 
 #### Example: List

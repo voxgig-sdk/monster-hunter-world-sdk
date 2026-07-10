@@ -32,9 +32,9 @@ main: {
           }
         }
       ]
+      summary: "The Monster Hunter World API provides detailed information about the game, including items, monsters, armor, skills, events, and more."
       title: "Monster Hunter World API"
       version: "1.0.0"
+      website: "https://mhw-db.com"
     }
   }
-}
-

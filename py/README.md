@@ -56,7 +56,7 @@ except Exception as err:
 
 ```python
 try:
-    ailment = client.Ailment().load({"id": "example_id"})
+    ailment = client.Ailment().load({"id": 1})
     print(ailment)
 except Exception as err:
     print(f"load failed: {err}")
@@ -489,7 +489,7 @@ Create an instance: `ailment = client.Ailment()`
 #### Example: Load
 
 ```python
-ailment = client.Ailment().load({"id": "ailment_id"})
+ailment = client.Ailment().load({"id": 1})
 ```
 
 #### Example: List
@@ -531,7 +531,7 @@ Create an instance: `armor = client.Armor()`
 #### Example: Load
 
 ```python
-armor = client.Armor().load({"id": "armor_id"})
+armor = client.Armor().load({"id": 1})
 ```
 
 #### Example: List
@@ -565,7 +565,7 @@ Create an instance: `armor_set = client.ArmorSet()`
 #### Example: Load
 
 ```python
-armor_set = client.ArmorSet().load({"id": "armor_set_id"})
+armor_set = client.ArmorSet().load({"id": 1})
 ```
 
 #### Example: List
@@ -599,7 +599,7 @@ Create an instance: `charm = client.Charm()`
 #### Example: Load
 
 ```python
-charm = client.Charm().load({"id": "charm_id"})
+charm = client.Charm().load({"id": 1})
 ```
 
 #### Example: List
@@ -633,7 +633,7 @@ Create an instance: `decoration = client.Decoration()`
 #### Example: Load
 
 ```python
-decoration = client.Decoration().load({"id": "decoration_id"})
+decoration = client.Decoration().load({"id": 1})
 ```
 
 #### Example: List
@@ -675,7 +675,7 @@ Create an instance: `event = client.Event()`
 #### Example: Load
 
 ```python
-event = client.Event().load({"id": "event_id"})
+event = client.Event().load({"id": 1})
 ```
 
 #### Example: List
@@ -712,7 +712,7 @@ Create an instance: `item = client.Item()`
 #### Example: Load
 
 ```python
-item = client.Item().load({"id": "item_id"})
+item = client.Item().load({"id": 1})
 ```
 
 #### Example: List
@@ -745,7 +745,7 @@ Create an instance: `location = client.Location()`
 #### Example: Load
 
 ```python
-location = client.Location().load({"id": "location_id"})
+location = client.Location().load({"id": 1})
 ```
 
 #### Example: List
@@ -785,7 +785,7 @@ Create an instance: `monster = client.Monster()`
 #### Example: Load
 
 ```python
-monster = client.Monster().load({"id": "monster_id"})
+monster = client.Monster().load({"id": 1})
 ```
 
 #### Example: List
@@ -820,7 +820,7 @@ Create an instance: `motion_value = client.MotionValue()`
 #### Example: Load
 
 ```python
-motion_value = client.MotionValue().load({"id": "motion_value_id"})
+motion_value = client.MotionValue().load({"id": 1})
 ```
 
 #### Example: List
@@ -853,7 +853,7 @@ Create an instance: `skill = client.Skill()`
 #### Example: Load
 
 ```python
-skill = client.Skill().load({"id": "skill_id"})
+skill = client.Skill().load({"id": 1})
 ```
 
 #### Example: List
@@ -893,7 +893,7 @@ Create an instance: `weapon = client.Weapon()`
 #### Example: Load
 
 ```python
-weapon = client.Weapon().load({"id": "weapon_id"})
+weapon = client.Weapon().load({"id": 1})
 ```
 
 #### Example: List

@@ -1,0 +1,14 @@
+# Entity Models
+
+@"ailment.aontu"
+@"armor.aontu"
+@"armor_set.aontu"
+@"charm.aontu"
+@"decoration.aontu"
+@"event.aontu"
+@"item.aontu"
+@"location.aontu"
+@"monster.aontu"
+@"motion_value.aontu"
+@"skill.aontu"
+@"weapon.aontu"

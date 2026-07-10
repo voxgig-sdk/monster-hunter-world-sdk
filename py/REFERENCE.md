@@ -154,7 +154,7 @@ for ailment in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Ailment().load({"id": "ailment_id"})
+result = client.Ailment().load({"id": 1})
 ```
 
 ### Common Methods
@@ -227,7 +227,7 @@ for armor in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Armor().load({"id": "armor_id"})
+result = client.Armor().load({"id": 1})
 ```
 
 ### Common Methods
@@ -292,7 +292,7 @@ for armor_set in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ArmorSet().load({"id": "armor_set_id"})
+result = client.ArmorSet().load({"id": 1})
 ```
 
 ### Common Methods
@@ -357,7 +357,7 @@ for charm in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Charm().load({"id": "charm_id"})
+result = client.Charm().load({"id": 1})
 ```
 
 ### Common Methods
@@ -422,7 +422,7 @@ for decoration in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Decoration().load({"id": "decoration_id"})
+result = client.Decoration().load({"id": 1})
 ```
 
 ### Common Methods
@@ -495,7 +495,7 @@ for event in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Event().load({"id": "event_id"})
+result = client.Event().load({"id": 1})
 ```
 
 ### Common Methods
@@ -563,7 +563,7 @@ for item in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Item().load({"id": "item_id"})
+result = client.Item().load({"id": 1})
 ```
 
 ### Common Methods
@@ -627,7 +627,7 @@ for location in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Location().load({"id": "location_id"})
+result = client.Location().load({"id": 1})
 ```
 
 ### Common Methods
@@ -698,7 +698,7 @@ for monster in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Monster().load({"id": "monster_id"})
+result = client.Monster().load({"id": 1})
 ```
 
 ### Common Methods
@@ -764,7 +764,7 @@ for motion_value in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.MotionValue().load({"id": "motion_value_id"})
+result = client.MotionValue().load({"id": 1})
 ```
 
 ### Common Methods
@@ -828,7 +828,7 @@ for skill in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Skill().load({"id": "skill_id"})
+result = client.Skill().load({"id": 1})
 ```
 
 ### Common Methods
@@ -899,7 +899,7 @@ for weapon in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Weapon().load({"id": "weapon_id"})
+result = client.Weapon().load({"id": 1})
 ```
 
 ### Common Methods

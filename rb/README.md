@@ -49,7 +49,7 @@ end
 ```ruby
 begin
   # load returns the bare Ailment record (raises on error).
-  ailment = client.Ailment.load({ "id" => "example_id" })
+  ailment = client.Ailment.load({ "id" => 1 })
   puts ailment
 rescue => err
   warn "load failed: #{err}"
@@ -487,7 +487,7 @@ Create an instance: `ailment = client.Ailment`
 
 ```ruby
 # load returns the bare Ailment record (raises on error).
-ailment = client.Ailment.load({ "id" => "ailment_id" })
+ailment = client.Ailment.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -531,7 +531,7 @@ Create an instance: `armor = client.Armor`
 
 ```ruby
 # load returns the bare Armor record (raises on error).
-armor = client.Armor.load({ "id" => "armor_id" })
+armor = client.Armor.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -567,7 +567,7 @@ Create an instance: `armor_set = client.ArmorSet`
 
 ```ruby
 # load returns the bare ArmorSet record (raises on error).
-armor_set = client.ArmorSet.load({ "id" => "armor_set_id" })
+armor_set = client.ArmorSet.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -603,7 +603,7 @@ Create an instance: `charm = client.Charm`
 
 ```ruby
 # load returns the bare Charm record (raises on error).
-charm = client.Charm.load({ "id" => "charm_id" })
+charm = client.Charm.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -639,7 +639,7 @@ Create an instance: `decoration = client.Decoration`
 
 ```ruby
 # load returns the bare Decoration record (raises on error).
-decoration = client.Decoration.load({ "id" => "decoration_id" })
+decoration = client.Decoration.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -683,7 +683,7 @@ Create an instance: `event = client.Event`
 
 ```ruby
 # load returns the bare Event record (raises on error).
-event = client.Event.load({ "id" => "event_id" })
+event = client.Event.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -722,7 +722,7 @@ Create an instance: `item = client.Item`
 
 ```ruby
 # load returns the bare Item record (raises on error).
-item = client.Item.load({ "id" => "item_id" })
+item = client.Item.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -757,7 +757,7 @@ Create an instance: `location = client.Location`
 
 ```ruby
 # load returns the bare Location record (raises on error).
-location = client.Location.load({ "id" => "location_id" })
+location = client.Location.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -799,7 +799,7 @@ Create an instance: `monster = client.Monster`
 
 ```ruby
 # load returns the bare Monster record (raises on error).
-monster = client.Monster.load({ "id" => "monster_id" })
+monster = client.Monster.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -836,7 +836,7 @@ Create an instance: `motion_value = client.MotionValue`
 
 ```ruby
 # load returns the bare MotionValue record (raises on error).
-motion_value = client.MotionValue.load({ "id" => "motion_value_id" })
+motion_value = client.MotionValue.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -871,7 +871,7 @@ Create an instance: `skill = client.Skill`
 
 ```ruby
 # load returns the bare Skill record (raises on error).
-skill = client.Skill.load({ "id" => "skill_id" })
+skill = client.Skill.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -913,7 +913,7 @@ Create an instance: `weapon = client.Weapon`
 
 ```ruby
 # load returns the bare Weapon record (raises on error).
-weapon = client.Weapon.load({ "id" => "weapon_id" })
+weapon = client.Weapon.load({ "id" => 1 })
 ```
 
 #### Example: List

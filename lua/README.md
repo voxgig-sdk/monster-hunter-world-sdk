@@ -50,7 +50,7 @@ end
 ### 3. Load an ailment
 
 ```lua
-local ailment, err = client:Ailment():load({ id = "example_id" })
+local ailment, err = client:Ailment():load({ id = 1 })
 if err then error(err) end
 print(ailment)
 ```
@@ -475,7 +475,7 @@ Create an instance: `local ailment = client:Ailment(nil)`
 #### Example: Load
 
 ```lua
-local ailment, err = client:Ailment():load({ id = "ailment_id" })
+local ailment, err = client:Ailment():load({ id = 1 })
 ```
 
 #### Example: List
@@ -517,7 +517,7 @@ Create an instance: `local armor = client:Armor(nil)`
 #### Example: Load
 
 ```lua
-local armor, err = client:Armor():load({ id = "armor_id" })
+local armor, err = client:Armor():load({ id = 1 })
 ```
 
 #### Example: List
@@ -551,7 +551,7 @@ Create an instance: `local armor_set = client:ArmorSet(nil)`
 #### Example: Load
 
 ```lua
-local armor_set, err = client:ArmorSet():load({ id = "armor_set_id" })
+local armor_set, err = client:ArmorSet():load({ id = 1 })
 ```
 
 #### Example: List
@@ -585,7 +585,7 @@ Create an instance: `local charm = client:Charm(nil)`
 #### Example: Load
 
 ```lua
-local charm, err = client:Charm():load({ id = "charm_id" })
+local charm, err = client:Charm():load({ id = 1 })
 ```
 
 #### Example: List
@@ -619,7 +619,7 @@ Create an instance: `local decoration = client:Decoration(nil)`
 #### Example: Load
 
 ```lua
-local decoration, err = client:Decoration():load({ id = "decoration_id" })
+local decoration, err = client:Decoration():load({ id = 1 })
 ```
 
 #### Example: List
@@ -661,7 +661,7 @@ Create an instance: `local event = client:Event(nil)`
 #### Example: Load
 
 ```lua
-local event, err = client:Event():load({ id = "event_id" })
+local event, err = client:Event():load({ id = 1 })
 ```
 
 #### Example: List
@@ -698,7 +698,7 @@ Create an instance: `local item = client:Item(nil)`
 #### Example: Load
 
 ```lua
-local item, err = client:Item():load({ id = "item_id" })
+local item, err = client:Item():load({ id = 1 })
 ```
 
 #### Example: List
@@ -731,7 +731,7 @@ Create an instance: `local location = client:Location(nil)`
 #### Example: Load
 
 ```lua
-local location, err = client:Location():load({ id = "location_id" })
+local location, err = client:Location():load({ id = 1 })
 ```
 
 #### Example: List
@@ -771,7 +771,7 @@ Create an instance: `local monster = client:Monster(nil)`
 #### Example: Load
 
 ```lua
-local monster, err = client:Monster():load({ id = "monster_id" })
+local monster, err = client:Monster():load({ id = 1 })
 ```
 
 #### Example: List
@@ -806,7 +806,7 @@ Create an instance: `local motion_value = client:MotionValue(nil)`
 #### Example: Load
 
 ```lua
-local motion_value, err = client:MotionValue():load({ id = "motion_value_id" })
+local motion_value, err = client:MotionValue():load({ id = 1 })
 ```
 
 #### Example: List
@@ -839,7 +839,7 @@ Create an instance: `local skill = client:Skill(nil)`
 #### Example: Load
 
 ```lua
-local skill, err = client:Skill():load({ id = "skill_id" })
+local skill, err = client:Skill():load({ id = 1 })
 ```
 
 #### Example: List
@@ -879,7 +879,7 @@ Create an instance: `local weapon = client:Weapon(nil)`
 #### Example: Load
 
 ```lua
-local weapon, err = client:Weapon():load({ id = "weapon_id" })
+local weapon, err = client:Weapon():load({ id = 1 })
 ```
 
 #### Example: List

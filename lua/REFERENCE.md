@@ -155,7 +155,7 @@ local results, err = client:Ailment():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Ailment():load({ id = "ailment_id" })
+local result, err = client:Ailment():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -227,7 +227,7 @@ local results, err = client:Armor():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Armor():load({ id = "armor_id" })
+local result, err = client:Armor():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -291,7 +291,7 @@ local results, err = client:ArmorSet():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ArmorSet():load({ id = "armor_set_id" })
+local result, err = client:ArmorSet():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -355,7 +355,7 @@ local results, err = client:Charm():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Charm():load({ id = "charm_id" })
+local result, err = client:Charm():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -419,7 +419,7 @@ local results, err = client:Decoration():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Decoration():load({ id = "decoration_id" })
+local result, err = client:Decoration():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -491,7 +491,7 @@ local results, err = client:Event():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Event():load({ id = "event_id" })
+local result, err = client:Event():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -558,7 +558,7 @@ local results, err = client:Item():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Item():load({ id = "item_id" })
+local result, err = client:Item():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -621,7 +621,7 @@ local results, err = client:Location():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Location():load({ id = "location_id" })
+local result, err = client:Location():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -691,7 +691,7 @@ local results, err = client:Monster():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Monster():load({ id = "monster_id" })
+local result, err = client:Monster():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -756,7 +756,7 @@ local results, err = client:MotionValue():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:MotionValue():load({ id = "motion_value_id" })
+local result, err = client:MotionValue():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -819,7 +819,7 @@ local results, err = client:Skill():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Skill():load({ id = "skill_id" })
+local result, err = client:Skill():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -889,7 +889,7 @@ local results, err = client:Weapon():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Weapon():load({ id = "weapon_id" })
+local result, err = client:Weapon():load({ id = 1 })
 ```
 
 ### Common Methods

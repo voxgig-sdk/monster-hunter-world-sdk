@@ -1,0 +1,14 @@
+# Flows
+
+@"BasicAilmentFlow.aontu"
+@"BasicArmorFlow.aontu"
+@"BasicArmorSetFlow.aontu"
+@"BasicCharmFlow.aontu"
+@"BasicDecorationFlow.aontu"
+@"BasicEventFlow.aontu"
+@"BasicItemFlow.aontu"
+@"BasicLocationFlow.aontu"
+@"BasicMonsterFlow.aontu"
+@"BasicMotionValueFlow.aontu"
+@"BasicSkillFlow.aontu"
+@"BasicWeaponFlow.aontu"

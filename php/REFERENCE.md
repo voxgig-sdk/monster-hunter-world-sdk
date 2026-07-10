@@ -157,7 +157,7 @@ $results = $client->Ailment()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Ailment()->load(["id" => "ailment_id"]);
+$result = $client->Ailment()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -229,7 +229,7 @@ $results = $client->Armor()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Armor()->load(["id" => "armor_id"]);
+$result = $client->Armor()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -293,7 +293,7 @@ $results = $client->ArmorSet()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ArmorSet()->load(["id" => "armor_set_id"]);
+$result = $client->ArmorSet()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -357,7 +357,7 @@ $results = $client->Charm()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Charm()->load(["id" => "charm_id"]);
+$result = $client->Charm()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -421,7 +421,7 @@ $results = $client->Decoration()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Decoration()->load(["id" => "decoration_id"]);
+$result = $client->Decoration()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -493,7 +493,7 @@ $results = $client->Event()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Event()->load(["id" => "event_id"]);
+$result = $client->Event()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -560,7 +560,7 @@ $results = $client->Item()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Item()->load(["id" => "item_id"]);
+$result = $client->Item()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -623,7 +623,7 @@ $results = $client->Location()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Location()->load(["id" => "location_id"]);
+$result = $client->Location()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -693,7 +693,7 @@ $results = $client->Monster()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Monster()->load(["id" => "monster_id"]);
+$result = $client->Monster()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -758,7 +758,7 @@ $results = $client->MotionValue()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->MotionValue()->load(["id" => "motion_value_id"]);
+$result = $client->MotionValue()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -821,7 +821,7 @@ $results = $client->Skill()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Skill()->load(["id" => "skill_id"]);
+$result = $client->Skill()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -891,7 +891,7 @@ $results = $client->Weapon()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Weapon()->load(["id" => "weapon_id"]);
+$result = $client->Weapon()->load(["id" => 1]);
 ```
 
 ### Common Methods

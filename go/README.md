@@ -503,7 +503,7 @@ Create an instance: `ailment := client.Ailment(nil)`
 #### Example: Load
 
 ```go
-ailment, err := client.Ailment(nil).Load(map[string]any{"id": "ailment_id"}, nil)
+ailment, err := client.Ailment(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -553,7 +553,7 @@ Create an instance: `armor := client.Armor(nil)`
 #### Example: Load
 
 ```go
-armor, err := client.Armor(nil).Load(map[string]any{"id": "armor_id"}, nil)
+armor, err := client.Armor(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -573,7 +573,7 @@ fmt.Println(armors) // the array of records
 
 ### ArmorSet
 
-Create an instance: `armor_set := client.ArmorSet(nil)`
+Create an instance: `armorSet := client.ArmorSet(nil)`
 
 #### Operations
 
@@ -595,21 +595,21 @@ Create an instance: `armor_set := client.ArmorSet(nil)`
 #### Example: Load
 
 ```go
-armor_set, err := client.ArmorSet(nil).Load(map[string]any{"id": "armor_set_id"}, nil)
+armorSet, err := client.ArmorSet(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(armor_set) // the loaded record
+fmt.Println(armorSet) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-armor_sets, err := client.ArmorSet(nil).List(nil, nil)
+armorSets, err := client.ArmorSet(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(armor_sets) // the array of records
+fmt.Println(armorSets) // the array of records
 ```
 
 
@@ -637,7 +637,7 @@ Create an instance: `charm := client.Charm(nil)`
 #### Example: Load
 
 ```go
-charm, err := client.Charm(nil).Load(map[string]any{"id": "charm_id"}, nil)
+charm, err := client.Charm(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -679,7 +679,7 @@ Create an instance: `decoration := client.Decoration(nil)`
 #### Example: Load
 
 ```go
-decoration, err := client.Decoration(nil).Load(map[string]any{"id": "decoration_id"}, nil)
+decoration, err := client.Decoration(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -729,7 +729,7 @@ Create an instance: `event := client.Event(nil)`
 #### Example: Load
 
 ```go
-event, err := client.Event(nil).Load(map[string]any{"id": "event_id"}, nil)
+event, err := client.Event(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -774,7 +774,7 @@ Create an instance: `item := client.Item(nil)`
 #### Example: Load
 
 ```go
-item, err := client.Item(nil).Load(map[string]any{"id": "item_id"}, nil)
+item, err := client.Item(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -815,7 +815,7 @@ Create an instance: `location := client.Location(nil)`
 #### Example: Load
 
 ```go
-location, err := client.Location(nil).Load(map[string]any{"id": "location_id"}, nil)
+location, err := client.Location(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -863,7 +863,7 @@ Create an instance: `monster := client.Monster(nil)`
 #### Example: Load
 
 ```go
-monster, err := client.Monster(nil).Load(map[string]any{"id": "monster_id"}, nil)
+monster, err := client.Monster(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -883,7 +883,7 @@ fmt.Println(monsters) // the array of records
 
 ### MotionValue
 
-Create an instance: `motion_value := client.MotionValue(nil)`
+Create an instance: `motionValue := client.MotionValue(nil)`
 
 #### Operations
 
@@ -906,21 +906,21 @@ Create an instance: `motion_value := client.MotionValue(nil)`
 #### Example: Load
 
 ```go
-motion_value, err := client.MotionValue(nil).Load(map[string]any{"id": "motion_value_id"}, nil)
+motionValue, err := client.MotionValue(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(motion_value) // the loaded record
+fmt.Println(motionValue) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-motion_values, err := client.MotionValue(nil).List(nil, nil)
+motionValues, err := client.MotionValue(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(motion_values) // the array of records
+fmt.Println(motionValues) // the array of records
 ```
 
 
@@ -947,7 +947,7 @@ Create an instance: `skill := client.Skill(nil)`
 #### Example: Load
 
 ```go
-skill, err := client.Skill(nil).Load(map[string]any{"id": "skill_id"}, nil)
+skill, err := client.Skill(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -995,7 +995,7 @@ Create an instance: `weapon := client.Weapon(nil)`
 #### Example: Load
 
 ```go
-weapon, err := client.Weapon(nil).Load(map[string]any{"id": "weapon_id"}, nil)
+weapon, err := client.Weapon(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
