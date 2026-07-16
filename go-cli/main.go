@@ -27,7 +27,20 @@ func main() {
 }
 
 func run(args []string, in io.Reader, out, errOut io.Writer) int {
-	client := sdk.NewMonsterHunterWorldSDK(nil)
+	// Configure from the environment: MONSTER_HUNTER_WORLD_APIKEY carries the API key and
+	// MONSTER_HUNTER_WORLD_BASE optionally overrides the API base URL (e.g. production).
+	// Both injectable by a secrets vault. Unset -> nil config defaults.
+	var opts map[string]any
+	if apikey := os.Getenv("MONSTER_HUNTER_WORLD_APIKEY"); apikey != "" {
+		opts = map[string]any{"apikey": apikey}
+	}
+	if base := os.Getenv("MONSTER_HUNTER_WORLD_BASE"); base != "" {
+		if opts == nil {
+			opts = map[string]any{}
+		}
+		opts["base"] = base
+	}
+	client := sdk.NewMonsterHunterWorldSDK(opts)
 
 	r, err := eng.NewRegistry()
 	if err != nil {
