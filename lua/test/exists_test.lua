@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- MonsterHunterWorld SDK exists test
 
 local sdk = require("monster-hunter-world_sdk")
 
