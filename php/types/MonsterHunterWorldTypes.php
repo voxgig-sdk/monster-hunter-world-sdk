@@ -41,18 +41,18 @@ class AilmentListMatch
 /** Armor entity data model. */
 class Armor
 {
-    public ?array $armor_set = null;
-    public ?array $asset = null;
-    public ?array $attribute = null;
+    public ?array $armorSet = null;
+    public ?array $assets = null;
+    public ?array $attributes = null;
     public ?array $crafting = null;
     public ?array $defense = null;
     public ?int $id = null;
     public ?string $name = null;
     public ?string $rank = null;
     public ?int $rarity = null;
-    public ?array $resistance = null;
-    public ?array $skill = null;
-    public ?array $slot = null;
+    public ?array $resistances = null;
+    public ?array $skills = null;
+    public ?array $slots = null;
     public ?string $type = null;
 }
 
@@ -65,18 +65,18 @@ class ArmorLoadMatch
 /** Request payload for Armor#list. */
 class ArmorListMatch
 {
-    public ?array $armor_set = null;
-    public ?array $asset = null;
-    public ?array $attribute = null;
+    public ?array $armorSet = null;
+    public ?array $assets = null;
+    public ?array $attributes = null;
     public ?array $crafting = null;
     public ?array $defense = null;
     public ?int $id = null;
     public ?string $name = null;
     public ?string $rank = null;
     public ?int $rarity = null;
-    public ?array $resistance = null;
-    public ?array $skill = null;
-    public ?array $slot = null;
+    public ?array $resistances = null;
+    public ?array $skills = null;
+    public ?array $slots = null;
     public ?string $type = null;
 }
 
@@ -86,7 +86,7 @@ class ArmorSet
     public ?array $bonus = null;
     public ?int $id = null;
     public ?string $name = null;
-    public ?array $piece = null;
+    public ?array $pieces = null;
     public ?string $rank = null;
 }
 
@@ -102,7 +102,7 @@ class ArmorSetListMatch
     public ?array $bonus = null;
     public ?int $id = null;
     public ?string $name = null;
-    public ?array $piece = null;
+    public ?array $pieces = null;
     public ?string $rank = null;
 }
 
@@ -113,7 +113,7 @@ class Charm
     public ?int $id = null;
     public ?string $name = null;
     public ?int $rarity = null;
-    public ?array $skill = null;
+    public ?array $skills = null;
 }
 
 /** Request payload for Charm#load. */
@@ -129,7 +129,7 @@ class CharmListMatch
     public ?int $id = null;
     public ?string $name = null;
     public ?int $rarity = null;
-    public ?array $skill = null;
+    public ?array $skills = null;
 }
 
 /** Decoration entity data model. */
@@ -138,7 +138,7 @@ class Decoration
     public ?int $id = null;
     public ?string $name = null;
     public ?int $rarity = null;
-    public ?array $skill = null;
+    public ?array $skills = null;
     public ?int $slot = null;
 }
 
@@ -154,26 +154,28 @@ class DecorationListMatch
     public ?int $id = null;
     public ?string $name = null;
     public ?int $rarity = null;
-    public ?array $skill = null;
+    public ?array $skills = null;
     public ?int $slot = null;
 }
 
 /** Event entity data model. */
 class Event
 {
+    public ?array $camps = null;
     public ?string $description = null;
-    public ?string $end_timestamp = null;
+    public ?string $endTimestamp = null;
     public ?string $exclusive = null;
     public ?string $expansion = null;
     public ?int $id = null;
     public ?array $location = null;
     public ?string $name = null;
     public ?string $platform = null;
-    public ?string $quest_rank = null;
-    public ?string $requirement = null;
-    public ?string $start_timestamp = null;
-    public ?string $success_condition = null;
+    public ?string $questRank = null;
+    public ?string $requirements = null;
+    public ?string $startTimestamp = null;
+    public ?string $successConditions = null;
     public ?string $type = null;
+    public ?int $zoneCount = null;
 }
 
 /** Request payload for Event#load. */
@@ -185,31 +187,33 @@ class EventLoadMatch
 /** Request payload for Event#list. */
 class EventListMatch
 {
+    public ?array $camps = null;
     public ?string $description = null;
-    public ?string $end_timestamp = null;
+    public ?string $endTimestamp = null;
     public ?string $exclusive = null;
     public ?string $expansion = null;
     public ?int $id = null;
     public ?array $location = null;
     public ?string $name = null;
     public ?string $platform = null;
-    public ?string $quest_rank = null;
-    public ?string $requirement = null;
-    public ?string $start_timestamp = null;
-    public ?string $success_condition = null;
+    public ?string $questRank = null;
+    public ?string $requirements = null;
+    public ?string $startTimestamp = null;
+    public ?string $successConditions = null;
     public ?string $type = null;
+    public ?int $zoneCount = null;
 }
 
 /** Item entity data model. */
 class Item
 {
-    public ?int $buy_price = null;
-    public ?int $carry_limit = null;
+    public ?int $buyPrice = null;
+    public ?int $carryLimit = null;
     public ?string $description = null;
     public ?int $id = null;
     public ?string $name = null;
     public ?int $rarity = null;
-    public ?int $sell_price = null;
+    public ?int $sellPrice = null;
     public ?int $value = null;
 }
 
@@ -222,23 +226,23 @@ class ItemLoadMatch
 /** Request payload for Item#list. */
 class ItemListMatch
 {
-    public ?int $buy_price = null;
-    public ?int $carry_limit = null;
+    public ?int $buyPrice = null;
+    public ?int $carryLimit = null;
     public ?string $description = null;
     public ?int $id = null;
     public ?string $name = null;
     public ?int $rarity = null;
-    public ?int $sell_price = null;
+    public ?int $sellPrice = null;
     public ?int $value = null;
 }
 
 /** Location entity data model. */
 class Location
 {
-    public ?array $camp = null;
+    public ?array $camps = null;
     public ?int $id = null;
     public ?string $name = null;
-    public ?int $zone_count = null;
+    public ?int $zoneCount = null;
 }
 
 /** Request payload for Location#load. */
@@ -250,26 +254,26 @@ class LocationLoadMatch
 /** Request payload for Location#list. */
 class LocationListMatch
 {
-    public ?array $camp = null;
+    public ?array $camps = null;
     public ?int $id = null;
     public ?string $name = null;
-    public ?int $zone_count = null;
+    public ?int $zoneCount = null;
 }
 
 /** Monster entity data model. */
 class Monster
 {
-    public ?array $ailment = null;
+    public ?array $ailments = null;
     public ?string $description = null;
-    public ?array $element = null;
+    public ?array $elements = null;
     public ?int $id = null;
-    public ?array $location = null;
+    public ?array $locations = null;
     public ?string $name = null;
-    public ?array $resistance = null;
-    public ?array $reward = null;
+    public ?array $resistances = null;
+    public ?array $rewards = null;
     public ?string $species = null;
     public ?string $type = null;
-    public ?array $weakness = null;
+    public ?array $weaknesses = null;
 }
 
 /** Request payload for Monster#load. */
@@ -281,28 +285,28 @@ class MonsterLoadMatch
 /** Request payload for Monster#list. */
 class MonsterListMatch
 {
-    public ?array $ailment = null;
+    public ?array $ailments = null;
     public ?string $description = null;
-    public ?array $element = null;
+    public ?array $elements = null;
     public ?int $id = null;
-    public ?array $location = null;
+    public ?array $locations = null;
     public ?string $name = null;
-    public ?array $resistance = null;
-    public ?array $reward = null;
+    public ?array $resistances = null;
+    public ?array $rewards = null;
     public ?string $species = null;
     public ?string $type = null;
-    public ?array $weakness = null;
+    public ?array $weaknesses = null;
 }
 
 /** MotionValue entity data model. */
 class MotionValue
 {
-    public ?string $damage_type = null;
+    public ?string $damageType = null;
     public ?int $exhaust = null;
-    public ?array $hit = null;
+    public ?array $hits = null;
     public ?int $id = null;
     public ?int $stun = null;
-    public ?string $weapon_type = null;
+    public ?string $weaponType = null;
 }
 
 /** Request payload for MotionValue#load. */
@@ -314,12 +318,12 @@ class MotionValueLoadMatch
 /** Request payload for MotionValue#list. */
 class MotionValueListMatch
 {
-    public ?string $damage_type = null;
+    public ?string $damageType = null;
     public ?int $exhaust = null;
-    public ?array $hit = null;
+    public ?array $hits = null;
     public ?int $id = null;
     public ?int $stun = null;
-    public ?string $weapon_type = null;
+    public ?string $weaponType = null;
 }
 
 /** Skill entity data model. */
@@ -328,7 +332,7 @@ class Skill
     public ?string $description = null;
     public ?int $id = null;
     public ?string $name = null;
-    public ?array $rank = null;
+    public ?array $ranks = null;
 }
 
 /** Request payload for Skill#load. */
@@ -343,22 +347,22 @@ class SkillListMatch
     public ?string $description = null;
     public ?int $id = null;
     public ?string $name = null;
-    public ?array $rank = null;
+    public ?array $ranks = null;
 }
 
 /** Weapon entity data model. */
 class Weapon
 {
-    public ?array $asset = null;
+    public ?array $assets = null;
     public ?array $attack = null;
-    public ?array $attribute = null;
+    public ?array $attributes = null;
     public ?array $crafting = null;
-    public ?string $damage_type = null;
-    public ?array $element = null;
+    public ?string $damageType = null;
+    public ?array $elements = null;
     public ?int $id = null;
     public ?string $name = null;
     public ?int $rarity = null;
-    public ?array $slot = null;
+    public ?array $slots = null;
     public ?string $type = null;
 }
 
@@ -371,16 +375,16 @@ class WeaponLoadMatch
 /** Request payload for Weapon#list. */
 class WeaponListMatch
 {
-    public ?array $asset = null;
+    public ?array $assets = null;
     public ?array $attack = null;
-    public ?array $attribute = null;
+    public ?array $attributes = null;
     public ?array $crafting = null;
-    public ?string $damage_type = null;
-    public ?array $element = null;
+    public ?string $damageType = null;
+    public ?array $elements = null;
     public ?int $id = null;
     public ?string $name = null;
     public ?int $rarity = null;
-    public ?array $slot = null;
+    public ?array $slots = null;
     public ?string $type = null;
 }
 

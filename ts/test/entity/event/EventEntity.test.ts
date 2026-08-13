@@ -26,8 +26,8 @@ import {
 describe('EventEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when MONSTERHUNTERWORLD_TEST_LIVE=TRUE.
-  afterEach(liveDelay('MONSTERHUNTERWORLD_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when MONSTER_HUNTER_WORLD_TEST_LIVE=TRUE.
+  afterEach(liveDelay('MONSTER_HUNTER_WORLD_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = MonsterHunterWorldSDK.test()
@@ -63,13 +63,13 @@ describe('EventEntity', async () => {
     const event_ref01_ent = client.Event()
     const event_ref01_match: any = {}
 
-    const event_ref01_list = await event_ref01_ent.list(event_ref01_match)
+    const event_ref01_list = (await event_ref01_ent.list(event_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const event_ref01_match_dt0: any = {}
     event_ref01_match_dt0.id = event_ref01_data.id
-    const event_ref01_data_dt0 = await event_ref01_ent.load(event_ref01_match_dt0)
+    const event_ref01_data_dt0 = (await event_ref01_ent.load(event_ref01_match_dt0)).data()
     assert(event_ref01_data_dt0.id === event_ref01_data.id)
 
 

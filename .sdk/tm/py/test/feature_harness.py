@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import MonsterHunterWorldControl
-from core.error import MonsterHunterWorldError
-from core.result import MonsterHunterWorldResult
-from core.spec import MonsterHunterWorldSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import MonsterHunterWorldControl
+from projectname_sdk.core.error import MonsterHunterWorldError
+from projectname_sdk.core.result import MonsterHunterWorldResult
+from projectname_sdk.core.spec import MonsterHunterWorldSpec
 
 
 # True when this SDK was generated with the named feature.

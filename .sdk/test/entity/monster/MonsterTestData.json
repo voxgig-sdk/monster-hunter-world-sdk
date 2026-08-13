@@ -2,59 +2,59 @@
   "existing": {
     "monster": {
       "MONSTER00": {
-        "ailment": [],
+        "ailments": [],
         "description": "s6f",
-        "element": [],
+        "elements": [],
         "id": "MONSTER00",
-        "location": [],
+        "locations": [],
         "name": "s73",
-        "resistance": [],
-        "reward": [],
+        "resistances": [],
+        "rewards": [],
         "species": "s76",
         "type": "s77",
-        "weakness": []
+        "weaknesses": []
       },
       "MONSTER01": {
-        "ailment": [],
+        "ailments": [],
         "description": "sdd",
-        "element": [],
+        "elements": [],
         "id": "MONSTER01",
-        "location": [],
+        "locations": [],
         "name": "se1",
-        "resistance": [],
-        "reward": [],
+        "resistances": [],
+        "rewards": [],
         "species": "se4",
         "type": "se5",
-        "weakness": []
+        "weaknesses": []
       },
       "MONSTER02": {
-        "ailment": [],
+        "ailments": [],
         "description": "s14b",
-        "element": [],
+        "elements": [],
         "id": "MONSTER02",
-        "location": [],
+        "locations": [],
         "name": "s14f",
-        "resistance": [],
-        "reward": [],
+        "resistances": [],
+        "rewards": [],
         "species": "s152",
         "type": "s153",
-        "weakness": []
+        "weaknesses": []
       }
     }
   },
   "new": {
     "monster": {
       "monster_ref01": {
-        "ailment": [],
+        "ailments": [],
         "description": "s1b9",
-        "element": [],
-        "location": [],
+        "elements": [],
+        "locations": [],
         "name": "s1bd",
-        "resistance": [],
-        "reward": [],
+        "resistances": [],
+        "rewards": [],
         "species": "s1c0",
         "type": "s1c1",
-        "weakness": []
+        "weaknesses": []
       }
     }
   }

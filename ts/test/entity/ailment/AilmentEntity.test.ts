@@ -26,8 +26,8 @@ import {
 describe('AilmentEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when MONSTERHUNTERWORLD_TEST_LIVE=TRUE.
-  afterEach(liveDelay('MONSTERHUNTERWORLD_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when MONSTER_HUNTER_WORLD_TEST_LIVE=TRUE.
+  afterEach(liveDelay('MONSTER_HUNTER_WORLD_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = MonsterHunterWorldSDK.test()
@@ -63,13 +63,13 @@ describe('AilmentEntity', async () => {
     const ailment_ref01_ent = client.Ailment()
     const ailment_ref01_match: any = {}
 
-    const ailment_ref01_list = await ailment_ref01_ent.list(ailment_ref01_match)
+    const ailment_ref01_list = (await ailment_ref01_ent.list(ailment_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const ailment_ref01_match_dt0: any = {}
     ailment_ref01_match_dt0.id = ailment_ref01_data.id
-    const ailment_ref01_data_dt0 = await ailment_ref01_ent.load(ailment_ref01_match_dt0)
+    const ailment_ref01_data_dt0 = (await ailment_ref01_ent.load(ailment_ref01_match_dt0)).data()
     assert(ailment_ref01_data_dt0.id === ailment_ref01_data.id)
 
 

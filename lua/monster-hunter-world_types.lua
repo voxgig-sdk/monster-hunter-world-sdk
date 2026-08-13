@@ -24,43 +24,43 @@
 ---@field recovery? table
 
 ---@class Armor
----@field armor_set? table
----@field asset? table
----@field attribute? table
+---@field armorSet? table
+---@field assets? table
+---@field attributes? table
 ---@field crafting? table
 ---@field defense? table
 ---@field id? number
 ---@field name? string
 ---@field rank? string
 ---@field rarity? number
----@field resistance? table
----@field skill? table
----@field slot? table
+---@field resistances? table
+---@field skills? table
+---@field slots? table
 ---@field type? string
 
 ---@class ArmorLoadMatch
 ---@field id number
 
 ---@class ArmorListMatch
----@field armor_set? table
----@field asset? table
----@field attribute? table
+---@field armorSet? table
+---@field assets? table
+---@field attributes? table
 ---@field crafting? table
 ---@field defense? table
 ---@field id? number
 ---@field name? string
 ---@field rank? string
 ---@field rarity? number
----@field resistance? table
----@field skill? table
----@field slot? table
+---@field resistances? table
+---@field skills? table
+---@field slots? table
 ---@field type? string
 
 ---@class ArmorSet
 ---@field bonus? table
 ---@field id? number
 ---@field name? string
----@field piece? table
+---@field pieces? table
 ---@field rank? string
 
 ---@class ArmorSetLoadMatch
@@ -70,7 +70,7 @@
 ---@field bonus? table
 ---@field id? number
 ---@field name? string
----@field piece? table
+---@field pieces? table
 ---@field rank? string
 
 ---@class Charm
@@ -78,7 +78,7 @@
 ---@field id? number
 ---@field name? string
 ---@field rarity? number
----@field skill? table
+---@field skills? table
 
 ---@class CharmLoadMatch
 ---@field id number
@@ -88,13 +88,13 @@
 ---@field id? number
 ---@field name? string
 ---@field rarity? number
----@field skill? table
+---@field skills? table
 
 ---@class Decoration
 ---@field id? number
 ---@field name? string
 ---@field rarity? number
----@field skill? table
+---@field skills? table
 ---@field slot? number
 
 ---@class DecorationLoadMatch
@@ -104,133 +104,137 @@
 ---@field id? number
 ---@field name? string
 ---@field rarity? number
----@field skill? table
+---@field skills? table
 ---@field slot? number
 
 ---@class Event
+---@field camps? table
 ---@field description? string
----@field end_timestamp? string
+---@field endTimestamp? string
 ---@field exclusive? string
 ---@field expansion? string
 ---@field id? number
 ---@field location? table
 ---@field name? string
 ---@field platform? string
----@field quest_rank? string
----@field requirement? string
----@field start_timestamp? string
----@field success_condition? string
+---@field questRank? string
+---@field requirements? string
+---@field startTimestamp? string
+---@field successConditions? string
 ---@field type? string
+---@field zoneCount? number
 
 ---@class EventLoadMatch
 ---@field id number
 
 ---@class EventListMatch
+---@field camps? table
 ---@field description? string
----@field end_timestamp? string
+---@field endTimestamp? string
 ---@field exclusive? string
 ---@field expansion? string
 ---@field id? number
 ---@field location? table
 ---@field name? string
 ---@field platform? string
----@field quest_rank? string
----@field requirement? string
----@field start_timestamp? string
----@field success_condition? string
+---@field questRank? string
+---@field requirements? string
+---@field startTimestamp? string
+---@field successConditions? string
 ---@field type? string
+---@field zoneCount? number
 
 ---@class Item
----@field buy_price? number
----@field carry_limit? number
+---@field buyPrice? number
+---@field carryLimit? number
 ---@field description? string
 ---@field id? number
 ---@field name? string
 ---@field rarity? number
----@field sell_price? number
+---@field sellPrice? number
 ---@field value? number
 
 ---@class ItemLoadMatch
 ---@field id number
 
 ---@class ItemListMatch
----@field buy_price? number
----@field carry_limit? number
+---@field buyPrice? number
+---@field carryLimit? number
 ---@field description? string
 ---@field id? number
 ---@field name? string
 ---@field rarity? number
----@field sell_price? number
+---@field sellPrice? number
 ---@field value? number
 
 ---@class Location
----@field camp? table
+---@field camps? table
 ---@field id? number
 ---@field name? string
----@field zone_count? number
+---@field zoneCount? number
 
 ---@class LocationLoadMatch
 ---@field id number
 
 ---@class LocationListMatch
----@field camp? table
+---@field camps? table
 ---@field id? number
 ---@field name? string
----@field zone_count? number
+---@field zoneCount? number
 
 ---@class Monster
----@field ailment? table
+---@field ailments? table
 ---@field description? string
----@field element? table
+---@field elements? table
 ---@field id? number
----@field location? table
+---@field locations? table
 ---@field name? string
----@field resistance? table
----@field reward? table
+---@field resistances? table
+---@field rewards? table
 ---@field species? string
 ---@field type? string
----@field weakness? table
+---@field weaknesses? table
 
 ---@class MonsterLoadMatch
 ---@field id number
 
 ---@class MonsterListMatch
----@field ailment? table
+---@field ailments? table
 ---@field description? string
----@field element? table
+---@field elements? table
 ---@field id? number
----@field location? table
+---@field locations? table
 ---@field name? string
----@field resistance? table
----@field reward? table
+---@field resistances? table
+---@field rewards? table
 ---@field species? string
 ---@field type? string
----@field weakness? table
+---@field weaknesses? table
 
 ---@class MotionValue
----@field damage_type? string
+---@field damageType? string
 ---@field exhaust? number
----@field hit? table
+---@field hits? table
 ---@field id? number
 ---@field stun? number
----@field weapon_type? string
+---@field weaponType? string
 
 ---@class MotionValueLoadMatch
 ---@field id number
 
 ---@class MotionValueListMatch
----@field damage_type? string
+---@field damageType? string
 ---@field exhaust? number
----@field hit? table
+---@field hits? table
 ---@field id? number
 ---@field stun? number
----@field weapon_type? string
+---@field weaponType? string
 
 ---@class Skill
 ---@field description? string
 ---@field id? number
 ---@field name? string
----@field rank? table
+---@field ranks? table
 
 ---@class SkillLoadMatch
 ---@field id number
@@ -239,35 +243,35 @@
 ---@field description? string
 ---@field id? number
 ---@field name? string
----@field rank? table
+---@field ranks? table
 
 ---@class Weapon
----@field asset? table
+---@field assets? table
 ---@field attack? table
----@field attribute? table
+---@field attributes? table
 ---@field crafting? table
----@field damage_type? string
----@field element? table
+---@field damageType? string
+---@field elements? table
 ---@field id? number
 ---@field name? string
 ---@field rarity? number
----@field slot? table
+---@field slots? table
 ---@field type? string
 
 ---@class WeaponLoadMatch
 ---@field id number
 
 ---@class WeaponListMatch
----@field asset? table
+---@field assets? table
 ---@field attack? table
----@field attribute? table
+---@field attributes? table
 ---@field crafting? table
----@field damage_type? string
----@field element? table
+---@field damageType? string
+---@field elements? table
 ---@field id? number
 ---@field name? string
 ---@field rarity? number
----@field slot? table
+---@field slots? table
 ---@field type? string
 
 local M = {}

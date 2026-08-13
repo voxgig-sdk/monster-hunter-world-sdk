@@ -43,8 +43,8 @@ class MonsterHunterWorldTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('MONSTERHUNTERWORLD_TEST_LIVE');
-        $override = self::getenv('MONSTERHUNTERWORLD_TEST_OVERRIDE');
+        $live = self::getenv('MONSTER_HUNTER_WORLD_TEST_LIVE');
+        $override = self::getenv('MONSTER_HUNTER_WORLD_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class MonsterHunterWorldTestRunner
             }
         }
 
-        $explain = self::getenv('MONSTERHUNTERWORLD_TEST_EXPLAIN');
+        $explain = self::getenv('MONSTER_HUNTER_WORLD_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['MONSTERHUNTERWORLD_TEST_EXPLAIN'] = $explain;
+            $m['MONSTER_HUNTER_WORLD_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

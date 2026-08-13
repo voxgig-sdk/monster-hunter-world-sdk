@@ -2,33 +2,33 @@
   "existing": {
     "item": {
       "ITEM00": {
-        "buy_price": "s50",
-        "carry_limit": "s51",
+        "buyPrice": "s50",
+        "carryLimit": "s51",
         "description": "s52",
         "id": "ITEM00",
         "name": "s54",
         "rarity": "s55",
-        "sell_price": "s56",
+        "sellPrice": "s56",
         "value": "s57"
       },
       "ITEM01": {
-        "buy_price": "sa0",
-        "carry_limit": "sa1",
+        "buyPrice": "sa0",
+        "carryLimit": "sa1",
         "description": "sa2",
         "id": "ITEM01",
         "name": "sa4",
         "rarity": "sa5",
-        "sell_price": "sa6",
+        "sellPrice": "sa6",
         "value": "sa7"
       },
       "ITEM02": {
-        "buy_price": "sf0",
-        "carry_limit": "sf1",
+        "buyPrice": "sf0",
+        "carryLimit": "sf1",
         "description": "sf2",
         "id": "ITEM02",
         "name": "sf4",
         "rarity": "sf5",
-        "sell_price": "sf6",
+        "sellPrice": "sf6",
         "value": "sf7"
       }
     }
@@ -36,12 +36,12 @@
   "new": {
     "item": {
       "item_ref01": {
-        "buy_price": "s140",
-        "carry_limit": "s141",
+        "buyPrice": "s140",
+        "carryLimit": "s141",
         "description": "s142",
         "name": "s144",
         "rarity": "s145",
-        "sell_price": "s146",
+        "sellPrice": "s146",
         "value": "s147"
       }
     }

@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# MonsterHunterWorld SDK exists test
 
 import pytest
 from monsterhunterworld_sdk import MonsterHunterWorldSDK

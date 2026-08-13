@@ -26,8 +26,8 @@ import {
 describe('MotionValueEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when MONSTERHUNTERWORLD_TEST_LIVE=TRUE.
-  afterEach(liveDelay('MONSTERHUNTERWORLD_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when MONSTER_HUNTER_WORLD_TEST_LIVE=TRUE.
+  afterEach(liveDelay('MONSTER_HUNTER_WORLD_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = MonsterHunterWorldSDK.test()
@@ -63,13 +63,13 @@ describe('MotionValueEntity', async () => {
     const motion_value_ref01_ent = client.MotionValue()
     const motion_value_ref01_match: any = {}
 
-    const motion_value_ref01_list = await motion_value_ref01_ent.list(motion_value_ref01_match)
+    const motion_value_ref01_list = (await motion_value_ref01_ent.list(motion_value_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const motion_value_ref01_match_dt0: any = {}
     motion_value_ref01_match_dt0.id = motion_value_ref01_data.id
-    const motion_value_ref01_data_dt0 = await motion_value_ref01_ent.load(motion_value_ref01_match_dt0)
+    const motion_value_ref01_data_dt0 = (await motion_value_ref01_ent.load(motion_value_ref01_match_dt0)).data()
     assert(motion_value_ref01_data_dt0.id === motion_value_ref01_data.id)
 
 

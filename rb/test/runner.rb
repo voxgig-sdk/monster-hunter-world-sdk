@@ -23,8 +23,8 @@ module MonsterHunterWorldTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("MONSTERHUNTERWORLD_TEST_LIVE")
-    override = getenv("MONSTERHUNTERWORLD_TEST_OVERRIDE")
+    live = getenv("MONSTER_HUNTER_WORLD_TEST_LIVE")
+    override = getenv("MONSTER_HUNTER_WORLD_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module MonsterHunterWorldTestRunner
       end
     end
 
-    explain = getenv("MONSTERHUNTERWORLD_TEST_EXPLAIN")
-    m["MONSTERHUNTERWORLD_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("MONSTER_HUNTER_WORLD_TEST_EXPLAIN")
+    m["MONSTER_HUNTER_WORLD_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

@@ -6,12 +6,17 @@ main: kit: entity: event: {
 
   fields: [
     {
+      name: "camps"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
       name: "description"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "end_timestamp"
+      name: "endTimestamp"
       req: false
       type: "`$STRING`"
     }
@@ -46,22 +51,22 @@ main: kit: entity: event: {
       type: "`$STRING`"
     }
     {
-      name: "quest_rank"
+      name: "questRank"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "requirement"
+      name: "requirements"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "start_timestamp"
+      name: "startTimestamp"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "success_condition"
+      name: "successConditions"
       req: false
       type: "`$STRING`"
     }
@@ -69,6 +74,11 @@ main: kit: entity: event: {
       name: "type"
       req: false
       type: "`$STRING`"
+    }
+    {
+      name: "zoneCount"
+      req: false
+      type: "`$INTEGER`"
     }
   ]
 
@@ -157,7 +167,7 @@ main: kit: entity: event: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.location`"
           }
         }
       ]

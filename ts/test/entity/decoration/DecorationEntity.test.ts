@@ -26,8 +26,8 @@ import {
 describe('DecorationEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when MONSTERHUNTERWORLD_TEST_LIVE=TRUE.
-  afterEach(liveDelay('MONSTERHUNTERWORLD_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when MONSTER_HUNTER_WORLD_TEST_LIVE=TRUE.
+  afterEach(liveDelay('MONSTER_HUNTER_WORLD_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = MonsterHunterWorldSDK.test()
@@ -63,13 +63,13 @@ describe('DecorationEntity', async () => {
     const decoration_ref01_ent = client.Decoration()
     const decoration_ref01_match: any = {}
 
-    const decoration_ref01_list = await decoration_ref01_ent.list(decoration_ref01_match)
+    const decoration_ref01_list = (await decoration_ref01_ent.list(decoration_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const decoration_ref01_match_dt0: any = {}
     decoration_ref01_match_dt0.id = decoration_ref01_data.id
-    const decoration_ref01_data_dt0 = await decoration_ref01_ent.load(decoration_ref01_match_dt0)
+    const decoration_ref01_data_dt0 = (await decoration_ref01_ent.load(decoration_ref01_match_dt0)).data()
     assert(decoration_ref01_data_dt0.id === decoration_ref01_data.id)
 
 

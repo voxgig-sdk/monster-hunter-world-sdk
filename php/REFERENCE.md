@@ -200,18 +200,18 @@ $armor = $client->Armor();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `armor_set` | `array` | No |  |
-| `asset` | `array` | No |  |
-| `attribute` | `array` | No |  |
+| `armorSet` | `array` | No |  |
+| `assets` | `array` | No |  |
+| `attributes` | `array` | No |  |
 | `crafting` | `array` | No |  |
 | `defense` | `array` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
 | `rank` | `string` | No |  |
 | `rarity` | `int` | No |  |
-| `resistance` | `array` | No |  |
-| `skill` | `array` | No |  |
-| `slot` | `array` | No |  |
+| `resistances` | `array` | No |  |
+| `skills` | `array` | No |  |
+| `slots` | `array` | No |  |
 | `type` | `string` | No |  |
 
 ### Operations
@@ -275,7 +275,7 @@ $armor_set = $client->ArmorSet();
 | `bonus` | `array` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
-| `piece` | `array` | No |  |
+| `pieces` | `array` | No |  |
 | `rank` | `string` | No |  |
 
 ### Operations
@@ -340,7 +340,7 @@ $charm = $client->Charm();
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
 | `rarity` | `int` | No |  |
-| `skill` | `array` | No |  |
+| `skills` | `array` | No |  |
 
 ### Operations
 
@@ -403,7 +403,7 @@ $decoration = $client->Decoration();
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
 | `rarity` | `int` | No |  |
-| `skill` | `array` | No |  |
+| `skills` | `array` | No |  |
 | `slot` | `int` | No |  |
 
 ### Operations
@@ -464,19 +464,21 @@ $event = $client->Event();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `camps` | `array` | No |  |
 | `description` | `string` | No |  |
-| `end_timestamp` | `string` | No |  |
+| `endTimestamp` | `string` | No |  |
 | `exclusive` | `string` | No |  |
 | `expansion` | `string` | No |  |
 | `id` | `int` | No |  |
 | `location` | `array` | No |  |
 | `name` | `string` | No |  |
 | `platform` | `string` | No |  |
-| `quest_rank` | `string` | No |  |
-| `requirement` | `string` | No |  |
-| `start_timestamp` | `string` | No |  |
-| `success_condition` | `string` | No |  |
+| `questRank` | `string` | No |  |
+| `requirements` | `string` | No |  |
+| `startTimestamp` | `string` | No |  |
+| `successConditions` | `string` | No |  |
 | `type` | `string` | No |  |
+| `zoneCount` | `int` | No |  |
 
 ### Operations
 
@@ -536,13 +538,13 @@ $item = $client->Item();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `buy_price` | `int` | No |  |
-| `carry_limit` | `int` | No |  |
+| `buyPrice` | `int` | No |  |
+| `carryLimit` | `int` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
 | `rarity` | `int` | No |  |
-| `sell_price` | `int` | No |  |
+| `sellPrice` | `int` | No |  |
 | `value` | `int` | No |  |
 
 ### Operations
@@ -603,10 +605,10 @@ $location = $client->Location();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `camp` | `array` | No |  |
+| `camps` | `array` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
-| `zone_count` | `int` | No |  |
+| `zoneCount` | `int` | No |  |
 
 ### Operations
 
@@ -666,17 +668,17 @@ $monster = $client->Monster();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ailment` | `array` | No |  |
+| `ailments` | `array` | No |  |
 | `description` | `string` | No |  |
-| `element` | `array` | No |  |
+| `elements` | `array` | No |  |
 | `id` | `int` | No |  |
-| `location` | `array` | No |  |
+| `locations` | `array` | No |  |
 | `name` | `string` | No |  |
-| `resistance` | `array` | No |  |
-| `reward` | `array` | No |  |
+| `resistances` | `array` | No |  |
+| `rewards` | `array` | No |  |
 | `species` | `string` | No |  |
 | `type` | `string` | No |  |
-| `weakness` | `array` | No |  |
+| `weaknesses` | `array` | No |  |
 
 ### Operations
 
@@ -736,12 +738,12 @@ $motion_value = $client->MotionValue();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `damage_type` | `string` | No |  |
+| `damageType` | `string` | No |  |
 | `exhaust` | `int` | No |  |
-| `hit` | `array` | No |  |
+| `hits` | `array` | No |  |
 | `id` | `int` | No |  |
 | `stun` | `int` | No |  |
-| `weapon_type` | `string` | No |  |
+| `weaponType` | `string` | No |  |
 
 ### Operations
 
@@ -804,7 +806,7 @@ $skill = $client->Skill();
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
-| `rank` | `array` | No |  |
+| `ranks` | `array` | No |  |
 
 ### Operations
 
@@ -864,16 +866,16 @@ $weapon = $client->Weapon();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asset` | `array` | No |  |
+| `assets` | `array` | No |  |
 | `attack` | `array` | No |  |
-| `attribute` | `array` | No |  |
+| `attributes` | `array` | No |  |
 | `crafting` | `array` | No |  |
-| `damage_type` | `string` | No |  |
-| `element` | `array` | No |  |
+| `damageType` | `string` | No |  |
+| `elements` | `array` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
 | `rarity` | `int` | No |  |
-| `slot` | `array` | No |  |
+| `slots` | `array` | No |  |
 | `type` | `string` | No |  |
 
 ### Operations

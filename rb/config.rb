@@ -100,6 +100,7 @@ module MonsterHunterWorldConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/ailments",
                   "parts" => [
@@ -149,6 +150,7 @@ module MonsterHunterWorldConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/ailments/{id}",
                   "parts" => [
@@ -179,21 +181,21 @@ module MonsterHunterWorldConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "armor_set",
+              "name" => "armorSet",
               "req" => false,
               "type" => "`$OBJECT`",
               "index$" => 0,
             },
             {
               "active" => true,
-              "name" => "asset",
+              "name" => "assets",
               "req" => false,
               "type" => "`$OBJECT`",
               "index$" => 1,
             },
             {
               "active" => true,
-              "name" => "attribute",
+              "name" => "attributes",
               "req" => false,
               "type" => "`$OBJECT`",
               "index$" => 2,
@@ -242,21 +244,21 @@ module MonsterHunterWorldConfig
             },
             {
               "active" => true,
-              "name" => "resistance",
+              "name" => "resistances",
               "req" => false,
               "type" => "`$OBJECT`",
               "index$" => 9,
             },
             {
               "active" => true,
-              "name" => "skill",
+              "name" => "skills",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 10,
             },
             {
               "active" => true,
-              "name" => "slot",
+              "name" => "slots",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 11,
@@ -297,6 +299,7 @@ module MonsterHunterWorldConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/armor",
                   "parts" => [
@@ -346,6 +349,7 @@ module MonsterHunterWorldConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/armor/{id}",
                   "parts" => [
@@ -397,7 +401,7 @@ module MonsterHunterWorldConfig
             },
             {
               "active" => true,
-              "name" => "piece",
+              "name" => "pieces",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 3,
@@ -438,6 +442,7 @@ module MonsterHunterWorldConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/armor/sets",
                   "parts" => [
@@ -488,6 +493,7 @@ module MonsterHunterWorldConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/armor/sets/{id}",
                   "parts" => [
@@ -547,7 +553,7 @@ module MonsterHunterWorldConfig
             },
             {
               "active" => true,
-              "name" => "skill",
+              "name" => "skills",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 4,
@@ -581,6 +587,7 @@ module MonsterHunterWorldConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/charms",
                   "parts" => [
@@ -630,6 +637,7 @@ module MonsterHunterWorldConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/charms/{id}",
                   "parts" => [
@@ -681,7 +689,7 @@ module MonsterHunterWorldConfig
             },
             {
               "active" => true,
-              "name" => "skill",
+              "name" => "skills",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 3,
@@ -722,6 +730,7 @@ module MonsterHunterWorldConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/decorations",
                   "parts" => [
@@ -771,6 +780,7 @@ module MonsterHunterWorldConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/decorations/{id}",
                   "parts" => [
@@ -801,94 +811,108 @@ module MonsterHunterWorldConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "description",
+              "name" => "camps",
               "req" => false,
-              "type" => "`$STRING`",
+              "type" => "`$ARRAY`",
               "index$" => 0,
             },
             {
               "active" => true,
-              "name" => "end_timestamp",
+              "name" => "description",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 1,
             },
             {
               "active" => true,
-              "name" => "exclusive",
+              "name" => "endTimestamp",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 2,
             },
             {
               "active" => true,
-              "name" => "expansion",
+              "name" => "exclusive",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 3,
             },
             {
               "active" => true,
+              "name" => "expansion",
+              "req" => false,
+              "type" => "`$STRING`",
+              "index$" => 4,
+            },
+            {
+              "active" => true,
               "name" => "id",
               "req" => false,
               "type" => "`$INTEGER`",
-              "index$" => 4,
+              "index$" => 5,
             },
             {
               "active" => true,
               "name" => "location",
               "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 5,
+              "index$" => 6,
             },
             {
               "active" => true,
               "name" => "name",
               "req" => false,
               "type" => "`$STRING`",
-              "index$" => 6,
+              "index$" => 7,
             },
             {
               "active" => true,
               "name" => "platform",
               "req" => false,
               "type" => "`$STRING`",
-              "index$" => 7,
-            },
-            {
-              "active" => true,
-              "name" => "quest_rank",
-              "req" => false,
-              "type" => "`$STRING`",
               "index$" => 8,
             },
             {
               "active" => true,
-              "name" => "requirement",
+              "name" => "questRank",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 9,
             },
             {
               "active" => true,
-              "name" => "start_timestamp",
+              "name" => "requirements",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 10,
             },
             {
               "active" => true,
-              "name" => "success_condition",
+              "name" => "startTimestamp",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 11,
             },
             {
               "active" => true,
-              "name" => "type",
+              "name" => "successConditions",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 12,
+            },
+            {
+              "active" => true,
+              "name" => "type",
+              "req" => false,
+              "type" => "`$STRING`",
+              "index$" => 13,
+            },
+            {
+              "active" => true,
+              "name" => "zoneCount",
+              "req" => false,
+              "type" => "`$INTEGER`",
+              "index$" => 14,
             },
           ],
           "name" => "event",
@@ -919,6 +943,7 @@ module MonsterHunterWorldConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/events",
                   "parts" => [
@@ -968,6 +993,7 @@ module MonsterHunterWorldConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/events/{id}",
                   "parts" => [
@@ -982,7 +1008,7 @@ module MonsterHunterWorldConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.location`",
                   },
                   "index$" => 0,
                 },
@@ -998,14 +1024,14 @@ module MonsterHunterWorldConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "buy_price",
+              "name" => "buyPrice",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 0,
             },
             {
               "active" => true,
-              "name" => "carry_limit",
+              "name" => "carryLimit",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 1,
@@ -1040,7 +1066,7 @@ module MonsterHunterWorldConfig
             },
             {
               "active" => true,
-              "name" => "sell_price",
+              "name" => "sellPrice",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 6,
@@ -1081,6 +1107,7 @@ module MonsterHunterWorldConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/items",
                   "parts" => [
@@ -1130,6 +1157,7 @@ module MonsterHunterWorldConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/items/{id}",
                   "parts" => [
@@ -1160,7 +1188,7 @@ module MonsterHunterWorldConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "camp",
+              "name" => "camps",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 0,
@@ -1181,7 +1209,7 @@ module MonsterHunterWorldConfig
             },
             {
               "active" => true,
-              "name" => "zone_count",
+              "name" => "zoneCount",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 3,
@@ -1215,6 +1243,7 @@ module MonsterHunterWorldConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/locations",
                   "parts" => [
@@ -1264,6 +1293,7 @@ module MonsterHunterWorldConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/locations/{id}",
                   "parts" => [
@@ -1294,7 +1324,7 @@ module MonsterHunterWorldConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "ailment",
+              "name" => "ailments",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 0,
@@ -1308,7 +1338,7 @@ module MonsterHunterWorldConfig
             },
             {
               "active" => true,
-              "name" => "element",
+              "name" => "elements",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 2,
@@ -1322,7 +1352,7 @@ module MonsterHunterWorldConfig
             },
             {
               "active" => true,
-              "name" => "location",
+              "name" => "locations",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 4,
@@ -1336,14 +1366,14 @@ module MonsterHunterWorldConfig
             },
             {
               "active" => true,
-              "name" => "resistance",
+              "name" => "resistances",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 6,
             },
             {
               "active" => true,
-              "name" => "reward",
+              "name" => "rewards",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 7,
@@ -1364,7 +1394,7 @@ module MonsterHunterWorldConfig
             },
             {
               "active" => true,
-              "name" => "weakness",
+              "name" => "weaknesses",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 10,
@@ -1398,6 +1428,7 @@ module MonsterHunterWorldConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/monsters",
                   "parts" => [
@@ -1447,6 +1478,7 @@ module MonsterHunterWorldConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/monsters/{id}",
                   "parts" => [
@@ -1477,7 +1509,7 @@ module MonsterHunterWorldConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "damage_type",
+              "name" => "damageType",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 0,
@@ -1491,7 +1523,7 @@ module MonsterHunterWorldConfig
             },
             {
               "active" => true,
-              "name" => "hit",
+              "name" => "hits",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 2,
@@ -1512,7 +1544,7 @@ module MonsterHunterWorldConfig
             },
             {
               "active" => true,
-              "name" => "weapon_type",
+              "name" => "weaponType",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 5,
@@ -1546,6 +1578,7 @@ module MonsterHunterWorldConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/motion-values",
                   "parts" => [
@@ -1595,6 +1628,7 @@ module MonsterHunterWorldConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/motion-values/{id}",
                   "parts" => [
@@ -1646,7 +1680,7 @@ module MonsterHunterWorldConfig
             },
             {
               "active" => true,
-              "name" => "rank",
+              "name" => "ranks",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 3,
@@ -1680,6 +1714,7 @@ module MonsterHunterWorldConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/skills",
                   "parts" => [
@@ -1729,6 +1764,7 @@ module MonsterHunterWorldConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/skills/{id}",
                   "parts" => [
@@ -1759,7 +1795,7 @@ module MonsterHunterWorldConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "asset",
+              "name" => "assets",
               "req" => false,
               "type" => "`$OBJECT`",
               "index$" => 0,
@@ -1773,7 +1809,7 @@ module MonsterHunterWorldConfig
             },
             {
               "active" => true,
-              "name" => "attribute",
+              "name" => "attributes",
               "req" => false,
               "type" => "`$OBJECT`",
               "index$" => 2,
@@ -1787,14 +1823,14 @@ module MonsterHunterWorldConfig
             },
             {
               "active" => true,
-              "name" => "damage_type",
+              "name" => "damageType",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 4,
             },
             {
               "active" => true,
-              "name" => "element",
+              "name" => "elements",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 5,
@@ -1822,7 +1858,7 @@ module MonsterHunterWorldConfig
             },
             {
               "active" => true,
-              "name" => "slot",
+              "name" => "slots",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 9,
@@ -1863,6 +1899,7 @@ module MonsterHunterWorldConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/weapons",
                   "parts" => [
@@ -1912,6 +1949,7 @@ module MonsterHunterWorldConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/weapons/{id}",
                   "parts" => [

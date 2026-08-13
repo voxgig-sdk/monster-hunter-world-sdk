@@ -6,17 +6,17 @@ main: kit: entity: armor: {
 
   fields: [
     {
-      name: "armor_set"
+      name: "armorSet"
       req: false
       type: "`$OBJECT`"
     }
     {
-      name: "asset"
+      name: "assets"
       req: false
       type: "`$OBJECT`"
     }
     {
-      name: "attribute"
+      name: "attributes"
       req: false
       type: "`$OBJECT`"
     }
@@ -51,17 +51,17 @@ main: kit: entity: armor: {
       type: "`$INTEGER`"
     }
     {
-      name: "resistance"
+      name: "resistances"
       req: false
       type: "`$OBJECT`"
     }
     {
-      name: "skill"
+      name: "skills"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "slot"
+      name: "slots"
       req: false
       type: "`$ARRAY`"
     }

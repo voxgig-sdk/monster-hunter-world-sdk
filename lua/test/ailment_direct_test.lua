@@ -115,11 +115,11 @@ function ailment_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["MONSTERHUNTERWORLD_TEST_AILMENT_ENTID"] = {},
-    ["MONSTERHUNTERWORLD_TEST_LIVE"] = "FALSE",
+    ["MONSTER_HUNTER_WORLD_TEST_AILMENT_ENTID"] = {},
+    ["MONSTER_HUNTER_WORLD_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["MONSTERHUNTERWORLD_TEST_LIVE"] == "TRUE"
+  local live = env["MONSTER_HUNTER_WORLD_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

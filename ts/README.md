@@ -35,7 +35,9 @@ const client = new MonsterHunterWorldSDK()
 
 ### 2. List ailment records
 
-`list()` resolves to an array of Ailment objects — iterate it directly:
+`list()` resolves to an array of Ailment ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const ailments = await client.Ailment().list()
@@ -133,7 +135,8 @@ Create a mock client for unit testing — no server required:
 const client = MonsterHunterWorldSDK.test()
 
 const ailment = await client.Ailment().list()
-// ailment is a bare entity populated with mock response data
+// ailment is the entity, populated with mock response data
+// — call ailment.data() for the record itself
 console.log(ailment)
 ```
 
@@ -324,18 +327,18 @@ API path: `/ailments`
 
 | Field | Description |
 | --- | --- |
-| `armor_set` |  |
-| `asset` |  |
-| `attribute` |  |
+| `armorSet` |  |
+| `assets` |  |
+| `attributes` |  |
 | `crafting` |  |
 | `defense` |  |
 | `id` |  |
 | `name` |  |
 | `rank` |  |
 | `rarity` |  |
-| `resistance` |  |
-| `skill` |  |
-| `slot` |  |
+| `resistances` |  |
+| `skills` |  |
+| `slots` |  |
 | `type` |  |
 
 Operations: list, load.
@@ -349,7 +352,7 @@ API path: `/armor`
 | `bonus` |  |
 | `id` |  |
 | `name` |  |
-| `piece` |  |
+| `pieces` |  |
 | `rank` |  |
 
 Operations: list, load.
@@ -364,7 +367,7 @@ API path: `/armor/sets`
 | `id` |  |
 | `name` |  |
 | `rarity` |  |
-| `skill` |  |
+| `skills` |  |
 
 Operations: list, load.
 
@@ -377,7 +380,7 @@ API path: `/charms`
 | `id` |  |
 | `name` |  |
 | `rarity` |  |
-| `skill` |  |
+| `skills` |  |
 | `slot` |  |
 
 Operations: list, load.
@@ -388,19 +391,21 @@ API path: `/decorations`
 
 | Field | Description |
 | --- | --- |
+| `camps` |  |
 | `description` |  |
-| `end_timestamp` |  |
+| `endTimestamp` |  |
 | `exclusive` |  |
 | `expansion` |  |
 | `id` |  |
 | `location` |  |
 | `name` |  |
 | `platform` |  |
-| `quest_rank` |  |
-| `requirement` |  |
-| `start_timestamp` |  |
-| `success_condition` |  |
+| `questRank` |  |
+| `requirements` |  |
+| `startTimestamp` |  |
+| `successConditions` |  |
 | `type` |  |
+| `zoneCount` |  |
 
 Operations: list, load.
 
@@ -410,13 +415,13 @@ API path: `/events`
 
 | Field | Description |
 | --- | --- |
-| `buy_price` |  |
-| `carry_limit` |  |
+| `buyPrice` |  |
+| `carryLimit` |  |
 | `description` |  |
 | `id` |  |
 | `name` |  |
 | `rarity` |  |
-| `sell_price` |  |
+| `sellPrice` |  |
 | `value` |  |
 
 Operations: list, load.
@@ -427,10 +432,10 @@ API path: `/items`
 
 | Field | Description |
 | --- | --- |
-| `camp` |  |
+| `camps` |  |
 | `id` |  |
 | `name` |  |
-| `zone_count` |  |
+| `zoneCount` |  |
 
 Operations: list, load.
 
@@ -440,17 +445,17 @@ API path: `/locations`
 
 | Field | Description |
 | --- | --- |
-| `ailment` |  |
+| `ailments` |  |
 | `description` |  |
-| `element` |  |
+| `elements` |  |
 | `id` |  |
-| `location` |  |
+| `locations` |  |
 | `name` |  |
-| `resistance` |  |
-| `reward` |  |
+| `resistances` |  |
+| `rewards` |  |
 | `species` |  |
 | `type` |  |
-| `weakness` |  |
+| `weaknesses` |  |
 
 Operations: list, load.
 
@@ -460,12 +465,12 @@ API path: `/monsters`
 
 | Field | Description |
 | --- | --- |
-| `damage_type` |  |
+| `damageType` |  |
 | `exhaust` |  |
-| `hit` |  |
+| `hits` |  |
 | `id` |  |
 | `stun` |  |
-| `weapon_type` |  |
+| `weaponType` |  |
 
 Operations: list, load.
 
@@ -478,7 +483,7 @@ API path: `/motion-values`
 | `description` |  |
 | `id` |  |
 | `name` |  |
-| `rank` |  |
+| `ranks` |  |
 
 Operations: list, load.
 
@@ -488,16 +493,16 @@ API path: `/skills`
 
 | Field | Description |
 | --- | --- |
-| `asset` |  |
+| `assets` |  |
 | `attack` |  |
-| `attribute` |  |
+| `attributes` |  |
 | `crafting` |  |
-| `damage_type` |  |
-| `element` |  |
+| `damageType` |  |
+| `elements` |  |
 | `id` |  |
 | `name` |  |
 | `rarity` |  |
-| `slot` |  |
+| `slots` |  |
 | `type` |  |
 
 Operations: list, load.
@@ -558,18 +563,18 @@ Create an instance: `const armor = client.Armor()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `armor_set` | `Record<string, any>` |  |
-| `asset` | `Record<string, any>` |  |
-| `attribute` | `Record<string, any>` |  |
+| `armorSet` | `Record<string, any>` |  |
+| `assets` | `Record<string, any>` |  |
+| `attributes` | `Record<string, any>` |  |
 | `crafting` | `Record<string, any>` |  |
 | `defense` | `Record<string, any>` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
 | `rank` | `string` |  |
 | `rarity` | `number` |  |
-| `resistance` | `Record<string, any>` |  |
-| `skill` | `any[]` |  |
-| `slot` | `any[]` |  |
+| `resistances` | `Record<string, any>` |  |
+| `skills` | `any[]` |  |
+| `slots` | `any[]` |  |
 | `type` | `string` |  |
 
 #### Example: Load
@@ -603,7 +608,7 @@ Create an instance: `const armor_set = client.ArmorSet()`
 | `bonus` | `Record<string, any>` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
-| `piece` | `any[]` |  |
+| `pieces` | `any[]` |  |
 | `rank` | `string` |  |
 
 #### Example: Load
@@ -638,7 +643,7 @@ Create an instance: `const charm = client.Charm()`
 | `id` | `number` |  |
 | `name` | `string` |  |
 | `rarity` | `number` |  |
-| `skill` | `any[]` |  |
+| `skills` | `any[]` |  |
 
 #### Example: Load
 
@@ -671,7 +676,7 @@ Create an instance: `const decoration = client.Decoration()`
 | `id` | `number` |  |
 | `name` | `string` |  |
 | `rarity` | `number` |  |
-| `skill` | `any[]` |  |
+| `skills` | `any[]` |  |
 | `slot` | `number` |  |
 
 #### Example: Load
@@ -702,19 +707,21 @@ Create an instance: `const event = client.Event()`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `camps` | `any[]` |  |
 | `description` | `string` |  |
-| `end_timestamp` | `string` |  |
+| `endTimestamp` | `string` |  |
 | `exclusive` | `string` |  |
 | `expansion` | `string` |  |
 | `id` | `number` |  |
 | `location` | `Record<string, any>` |  |
 | `name` | `string` |  |
 | `platform` | `string` |  |
-| `quest_rank` | `string` |  |
-| `requirement` | `string` |  |
-| `start_timestamp` | `string` |  |
-| `success_condition` | `string` |  |
+| `questRank` | `string` |  |
+| `requirements` | `string` |  |
+| `startTimestamp` | `string` |  |
+| `successConditions` | `string` |  |
 | `type` | `string` |  |
+| `zoneCount` | `number` |  |
 
 #### Example: Load
 
@@ -744,13 +751,13 @@ Create an instance: `const item = client.Item()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `buy_price` | `number` |  |
-| `carry_limit` | `number` |  |
+| `buyPrice` | `number` |  |
+| `carryLimit` | `number` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
 | `rarity` | `number` |  |
-| `sell_price` | `number` |  |
+| `sellPrice` | `number` |  |
 | `value` | `number` |  |
 
 #### Example: Load
@@ -781,10 +788,10 @@ Create an instance: `const location = client.Location()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `camp` | `any[]` |  |
+| `camps` | `any[]` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
-| `zone_count` | `number` |  |
+| `zoneCount` | `number` |  |
 
 #### Example: Load
 
@@ -814,17 +821,17 @@ Create an instance: `const monster = client.Monster()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ailment` | `any[]` |  |
+| `ailments` | `any[]` |  |
 | `description` | `string` |  |
-| `element` | `any[]` |  |
+| `elements` | `any[]` |  |
 | `id` | `number` |  |
-| `location` | `any[]` |  |
+| `locations` | `any[]` |  |
 | `name` | `string` |  |
-| `resistance` | `any[]` |  |
-| `reward` | `any[]` |  |
+| `resistances` | `any[]` |  |
+| `rewards` | `any[]` |  |
 | `species` | `string` |  |
 | `type` | `string` |  |
-| `weakness` | `any[]` |  |
+| `weaknesses` | `any[]` |  |
 
 #### Example: Load
 
@@ -854,12 +861,12 @@ Create an instance: `const motion_value = client.MotionValue()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `damage_type` | `string` |  |
+| `damageType` | `string` |  |
 | `exhaust` | `number` |  |
-| `hit` | `any[]` |  |
+| `hits` | `any[]` |  |
 | `id` | `number` |  |
 | `stun` | `number` |  |
-| `weapon_type` | `string` |  |
+| `weaponType` | `string` |  |
 
 #### Example: Load
 
@@ -892,7 +899,7 @@ Create an instance: `const skill = client.Skill()`
 | `description` | `string` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
-| `rank` | `any[]` |  |
+| `ranks` | `any[]` |  |
 
 #### Example: Load
 
@@ -922,16 +929,16 @@ Create an instance: `const weapon = client.Weapon()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asset` | `Record<string, any>` |  |
+| `assets` | `Record<string, any>` |  |
 | `attack` | `Record<string, any>` |  |
-| `attribute` | `Record<string, any>` |  |
+| `attributes` | `Record<string, any>` |  |
 | `crafting` | `Record<string, any>` |  |
-| `damage_type` | `string` |  |
-| `element` | `any[]` |  |
+| `damageType` | `string` |  |
+| `elements` | `any[]` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
 | `rarity` | `number` |  |
-| `slot` | `any[]` |  |
+| `slots` | `any[]` |  |
 | `type` | `string` |  |
 
 #### Example: Load

@@ -52,7 +52,7 @@ except Exception as err:
 
 ### 3. Load an ailment
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -136,7 +136,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = MonsterHunterWorldSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 ailment = client.Ailment().list()
 # ailment contains the mock response record
 ```
@@ -244,7 +245,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -280,18 +281,18 @@ API path: `/ailments`
 
 | Field | Description |
 | --- | --- |
-| `armor_set` |  |
-| `asset` |  |
-| `attribute` |  |
+| `armorSet` |  |
+| `assets` |  |
+| `attributes` |  |
 | `crafting` |  |
 | `defense` |  |
 | `id` |  |
 | `name` |  |
 | `rank` |  |
 | `rarity` |  |
-| `resistance` |  |
-| `skill` |  |
-| `slot` |  |
+| `resistances` |  |
+| `skills` |  |
+| `slots` |  |
 | `type` |  |
 
 Operations: List, Load.
@@ -305,7 +306,7 @@ API path: `/armor`
 | `bonus` |  |
 | `id` |  |
 | `name` |  |
-| `piece` |  |
+| `pieces` |  |
 | `rank` |  |
 
 Operations: List, Load.
@@ -320,7 +321,7 @@ API path: `/armor/sets`
 | `id` |  |
 | `name` |  |
 | `rarity` |  |
-| `skill` |  |
+| `skills` |  |
 
 Operations: List, Load.
 
@@ -333,7 +334,7 @@ API path: `/charms`
 | `id` |  |
 | `name` |  |
 | `rarity` |  |
-| `skill` |  |
+| `skills` |  |
 | `slot` |  |
 
 Operations: List, Load.
@@ -344,19 +345,21 @@ API path: `/decorations`
 
 | Field | Description |
 | --- | --- |
+| `camps` |  |
 | `description` |  |
-| `end_timestamp` |  |
+| `endTimestamp` |  |
 | `exclusive` |  |
 | `expansion` |  |
 | `id` |  |
 | `location` |  |
 | `name` |  |
 | `platform` |  |
-| `quest_rank` |  |
-| `requirement` |  |
-| `start_timestamp` |  |
-| `success_condition` |  |
+| `questRank` |  |
+| `requirements` |  |
+| `startTimestamp` |  |
+| `successConditions` |  |
 | `type` |  |
+| `zoneCount` |  |
 
 Operations: List, Load.
 
@@ -366,13 +369,13 @@ API path: `/events`
 
 | Field | Description |
 | --- | --- |
-| `buy_price` |  |
-| `carry_limit` |  |
+| `buyPrice` |  |
+| `carryLimit` |  |
 | `description` |  |
 | `id` |  |
 | `name` |  |
 | `rarity` |  |
-| `sell_price` |  |
+| `sellPrice` |  |
 | `value` |  |
 
 Operations: List, Load.
@@ -383,10 +386,10 @@ API path: `/items`
 
 | Field | Description |
 | --- | --- |
-| `camp` |  |
+| `camps` |  |
 | `id` |  |
 | `name` |  |
-| `zone_count` |  |
+| `zoneCount` |  |
 
 Operations: List, Load.
 
@@ -396,17 +399,17 @@ API path: `/locations`
 
 | Field | Description |
 | --- | --- |
-| `ailment` |  |
+| `ailments` |  |
 | `description` |  |
-| `element` |  |
+| `elements` |  |
 | `id` |  |
-| `location` |  |
+| `locations` |  |
 | `name` |  |
-| `resistance` |  |
-| `reward` |  |
+| `resistances` |  |
+| `rewards` |  |
 | `species` |  |
 | `type` |  |
-| `weakness` |  |
+| `weaknesses` |  |
 
 Operations: List, Load.
 
@@ -416,12 +419,12 @@ API path: `/monsters`
 
 | Field | Description |
 | --- | --- |
-| `damage_type` |  |
+| `damageType` |  |
 | `exhaust` |  |
-| `hit` |  |
+| `hits` |  |
 | `id` |  |
 | `stun` |  |
-| `weapon_type` |  |
+| `weaponType` |  |
 
 Operations: List, Load.
 
@@ -434,7 +437,7 @@ API path: `/motion-values`
 | `description` |  |
 | `id` |  |
 | `name` |  |
-| `rank` |  |
+| `ranks` |  |
 
 Operations: List, Load.
 
@@ -444,16 +447,16 @@ API path: `/skills`
 
 | Field | Description |
 | --- | --- |
-| `asset` |  |
+| `assets` |  |
 | `attack` |  |
-| `attribute` |  |
+| `attributes` |  |
 | `crafting` |  |
-| `damage_type` |  |
-| `element` |  |
+| `damageType` |  |
+| `elements` |  |
 | `id` |  |
 | `name` |  |
 | `rarity` |  |
-| `slot` |  |
+| `slots` |  |
 | `type` |  |
 
 Operations: List, Load.
@@ -514,18 +517,18 @@ Create an instance: `armor = client.Armor()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `armor_set` | `dict` |  |
-| `asset` | `dict` |  |
-| `attribute` | `dict` |  |
+| `armorSet` | `dict` |  |
+| `assets` | `dict` |  |
+| `attributes` | `dict` |  |
 | `crafting` | `dict` |  |
 | `defense` | `dict` |  |
 | `id` | `int` |  |
 | `name` | `str` |  |
 | `rank` | `str` |  |
 | `rarity` | `int` |  |
-| `resistance` | `dict` |  |
-| `skill` | `list` |  |
-| `slot` | `list` |  |
+| `resistances` | `dict` |  |
+| `skills` | `list` |  |
+| `slots` | `list` |  |
 | `type` | `str` |  |
 
 #### Example: Load
@@ -559,7 +562,7 @@ Create an instance: `armor_set = client.ArmorSet()`
 | `bonus` | `dict` |  |
 | `id` | `int` |  |
 | `name` | `str` |  |
-| `piece` | `list` |  |
+| `pieces` | `list` |  |
 | `rank` | `str` |  |
 
 #### Example: Load
@@ -594,7 +597,7 @@ Create an instance: `charm = client.Charm()`
 | `id` | `int` |  |
 | `name` | `str` |  |
 | `rarity` | `int` |  |
-| `skill` | `list` |  |
+| `skills` | `list` |  |
 
 #### Example: Load
 
@@ -627,7 +630,7 @@ Create an instance: `decoration = client.Decoration()`
 | `id` | `int` |  |
 | `name` | `str` |  |
 | `rarity` | `int` |  |
-| `skill` | `list` |  |
+| `skills` | `list` |  |
 | `slot` | `int` |  |
 
 #### Example: Load
@@ -658,19 +661,21 @@ Create an instance: `event = client.Event()`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `camps` | `list` |  |
 | `description` | `str` |  |
-| `end_timestamp` | `str` |  |
+| `endTimestamp` | `str` |  |
 | `exclusive` | `str` |  |
 | `expansion` | `str` |  |
 | `id` | `int` |  |
 | `location` | `dict` |  |
 | `name` | `str` |  |
 | `platform` | `str` |  |
-| `quest_rank` | `str` |  |
-| `requirement` | `str` |  |
-| `start_timestamp` | `str` |  |
-| `success_condition` | `str` |  |
+| `questRank` | `str` |  |
+| `requirements` | `str` |  |
+| `startTimestamp` | `str` |  |
+| `successConditions` | `str` |  |
 | `type` | `str` |  |
+| `zoneCount` | `int` |  |
 
 #### Example: Load
 
@@ -700,13 +705,13 @@ Create an instance: `item = client.Item()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `buy_price` | `int` |  |
-| `carry_limit` | `int` |  |
+| `buyPrice` | `int` |  |
+| `carryLimit` | `int` |  |
 | `description` | `str` |  |
 | `id` | `int` |  |
 | `name` | `str` |  |
 | `rarity` | `int` |  |
-| `sell_price` | `int` |  |
+| `sellPrice` | `int` |  |
 | `value` | `int` |  |
 
 #### Example: Load
@@ -737,10 +742,10 @@ Create an instance: `location = client.Location()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `camp` | `list` |  |
+| `camps` | `list` |  |
 | `id` | `int` |  |
 | `name` | `str` |  |
-| `zone_count` | `int` |  |
+| `zoneCount` | `int` |  |
 
 #### Example: Load
 
@@ -770,17 +775,17 @@ Create an instance: `monster = client.Monster()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ailment` | `list` |  |
+| `ailments` | `list` |  |
 | `description` | `str` |  |
-| `element` | `list` |  |
+| `elements` | `list` |  |
 | `id` | `int` |  |
-| `location` | `list` |  |
+| `locations` | `list` |  |
 | `name` | `str` |  |
-| `resistance` | `list` |  |
-| `reward` | `list` |  |
+| `resistances` | `list` |  |
+| `rewards` | `list` |  |
 | `species` | `str` |  |
 | `type` | `str` |  |
-| `weakness` | `list` |  |
+| `weaknesses` | `list` |  |
 
 #### Example: Load
 
@@ -810,12 +815,12 @@ Create an instance: `motion_value = client.MotionValue()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `damage_type` | `str` |  |
+| `damageType` | `str` |  |
 | `exhaust` | `int` |  |
-| `hit` | `list` |  |
+| `hits` | `list` |  |
 | `id` | `int` |  |
 | `stun` | `int` |  |
-| `weapon_type` | `str` |  |
+| `weaponType` | `str` |  |
 
 #### Example: Load
 
@@ -848,7 +853,7 @@ Create an instance: `skill = client.Skill()`
 | `description` | `str` |  |
 | `id` | `int` |  |
 | `name` | `str` |  |
-| `rank` | `list` |  |
+| `ranks` | `list` |  |
 
 #### Example: Load
 
@@ -878,16 +883,16 @@ Create an instance: `weapon = client.Weapon()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asset` | `dict` |  |
+| `assets` | `dict` |  |
 | `attack` | `dict` |  |
-| `attribute` | `dict` |  |
+| `attributes` | `dict` |  |
 | `crafting` | `dict` |  |
-| `damage_type` | `str` |  |
-| `element` | `list` |  |
+| `damageType` | `str` |  |
+| `elements` | `list` |  |
 | `id` | `int` |  |
 | `name` | `str` |  |
 | `rarity` | `int` |  |
-| `slot` | `list` |  |
+| `slots` | `list` |  |
 | `type` | `str` |  |
 
 #### Example: Load

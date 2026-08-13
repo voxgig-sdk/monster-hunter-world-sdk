@@ -2,48 +2,48 @@
   "existing": {
     "armor": {
       "ARMOR00": {
-        "armor_set": {},
-        "asset": {},
-        "attribute": {},
+        "armorSet": {},
+        "assets": {},
+        "attributes": {},
         "crafting": {},
         "defense": {},
         "id": "ARMOR00",
         "name": "s88",
         "rank": "s89",
         "rarity": "s8a",
-        "resistance": {},
-        "skill": [],
-        "slot": [],
+        "resistances": {},
+        "skills": [],
+        "slots": [],
         "type": "s8e"
       },
       "ARMOR01": {
-        "armor_set": {},
-        "asset": {},
-        "attribute": {},
+        "armorSet": {},
+        "assets": {},
+        "attributes": {},
         "crafting": {},
         "defense": {},
         "id": "ARMOR01",
         "name": "s10a",
         "rank": "s10b",
         "rarity": "s10c",
-        "resistance": {},
-        "skill": [],
-        "slot": [],
+        "resistances": {},
+        "skills": [],
+        "slots": [],
         "type": "s110"
       },
       "ARMOR02": {
-        "armor_set": {},
-        "asset": {},
-        "attribute": {},
+        "armorSet": {},
+        "assets": {},
+        "attributes": {},
         "crafting": {},
         "defense": {},
         "id": "ARMOR02",
         "name": "s18c",
         "rank": "s18d",
         "rarity": "s18e",
-        "resistance": {},
-        "skill": [],
-        "slot": [],
+        "resistances": {},
+        "skills": [],
+        "slots": [],
         "type": "s192"
       }
     }
@@ -51,17 +51,17 @@
   "new": {
     "armor": {
       "armor_ref01": {
-        "armor_set": {},
-        "asset": {},
-        "attribute": {},
+        "armorSet": {},
+        "assets": {},
+        "attributes": {},
         "crafting": {},
         "defense": {},
         "name": "s20e",
         "rank": "s20f",
         "rarity": "s210",
-        "resistance": {},
-        "skill": [],
-        "slot": [],
+        "resistances": {},
+        "skills": [],
+        "slots": [],
         "type": "s214"
       }
     }

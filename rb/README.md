@@ -48,7 +48,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare Ailment record (raises on error).
+  # load returns the ENTITY — call data_get for the Ailment record (raises on error).
   ailment = client.Ailment.load({ "id" => 1 })
   puts ailment
 rescue => err
@@ -134,7 +134,8 @@ client = MonsterHunterWorldSDK.test({
   "entity" => { "ailment" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 ailment = client.Ailment.list()
 puts ailment
 ```
@@ -277,18 +278,18 @@ API path: `/ailments`
 
 | Field | Description |
 | --- | --- |
-| `armor_set` |  |
-| `asset` |  |
-| `attribute` |  |
+| `armorSet` |  |
+| `assets` |  |
+| `attributes` |  |
 | `crafting` |  |
 | `defense` |  |
 | `id` |  |
 | `name` |  |
 | `rank` |  |
 | `rarity` |  |
-| `resistance` |  |
-| `skill` |  |
-| `slot` |  |
+| `resistances` |  |
+| `skills` |  |
+| `slots` |  |
 | `type` |  |
 
 Operations: List, Load.
@@ -302,7 +303,7 @@ API path: `/armor`
 | `bonus` |  |
 | `id` |  |
 | `name` |  |
-| `piece` |  |
+| `pieces` |  |
 | `rank` |  |
 
 Operations: List, Load.
@@ -317,7 +318,7 @@ API path: `/armor/sets`
 | `id` |  |
 | `name` |  |
 | `rarity` |  |
-| `skill` |  |
+| `skills` |  |
 
 Operations: List, Load.
 
@@ -330,7 +331,7 @@ API path: `/charms`
 | `id` |  |
 | `name` |  |
 | `rarity` |  |
-| `skill` |  |
+| `skills` |  |
 | `slot` |  |
 
 Operations: List, Load.
@@ -341,19 +342,21 @@ API path: `/decorations`
 
 | Field | Description |
 | --- | --- |
+| `camps` |  |
 | `description` |  |
-| `end_timestamp` |  |
+| `endTimestamp` |  |
 | `exclusive` |  |
 | `expansion` |  |
 | `id` |  |
 | `location` |  |
 | `name` |  |
 | `platform` |  |
-| `quest_rank` |  |
-| `requirement` |  |
-| `start_timestamp` |  |
-| `success_condition` |  |
+| `questRank` |  |
+| `requirements` |  |
+| `startTimestamp` |  |
+| `successConditions` |  |
 | `type` |  |
+| `zoneCount` |  |
 
 Operations: List, Load.
 
@@ -363,13 +366,13 @@ API path: `/events`
 
 | Field | Description |
 | --- | --- |
-| `buy_price` |  |
-| `carry_limit` |  |
+| `buyPrice` |  |
+| `carryLimit` |  |
 | `description` |  |
 | `id` |  |
 | `name` |  |
 | `rarity` |  |
-| `sell_price` |  |
+| `sellPrice` |  |
 | `value` |  |
 
 Operations: List, Load.
@@ -380,10 +383,10 @@ API path: `/items`
 
 | Field | Description |
 | --- | --- |
-| `camp` |  |
+| `camps` |  |
 | `id` |  |
 | `name` |  |
-| `zone_count` |  |
+| `zoneCount` |  |
 
 Operations: List, Load.
 
@@ -393,17 +396,17 @@ API path: `/locations`
 
 | Field | Description |
 | --- | --- |
-| `ailment` |  |
+| `ailments` |  |
 | `description` |  |
-| `element` |  |
+| `elements` |  |
 | `id` |  |
-| `location` |  |
+| `locations` |  |
 | `name` |  |
-| `resistance` |  |
-| `reward` |  |
+| `resistances` |  |
+| `rewards` |  |
 | `species` |  |
 | `type` |  |
-| `weakness` |  |
+| `weaknesses` |  |
 
 Operations: List, Load.
 
@@ -413,12 +416,12 @@ API path: `/monsters`
 
 | Field | Description |
 | --- | --- |
-| `damage_type` |  |
+| `damageType` |  |
 | `exhaust` |  |
-| `hit` |  |
+| `hits` |  |
 | `id` |  |
 | `stun` |  |
-| `weapon_type` |  |
+| `weaponType` |  |
 
 Operations: List, Load.
 
@@ -431,7 +434,7 @@ API path: `/motion-values`
 | `description` |  |
 | `id` |  |
 | `name` |  |
-| `rank` |  |
+| `ranks` |  |
 
 Operations: List, Load.
 
@@ -441,16 +444,16 @@ API path: `/skills`
 
 | Field | Description |
 | --- | --- |
-| `asset` |  |
+| `assets` |  |
 | `attack` |  |
-| `attribute` |  |
+| `attributes` |  |
 | `crafting` |  |
-| `damage_type` |  |
-| `element` |  |
+| `damageType` |  |
+| `elements` |  |
 | `id` |  |
 | `name` |  |
 | `rarity` |  |
-| `slot` |  |
+| `slots` |  |
 | `type` |  |
 
 Operations: List, Load.
@@ -486,7 +489,7 @@ Create an instance: `ailment = client.Ailment`
 #### Example: Load
 
 ```ruby
-# load returns the bare Ailment record (raises on error).
+# load returns the ENTITY — call data_get for the Ailment record (raises on error).
 ailment = client.Ailment.load({ "id" => 1 })
 ```
 
@@ -513,24 +516,24 @@ Create an instance: `armor = client.Armor`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `armor_set` | `Hash` |  |
-| `asset` | `Hash` |  |
-| `attribute` | `Hash` |  |
+| `armorSet` | `Hash` |  |
+| `assets` | `Hash` |  |
+| `attributes` | `Hash` |  |
 | `crafting` | `Hash` |  |
 | `defense` | `Hash` |  |
 | `id` | `Integer` |  |
 | `name` | `String` |  |
 | `rank` | `String` |  |
 | `rarity` | `Integer` |  |
-| `resistance` | `Hash` |  |
-| `skill` | `Array` |  |
-| `slot` | `Array` |  |
+| `resistances` | `Hash` |  |
+| `skills` | `Array` |  |
+| `slots` | `Array` |  |
 | `type` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Armor record (raises on error).
+# load returns the ENTITY — call data_get for the Armor record (raises on error).
 armor = client.Armor.load({ "id" => 1 })
 ```
 
@@ -560,13 +563,13 @@ Create an instance: `armor_set = client.ArmorSet`
 | `bonus` | `Hash` |  |
 | `id` | `Integer` |  |
 | `name` | `String` |  |
-| `piece` | `Array` |  |
+| `pieces` | `Array` |  |
 | `rank` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ArmorSet record (raises on error).
+# load returns the ENTITY — call data_get for the ArmorSet record (raises on error).
 armor_set = client.ArmorSet.load({ "id" => 1 })
 ```
 
@@ -597,12 +600,12 @@ Create an instance: `charm = client.Charm`
 | `id` | `Integer` |  |
 | `name` | `String` |  |
 | `rarity` | `Integer` |  |
-| `skill` | `Array` |  |
+| `skills` | `Array` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Charm record (raises on error).
+# load returns the ENTITY — call data_get for the Charm record (raises on error).
 charm = client.Charm.load({ "id" => 1 })
 ```
 
@@ -632,13 +635,13 @@ Create an instance: `decoration = client.Decoration`
 | `id` | `Integer` |  |
 | `name` | `String` |  |
 | `rarity` | `Integer` |  |
-| `skill` | `Array` |  |
+| `skills` | `Array` |  |
 | `slot` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Decoration record (raises on error).
+# load returns the ENTITY — call data_get for the Decoration record (raises on error).
 decoration = client.Decoration.load({ "id" => 1 })
 ```
 
@@ -665,24 +668,26 @@ Create an instance: `event = client.Event`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `camps` | `Array` |  |
 | `description` | `String` |  |
-| `end_timestamp` | `String` |  |
+| `endTimestamp` | `String` |  |
 | `exclusive` | `String` |  |
 | `expansion` | `String` |  |
 | `id` | `Integer` |  |
 | `location` | `Hash` |  |
 | `name` | `String` |  |
 | `platform` | `String` |  |
-| `quest_rank` | `String` |  |
-| `requirement` | `String` |  |
-| `start_timestamp` | `String` |  |
-| `success_condition` | `String` |  |
+| `questRank` | `String` |  |
+| `requirements` | `String` |  |
+| `startTimestamp` | `String` |  |
+| `successConditions` | `String` |  |
 | `type` | `String` |  |
+| `zoneCount` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Event record (raises on error).
+# load returns the ENTITY — call data_get for the Event record (raises on error).
 event = client.Event.load({ "id" => 1 })
 ```
 
@@ -709,19 +714,19 @@ Create an instance: `item = client.Item`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `buy_price` | `Integer` |  |
-| `carry_limit` | `Integer` |  |
+| `buyPrice` | `Integer` |  |
+| `carryLimit` | `Integer` |  |
 | `description` | `String` |  |
 | `id` | `Integer` |  |
 | `name` | `String` |  |
 | `rarity` | `Integer` |  |
-| `sell_price` | `Integer` |  |
+| `sellPrice` | `Integer` |  |
 | `value` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Item record (raises on error).
+# load returns the ENTITY — call data_get for the Item record (raises on error).
 item = client.Item.load({ "id" => 1 })
 ```
 
@@ -748,15 +753,15 @@ Create an instance: `location = client.Location`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `camp` | `Array` |  |
+| `camps` | `Array` |  |
 | `id` | `Integer` |  |
 | `name` | `String` |  |
-| `zone_count` | `Integer` |  |
+| `zoneCount` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Location record (raises on error).
+# load returns the ENTITY — call data_get for the Location record (raises on error).
 location = client.Location.load({ "id" => 1 })
 ```
 
@@ -783,22 +788,22 @@ Create an instance: `monster = client.Monster`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ailment` | `Array` |  |
+| `ailments` | `Array` |  |
 | `description` | `String` |  |
-| `element` | `Array` |  |
+| `elements` | `Array` |  |
 | `id` | `Integer` |  |
-| `location` | `Array` |  |
+| `locations` | `Array` |  |
 | `name` | `String` |  |
-| `resistance` | `Array` |  |
-| `reward` | `Array` |  |
+| `resistances` | `Array` |  |
+| `rewards` | `Array` |  |
 | `species` | `String` |  |
 | `type` | `String` |  |
-| `weakness` | `Array` |  |
+| `weaknesses` | `Array` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Monster record (raises on error).
+# load returns the ENTITY — call data_get for the Monster record (raises on error).
 monster = client.Monster.load({ "id" => 1 })
 ```
 
@@ -825,17 +830,17 @@ Create an instance: `motion_value = client.MotionValue`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `damage_type` | `String` |  |
+| `damageType` | `String` |  |
 | `exhaust` | `Integer` |  |
-| `hit` | `Array` |  |
+| `hits` | `Array` |  |
 | `id` | `Integer` |  |
 | `stun` | `Integer` |  |
-| `weapon_type` | `String` |  |
+| `weaponType` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare MotionValue record (raises on error).
+# load returns the ENTITY — call data_get for the MotionValue record (raises on error).
 motion_value = client.MotionValue.load({ "id" => 1 })
 ```
 
@@ -865,12 +870,12 @@ Create an instance: `skill = client.Skill`
 | `description` | `String` |  |
 | `id` | `Integer` |  |
 | `name` | `String` |  |
-| `rank` | `Array` |  |
+| `ranks` | `Array` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Skill record (raises on error).
+# load returns the ENTITY — call data_get for the Skill record (raises on error).
 skill = client.Skill.load({ "id" => 1 })
 ```
 
@@ -897,22 +902,22 @@ Create an instance: `weapon = client.Weapon`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asset` | `Hash` |  |
+| `assets` | `Hash` |  |
 | `attack` | `Hash` |  |
-| `attribute` | `Hash` |  |
+| `attributes` | `Hash` |  |
 | `crafting` | `Hash` |  |
-| `damage_type` | `String` |  |
-| `element` | `Array` |  |
+| `damageType` | `String` |  |
+| `elements` | `Array` |  |
 | `id` | `Integer` |  |
 | `name` | `String` |  |
 | `rarity` | `Integer` |  |
-| `slot` | `Array` |  |
+| `slots` | `Array` |  |
 | `type` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Weapon record (raises on error).
+# load returns the ENTITY — call data_get for the Weapon record (raises on error).
 weapon = client.Weapon.load({ "id" => 1 })
 ```
 

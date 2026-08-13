@@ -114,11 +114,11 @@ def charm_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "MONSTERHUNTERWORLD_TEST_CHARM_ENTID" => {},
-    "MONSTERHUNTERWORLD_TEST_LIVE" => "FALSE",
+    "MONSTER_HUNTER_WORLD_TEST_CHARM_ENTID" => {},
+    "MONSTER_HUNTER_WORLD_TEST_LIVE" => "FALSE",
   })
 
-  live = env["MONSTERHUNTERWORLD_TEST_LIVE"] == "TRUE"
+  live = env["MONSTER_HUNTER_WORLD_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

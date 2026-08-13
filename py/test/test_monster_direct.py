@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from monsterhunterworld_sdk.utility.voxgig_struct import voxgig_struct as vs
 from monsterhunterworld_sdk import MonsterHunterWorldSDK
-from core import helpers
+from monsterhunterworld_sdk.core import helpers
 from test import runner
 
 
@@ -105,11 +105,11 @@ def _monster_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "MONSTERHUNTERWORLD_TEST_MONSTER_ENTID": {},
-        "MONSTERHUNTERWORLD_TEST_LIVE": "FALSE",
+        "MONSTER_HUNTER_WORLD_TEST_MONSTER_ENTID": {},
+        "MONSTER_HUNTER_WORLD_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("MONSTERHUNTERWORLD_TEST_LIVE") == "TRUE"
+    live = env.get("MONSTER_HUNTER_WORLD_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

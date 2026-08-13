@@ -266,18 +266,18 @@ API path: `/ailments`
 
 | Field | Description |
 | --- | --- |
-| `armor_set` |  |
-| `asset` |  |
-| `attribute` |  |
+| `armorSet` |  |
+| `assets` |  |
+| `attributes` |  |
 | `crafting` |  |
 | `defense` |  |
 | `id` |  |
 | `name` |  |
 | `rank` |  |
 | `rarity` |  |
-| `resistance` |  |
-| `skill` |  |
-| `slot` |  |
+| `resistances` |  |
+| `skills` |  |
+| `slots` |  |
 | `type` |  |
 
 Operations: List, Load.
@@ -291,7 +291,7 @@ API path: `/armor`
 | `bonus` |  |
 | `id` |  |
 | `name` |  |
-| `piece` |  |
+| `pieces` |  |
 | `rank` |  |
 
 Operations: List, Load.
@@ -306,7 +306,7 @@ API path: `/armor/sets`
 | `id` |  |
 | `name` |  |
 | `rarity` |  |
-| `skill` |  |
+| `skills` |  |
 
 Operations: List, Load.
 
@@ -319,7 +319,7 @@ API path: `/charms`
 | `id` |  |
 | `name` |  |
 | `rarity` |  |
-| `skill` |  |
+| `skills` |  |
 | `slot` |  |
 
 Operations: List, Load.
@@ -330,19 +330,21 @@ API path: `/decorations`
 
 | Field | Description |
 | --- | --- |
+| `camps` |  |
 | `description` |  |
-| `end_timestamp` |  |
+| `endTimestamp` |  |
 | `exclusive` |  |
 | `expansion` |  |
 | `id` |  |
 | `location` |  |
 | `name` |  |
 | `platform` |  |
-| `quest_rank` |  |
-| `requirement` |  |
-| `start_timestamp` |  |
-| `success_condition` |  |
+| `questRank` |  |
+| `requirements` |  |
+| `startTimestamp` |  |
+| `successConditions` |  |
 | `type` |  |
+| `zoneCount` |  |
 
 Operations: List, Load.
 
@@ -352,13 +354,13 @@ API path: `/events`
 
 | Field | Description |
 | --- | --- |
-| `buy_price` |  |
-| `carry_limit` |  |
+| `buyPrice` |  |
+| `carryLimit` |  |
 | `description` |  |
 | `id` |  |
 | `name` |  |
 | `rarity` |  |
-| `sell_price` |  |
+| `sellPrice` |  |
 | `value` |  |
 
 Operations: List, Load.
@@ -369,10 +371,10 @@ API path: `/items`
 
 | Field | Description |
 | --- | --- |
-| `camp` |  |
+| `camps` |  |
 | `id` |  |
 | `name` |  |
-| `zone_count` |  |
+| `zoneCount` |  |
 
 Operations: List, Load.
 
@@ -382,17 +384,17 @@ API path: `/locations`
 
 | Field | Description |
 | --- | --- |
-| `ailment` |  |
+| `ailments` |  |
 | `description` |  |
-| `element` |  |
+| `elements` |  |
 | `id` |  |
-| `location` |  |
+| `locations` |  |
 | `name` |  |
-| `resistance` |  |
-| `reward` |  |
+| `resistances` |  |
+| `rewards` |  |
 | `species` |  |
 | `type` |  |
-| `weakness` |  |
+| `weaknesses` |  |
 
 Operations: List, Load.
 
@@ -402,12 +404,12 @@ API path: `/monsters`
 
 | Field | Description |
 | --- | --- |
-| `damage_type` |  |
+| `damageType` |  |
 | `exhaust` |  |
-| `hit` |  |
+| `hits` |  |
 | `id` |  |
 | `stun` |  |
-| `weapon_type` |  |
+| `weaponType` |  |
 
 Operations: List, Load.
 
@@ -420,7 +422,7 @@ API path: `/motion-values`
 | `description` |  |
 | `id` |  |
 | `name` |  |
-| `rank` |  |
+| `ranks` |  |
 
 Operations: List, Load.
 
@@ -430,16 +432,16 @@ API path: `/skills`
 
 | Field | Description |
 | --- | --- |
-| `asset` |  |
+| `assets` |  |
 | `attack` |  |
-| `attribute` |  |
+| `attributes` |  |
 | `crafting` |  |
-| `damage_type` |  |
-| `element` |  |
+| `damageType` |  |
+| `elements` |  |
 | `id` |  |
 | `name` |  |
 | `rarity` |  |
-| `slot` |  |
+| `slots` |  |
 | `type` |  |
 
 Operations: List, Load.
@@ -500,18 +502,18 @@ Create an instance: `local armor = client:Armor(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `armor_set` | `table` |  |
-| `asset` | `table` |  |
-| `attribute` | `table` |  |
+| `armorSet` | `table` |  |
+| `assets` | `table` |  |
+| `attributes` | `table` |  |
 | `crafting` | `table` |  |
 | `defense` | `table` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
 | `rank` | `string` |  |
 | `rarity` | `number` |  |
-| `resistance` | `table` |  |
-| `skill` | `table` |  |
-| `slot` | `table` |  |
+| `resistances` | `table` |  |
+| `skills` | `table` |  |
+| `slots` | `table` |  |
 | `type` | `string` |  |
 
 #### Example: Load
@@ -545,7 +547,7 @@ Create an instance: `local armor_set = client:ArmorSet(nil)`
 | `bonus` | `table` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
-| `piece` | `table` |  |
+| `pieces` | `table` |  |
 | `rank` | `string` |  |
 
 #### Example: Load
@@ -580,7 +582,7 @@ Create an instance: `local charm = client:Charm(nil)`
 | `id` | `number` |  |
 | `name` | `string` |  |
 | `rarity` | `number` |  |
-| `skill` | `table` |  |
+| `skills` | `table` |  |
 
 #### Example: Load
 
@@ -613,7 +615,7 @@ Create an instance: `local decoration = client:Decoration(nil)`
 | `id` | `number` |  |
 | `name` | `string` |  |
 | `rarity` | `number` |  |
-| `skill` | `table` |  |
+| `skills` | `table` |  |
 | `slot` | `number` |  |
 
 #### Example: Load
@@ -644,19 +646,21 @@ Create an instance: `local event = client:Event(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `camps` | `table` |  |
 | `description` | `string` |  |
-| `end_timestamp` | `string` |  |
+| `endTimestamp` | `string` |  |
 | `exclusive` | `string` |  |
 | `expansion` | `string` |  |
 | `id` | `number` |  |
 | `location` | `table` |  |
 | `name` | `string` |  |
 | `platform` | `string` |  |
-| `quest_rank` | `string` |  |
-| `requirement` | `string` |  |
-| `start_timestamp` | `string` |  |
-| `success_condition` | `string` |  |
+| `questRank` | `string` |  |
+| `requirements` | `string` |  |
+| `startTimestamp` | `string` |  |
+| `successConditions` | `string` |  |
 | `type` | `string` |  |
+| `zoneCount` | `number` |  |
 
 #### Example: Load
 
@@ -686,13 +690,13 @@ Create an instance: `local item = client:Item(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `buy_price` | `number` |  |
-| `carry_limit` | `number` |  |
+| `buyPrice` | `number` |  |
+| `carryLimit` | `number` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
 | `rarity` | `number` |  |
-| `sell_price` | `number` |  |
+| `sellPrice` | `number` |  |
 | `value` | `number` |  |
 
 #### Example: Load
@@ -723,10 +727,10 @@ Create an instance: `local location = client:Location(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `camp` | `table` |  |
+| `camps` | `table` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
-| `zone_count` | `number` |  |
+| `zoneCount` | `number` |  |
 
 #### Example: Load
 
@@ -756,17 +760,17 @@ Create an instance: `local monster = client:Monster(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ailment` | `table` |  |
+| `ailments` | `table` |  |
 | `description` | `string` |  |
-| `element` | `table` |  |
+| `elements` | `table` |  |
 | `id` | `number` |  |
-| `location` | `table` |  |
+| `locations` | `table` |  |
 | `name` | `string` |  |
-| `resistance` | `table` |  |
-| `reward` | `table` |  |
+| `resistances` | `table` |  |
+| `rewards` | `table` |  |
 | `species` | `string` |  |
 | `type` | `string` |  |
-| `weakness` | `table` |  |
+| `weaknesses` | `table` |  |
 
 #### Example: Load
 
@@ -796,12 +800,12 @@ Create an instance: `local motion_value = client:MotionValue(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `damage_type` | `string` |  |
+| `damageType` | `string` |  |
 | `exhaust` | `number` |  |
-| `hit` | `table` |  |
+| `hits` | `table` |  |
 | `id` | `number` |  |
 | `stun` | `number` |  |
-| `weapon_type` | `string` |  |
+| `weaponType` | `string` |  |
 
 #### Example: Load
 
@@ -834,7 +838,7 @@ Create an instance: `local skill = client:Skill(nil)`
 | `description` | `string` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
-| `rank` | `table` |  |
+| `ranks` | `table` |  |
 
 #### Example: Load
 
@@ -864,16 +868,16 @@ Create an instance: `local weapon = client:Weapon(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asset` | `table` |  |
+| `assets` | `table` |  |
 | `attack` | `table` |  |
-| `attribute` | `table` |  |
+| `attributes` | `table` |  |
 | `crafting` | `table` |  |
-| `damage_type` | `string` |  |
-| `element` | `table` |  |
+| `damageType` | `string` |  |
+| `elements` | `table` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
 | `rarity` | `number` |  |
-| `slot` | `table` |  |
+| `slots` | `table` |  |
 | `type` | `string` |  |
 
 #### Example: Load

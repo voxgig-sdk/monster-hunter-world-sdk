@@ -6,21 +6,21 @@
         "id": "CHARM00",
         "name": "s34",
         "rarity": "s35",
-        "skill": []
+        "skills": []
       },
       "CHARM01": {
         "crafting": {},
         "id": "CHARM01",
         "name": "s66",
         "rarity": "s67",
-        "skill": []
+        "skills": []
       },
       "CHARM02": {
         "crafting": {},
         "id": "CHARM02",
         "name": "s98",
         "rarity": "s99",
-        "skill": []
+        "skills": []
       }
     }
   },
@@ -30,7 +30,7 @@
         "crafting": {},
         "name": "sca",
         "rarity": "scb",
-        "skill": []
+        "skills": []
       }
     }
   }

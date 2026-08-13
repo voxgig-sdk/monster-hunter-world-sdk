@@ -21,7 +21,7 @@ main: kit: entity: skill: {
       type: "`$STRING`"
     }
     {
-      name: "rank"
+      name: "ranks"
       req: false
       type: "`$ARRAY`"
     }

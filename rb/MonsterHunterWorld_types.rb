@@ -69,13 +69,13 @@ AilmentListMatch = Struct.new(
 
 # Armor entity data model.
 #
-# @!attribute [rw] armor_set
+# @!attribute [rw] armorSet
 #   @return [Hash, nil]
 #
-# @!attribute [rw] asset
+# @!attribute [rw] assets
 #   @return [Hash, nil]
 #
-# @!attribute [rw] attribute
+# @!attribute [rw] attributes
 #   @return [Hash, nil]
 #
 # @!attribute [rw] crafting
@@ -96,30 +96,30 @@ AilmentListMatch = Struct.new(
 # @!attribute [rw] rarity
 #   @return [Integer, nil]
 #
-# @!attribute [rw] resistance
+# @!attribute [rw] resistances
 #   @return [Hash, nil]
 #
-# @!attribute [rw] skill
+# @!attribute [rw] skills
 #   @return [Array, nil]
 #
-# @!attribute [rw] slot
+# @!attribute [rw] slots
 #   @return [Array, nil]
 #
 # @!attribute [rw] type
 #   @return [String, nil]
 Armor = Struct.new(
-  :armor_set,
-  :asset,
-  :attribute,
+  :armorSet,
+  :assets,
+  :attributes,
   :crafting,
   :defense,
   :id,
   :name,
   :rank,
   :rarity,
-  :resistance,
-  :skill,
-  :slot,
+  :resistances,
+  :skills,
+  :slots,
   :type,
   keyword_init: true
 )
@@ -135,13 +135,13 @@ ArmorLoadMatch = Struct.new(
 
 # Request payload for Armor#list.
 #
-# @!attribute [rw] armor_set
+# @!attribute [rw] armorSet
 #   @return [Hash, nil]
 #
-# @!attribute [rw] asset
+# @!attribute [rw] assets
 #   @return [Hash, nil]
 #
-# @!attribute [rw] attribute
+# @!attribute [rw] attributes
 #   @return [Hash, nil]
 #
 # @!attribute [rw] crafting
@@ -162,30 +162,30 @@ ArmorLoadMatch = Struct.new(
 # @!attribute [rw] rarity
 #   @return [Integer, nil]
 #
-# @!attribute [rw] resistance
+# @!attribute [rw] resistances
 #   @return [Hash, nil]
 #
-# @!attribute [rw] skill
+# @!attribute [rw] skills
 #   @return [Array, nil]
 #
-# @!attribute [rw] slot
+# @!attribute [rw] slots
 #   @return [Array, nil]
 #
 # @!attribute [rw] type
 #   @return [String, nil]
 ArmorListMatch = Struct.new(
-  :armor_set,
-  :asset,
-  :attribute,
+  :armorSet,
+  :assets,
+  :attributes,
   :crafting,
   :defense,
   :id,
   :name,
   :rank,
   :rarity,
-  :resistance,
-  :skill,
-  :slot,
+  :resistances,
+  :skills,
+  :slots,
   :type,
   keyword_init: true
 )
@@ -201,7 +201,7 @@ ArmorListMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] piece
+# @!attribute [rw] pieces
 #   @return [Array, nil]
 #
 # @!attribute [rw] rank
@@ -210,7 +210,7 @@ ArmorSet = Struct.new(
   :bonus,
   :id,
   :name,
-  :piece,
+  :pieces,
   :rank,
   keyword_init: true
 )
@@ -235,7 +235,7 @@ ArmorSetLoadMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] piece
+# @!attribute [rw] pieces
 #   @return [Array, nil]
 #
 # @!attribute [rw] rank
@@ -244,7 +244,7 @@ ArmorSetListMatch = Struct.new(
   :bonus,
   :id,
   :name,
-  :piece,
+  :pieces,
   :rank,
   keyword_init: true
 )
@@ -263,14 +263,14 @@ ArmorSetListMatch = Struct.new(
 # @!attribute [rw] rarity
 #   @return [Integer, nil]
 #
-# @!attribute [rw] skill
+# @!attribute [rw] skills
 #   @return [Array, nil]
 Charm = Struct.new(
   :crafting,
   :id,
   :name,
   :rarity,
-  :skill,
+  :skills,
   keyword_init: true
 )
 
@@ -297,14 +297,14 @@ CharmLoadMatch = Struct.new(
 # @!attribute [rw] rarity
 #   @return [Integer, nil]
 #
-# @!attribute [rw] skill
+# @!attribute [rw] skills
 #   @return [Array, nil]
 CharmListMatch = Struct.new(
   :crafting,
   :id,
   :name,
   :rarity,
-  :skill,
+  :skills,
   keyword_init: true
 )
 
@@ -319,7 +319,7 @@ CharmListMatch = Struct.new(
 # @!attribute [rw] rarity
 #   @return [Integer, nil]
 #
-# @!attribute [rw] skill
+# @!attribute [rw] skills
 #   @return [Array, nil]
 #
 # @!attribute [rw] slot
@@ -328,7 +328,7 @@ Decoration = Struct.new(
   :id,
   :name,
   :rarity,
-  :skill,
+  :skills,
   :slot,
   keyword_init: true
 )
@@ -353,7 +353,7 @@ DecorationLoadMatch = Struct.new(
 # @!attribute [rw] rarity
 #   @return [Integer, nil]
 #
-# @!attribute [rw] skill
+# @!attribute [rw] skills
 #   @return [Array, nil]
 #
 # @!attribute [rw] slot
@@ -362,17 +362,20 @@ DecorationListMatch = Struct.new(
   :id,
   :name,
   :rarity,
-  :skill,
+  :skills,
   :slot,
   keyword_init: true
 )
 
 # Event entity data model.
 #
+# @!attribute [rw] camps
+#   @return [Array, nil]
+#
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] end_timestamp
+# @!attribute [rw] endTimestamp
 #   @return [String, nil]
 #
 # @!attribute [rw] exclusive
@@ -393,34 +396,39 @@ DecorationListMatch = Struct.new(
 # @!attribute [rw] platform
 #   @return [String, nil]
 #
-# @!attribute [rw] quest_rank
+# @!attribute [rw] questRank
 #   @return [String, nil]
 #
-# @!attribute [rw] requirement
+# @!attribute [rw] requirements
 #   @return [String, nil]
 #
-# @!attribute [rw] start_timestamp
+# @!attribute [rw] startTimestamp
 #   @return [String, nil]
 #
-# @!attribute [rw] success_condition
+# @!attribute [rw] successConditions
 #   @return [String, nil]
 #
 # @!attribute [rw] type
 #   @return [String, nil]
+#
+# @!attribute [rw] zoneCount
+#   @return [Integer, nil]
 Event = Struct.new(
+  :camps,
   :description,
-  :end_timestamp,
+  :endTimestamp,
   :exclusive,
   :expansion,
   :id,
   :location,
   :name,
   :platform,
-  :quest_rank,
-  :requirement,
-  :start_timestamp,
-  :success_condition,
+  :questRank,
+  :requirements,
+  :startTimestamp,
+  :successConditions,
   :type,
+  :zoneCount,
   keyword_init: true
 )
 
@@ -435,10 +443,13 @@ EventLoadMatch = Struct.new(
 
 # Request payload for Event#list.
 #
+# @!attribute [rw] camps
+#   @return [Array, nil]
+#
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] end_timestamp
+# @!attribute [rw] endTimestamp
 #   @return [String, nil]
 #
 # @!attribute [rw] exclusive
@@ -459,43 +470,48 @@ EventLoadMatch = Struct.new(
 # @!attribute [rw] platform
 #   @return [String, nil]
 #
-# @!attribute [rw] quest_rank
+# @!attribute [rw] questRank
 #   @return [String, nil]
 #
-# @!attribute [rw] requirement
+# @!attribute [rw] requirements
 #   @return [String, nil]
 #
-# @!attribute [rw] start_timestamp
+# @!attribute [rw] startTimestamp
 #   @return [String, nil]
 #
-# @!attribute [rw] success_condition
+# @!attribute [rw] successConditions
 #   @return [String, nil]
 #
 # @!attribute [rw] type
 #   @return [String, nil]
+#
+# @!attribute [rw] zoneCount
+#   @return [Integer, nil]
 EventListMatch = Struct.new(
+  :camps,
   :description,
-  :end_timestamp,
+  :endTimestamp,
   :exclusive,
   :expansion,
   :id,
   :location,
   :name,
   :platform,
-  :quest_rank,
-  :requirement,
-  :start_timestamp,
-  :success_condition,
+  :questRank,
+  :requirements,
+  :startTimestamp,
+  :successConditions,
   :type,
+  :zoneCount,
   keyword_init: true
 )
 
 # Item entity data model.
 #
-# @!attribute [rw] buy_price
+# @!attribute [rw] buyPrice
 #   @return [Integer, nil]
 #
-# @!attribute [rw] carry_limit
+# @!attribute [rw] carryLimit
 #   @return [Integer, nil]
 #
 # @!attribute [rw] description
@@ -510,19 +526,19 @@ EventListMatch = Struct.new(
 # @!attribute [rw] rarity
 #   @return [Integer, nil]
 #
-# @!attribute [rw] sell_price
+# @!attribute [rw] sellPrice
 #   @return [Integer, nil]
 #
 # @!attribute [rw] value
 #   @return [Integer, nil]
 Item = Struct.new(
-  :buy_price,
-  :carry_limit,
+  :buyPrice,
+  :carryLimit,
   :description,
   :id,
   :name,
   :rarity,
-  :sell_price,
+  :sellPrice,
   :value,
   keyword_init: true
 )
@@ -538,10 +554,10 @@ ItemLoadMatch = Struct.new(
 
 # Request payload for Item#list.
 #
-# @!attribute [rw] buy_price
+# @!attribute [rw] buyPrice
 #   @return [Integer, nil]
 #
-# @!attribute [rw] carry_limit
+# @!attribute [rw] carryLimit
 #   @return [Integer, nil]
 #
 # @!attribute [rw] description
@@ -556,26 +572,26 @@ ItemLoadMatch = Struct.new(
 # @!attribute [rw] rarity
 #   @return [Integer, nil]
 #
-# @!attribute [rw] sell_price
+# @!attribute [rw] sellPrice
 #   @return [Integer, nil]
 #
 # @!attribute [rw] value
 #   @return [Integer, nil]
 ItemListMatch = Struct.new(
-  :buy_price,
-  :carry_limit,
+  :buyPrice,
+  :carryLimit,
   :description,
   :id,
   :name,
   :rarity,
-  :sell_price,
+  :sellPrice,
   :value,
   keyword_init: true
 )
 
 # Location entity data model.
 #
-# @!attribute [rw] camp
+# @!attribute [rw] camps
 #   @return [Array, nil]
 #
 # @!attribute [rw] id
@@ -584,13 +600,13 @@ ItemListMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] zone_count
+# @!attribute [rw] zoneCount
 #   @return [Integer, nil]
 Location = Struct.new(
-  :camp,
+  :camps,
   :id,
   :name,
-  :zone_count,
+  :zoneCount,
   keyword_init: true
 )
 
@@ -605,7 +621,7 @@ LocationLoadMatch = Struct.new(
 
 # Request payload for Location#list.
 #
-# @!attribute [rw] camp
+# @!attribute [rw] camps
 #   @return [Array, nil]
 #
 # @!attribute [rw] id
@@ -614,40 +630,40 @@ LocationLoadMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] zone_count
+# @!attribute [rw] zoneCount
 #   @return [Integer, nil]
 LocationListMatch = Struct.new(
-  :camp,
+  :camps,
   :id,
   :name,
-  :zone_count,
+  :zoneCount,
   keyword_init: true
 )
 
 # Monster entity data model.
 #
-# @!attribute [rw] ailment
+# @!attribute [rw] ailments
 #   @return [Array, nil]
 #
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] element
+# @!attribute [rw] elements
 #   @return [Array, nil]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] location
+# @!attribute [rw] locations
 #   @return [Array, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] resistance
+# @!attribute [rw] resistances
 #   @return [Array, nil]
 #
-# @!attribute [rw] reward
+# @!attribute [rw] rewards
 #   @return [Array, nil]
 #
 # @!attribute [rw] species
@@ -656,20 +672,20 @@ LocationListMatch = Struct.new(
 # @!attribute [rw] type
 #   @return [String, nil]
 #
-# @!attribute [rw] weakness
+# @!attribute [rw] weaknesses
 #   @return [Array, nil]
 Monster = Struct.new(
-  :ailment,
+  :ailments,
   :description,
-  :element,
+  :elements,
   :id,
-  :location,
+  :locations,
   :name,
-  :resistance,
-  :reward,
+  :resistances,
+  :rewards,
   :species,
   :type,
-  :weakness,
+  :weaknesses,
   keyword_init: true
 )
 
@@ -684,28 +700,28 @@ MonsterLoadMatch = Struct.new(
 
 # Request payload for Monster#list.
 #
-# @!attribute [rw] ailment
+# @!attribute [rw] ailments
 #   @return [Array, nil]
 #
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] element
+# @!attribute [rw] elements
 #   @return [Array, nil]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] location
+# @!attribute [rw] locations
 #   @return [Array, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] resistance
+# @!attribute [rw] resistances
 #   @return [Array, nil]
 #
-# @!attribute [rw] reward
+# @!attribute [rw] rewards
 #   @return [Array, nil]
 #
 # @!attribute [rw] species
@@ -714,32 +730,32 @@ MonsterLoadMatch = Struct.new(
 # @!attribute [rw] type
 #   @return [String, nil]
 #
-# @!attribute [rw] weakness
+# @!attribute [rw] weaknesses
 #   @return [Array, nil]
 MonsterListMatch = Struct.new(
-  :ailment,
+  :ailments,
   :description,
-  :element,
+  :elements,
   :id,
-  :location,
+  :locations,
   :name,
-  :resistance,
-  :reward,
+  :resistances,
+  :rewards,
   :species,
   :type,
-  :weakness,
+  :weaknesses,
   keyword_init: true
 )
 
 # MotionValue entity data model.
 #
-# @!attribute [rw] damage_type
+# @!attribute [rw] damageType
 #   @return [String, nil]
 #
 # @!attribute [rw] exhaust
 #   @return [Integer, nil]
 #
-# @!attribute [rw] hit
+# @!attribute [rw] hits
 #   @return [Array, nil]
 #
 # @!attribute [rw] id
@@ -748,15 +764,15 @@ MonsterListMatch = Struct.new(
 # @!attribute [rw] stun
 #   @return [Integer, nil]
 #
-# @!attribute [rw] weapon_type
+# @!attribute [rw] weaponType
 #   @return [String, nil]
 MotionValue = Struct.new(
-  :damage_type,
+  :damageType,
   :exhaust,
-  :hit,
+  :hits,
   :id,
   :stun,
-  :weapon_type,
+  :weaponType,
   keyword_init: true
 )
 
@@ -771,13 +787,13 @@ MotionValueLoadMatch = Struct.new(
 
 # Request payload for MotionValue#list.
 #
-# @!attribute [rw] damage_type
+# @!attribute [rw] damageType
 #   @return [String, nil]
 #
 # @!attribute [rw] exhaust
 #   @return [Integer, nil]
 #
-# @!attribute [rw] hit
+# @!attribute [rw] hits
 #   @return [Array, nil]
 #
 # @!attribute [rw] id
@@ -786,15 +802,15 @@ MotionValueLoadMatch = Struct.new(
 # @!attribute [rw] stun
 #   @return [Integer, nil]
 #
-# @!attribute [rw] weapon_type
+# @!attribute [rw] weaponType
 #   @return [String, nil]
 MotionValueListMatch = Struct.new(
-  :damage_type,
+  :damageType,
   :exhaust,
-  :hit,
+  :hits,
   :id,
   :stun,
-  :weapon_type,
+  :weaponType,
   keyword_init: true
 )
 
@@ -809,13 +825,13 @@ MotionValueListMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] rank
+# @!attribute [rw] ranks
 #   @return [Array, nil]
 Skill = Struct.new(
   :description,
   :id,
   :name,
-  :rank,
+  :ranks,
   keyword_init: true
 )
 
@@ -839,34 +855,34 @@ SkillLoadMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] rank
+# @!attribute [rw] ranks
 #   @return [Array, nil]
 SkillListMatch = Struct.new(
   :description,
   :id,
   :name,
-  :rank,
+  :ranks,
   keyword_init: true
 )
 
 # Weapon entity data model.
 #
-# @!attribute [rw] asset
+# @!attribute [rw] assets
 #   @return [Hash, nil]
 #
 # @!attribute [rw] attack
 #   @return [Hash, nil]
 #
-# @!attribute [rw] attribute
+# @!attribute [rw] attributes
 #   @return [Hash, nil]
 #
 # @!attribute [rw] crafting
 #   @return [Hash, nil]
 #
-# @!attribute [rw] damage_type
+# @!attribute [rw] damageType
 #   @return [String, nil]
 #
-# @!attribute [rw] element
+# @!attribute [rw] elements
 #   @return [Array, nil]
 #
 # @!attribute [rw] id
@@ -878,22 +894,22 @@ SkillListMatch = Struct.new(
 # @!attribute [rw] rarity
 #   @return [Integer, nil]
 #
-# @!attribute [rw] slot
+# @!attribute [rw] slots
 #   @return [Array, nil]
 #
 # @!attribute [rw] type
 #   @return [String, nil]
 Weapon = Struct.new(
-  :asset,
+  :assets,
   :attack,
-  :attribute,
+  :attributes,
   :crafting,
-  :damage_type,
-  :element,
+  :damageType,
+  :elements,
   :id,
   :name,
   :rarity,
-  :slot,
+  :slots,
   :type,
   keyword_init: true
 )
@@ -909,22 +925,22 @@ WeaponLoadMatch = Struct.new(
 
 # Request payload for Weapon#list.
 #
-# @!attribute [rw] asset
+# @!attribute [rw] assets
 #   @return [Hash, nil]
 #
 # @!attribute [rw] attack
 #   @return [Hash, nil]
 #
-# @!attribute [rw] attribute
+# @!attribute [rw] attributes
 #   @return [Hash, nil]
 #
 # @!attribute [rw] crafting
 #   @return [Hash, nil]
 #
-# @!attribute [rw] damage_type
+# @!attribute [rw] damageType
 #   @return [String, nil]
 #
-# @!attribute [rw] element
+# @!attribute [rw] elements
 #   @return [Array, nil]
 #
 # @!attribute [rw] id
@@ -936,22 +952,22 @@ WeaponLoadMatch = Struct.new(
 # @!attribute [rw] rarity
 #   @return [Integer, nil]
 #
-# @!attribute [rw] slot
+# @!attribute [rw] slots
 #   @return [Array, nil]
 #
 # @!attribute [rw] type
 #   @return [String, nil]
 WeaponListMatch = Struct.new(
-  :asset,
+  :assets,
   :attack,
-  :attribute,
+  :attributes,
   :crafting,
-  :damage_type,
-  :element,
+  :damageType,
+  :elements,
   :id,
   :name,
   :rarity,
-  :slot,
+  :slots,
   :type,
   keyword_init: true
 )

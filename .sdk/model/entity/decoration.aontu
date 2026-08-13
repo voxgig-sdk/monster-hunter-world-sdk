@@ -21,7 +21,7 @@ main: kit: entity: decoration: {
       type: "`$INTEGER`"
     }
     {
-      name: "skill"
+      name: "skills"
       req: false
       type: "`$ARRAY`"
     }

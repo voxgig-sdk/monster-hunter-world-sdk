@@ -201,18 +201,18 @@ armor = client.Armor
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `armor_set` | `Hash` | No |  |
-| `asset` | `Hash` | No |  |
-| `attribute` | `Hash` | No |  |
+| `armorSet` | `Hash` | No |  |
+| `assets` | `Hash` | No |  |
+| `attributes` | `Hash` | No |  |
 | `crafting` | `Hash` | No |  |
 | `defense` | `Hash` | No |  |
 | `id` | `Integer` | No |  |
 | `name` | `String` | No |  |
 | `rank` | `String` | No |  |
 | `rarity` | `Integer` | No |  |
-| `resistance` | `Hash` | No |  |
-| `skill` | `Array` | No |  |
-| `slot` | `Array` | No |  |
+| `resistances` | `Hash` | No |  |
+| `skills` | `Array` | No |  |
+| `slots` | `Array` | No |  |
 | `type` | `String` | No |  |
 
 ### Operations
@@ -276,7 +276,7 @@ armor_set = client.ArmorSet
 | `bonus` | `Hash` | No |  |
 | `id` | `Integer` | No |  |
 | `name` | `String` | No |  |
-| `piece` | `Array` | No |  |
+| `pieces` | `Array` | No |  |
 | `rank` | `String` | No |  |
 
 ### Operations
@@ -341,7 +341,7 @@ charm = client.Charm
 | `id` | `Integer` | No |  |
 | `name` | `String` | No |  |
 | `rarity` | `Integer` | No |  |
-| `skill` | `Array` | No |  |
+| `skills` | `Array` | No |  |
 
 ### Operations
 
@@ -404,7 +404,7 @@ decoration = client.Decoration
 | `id` | `Integer` | No |  |
 | `name` | `String` | No |  |
 | `rarity` | `Integer` | No |  |
-| `skill` | `Array` | No |  |
+| `skills` | `Array` | No |  |
 | `slot` | `Integer` | No |  |
 
 ### Operations
@@ -465,19 +465,21 @@ event = client.Event
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `camps` | `Array` | No |  |
 | `description` | `String` | No |  |
-| `end_timestamp` | `String` | No |  |
+| `endTimestamp` | `String` | No |  |
 | `exclusive` | `String` | No |  |
 | `expansion` | `String` | No |  |
 | `id` | `Integer` | No |  |
 | `location` | `Hash` | No |  |
 | `name` | `String` | No |  |
 | `platform` | `String` | No |  |
-| `quest_rank` | `String` | No |  |
-| `requirement` | `String` | No |  |
-| `start_timestamp` | `String` | No |  |
-| `success_condition` | `String` | No |  |
+| `questRank` | `String` | No |  |
+| `requirements` | `String` | No |  |
+| `startTimestamp` | `String` | No |  |
+| `successConditions` | `String` | No |  |
 | `type` | `String` | No |  |
+| `zoneCount` | `Integer` | No |  |
 
 ### Operations
 
@@ -537,13 +539,13 @@ item = client.Item
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `buy_price` | `Integer` | No |  |
-| `carry_limit` | `Integer` | No |  |
+| `buyPrice` | `Integer` | No |  |
+| `carryLimit` | `Integer` | No |  |
 | `description` | `String` | No |  |
 | `id` | `Integer` | No |  |
 | `name` | `String` | No |  |
 | `rarity` | `Integer` | No |  |
-| `sell_price` | `Integer` | No |  |
+| `sellPrice` | `Integer` | No |  |
 | `value` | `Integer` | No |  |
 
 ### Operations
@@ -604,10 +606,10 @@ location = client.Location
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `camp` | `Array` | No |  |
+| `camps` | `Array` | No |  |
 | `id` | `Integer` | No |  |
 | `name` | `String` | No |  |
-| `zone_count` | `Integer` | No |  |
+| `zoneCount` | `Integer` | No |  |
 
 ### Operations
 
@@ -667,17 +669,17 @@ monster = client.Monster
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ailment` | `Array` | No |  |
+| `ailments` | `Array` | No |  |
 | `description` | `String` | No |  |
-| `element` | `Array` | No |  |
+| `elements` | `Array` | No |  |
 | `id` | `Integer` | No |  |
-| `location` | `Array` | No |  |
+| `locations` | `Array` | No |  |
 | `name` | `String` | No |  |
-| `resistance` | `Array` | No |  |
-| `reward` | `Array` | No |  |
+| `resistances` | `Array` | No |  |
+| `rewards` | `Array` | No |  |
 | `species` | `String` | No |  |
 | `type` | `String` | No |  |
-| `weakness` | `Array` | No |  |
+| `weaknesses` | `Array` | No |  |
 
 ### Operations
 
@@ -737,12 +739,12 @@ motion_value = client.MotionValue
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `damage_type` | `String` | No |  |
+| `damageType` | `String` | No |  |
 | `exhaust` | `Integer` | No |  |
-| `hit` | `Array` | No |  |
+| `hits` | `Array` | No |  |
 | `id` | `Integer` | No |  |
 | `stun` | `Integer` | No |  |
-| `weapon_type` | `String` | No |  |
+| `weaponType` | `String` | No |  |
 
 ### Operations
 
@@ -805,7 +807,7 @@ skill = client.Skill
 | `description` | `String` | No |  |
 | `id` | `Integer` | No |  |
 | `name` | `String` | No |  |
-| `rank` | `Array` | No |  |
+| `ranks` | `Array` | No |  |
 
 ### Operations
 
@@ -865,16 +867,16 @@ weapon = client.Weapon
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asset` | `Hash` | No |  |
+| `assets` | `Hash` | No |  |
 | `attack` | `Hash` | No |  |
-| `attribute` | `Hash` | No |  |
+| `attributes` | `Hash` | No |  |
 | `crafting` | `Hash` | No |  |
-| `damage_type` | `String` | No |  |
-| `element` | `Array` | No |  |
+| `damageType` | `String` | No |  |
+| `elements` | `Array` | No |  |
 | `id` | `Integer` | No |  |
 | `name` | `String` | No |  |
 | `rarity` | `Integer` | No |  |
-| `slot` | `Array` | No |  |
+| `slots` | `Array` | No |  |
 | `type` | `String` | No |  |
 
 ### Operations

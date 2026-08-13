@@ -310,18 +310,18 @@ const armor = client.Armor()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `armor_set` | `Record<string, any>` | No |  |
-| `asset` | `Record<string, any>` | No |  |
-| `attribute` | `Record<string, any>` | No |  |
+| `armorSet` | `Record<string, any>` | No |  |
+| `assets` | `Record<string, any>` | No |  |
+| `attributes` | `Record<string, any>` | No |  |
 | `crafting` | `Record<string, any>` | No |  |
 | `defense` | `Record<string, any>` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
 | `rank` | `string` | No |  |
 | `rarity` | `number` | No |  |
-| `resistance` | `Record<string, any>` | No |  |
-| `skill` | `any[]` | No |  |
-| `slot` | `any[]` | No |  |
+| `resistances` | `Record<string, any>` | No |  |
+| `skills` | `any[]` | No |  |
+| `slots` | `any[]` | No |  |
 | `type` | `string` | No |  |
 
 ### Operations
@@ -383,7 +383,7 @@ const armor_set = client.ArmorSet()
 | `bonus` | `Record<string, any>` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
-| `piece` | `any[]` | No |  |
+| `pieces` | `any[]` | No |  |
 | `rank` | `string` | No |  |
 
 ### Operations
@@ -446,7 +446,7 @@ const charm = client.Charm()
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
 | `rarity` | `number` | No |  |
-| `skill` | `any[]` | No |  |
+| `skills` | `any[]` | No |  |
 
 ### Operations
 
@@ -507,7 +507,7 @@ const decoration = client.Decoration()
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
 | `rarity` | `number` | No |  |
-| `skill` | `any[]` | No |  |
+| `skills` | `any[]` | No |  |
 | `slot` | `number` | No |  |
 
 ### Operations
@@ -566,19 +566,21 @@ const event = client.Event()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `camps` | `any[]` | No |  |
 | `description` | `string` | No |  |
-| `end_timestamp` | `string` | No |  |
+| `endTimestamp` | `string` | No |  |
 | `exclusive` | `string` | No |  |
 | `expansion` | `string` | No |  |
 | `id` | `number` | No |  |
 | `location` | `Record<string, any>` | No |  |
 | `name` | `string` | No |  |
 | `platform` | `string` | No |  |
-| `quest_rank` | `string` | No |  |
-| `requirement` | `string` | No |  |
-| `start_timestamp` | `string` | No |  |
-| `success_condition` | `string` | No |  |
+| `questRank` | `string` | No |  |
+| `requirements` | `string` | No |  |
+| `startTimestamp` | `string` | No |  |
+| `successConditions` | `string` | No |  |
 | `type` | `string` | No |  |
+| `zoneCount` | `number` | No |  |
 
 ### Operations
 
@@ -636,13 +638,13 @@ const item = client.Item()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `buy_price` | `number` | No |  |
-| `carry_limit` | `number` | No |  |
+| `buyPrice` | `number` | No |  |
+| `carryLimit` | `number` | No |  |
 | `description` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
 | `rarity` | `number` | No |  |
-| `sell_price` | `number` | No |  |
+| `sellPrice` | `number` | No |  |
 | `value` | `number` | No |  |
 
 ### Operations
@@ -701,10 +703,10 @@ const location = client.Location()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `camp` | `any[]` | No |  |
+| `camps` | `any[]` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
-| `zone_count` | `number` | No |  |
+| `zoneCount` | `number` | No |  |
 
 ### Operations
 
@@ -762,17 +764,17 @@ const monster = client.Monster()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ailment` | `any[]` | No |  |
+| `ailments` | `any[]` | No |  |
 | `description` | `string` | No |  |
-| `element` | `any[]` | No |  |
+| `elements` | `any[]` | No |  |
 | `id` | `number` | No |  |
-| `location` | `any[]` | No |  |
+| `locations` | `any[]` | No |  |
 | `name` | `string` | No |  |
-| `resistance` | `any[]` | No |  |
-| `reward` | `any[]` | No |  |
+| `resistances` | `any[]` | No |  |
+| `rewards` | `any[]` | No |  |
 | `species` | `string` | No |  |
 | `type` | `string` | No |  |
-| `weakness` | `any[]` | No |  |
+| `weaknesses` | `any[]` | No |  |
 
 ### Operations
 
@@ -830,12 +832,12 @@ const motion_value = client.MotionValue()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `damage_type` | `string` | No |  |
+| `damageType` | `string` | No |  |
 | `exhaust` | `number` | No |  |
-| `hit` | `any[]` | No |  |
+| `hits` | `any[]` | No |  |
 | `id` | `number` | No |  |
 | `stun` | `number` | No |  |
-| `weapon_type` | `string` | No |  |
+| `weaponType` | `string` | No |  |
 
 ### Operations
 
@@ -896,7 +898,7 @@ const skill = client.Skill()
 | `description` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
-| `rank` | `any[]` | No |  |
+| `ranks` | `any[]` | No |  |
 
 ### Operations
 
@@ -954,16 +956,16 @@ const weapon = client.Weapon()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asset` | `Record<string, any>` | No |  |
+| `assets` | `Record<string, any>` | No |  |
 | `attack` | `Record<string, any>` | No |  |
-| `attribute` | `Record<string, any>` | No |  |
+| `attributes` | `Record<string, any>` | No |  |
 | `crafting` | `Record<string, any>` | No |  |
-| `damage_type` | `string` | No |  |
-| `element` | `any[]` | No |  |
+| `damageType` | `string` | No |  |
+| `elements` | `any[]` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
 | `rarity` | `number` | No |  |
-| `slot` | `any[]` | No |  |
+| `slots` | `any[]` | No |  |
 | `type` | `string` | No |  |
 
 ### Operations

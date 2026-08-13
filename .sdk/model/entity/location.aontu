@@ -6,7 +6,7 @@ main: kit: entity: location: {
 
   fields: [
     {
-      name: "camp"
+      name: "camps"
       req: false
       type: "`$ARRAY`"
     }
@@ -21,7 +21,7 @@ main: kit: entity: location: {
       type: "`$STRING`"
     }
     {
-      name: "zone_count"
+      name: "zoneCount"
       req: false
       type: "`$INTEGER`"
     }

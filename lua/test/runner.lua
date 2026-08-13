@@ -35,8 +35,8 @@ end
 
 
 function runner.env_override(m)
-  local live = runner.getenv("MONSTERHUNTERWORLD_TEST_LIVE")
-  local override = runner.getenv("MONSTERHUNTERWORLD_TEST_OVERRIDE")
+  local live = runner.getenv("MONSTER_HUNTER_WORLD_TEST_LIVE")
+  local override = runner.getenv("MONSTER_HUNTER_WORLD_TEST_OVERRIDE")
 
   if live == "TRUE" or override == "TRUE" then
     for key, _ in pairs(m) do
@@ -56,9 +56,9 @@ function runner.env_override(m)
     end
   end
 
-  local explain = runner.getenv("MONSTERHUNTERWORLD_TEST_EXPLAIN")
+  local explain = runner.getenv("MONSTER_HUNTER_WORLD_TEST_EXPLAIN")
   if explain ~= nil and explain ~= "" then
-    m["MONSTERHUNTERWORLD_TEST_EXPLAIN"] = explain
+    m["MONSTER_HUNTER_WORLD_TEST_EXPLAIN"] = explain
   end
 
   return m

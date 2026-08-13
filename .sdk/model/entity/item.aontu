@@ -6,12 +6,12 @@ main: kit: entity: item: {
 
   fields: [
     {
-      name: "buy_price"
+      name: "buyPrice"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "carry_limit"
+      name: "carryLimit"
       req: false
       type: "`$INTEGER`"
     }
@@ -36,7 +36,7 @@ main: kit: entity: item: {
       type: "`$INTEGER`"
     }
     {
-      name: "sell_price"
+      name: "sellPrice"
       req: false
       type: "`$INTEGER`"
     }

@@ -26,18 +26,18 @@ export interface AilmentListMatch {
 }
 
 export interface Armor {
-  armor_set?: Record<string, any>
-  asset?: Record<string, any>
-  attribute?: Record<string, any>
+  armorSet?: Record<string, any>
+  assets?: Record<string, any>
+  attributes?: Record<string, any>
   crafting?: Record<string, any>
   defense?: Record<string, any>
   id?: number
   name?: string
   rank?: string
   rarity?: number
-  resistance?: Record<string, any>
-  skill?: any[]
-  slot?: any[]
+  resistances?: Record<string, any>
+  skills?: any[]
+  slots?: any[]
   type?: string
 }
 
@@ -46,18 +46,18 @@ export interface ArmorLoadMatch {
 }
 
 export interface ArmorListMatch {
-  armor_set?: Record<string, any>
-  asset?: Record<string, any>
-  attribute?: Record<string, any>
+  armorSet?: Record<string, any>
+  assets?: Record<string, any>
+  attributes?: Record<string, any>
   crafting?: Record<string, any>
   defense?: Record<string, any>
   id?: number
   name?: string
   rank?: string
   rarity?: number
-  resistance?: Record<string, any>
-  skill?: any[]
-  slot?: any[]
+  resistances?: Record<string, any>
+  skills?: any[]
+  slots?: any[]
   type?: string
 }
 
@@ -65,7 +65,7 @@ export interface ArmorSet {
   bonus?: Record<string, any>
   id?: number
   name?: string
-  piece?: any[]
+  pieces?: any[]
   rank?: string
 }
 
@@ -77,7 +77,7 @@ export interface ArmorSetListMatch {
   bonus?: Record<string, any>
   id?: number
   name?: string
-  piece?: any[]
+  pieces?: any[]
   rank?: string
 }
 
@@ -86,7 +86,7 @@ export interface Charm {
   id?: number
   name?: string
   rarity?: number
-  skill?: any[]
+  skills?: any[]
 }
 
 export interface CharmLoadMatch {
@@ -98,14 +98,14 @@ export interface CharmListMatch {
   id?: number
   name?: string
   rarity?: number
-  skill?: any[]
+  skills?: any[]
 }
 
 export interface Decoration {
   id?: number
   name?: string
   rarity?: number
-  skill?: any[]
+  skills?: any[]
   slot?: number
 }
 
@@ -117,24 +117,26 @@ export interface DecorationListMatch {
   id?: number
   name?: string
   rarity?: number
-  skill?: any[]
+  skills?: any[]
   slot?: number
 }
 
 export interface Event {
+  camps?: any[]
   description?: string
-  end_timestamp?: string
+  endTimestamp?: string
   exclusive?: string
   expansion?: string
   id?: number
   location?: Record<string, any>
   name?: string
   platform?: string
-  quest_rank?: string
-  requirement?: string
-  start_timestamp?: string
-  success_condition?: string
+  questRank?: string
+  requirements?: string
+  startTimestamp?: string
+  successConditions?: string
   type?: string
+  zoneCount?: number
 }
 
 export interface EventLoadMatch {
@@ -142,29 +144,31 @@ export interface EventLoadMatch {
 }
 
 export interface EventListMatch {
+  camps?: any[]
   description?: string
-  end_timestamp?: string
+  endTimestamp?: string
   exclusive?: string
   expansion?: string
   id?: number
   location?: Record<string, any>
   name?: string
   platform?: string
-  quest_rank?: string
-  requirement?: string
-  start_timestamp?: string
-  success_condition?: string
+  questRank?: string
+  requirements?: string
+  startTimestamp?: string
+  successConditions?: string
   type?: string
+  zoneCount?: number
 }
 
 export interface Item {
-  buy_price?: number
-  carry_limit?: number
+  buyPrice?: number
+  carryLimit?: number
   description?: string
   id?: number
   name?: string
   rarity?: number
-  sell_price?: number
+  sellPrice?: number
   value?: number
 }
 
@@ -173,21 +177,21 @@ export interface ItemLoadMatch {
 }
 
 export interface ItemListMatch {
-  buy_price?: number
-  carry_limit?: number
+  buyPrice?: number
+  carryLimit?: number
   description?: string
   id?: number
   name?: string
   rarity?: number
-  sell_price?: number
+  sellPrice?: number
   value?: number
 }
 
 export interface Location {
-  camp?: any[]
+  camps?: any[]
   id?: number
   name?: string
-  zone_count?: number
+  zoneCount?: number
 }
 
 export interface LocationLoadMatch {
@@ -195,24 +199,24 @@ export interface LocationLoadMatch {
 }
 
 export interface LocationListMatch {
-  camp?: any[]
+  camps?: any[]
   id?: number
   name?: string
-  zone_count?: number
+  zoneCount?: number
 }
 
 export interface Monster {
-  ailment?: any[]
+  ailments?: any[]
   description?: string
-  element?: any[]
+  elements?: any[]
   id?: number
-  location?: any[]
+  locations?: any[]
   name?: string
-  resistance?: any[]
-  reward?: any[]
+  resistances?: any[]
+  rewards?: any[]
   species?: string
   type?: string
-  weakness?: any[]
+  weaknesses?: any[]
 }
 
 export interface MonsterLoadMatch {
@@ -220,26 +224,26 @@ export interface MonsterLoadMatch {
 }
 
 export interface MonsterListMatch {
-  ailment?: any[]
+  ailments?: any[]
   description?: string
-  element?: any[]
+  elements?: any[]
   id?: number
-  location?: any[]
+  locations?: any[]
   name?: string
-  resistance?: any[]
-  reward?: any[]
+  resistances?: any[]
+  rewards?: any[]
   species?: string
   type?: string
-  weakness?: any[]
+  weaknesses?: any[]
 }
 
 export interface MotionValue {
-  damage_type?: string
+  damageType?: string
   exhaust?: number
-  hit?: any[]
+  hits?: any[]
   id?: number
   stun?: number
-  weapon_type?: string
+  weaponType?: string
 }
 
 export interface MotionValueLoadMatch {
@@ -247,19 +251,19 @@ export interface MotionValueLoadMatch {
 }
 
 export interface MotionValueListMatch {
-  damage_type?: string
+  damageType?: string
   exhaust?: number
-  hit?: any[]
+  hits?: any[]
   id?: number
   stun?: number
-  weapon_type?: string
+  weaponType?: string
 }
 
 export interface Skill {
   description?: string
   id?: number
   name?: string
-  rank?: any[]
+  ranks?: any[]
 }
 
 export interface SkillLoadMatch {
@@ -270,20 +274,20 @@ export interface SkillListMatch {
   description?: string
   id?: number
   name?: string
-  rank?: any[]
+  ranks?: any[]
 }
 
 export interface Weapon {
-  asset?: Record<string, any>
+  assets?: Record<string, any>
   attack?: Record<string, any>
-  attribute?: Record<string, any>
+  attributes?: Record<string, any>
   crafting?: Record<string, any>
-  damage_type?: string
-  element?: any[]
+  damageType?: string
+  elements?: any[]
   id?: number
   name?: string
   rarity?: number
-  slot?: any[]
+  slots?: any[]
   type?: string
 }
 
@@ -292,16 +296,16 @@ export interface WeaponLoadMatch {
 }
 
 export interface WeaponListMatch {
-  asset?: Record<string, any>
+  assets?: Record<string, any>
   attack?: Record<string, any>
-  attribute?: Record<string, any>
+  attributes?: Record<string, any>
   crafting?: Record<string, any>
-  damage_type?: string
-  element?: any[]
+  damageType?: string
+  elements?: any[]
   id?: number
   name?: string
   rarity?: number
-  slot?: any[]
+  slots?: any[]
   type?: string
 }
 

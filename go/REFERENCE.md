@@ -209,18 +209,18 @@ fmt.Println(armor.GetName()) // "armor"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `armor_set` | `map[string]any` | No |  |
-| `asset` | `map[string]any` | No |  |
-| `attribute` | `map[string]any` | No |  |
+| `armorSet` | `map[string]any` | No |  |
+| `assets` | `map[string]any` | No |  |
+| `attributes` | `map[string]any` | No |  |
 | `crafting` | `map[string]any` | No |  |
 | `defense` | `map[string]any` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
 | `rank` | `string` | No |  |
 | `rarity` | `int` | No |  |
-| `resistance` | `map[string]any` | No |  |
-| `skill` | `[]any` | No |  |
-| `slot` | `[]any` | No |  |
+| `resistances` | `map[string]any` | No |  |
+| `skills` | `[]any` | No |  |
+| `slots` | `[]any` | No |  |
 | `type` | `string` | No |  |
 
 ### Operations
@@ -287,7 +287,7 @@ fmt.Println(armorSet.GetName()) // "armor_set"
 | `bonus` | `map[string]any` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
-| `piece` | `[]any` | No |  |
+| `pieces` | `[]any` | No |  |
 | `rank` | `string` | No |  |
 
 ### Operations
@@ -355,7 +355,7 @@ fmt.Println(charm.GetName()) // "charm"
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
 | `rarity` | `int` | No |  |
-| `skill` | `[]any` | No |  |
+| `skills` | `[]any` | No |  |
 
 ### Operations
 
@@ -421,7 +421,7 @@ fmt.Println(decoration.GetName()) // "decoration"
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
 | `rarity` | `int` | No |  |
-| `skill` | `[]any` | No |  |
+| `skills` | `[]any` | No |  |
 | `slot` | `int` | No |  |
 
 ### Operations
@@ -485,19 +485,21 @@ fmt.Println(event.GetName()) // "event"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `camps` | `[]any` | No |  |
 | `description` | `string` | No |  |
-| `end_timestamp` | `string` | No |  |
+| `endTimestamp` | `string` | No |  |
 | `exclusive` | `string` | No |  |
 | `expansion` | `string` | No |  |
 | `id` | `int` | No |  |
 | `location` | `map[string]any` | No |  |
 | `name` | `string` | No |  |
 | `platform` | `string` | No |  |
-| `quest_rank` | `string` | No |  |
-| `requirement` | `string` | No |  |
-| `start_timestamp` | `string` | No |  |
-| `success_condition` | `string` | No |  |
+| `questRank` | `string` | No |  |
+| `requirements` | `string` | No |  |
+| `startTimestamp` | `string` | No |  |
+| `successConditions` | `string` | No |  |
 | `type` | `string` | No |  |
+| `zoneCount` | `int` | No |  |
 
 ### Operations
 
@@ -560,13 +562,13 @@ fmt.Println(item.GetName()) // "item"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `buy_price` | `int` | No |  |
-| `carry_limit` | `int` | No |  |
+| `buyPrice` | `int` | No |  |
+| `carryLimit` | `int` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
 | `rarity` | `int` | No |  |
-| `sell_price` | `int` | No |  |
+| `sellPrice` | `int` | No |  |
 | `value` | `int` | No |  |
 
 ### Operations
@@ -630,10 +632,10 @@ fmt.Println(location.GetName()) // "location"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `camp` | `[]any` | No |  |
+| `camps` | `[]any` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
-| `zone_count` | `int` | No |  |
+| `zoneCount` | `int` | No |  |
 
 ### Operations
 
@@ -696,17 +698,17 @@ fmt.Println(monster.GetName()) // "monster"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ailment` | `[]any` | No |  |
+| `ailments` | `[]any` | No |  |
 | `description` | `string` | No |  |
-| `element` | `[]any` | No |  |
+| `elements` | `[]any` | No |  |
 | `id` | `int` | No |  |
-| `location` | `[]any` | No |  |
+| `locations` | `[]any` | No |  |
 | `name` | `string` | No |  |
-| `resistance` | `[]any` | No |  |
-| `reward` | `[]any` | No |  |
+| `resistances` | `[]any` | No |  |
+| `rewards` | `[]any` | No |  |
 | `species` | `string` | No |  |
 | `type` | `string` | No |  |
-| `weakness` | `[]any` | No |  |
+| `weaknesses` | `[]any` | No |  |
 
 ### Operations
 
@@ -769,12 +771,12 @@ fmt.Println(motionValue.GetName()) // "motion_value"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `damage_type` | `string` | No |  |
+| `damageType` | `string` | No |  |
 | `exhaust` | `int` | No |  |
-| `hit` | `[]any` | No |  |
+| `hits` | `[]any` | No |  |
 | `id` | `int` | No |  |
 | `stun` | `int` | No |  |
-| `weapon_type` | `string` | No |  |
+| `weaponType` | `string` | No |  |
 
 ### Operations
 
@@ -840,7 +842,7 @@ fmt.Println(skill.GetName()) // "skill"
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
-| `rank` | `[]any` | No |  |
+| `ranks` | `[]any` | No |  |
 
 ### Operations
 
@@ -903,16 +905,16 @@ fmt.Println(weapon.GetName()) // "weapon"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asset` | `map[string]any` | No |  |
+| `assets` | `map[string]any` | No |  |
 | `attack` | `map[string]any` | No |  |
-| `attribute` | `map[string]any` | No |  |
+| `attributes` | `map[string]any` | No |  |
 | `crafting` | `map[string]any` | No |  |
-| `damage_type` | `string` | No |  |
-| `element` | `[]any` | No |  |
+| `damageType` | `string` | No |  |
+| `elements` | `[]any` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
 | `rarity` | `int` | No |  |
-| `slot` | `[]any` | No |  |
+| `slots` | `[]any` | No |  |
 | `type` | `string` | No |  |
 
 ### Operations

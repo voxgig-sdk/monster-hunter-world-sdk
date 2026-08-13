@@ -6,7 +6,7 @@ main: kit: entity: monster: {
 
   fields: [
     {
-      name: "ailment"
+      name: "ailments"
       req: false
       type: "`$ARRAY`"
     }
@@ -16,7 +16,7 @@ main: kit: entity: monster: {
       type: "`$STRING`"
     }
     {
-      name: "element"
+      name: "elements"
       req: false
       type: "`$ARRAY`"
     }
@@ -26,7 +26,7 @@ main: kit: entity: monster: {
       type: "`$INTEGER`"
     }
     {
-      name: "location"
+      name: "locations"
       req: false
       type: "`$ARRAY`"
     }
@@ -36,12 +36,12 @@ main: kit: entity: monster: {
       type: "`$STRING`"
     }
     {
-      name: "resistance"
+      name: "resistances"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "reward"
+      name: "rewards"
       req: false
       type: "`$ARRAY`"
     }
@@ -56,7 +56,7 @@ main: kit: entity: monster: {
       type: "`$STRING`"
     }
     {
-      name: "weakness"
+      name: "weaknesses"
       req: false
       type: "`$ARRAY`"
     }

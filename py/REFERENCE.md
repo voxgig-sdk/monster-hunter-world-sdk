@@ -196,18 +196,18 @@ armor = client.Armor()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `armor_set` | `dict` | No |  |
-| `asset` | `dict` | No |  |
-| `attribute` | `dict` | No |  |
+| `armorSet` | `dict` | No |  |
+| `assets` | `dict` | No |  |
+| `attributes` | `dict` | No |  |
 | `crafting` | `dict` | No |  |
 | `defense` | `dict` | No |  |
 | `id` | `int` | No |  |
 | `name` | `str` | No |  |
 | `rank` | `str` | No |  |
 | `rarity` | `int` | No |  |
-| `resistance` | `dict` | No |  |
-| `skill` | `list` | No |  |
-| `slot` | `list` | No |  |
+| `resistances` | `dict` | No |  |
+| `skills` | `list` | No |  |
+| `slots` | `list` | No |  |
 | `type` | `str` | No |  |
 
 ### Operations
@@ -272,7 +272,7 @@ armor_set = client.ArmorSet()
 | `bonus` | `dict` | No |  |
 | `id` | `int` | No |  |
 | `name` | `str` | No |  |
-| `piece` | `list` | No |  |
+| `pieces` | `list` | No |  |
 | `rank` | `str` | No |  |
 
 ### Operations
@@ -338,7 +338,7 @@ charm = client.Charm()
 | `id` | `int` | No |  |
 | `name` | `str` | No |  |
 | `rarity` | `int` | No |  |
-| `skill` | `list` | No |  |
+| `skills` | `list` | No |  |
 
 ### Operations
 
@@ -402,7 +402,7 @@ decoration = client.Decoration()
 | `id` | `int` | No |  |
 | `name` | `str` | No |  |
 | `rarity` | `int` | No |  |
-| `skill` | `list` | No |  |
+| `skills` | `list` | No |  |
 | `slot` | `int` | No |  |
 
 ### Operations
@@ -464,19 +464,21 @@ event = client.Event()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `camps` | `list` | No |  |
 | `description` | `str` | No |  |
-| `end_timestamp` | `str` | No |  |
+| `endTimestamp` | `str` | No |  |
 | `exclusive` | `str` | No |  |
 | `expansion` | `str` | No |  |
 | `id` | `int` | No |  |
 | `location` | `dict` | No |  |
 | `name` | `str` | No |  |
 | `platform` | `str` | No |  |
-| `quest_rank` | `str` | No |  |
-| `requirement` | `str` | No |  |
-| `start_timestamp` | `str` | No |  |
-| `success_condition` | `str` | No |  |
+| `questRank` | `str` | No |  |
+| `requirements` | `str` | No |  |
+| `startTimestamp` | `str` | No |  |
+| `successConditions` | `str` | No |  |
 | `type` | `str` | No |  |
+| `zoneCount` | `int` | No |  |
 
 ### Operations
 
@@ -537,13 +539,13 @@ item = client.Item()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `buy_price` | `int` | No |  |
-| `carry_limit` | `int` | No |  |
+| `buyPrice` | `int` | No |  |
+| `carryLimit` | `int` | No |  |
 | `description` | `str` | No |  |
 | `id` | `int` | No |  |
 | `name` | `str` | No |  |
 | `rarity` | `int` | No |  |
-| `sell_price` | `int` | No |  |
+| `sellPrice` | `int` | No |  |
 | `value` | `int` | No |  |
 
 ### Operations
@@ -605,10 +607,10 @@ location = client.Location()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `camp` | `list` | No |  |
+| `camps` | `list` | No |  |
 | `id` | `int` | No |  |
 | `name` | `str` | No |  |
-| `zone_count` | `int` | No |  |
+| `zoneCount` | `int` | No |  |
 
 ### Operations
 
@@ -669,17 +671,17 @@ monster = client.Monster()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ailment` | `list` | No |  |
+| `ailments` | `list` | No |  |
 | `description` | `str` | No |  |
-| `element` | `list` | No |  |
+| `elements` | `list` | No |  |
 | `id` | `int` | No |  |
-| `location` | `list` | No |  |
+| `locations` | `list` | No |  |
 | `name` | `str` | No |  |
-| `resistance` | `list` | No |  |
-| `reward` | `list` | No |  |
+| `resistances` | `list` | No |  |
+| `rewards` | `list` | No |  |
 | `species` | `str` | No |  |
 | `type` | `str` | No |  |
-| `weakness` | `list` | No |  |
+| `weaknesses` | `list` | No |  |
 
 ### Operations
 
@@ -740,12 +742,12 @@ motion_value = client.MotionValue()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `damage_type` | `str` | No |  |
+| `damageType` | `str` | No |  |
 | `exhaust` | `int` | No |  |
-| `hit` | `list` | No |  |
+| `hits` | `list` | No |  |
 | `id` | `int` | No |  |
 | `stun` | `int` | No |  |
-| `weapon_type` | `str` | No |  |
+| `weaponType` | `str` | No |  |
 
 ### Operations
 
@@ -809,7 +811,7 @@ skill = client.Skill()
 | `description` | `str` | No |  |
 | `id` | `int` | No |  |
 | `name` | `str` | No |  |
-| `rank` | `list` | No |  |
+| `ranks` | `list` | No |  |
 
 ### Operations
 
@@ -870,16 +872,16 @@ weapon = client.Weapon()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asset` | `dict` | No |  |
+| `assets` | `dict` | No |  |
 | `attack` | `dict` | No |  |
-| `attribute` | `dict` | No |  |
+| `attributes` | `dict` | No |  |
 | `crafting` | `dict` | No |  |
-| `damage_type` | `str` | No |  |
-| `element` | `list` | No |  |
+| `damageType` | `str` | No |  |
+| `elements` | `list` | No |  |
 | `id` | `int` | No |  |
 | `name` | `str` | No |  |
 | `rarity` | `int` | No |  |
-| `slot` | `list` | No |  |
+| `slots` | `list` | No |  |
 | `type` | `str` | No |  |
 
 ### Operations

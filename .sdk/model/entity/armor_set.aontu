@@ -21,7 +21,7 @@ main: kit: entity: armor_set: {
       type: "`$STRING`"
     }
     {
-      name: "piece"
+      name: "pieces"
       req: false
       type: "`$ARRAY`"
     }

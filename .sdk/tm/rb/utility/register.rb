@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ MonsterHunterWorldUtility.registrar = ->(u) {
   u.prepare_params = MonsterHunterWorldUtilities::PrepareParams
   u.prepare_path = MonsterHunterWorldUtilities::PreparePath
   u.prepare_query = MonsterHunterWorldUtilities::PrepareQuery
+  u.graphql_body = MonsterHunterWorldUtilities::GraphqlBody
+  u.graphql_errors = MonsterHunterWorldUtilities::GraphqlErrors
   u.result_basic = MonsterHunterWorldUtilities::ResultBasic
   u.result_body = MonsterHunterWorldUtilities::ResultBody
   u.result_headers = MonsterHunterWorldUtilities::ResultHeaders

@@ -49,7 +49,7 @@ try {
 
 ```php
 try {
-    // load() returns the bare Ailment record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Ailment record (throws on error).
     $ailment = $client->Ailment()->load(["id" => 1]);
     print_r($ailment);
 } catch (\Throwable $err) {
@@ -140,7 +140,8 @@ $client = MonsterHunterWorldSDK::test([
     "entity" => ["ailment" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $ailment = $client->Ailment()->list();
 print_r($ailment);
 ```
@@ -251,7 +252,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -287,18 +288,18 @@ API path: `/ailments`
 
 | Field | Description |
 | --- | --- |
-| `armor_set` |  |
-| `asset` |  |
-| `attribute` |  |
+| `armorSet` |  |
+| `assets` |  |
+| `attributes` |  |
 | `crafting` |  |
 | `defense` |  |
 | `id` |  |
 | `name` |  |
 | `rank` |  |
 | `rarity` |  |
-| `resistance` |  |
-| `skill` |  |
-| `slot` |  |
+| `resistances` |  |
+| `skills` |  |
+| `slots` |  |
 | `type` |  |
 
 Operations: List, Load.
@@ -312,7 +313,7 @@ API path: `/armor`
 | `bonus` |  |
 | `id` |  |
 | `name` |  |
-| `piece` |  |
+| `pieces` |  |
 | `rank` |  |
 
 Operations: List, Load.
@@ -327,7 +328,7 @@ API path: `/armor/sets`
 | `id` |  |
 | `name` |  |
 | `rarity` |  |
-| `skill` |  |
+| `skills` |  |
 
 Operations: List, Load.
 
@@ -340,7 +341,7 @@ API path: `/charms`
 | `id` |  |
 | `name` |  |
 | `rarity` |  |
-| `skill` |  |
+| `skills` |  |
 | `slot` |  |
 
 Operations: List, Load.
@@ -351,19 +352,21 @@ API path: `/decorations`
 
 | Field | Description |
 | --- | --- |
+| `camps` |  |
 | `description` |  |
-| `end_timestamp` |  |
+| `endTimestamp` |  |
 | `exclusive` |  |
 | `expansion` |  |
 | `id` |  |
 | `location` |  |
 | `name` |  |
 | `platform` |  |
-| `quest_rank` |  |
-| `requirement` |  |
-| `start_timestamp` |  |
-| `success_condition` |  |
+| `questRank` |  |
+| `requirements` |  |
+| `startTimestamp` |  |
+| `successConditions` |  |
 | `type` |  |
+| `zoneCount` |  |
 
 Operations: List, Load.
 
@@ -373,13 +376,13 @@ API path: `/events`
 
 | Field | Description |
 | --- | --- |
-| `buy_price` |  |
-| `carry_limit` |  |
+| `buyPrice` |  |
+| `carryLimit` |  |
 | `description` |  |
 | `id` |  |
 | `name` |  |
 | `rarity` |  |
-| `sell_price` |  |
+| `sellPrice` |  |
 | `value` |  |
 
 Operations: List, Load.
@@ -390,10 +393,10 @@ API path: `/items`
 
 | Field | Description |
 | --- | --- |
-| `camp` |  |
+| `camps` |  |
 | `id` |  |
 | `name` |  |
-| `zone_count` |  |
+| `zoneCount` |  |
 
 Operations: List, Load.
 
@@ -403,17 +406,17 @@ API path: `/locations`
 
 | Field | Description |
 | --- | --- |
-| `ailment` |  |
+| `ailments` |  |
 | `description` |  |
-| `element` |  |
+| `elements` |  |
 | `id` |  |
-| `location` |  |
+| `locations` |  |
 | `name` |  |
-| `resistance` |  |
-| `reward` |  |
+| `resistances` |  |
+| `rewards` |  |
 | `species` |  |
 | `type` |  |
-| `weakness` |  |
+| `weaknesses` |  |
 
 Operations: List, Load.
 
@@ -423,12 +426,12 @@ API path: `/monsters`
 
 | Field | Description |
 | --- | --- |
-| `damage_type` |  |
+| `damageType` |  |
 | `exhaust` |  |
-| `hit` |  |
+| `hits` |  |
 | `id` |  |
 | `stun` |  |
-| `weapon_type` |  |
+| `weaponType` |  |
 
 Operations: List, Load.
 
@@ -441,7 +444,7 @@ API path: `/motion-values`
 | `description` |  |
 | `id` |  |
 | `name` |  |
-| `rank` |  |
+| `ranks` |  |
 
 Operations: List, Load.
 
@@ -451,16 +454,16 @@ API path: `/skills`
 
 | Field | Description |
 | --- | --- |
-| `asset` |  |
+| `assets` |  |
 | `attack` |  |
-| `attribute` |  |
+| `attributes` |  |
 | `crafting` |  |
-| `damage_type` |  |
-| `element` |  |
+| `damageType` |  |
+| `elements` |  |
 | `id` |  |
 | `name` |  |
 | `rarity` |  |
-| `slot` |  |
+| `slots` |  |
 | `type` |  |
 
 Operations: List, Load.
@@ -496,7 +499,7 @@ Create an instance: `$ailment = $client->Ailment();`
 #### Example: Load
 
 ```php
-// load() returns the bare Ailment record (throws on error).
+// load() returns the ENTITY — call data_get() for the Ailment record (throws on error).
 $ailment = $client->Ailment()->load(["id" => 1]);
 ```
 
@@ -523,24 +526,24 @@ Create an instance: `$armor = $client->Armor();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `armor_set` | `array` |  |
-| `asset` | `array` |  |
-| `attribute` | `array` |  |
+| `armorSet` | `array` |  |
+| `assets` | `array` |  |
+| `attributes` | `array` |  |
 | `crafting` | `array` |  |
 | `defense` | `array` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
 | `rank` | `string` |  |
 | `rarity` | `int` |  |
-| `resistance` | `array` |  |
-| `skill` | `array` |  |
-| `slot` | `array` |  |
+| `resistances` | `array` |  |
+| `skills` | `array` |  |
+| `slots` | `array` |  |
 | `type` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Armor record (throws on error).
+// load() returns the ENTITY — call data_get() for the Armor record (throws on error).
 $armor = $client->Armor()->load(["id" => 1]);
 ```
 
@@ -570,13 +573,13 @@ Create an instance: `$armor_set = $client->ArmorSet();`
 | `bonus` | `array` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
-| `piece` | `array` |  |
+| `pieces` | `array` |  |
 | `rank` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ArmorSet record (throws on error).
+// load() returns the ENTITY — call data_get() for the ArmorSet record (throws on error).
 $armor_set = $client->ArmorSet()->load(["id" => 1]);
 ```
 
@@ -607,12 +610,12 @@ Create an instance: `$charm = $client->Charm();`
 | `id` | `int` |  |
 | `name` | `string` |  |
 | `rarity` | `int` |  |
-| `skill` | `array` |  |
+| `skills` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Charm record (throws on error).
+// load() returns the ENTITY — call data_get() for the Charm record (throws on error).
 $charm = $client->Charm()->load(["id" => 1]);
 ```
 
@@ -642,13 +645,13 @@ Create an instance: `$decoration = $client->Decoration();`
 | `id` | `int` |  |
 | `name` | `string` |  |
 | `rarity` | `int` |  |
-| `skill` | `array` |  |
+| `skills` | `array` |  |
 | `slot` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Decoration record (throws on error).
+// load() returns the ENTITY — call data_get() for the Decoration record (throws on error).
 $decoration = $client->Decoration()->load(["id" => 1]);
 ```
 
@@ -675,24 +678,26 @@ Create an instance: `$event = $client->Event();`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `camps` | `array` |  |
 | `description` | `string` |  |
-| `end_timestamp` | `string` |  |
+| `endTimestamp` | `string` |  |
 | `exclusive` | `string` |  |
 | `expansion` | `string` |  |
 | `id` | `int` |  |
 | `location` | `array` |  |
 | `name` | `string` |  |
 | `platform` | `string` |  |
-| `quest_rank` | `string` |  |
-| `requirement` | `string` |  |
-| `start_timestamp` | `string` |  |
-| `success_condition` | `string` |  |
+| `questRank` | `string` |  |
+| `requirements` | `string` |  |
+| `startTimestamp` | `string` |  |
+| `successConditions` | `string` |  |
 | `type` | `string` |  |
+| `zoneCount` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Event record (throws on error).
+// load() returns the ENTITY — call data_get() for the Event record (throws on error).
 $event = $client->Event()->load(["id" => 1]);
 ```
 
@@ -719,19 +724,19 @@ Create an instance: `$item = $client->Item();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `buy_price` | `int` |  |
-| `carry_limit` | `int` |  |
+| `buyPrice` | `int` |  |
+| `carryLimit` | `int` |  |
 | `description` | `string` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
 | `rarity` | `int` |  |
-| `sell_price` | `int` |  |
+| `sellPrice` | `int` |  |
 | `value` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Item record (throws on error).
+// load() returns the ENTITY — call data_get() for the Item record (throws on error).
 $item = $client->Item()->load(["id" => 1]);
 ```
 
@@ -758,15 +763,15 @@ Create an instance: `$location = $client->Location();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `camp` | `array` |  |
+| `camps` | `array` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
-| `zone_count` | `int` |  |
+| `zoneCount` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Location record (throws on error).
+// load() returns the ENTITY — call data_get() for the Location record (throws on error).
 $location = $client->Location()->load(["id" => 1]);
 ```
 
@@ -793,22 +798,22 @@ Create an instance: `$monster = $client->Monster();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ailment` | `array` |  |
+| `ailments` | `array` |  |
 | `description` | `string` |  |
-| `element` | `array` |  |
+| `elements` | `array` |  |
 | `id` | `int` |  |
-| `location` | `array` |  |
+| `locations` | `array` |  |
 | `name` | `string` |  |
-| `resistance` | `array` |  |
-| `reward` | `array` |  |
+| `resistances` | `array` |  |
+| `rewards` | `array` |  |
 | `species` | `string` |  |
 | `type` | `string` |  |
-| `weakness` | `array` |  |
+| `weaknesses` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Monster record (throws on error).
+// load() returns the ENTITY — call data_get() for the Monster record (throws on error).
 $monster = $client->Monster()->load(["id" => 1]);
 ```
 
@@ -835,17 +840,17 @@ Create an instance: `$motion_value = $client->MotionValue();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `damage_type` | `string` |  |
+| `damageType` | `string` |  |
 | `exhaust` | `int` |  |
-| `hit` | `array` |  |
+| `hits` | `array` |  |
 | `id` | `int` |  |
 | `stun` | `int` |  |
-| `weapon_type` | `string` |  |
+| `weaponType` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare MotionValue record (throws on error).
+// load() returns the ENTITY — call data_get() for the MotionValue record (throws on error).
 $motion_value = $client->MotionValue()->load(["id" => 1]);
 ```
 
@@ -875,12 +880,12 @@ Create an instance: `$skill = $client->Skill();`
 | `description` | `string` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
-| `rank` | `array` |  |
+| `ranks` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Skill record (throws on error).
+// load() returns the ENTITY — call data_get() for the Skill record (throws on error).
 $skill = $client->Skill()->load(["id" => 1]);
 ```
 
@@ -907,22 +912,22 @@ Create an instance: `$weapon = $client->Weapon();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asset` | `array` |  |
+| `assets` | `array` |  |
 | `attack` | `array` |  |
-| `attribute` | `array` |  |
+| `attributes` | `array` |  |
 | `crafting` | `array` |  |
-| `damage_type` | `string` |  |
-| `element` | `array` |  |
+| `damageType` | `string` |  |
+| `elements` | `array` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
 | `rarity` | `int` |  |
-| `slot` | `array` |  |
+| `slots` | `array` |  |
 | `type` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Weapon record (throws on error).
+// load() returns the ENTITY — call data_get() for the Weapon record (throws on error).
 $weapon = $client->Weapon()->load(["id" => 1]);
 ```
 

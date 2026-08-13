@@ -62,7 +62,7 @@ class AilmentEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set MONSTERHUNTERWORLD_TEST_AILMENT_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set MONSTER_HUNTER_WORLD_TEST_AILMENT_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -87,7 +87,7 @@ class AilmentEntityTest < Minitest::Test
       "id" => ailment_ref01_data["id"],
     }
     ailment_ref01_data_dt0_loaded = ailment_ref01_ent.load(ailment_ref01_match_dt0, nil)
-    ailment_ref01_data_dt0_load_result = Helpers.to_map(ailment_ref01_data_dt0_loaded)
+    ailment_ref01_data_dt0_load_result = Helpers.to_map(ailment_ref01_data_dt0_loaded.respond_to?(:data_get) ? ailment_ref01_data_dt0_loaded.data_get : ailment_ref01_data_dt0_loaded)
     assert !ailment_ref01_data_dt0_load_result.nil?
     assert_equal ailment_ref01_data_dt0_load_result["id"], ailment_ref01_data["id"]
 
@@ -120,22 +120,22 @@ def ailment_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["MONSTERHUNTERWORLD_TEST_AILMENT_ENTID"]
+  entid_env_raw = ENV["MONSTER_HUNTER_WORLD_TEST_AILMENT_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "MONSTERHUNTERWORLD_TEST_AILMENT_ENTID" => idmap,
-    "MONSTERHUNTERWORLD_TEST_LIVE" => "FALSE",
-    "MONSTERHUNTERWORLD_TEST_EXPLAIN" => "FALSE",
+    "MONSTER_HUNTER_WORLD_TEST_AILMENT_ENTID" => idmap,
+    "MONSTER_HUNTER_WORLD_TEST_LIVE" => "FALSE",
+    "MONSTER_HUNTER_WORLD_TEST_EXPLAIN" => "FALSE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["MONSTERHUNTERWORLD_TEST_AILMENT_ENTID"])
+    env["MONSTER_HUNTER_WORLD_TEST_AILMENT_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["MONSTERHUNTERWORLD_TEST_LIVE"] == "TRUE"
+  if env["MONSTER_HUNTER_WORLD_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
       },
@@ -144,13 +144,13 @@ def ailment_basic_setup(extra)
     client = MonsterHunterWorldSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["MONSTERHUNTERWORLD_TEST_LIVE"] == "TRUE"
+  live = env["MONSTER_HUNTER_WORLD_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["MONSTERHUNTERWORLD_TEST_EXPLAIN"] == "TRUE",
+    explain: env["MONSTER_HUNTER_WORLD_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

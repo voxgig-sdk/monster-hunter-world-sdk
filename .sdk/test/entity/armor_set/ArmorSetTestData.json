@@ -5,21 +5,21 @@
         "bonus": {},
         "id": "ARMOR_SET00",
         "name": "s34",
-        "piece": [],
+        "pieces": [],
         "rank": "s36"
       },
       "ARMOR_SET01": {
         "bonus": {},
         "id": "ARMOR_SET01",
         "name": "s66",
-        "piece": [],
+        "pieces": [],
         "rank": "s68"
       },
       "ARMOR_SET02": {
         "bonus": {},
         "id": "ARMOR_SET02",
         "name": "s98",
-        "piece": [],
+        "pieces": [],
         "rank": "s9a"
       }
     }
@@ -29,7 +29,7 @@
       "armor_set_ref01": {
         "bonus": {},
         "name": "sca",
-        "piece": [],
+        "pieces": [],
         "rank": "scc"
       }
     }

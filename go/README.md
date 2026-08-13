@@ -294,18 +294,18 @@ API path: `/ailments`
 
 | Field | Description |
 | --- | --- |
-| `"armor_set"` |  |
-| `"asset"` |  |
-| `"attribute"` |  |
+| `"armorSet"` |  |
+| `"assets"` |  |
+| `"attributes"` |  |
 | `"crafting"` |  |
 | `"defense"` |  |
 | `"id"` |  |
 | `"name"` |  |
 | `"rank"` |  |
 | `"rarity"` |  |
-| `"resistance"` |  |
-| `"skill"` |  |
-| `"slot"` |  |
+| `"resistances"` |  |
+| `"skills"` |  |
+| `"slots"` |  |
 | `"type"` |  |
 
 Operations: List, Load.
@@ -319,7 +319,7 @@ API path: `/armor`
 | `"bonus"` |  |
 | `"id"` |  |
 | `"name"` |  |
-| `"piece"` |  |
+| `"pieces"` |  |
 | `"rank"` |  |
 
 Operations: List, Load.
@@ -334,7 +334,7 @@ API path: `/armor/sets`
 | `"id"` |  |
 | `"name"` |  |
 | `"rarity"` |  |
-| `"skill"` |  |
+| `"skills"` |  |
 
 Operations: List, Load.
 
@@ -347,7 +347,7 @@ API path: `/charms`
 | `"id"` |  |
 | `"name"` |  |
 | `"rarity"` |  |
-| `"skill"` |  |
+| `"skills"` |  |
 | `"slot"` |  |
 
 Operations: List, Load.
@@ -358,19 +358,21 @@ API path: `/decorations`
 
 | Field | Description |
 | --- | --- |
+| `"camps"` |  |
 | `"description"` |  |
-| `"end_timestamp"` |  |
+| `"endTimestamp"` |  |
 | `"exclusive"` |  |
 | `"expansion"` |  |
 | `"id"` |  |
 | `"location"` |  |
 | `"name"` |  |
 | `"platform"` |  |
-| `"quest_rank"` |  |
-| `"requirement"` |  |
-| `"start_timestamp"` |  |
-| `"success_condition"` |  |
+| `"questRank"` |  |
+| `"requirements"` |  |
+| `"startTimestamp"` |  |
+| `"successConditions"` |  |
 | `"type"` |  |
+| `"zoneCount"` |  |
 
 Operations: List, Load.
 
@@ -380,13 +382,13 @@ API path: `/events`
 
 | Field | Description |
 | --- | --- |
-| `"buy_price"` |  |
-| `"carry_limit"` |  |
+| `"buyPrice"` |  |
+| `"carryLimit"` |  |
 | `"description"` |  |
 | `"id"` |  |
 | `"name"` |  |
 | `"rarity"` |  |
-| `"sell_price"` |  |
+| `"sellPrice"` |  |
 | `"value"` |  |
 
 Operations: List, Load.
@@ -397,10 +399,10 @@ API path: `/items`
 
 | Field | Description |
 | --- | --- |
-| `"camp"` |  |
+| `"camps"` |  |
 | `"id"` |  |
 | `"name"` |  |
-| `"zone_count"` |  |
+| `"zoneCount"` |  |
 
 Operations: List, Load.
 
@@ -410,17 +412,17 @@ API path: `/locations`
 
 | Field | Description |
 | --- | --- |
-| `"ailment"` |  |
+| `"ailments"` |  |
 | `"description"` |  |
-| `"element"` |  |
+| `"elements"` |  |
 | `"id"` |  |
-| `"location"` |  |
+| `"locations"` |  |
 | `"name"` |  |
-| `"resistance"` |  |
-| `"reward"` |  |
+| `"resistances"` |  |
+| `"rewards"` |  |
 | `"species"` |  |
 | `"type"` |  |
-| `"weakness"` |  |
+| `"weaknesses"` |  |
 
 Operations: List, Load.
 
@@ -430,12 +432,12 @@ API path: `/monsters`
 
 | Field | Description |
 | --- | --- |
-| `"damage_type"` |  |
+| `"damageType"` |  |
 | `"exhaust"` |  |
-| `"hit"` |  |
+| `"hits"` |  |
 | `"id"` |  |
 | `"stun"` |  |
-| `"weapon_type"` |  |
+| `"weaponType"` |  |
 
 Operations: List, Load.
 
@@ -448,7 +450,7 @@ API path: `/motion-values`
 | `"description"` |  |
 | `"id"` |  |
 | `"name"` |  |
-| `"rank"` |  |
+| `"ranks"` |  |
 
 Operations: List, Load.
 
@@ -458,16 +460,16 @@ API path: `/skills`
 
 | Field | Description |
 | --- | --- |
-| `"asset"` |  |
+| `"assets"` |  |
 | `"attack"` |  |
-| `"attribute"` |  |
+| `"attributes"` |  |
 | `"crafting"` |  |
-| `"damage_type"` |  |
-| `"element"` |  |
+| `"damageType"` |  |
+| `"elements"` |  |
 | `"id"` |  |
 | `"name"` |  |
 | `"rarity"` |  |
-| `"slot"` |  |
+| `"slots"` |  |
 | `"type"` |  |
 
 Operations: List, Load.
@@ -536,18 +538,18 @@ Create an instance: `armor := client.Armor(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `armor_set` | `map[string]any` |  |
-| `asset` | `map[string]any` |  |
-| `attribute` | `map[string]any` |  |
+| `armorSet` | `map[string]any` |  |
+| `assets` | `map[string]any` |  |
+| `attributes` | `map[string]any` |  |
 | `crafting` | `map[string]any` |  |
 | `defense` | `map[string]any` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
 | `rank` | `string` |  |
 | `rarity` | `int` |  |
-| `resistance` | `map[string]any` |  |
-| `skill` | `[]any` |  |
-| `slot` | `[]any` |  |
+| `resistances` | `map[string]any` |  |
+| `skills` | `[]any` |  |
+| `slots` | `[]any` |  |
 | `type` | `string` |  |
 
 #### Example: Load
@@ -589,7 +591,7 @@ Create an instance: `armorSet := client.ArmorSet(nil)`
 | `bonus` | `map[string]any` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
-| `piece` | `[]any` |  |
+| `pieces` | `[]any` |  |
 | `rank` | `string` |  |
 
 #### Example: Load
@@ -632,7 +634,7 @@ Create an instance: `charm := client.Charm(nil)`
 | `id` | `int` |  |
 | `name` | `string` |  |
 | `rarity` | `int` |  |
-| `skill` | `[]any` |  |
+| `skills` | `[]any` |  |
 
 #### Example: Load
 
@@ -673,7 +675,7 @@ Create an instance: `decoration := client.Decoration(nil)`
 | `id` | `int` |  |
 | `name` | `string` |  |
 | `rarity` | `int` |  |
-| `skill` | `[]any` |  |
+| `skills` | `[]any` |  |
 | `slot` | `int` |  |
 
 #### Example: Load
@@ -712,19 +714,21 @@ Create an instance: `event := client.Event(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `camps` | `[]any` |  |
 | `description` | `string` |  |
-| `end_timestamp` | `string` |  |
+| `endTimestamp` | `string` |  |
 | `exclusive` | `string` |  |
 | `expansion` | `string` |  |
 | `id` | `int` |  |
 | `location` | `map[string]any` |  |
 | `name` | `string` |  |
 | `platform` | `string` |  |
-| `quest_rank` | `string` |  |
-| `requirement` | `string` |  |
-| `start_timestamp` | `string` |  |
-| `success_condition` | `string` |  |
+| `questRank` | `string` |  |
+| `requirements` | `string` |  |
+| `startTimestamp` | `string` |  |
+| `successConditions` | `string` |  |
 | `type` | `string` |  |
+| `zoneCount` | `int` |  |
 
 #### Example: Load
 
@@ -762,13 +766,13 @@ Create an instance: `item := client.Item(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `buy_price` | `int` |  |
-| `carry_limit` | `int` |  |
+| `buyPrice` | `int` |  |
+| `carryLimit` | `int` |  |
 | `description` | `string` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
 | `rarity` | `int` |  |
-| `sell_price` | `int` |  |
+| `sellPrice` | `int` |  |
 | `value` | `int` |  |
 
 #### Example: Load
@@ -807,10 +811,10 @@ Create an instance: `location := client.Location(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `camp` | `[]any` |  |
+| `camps` | `[]any` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
-| `zone_count` | `int` |  |
+| `zoneCount` | `int` |  |
 
 #### Example: Load
 
@@ -848,17 +852,17 @@ Create an instance: `monster := client.Monster(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ailment` | `[]any` |  |
+| `ailments` | `[]any` |  |
 | `description` | `string` |  |
-| `element` | `[]any` |  |
+| `elements` | `[]any` |  |
 | `id` | `int` |  |
-| `location` | `[]any` |  |
+| `locations` | `[]any` |  |
 | `name` | `string` |  |
-| `resistance` | `[]any` |  |
-| `reward` | `[]any` |  |
+| `resistances` | `[]any` |  |
+| `rewards` | `[]any` |  |
 | `species` | `string` |  |
 | `type` | `string` |  |
-| `weakness` | `[]any` |  |
+| `weaknesses` | `[]any` |  |
 
 #### Example: Load
 
@@ -896,12 +900,12 @@ Create an instance: `motionValue := client.MotionValue(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `damage_type` | `string` |  |
+| `damageType` | `string` |  |
 | `exhaust` | `int` |  |
-| `hit` | `[]any` |  |
+| `hits` | `[]any` |  |
 | `id` | `int` |  |
 | `stun` | `int` |  |
-| `weapon_type` | `string` |  |
+| `weaponType` | `string` |  |
 
 #### Example: Load
 
@@ -942,7 +946,7 @@ Create an instance: `skill := client.Skill(nil)`
 | `description` | `string` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
-| `rank` | `[]any` |  |
+| `ranks` | `[]any` |  |
 
 #### Example: Load
 
@@ -980,16 +984,16 @@ Create an instance: `weapon := client.Weapon(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asset` | `map[string]any` |  |
+| `assets` | `map[string]any` |  |
 | `attack` | `map[string]any` |  |
-| `attribute` | `map[string]any` |  |
+| `attributes` | `map[string]any` |  |
 | `crafting` | `map[string]any` |  |
-| `damage_type` | `string` |  |
-| `element` | `[]any` |  |
+| `damageType` | `string` |  |
+| `elements` | `[]any` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
 | `rarity` | `int` |  |
-| `slot` | `[]any` |  |
+| `slots` | `[]any` |  |
 | `type` | `string` |  |
 
 #### Example: Load

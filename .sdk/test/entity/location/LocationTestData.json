@@ -2,31 +2,31 @@
   "existing": {
     "location": {
       "LOCATION00": {
-        "camp": [],
+        "camps": [],
         "id": "LOCATION00",
         "name": "s2a",
-        "zone_count": "s2b"
+        "zoneCount": "s2b"
       },
       "LOCATION01": {
-        "camp": [],
+        "camps": [],
         "id": "LOCATION01",
         "name": "s52",
-        "zone_count": "s53"
+        "zoneCount": "s53"
       },
       "LOCATION02": {
-        "camp": [],
+        "camps": [],
         "id": "LOCATION02",
         "name": "s7a",
-        "zone_count": "s7b"
+        "zoneCount": "s7b"
       }
     }
   },
   "new": {
     "location": {
       "location_ref01": {
-        "camp": [],
+        "camps": [],
         "name": "sa2",
-        "zone_count": "sa3"
+        "zoneCount": "sa3"
       }
     }
   }

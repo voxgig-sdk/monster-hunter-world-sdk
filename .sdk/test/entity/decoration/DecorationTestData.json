@@ -5,21 +5,21 @@
         "id": "DECORATION00",
         "name": "s33",
         "rarity": "s34",
-        "skill": [],
+        "skills": [],
         "slot": "s36"
       },
       "DECORATION01": {
         "id": "DECORATION01",
         "name": "s65",
         "rarity": "s66",
-        "skill": [],
+        "skills": [],
         "slot": "s68"
       },
       "DECORATION02": {
         "id": "DECORATION02",
         "name": "s97",
         "rarity": "s98",
-        "skill": [],
+        "skills": [],
         "slot": "s9a"
       }
     }
@@ -29,7 +29,7 @@
       "decoration_ref01": {
         "name": "sc9",
         "rarity": "sca",
-        "skill": [],
+        "skills": [],
         "slot": "scc"
       }
     }

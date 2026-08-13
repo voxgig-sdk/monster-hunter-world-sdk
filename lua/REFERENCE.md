@@ -198,18 +198,18 @@ local armor = client:Armor(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `armor_set` | `table` | No |  |
-| `asset` | `table` | No |  |
-| `attribute` | `table` | No |  |
+| `armorSet` | `table` | No |  |
+| `assets` | `table` | No |  |
+| `attributes` | `table` | No |  |
 | `crafting` | `table` | No |  |
 | `defense` | `table` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
 | `rank` | `string` | No |  |
 | `rarity` | `number` | No |  |
-| `resistance` | `table` | No |  |
-| `skill` | `table` | No |  |
-| `slot` | `table` | No |  |
+| `resistances` | `table` | No |  |
+| `skills` | `table` | No |  |
+| `slots` | `table` | No |  |
 | `type` | `string` | No |  |
 
 ### Operations
@@ -273,7 +273,7 @@ local armor_set = client:ArmorSet(nil)
 | `bonus` | `table` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
-| `piece` | `table` | No |  |
+| `pieces` | `table` | No |  |
 | `rank` | `string` | No |  |
 
 ### Operations
@@ -338,7 +338,7 @@ local charm = client:Charm(nil)
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
 | `rarity` | `number` | No |  |
-| `skill` | `table` | No |  |
+| `skills` | `table` | No |  |
 
 ### Operations
 
@@ -401,7 +401,7 @@ local decoration = client:Decoration(nil)
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
 | `rarity` | `number` | No |  |
-| `skill` | `table` | No |  |
+| `skills` | `table` | No |  |
 | `slot` | `number` | No |  |
 
 ### Operations
@@ -462,19 +462,21 @@ local event = client:Event(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `camps` | `table` | No |  |
 | `description` | `string` | No |  |
-| `end_timestamp` | `string` | No |  |
+| `endTimestamp` | `string` | No |  |
 | `exclusive` | `string` | No |  |
 | `expansion` | `string` | No |  |
 | `id` | `number` | No |  |
 | `location` | `table` | No |  |
 | `name` | `string` | No |  |
 | `platform` | `string` | No |  |
-| `quest_rank` | `string` | No |  |
-| `requirement` | `string` | No |  |
-| `start_timestamp` | `string` | No |  |
-| `success_condition` | `string` | No |  |
+| `questRank` | `string` | No |  |
+| `requirements` | `string` | No |  |
+| `startTimestamp` | `string` | No |  |
+| `successConditions` | `string` | No |  |
 | `type` | `string` | No |  |
+| `zoneCount` | `number` | No |  |
 
 ### Operations
 
@@ -534,13 +536,13 @@ local item = client:Item(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `buy_price` | `number` | No |  |
-| `carry_limit` | `number` | No |  |
+| `buyPrice` | `number` | No |  |
+| `carryLimit` | `number` | No |  |
 | `description` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
 | `rarity` | `number` | No |  |
-| `sell_price` | `number` | No |  |
+| `sellPrice` | `number` | No |  |
 | `value` | `number` | No |  |
 
 ### Operations
@@ -601,10 +603,10 @@ local location = client:Location(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `camp` | `table` | No |  |
+| `camps` | `table` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
-| `zone_count` | `number` | No |  |
+| `zoneCount` | `number` | No |  |
 
 ### Operations
 
@@ -664,17 +666,17 @@ local monster = client:Monster(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ailment` | `table` | No |  |
+| `ailments` | `table` | No |  |
 | `description` | `string` | No |  |
-| `element` | `table` | No |  |
+| `elements` | `table` | No |  |
 | `id` | `number` | No |  |
-| `location` | `table` | No |  |
+| `locations` | `table` | No |  |
 | `name` | `string` | No |  |
-| `resistance` | `table` | No |  |
-| `reward` | `table` | No |  |
+| `resistances` | `table` | No |  |
+| `rewards` | `table` | No |  |
 | `species` | `string` | No |  |
 | `type` | `string` | No |  |
-| `weakness` | `table` | No |  |
+| `weaknesses` | `table` | No |  |
 
 ### Operations
 
@@ -734,12 +736,12 @@ local motion_value = client:MotionValue(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `damage_type` | `string` | No |  |
+| `damageType` | `string` | No |  |
 | `exhaust` | `number` | No |  |
-| `hit` | `table` | No |  |
+| `hits` | `table` | No |  |
 | `id` | `number` | No |  |
 | `stun` | `number` | No |  |
-| `weapon_type` | `string` | No |  |
+| `weaponType` | `string` | No |  |
 
 ### Operations
 
@@ -802,7 +804,7 @@ local skill = client:Skill(nil)
 | `description` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
-| `rank` | `table` | No |  |
+| `ranks` | `table` | No |  |
 
 ### Operations
 
@@ -862,16 +864,16 @@ local weapon = client:Weapon(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asset` | `table` | No |  |
+| `assets` | `table` | No |  |
 | `attack` | `table` | No |  |
-| `attribute` | `table` | No |  |
+| `attributes` | `table` | No |  |
 | `crafting` | `table` | No |  |
-| `damage_type` | `string` | No |  |
-| `element` | `table` | No |  |
+| `damageType` | `string` | No |  |
+| `elements` | `table` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
 | `rarity` | `number` | No |  |
-| `slot` | `table` | No |  |
+| `slots` | `table` | No |  |
 | `type` | `string` | No |  |
 
 ### Operations

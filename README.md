@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = MonsterHunterWorldSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = MonsterHunterWorldSDK.test({
+  entity: {
+    ailment: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const ailments = await client.Ailment().list()
-// ailments is an array of bare Ailment records populated with mock data
+// ailments is an array of Ailment entities, populated with mock data
+// — call ailments[0].data() for the record itself
 console.log(ailments)
 ```
 
@@ -110,7 +119,7 @@ import { MonsterHunterWorldSDK } from '@voxgig-sdk/monster-hunter-world'
 
 const client = new MonsterHunterWorldSDK()
 
-// List all ailments (returns Ailment[])
+// List all ailments (returns AilmentEntity[] — .data() for the record)
 const ailments = await client.Ailment().list()
 for (const ailment of ailments) {
   console.log(ailment)
@@ -202,7 +211,7 @@ $client = new MonsterHunterWorldSDK();
 $ailments = $client->Ailment()->list();
 print_r($ailments);
 
-// Load a specific ailment (returns the bare record; throws on error)
+// Load a specific ailment (returns the ENTITY; call data_get() for the record; throws on error)
 $ailment = $client->Ailment()->load(["id" => 1]);
 print_r($ailment);
 ```
@@ -233,7 +242,7 @@ client = MonsterHunterWorldSDK.new
 ailments = client.Ailment.list
 puts ailments
 
-# Load a specific ailment (returns the bare record; raises on error)
+# Load a specific ailment (returns the ENTITY; call data_get for the record)
 ailment = client.Ailment.load({ "id" => 1 })
 puts ailment
 ```
@@ -370,6 +379,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://docs.mhw-db.com](https://docs.mhw-db.com)
 

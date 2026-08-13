@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ MonsterHunterWorldUtility::setRegistrar(function (MonsterHunterWorldUtility $u):
     $u->prepare_params = [MonsterHunterWorldPrepareParams::class, 'call'];
     $u->prepare_path = [MonsterHunterWorldPreparePath::class, 'call'];
     $u->prepare_query = [MonsterHunterWorldPrepareQuery::class, 'call'];
+    $u->graphql_body = [MonsterHunterWorldGraphql::class, 'body'];
+    $u->graphql_errors = [MonsterHunterWorldGraphql::class, 'errors'];
     $u->result_basic = [MonsterHunterWorldResultBasic::class, 'call'];
     $u->result_body = [MonsterHunterWorldResultBody::class, 'call'];
     $u->result_headers = [MonsterHunterWorldResultHeaders::class, 'call'];

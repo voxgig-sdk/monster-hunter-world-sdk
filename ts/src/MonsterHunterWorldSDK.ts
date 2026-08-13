@@ -157,8 +157,29 @@ class MonsterHunterWorldSDK {
   }
 
 
+  // Raw endpoint access is operator-controllable, like every entity op.
+  // Blocking it means denying BOTH the 'direct' and 'graphql' tokens, since
+  // either one reaches the same endpoint.
   async direct(fetchargs?: any) {
+    if (!this._options.allow.op.includes('direct')) {
+      return {
+        ok: false,
+        err: new Error('MonsterHunterWorldSDK: direct: operation not allowed by' +
+          ' SDK option allow.op value: "' + this._options.allow.op + '"'),
+      }
+    }
+
+    return this._rawRequest(fetchargs)
+  }
+
+
+  // Ungated request path shared by direct() and graphql(), each of which
+  // checks its own allow.op token first. Private, rather than a flag on
+  // fetchargs: a caller-supplied marker would let anyone opt straight back
+  // out of the gate by passing it.
+  async _rawRequest(fetchargs?: any) {
     const utility = this._utility
+
     const fetcher = utility.fetcher
     const makeContext = utility.makeContext
 
@@ -219,87 +240,165 @@ class MonsterHunterWorldSDK {
 
 
 
+  // Raw GraphQL access: the pressure valve that makes the generated
+  // surface's deliberate omissions (per-call selection sets, typed filter
+  // builders, batching, subscriptions) livable — the whole schema stays
+  // reachable.
+  //
+  // Thin wrapper over the same prepare/fetch path `direct` uses, with the
+  // one thing raw `direct` cannot do for GraphQL: a GraphQL failure rides
+  // HTTP 200 as a top-level `errors` array, so status alone would report a
+  // failed query as ok.
+  //
+  // NOTE: like `direct`, this bypasses the feature pipeline — no retry,
+  // ratelimit or paging features apply.
+  async graphql(query: string, variables?: any, ctrl?: any) {
+    const options = this._options
+
+    if (!options.allow.op.includes('graphql')) {
+      return {
+        ok: false,
+        err: new Error('MonsterHunterWorldSDK: graphql: operation not allowed by' +
+          ' SDK option allow.op value: "' + options.allow.op + '"'),
+      }
+    }
+
+    const res: any = await this._rawRequest({
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: { query, variables: variables || {} },
+      ctrl,
+    })
+
+    if (res instanceof Error) {
+      return res
+    }
+
+    // Errors are read BEFORE any status check: a GraphQL parse or validation
+    // failure comes back as HTTP 400 carrying the standard { errors: [...] }
+    // body, and the raw path represents a non-2xx as { ok: false } with no
+    // err — so returning early on status would discard the server's own
+    // diagnostics, which are the only useful part of that response.
+    const errors = null == res.data ? undefined : res.data.errors
+
+    if (null != errors && Array.isArray(errors) && 0 < errors.length) {
+      const first = errors[0] || {}
+      const err: any = new Error('MonsterHunterWorldSDK: graphql: ' +
+        (first.message || 'graphql error'))
+      err.graphql = errors
+      return { ok: false, status: res.status, headers: res.headers, err, data: res.data }
+    }
+
+    return res
+  }
+
+
+
   // Entity access: `client.Ailment().list()` / `client.Ailment().load({ id })`.
-  Ailment(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Ailment(entopts?: Record<string, any>) {
     const self = this
-    return new AilmentEntity(self,data)
+    return new AilmentEntity(self, entopts)
   }
 
 
   // Entity access: `client.Armor().list()` / `client.Armor().load({ id })`.
-  Armor(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Armor(entopts?: Record<string, any>) {
     const self = this
-    return new ArmorEntity(self,data)
+    return new ArmorEntity(self, entopts)
   }
 
 
   // Entity access: `client.ArmorSet().list()` / `client.ArmorSet().load({ id })`.
-  ArmorSet(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ArmorSet(entopts?: Record<string, any>) {
     const self = this
-    return new ArmorSetEntity(self,data)
+    return new ArmorSetEntity(self, entopts)
   }
 
 
   // Entity access: `client.Charm().list()` / `client.Charm().load({ id })`.
-  Charm(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Charm(entopts?: Record<string, any>) {
     const self = this
-    return new CharmEntity(self,data)
+    return new CharmEntity(self, entopts)
   }
 
 
   // Entity access: `client.Decoration().list()` / `client.Decoration().load({ id })`.
-  Decoration(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Decoration(entopts?: Record<string, any>) {
     const self = this
-    return new DecorationEntity(self,data)
+    return new DecorationEntity(self, entopts)
   }
 
 
   // Entity access: `client.Event().list()` / `client.Event().load({ id })`.
-  Event(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Event(entopts?: Record<string, any>) {
     const self = this
-    return new EventEntity(self,data)
+    return new EventEntity(self, entopts)
   }
 
 
   // Entity access: `client.Item().list()` / `client.Item().load({ id })`.
-  Item(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Item(entopts?: Record<string, any>) {
     const self = this
-    return new ItemEntity(self,data)
+    return new ItemEntity(self, entopts)
   }
 
 
   // Entity access: `client.Location().list()` / `client.Location().load({ id })`.
-  Location(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Location(entopts?: Record<string, any>) {
     const self = this
-    return new LocationEntity(self,data)
+    return new LocationEntity(self, entopts)
   }
 
 
   // Entity access: `client.Monster().list()` / `client.Monster().load({ id })`.
-  Monster(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Monster(entopts?: Record<string, any>) {
     const self = this
-    return new MonsterEntity(self,data)
+    return new MonsterEntity(self, entopts)
   }
 
 
   // Entity access: `client.MotionValue().list()` / `client.MotionValue().load({ id })`.
-  MotionValue(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  MotionValue(entopts?: Record<string, any>) {
     const self = this
-    return new MotionValueEntity(self,data)
+    return new MotionValueEntity(self, entopts)
   }
 
 
   // Entity access: `client.Skill().list()` / `client.Skill().load({ id })`.
-  Skill(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Skill(entopts?: Record<string, any>) {
     const self = this
-    return new SkillEntity(self,data)
+    return new SkillEntity(self, entopts)
   }
 
 
   // Entity access: `client.Weapon().list()` / `client.Weapon().load({ id })`.
-  Weapon(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Weapon(entopts?: Record<string, any>) {
     const self = this
-    return new WeaponEntity(self,data)
+    return new WeaponEntity(self, entopts)
   }
 
 

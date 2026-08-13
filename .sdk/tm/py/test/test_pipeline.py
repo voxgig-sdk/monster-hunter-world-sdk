@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import MonsterHunterWorldSDK
-from core.error import MonsterHunterWorldError
-from core.result import MonsterHunterWorldResult
-from core.response import MonsterHunterWorldResponse
-from core.spec import MonsterHunterWorldSpec
-from feature.base_feature import MonsterHunterWorldBaseFeature
+from projectname_sdk.core.error import MonsterHunterWorldError
+from projectname_sdk.core.result import MonsterHunterWorldResult
+from projectname_sdk.core.response import MonsterHunterWorldResponse
+from projectname_sdk.core.spec import MonsterHunterWorldSpec
+from projectname_sdk.feature.base_feature import MonsterHunterWorldBaseFeature
 
 
 def _client():
