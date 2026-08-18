@@ -28,7 +28,7 @@ class MonsterHunterWorldSDK
     utility = MonsterHunterWorldUtility.new
     @_utility = utility
 
-    config = MonsterHunterWorldConfig.make_config
+    config = MonsterHunterWorldConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

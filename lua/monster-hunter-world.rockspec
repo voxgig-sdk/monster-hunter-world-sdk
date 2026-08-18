@@ -23,6 +23,7 @@ build = {
   modules = {
     ["monster-hunter-world_sdk"] = "monster-hunter-world_sdk.lua",
     ["config"] = "config.lua",
+    ["config_shared"] = "config_shared.lua",
     ["features"] = "features.lua",
   }
 }

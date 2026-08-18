@@ -40,7 +40,7 @@ class MonsterHunterWorldSDK
         $utility = new MonsterHunterWorldUtility();
         $this->_utility = $utility;
 
-        $config = MonsterHunterWorldConfig::make_config();
+        $config = MonsterHunterWorldConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

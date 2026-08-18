@@ -15,7 +15,7 @@ require_relative "../MonsterHunterWorld_sdk"
 module MonsterHunterWorldFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = MonsterHunterWorldConfig.make_config["feature"]
+    f = MonsterHunterWorldConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 
