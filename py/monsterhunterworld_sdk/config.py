@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "MonsterHunterWorld",
+            "slug": "monster-hunter-world",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -61,14 +64,17 @@ def make_config():
         "fields": [
           {
             "name": "description",
+            "short": "A short description of the ailment",
             "type": "`$STRING`",
           },
           {
             "name": "id",
+            "short": "The ID of the ailment",
             "type": "`$INTEGER`",
           },
           {
             "name": "name",
+            "short": "The name of the ailment",
             "type": "`$STRING`",
           },
           {
@@ -183,6 +189,7 @@ def make_config():
           },
           {
             "name": "attributes",
+            "short": "Dictionary of attribute modifiers attached to the armor piece",
             "type": "`$OBJECT`",
           },
           {
@@ -195,18 +202,22 @@ def make_config():
           },
           {
             "name": "id",
+            "short": "The ID of the armor piece",
             "type": "`$INTEGER`",
           },
           {
             "name": "name",
+            "short": "The name of the armor piece",
             "type": "`$STRING`",
           },
           {
             "name": "rank",
+            "short": "The rank of the armor piece",
             "type": "`$STRING`",
           },
           {
             "name": "rarity",
+            "short": "The rarity of the armor piece",
             "type": "`$INTEGER`",
           },
           {
@@ -215,14 +226,17 @@ def make_config():
           },
           {
             "name": "skills",
+            "short": "An array of skill ranks granted by the armor",
             "type": "`$ARRAY`",
           },
           {
             "name": "slots",
+            "short": "An array of decoration slot information",
             "type": "`$ARRAY`",
           },
           {
             "name": "type",
+            "short": "The slot the armor piece fits in",
             "type": "`$STRING`",
           },
         ],
@@ -321,22 +335,27 @@ def make_config():
         "fields": [
           {
             "name": "bonus",
+            "short": "The set bonus, if any",
             "type": "`$OBJECT`",
           },
           {
             "name": "id",
+            "short": "The ID of the armor set",
             "type": "`$INTEGER`",
           },
           {
             "name": "name",
+            "short": "The name of the armor set",
             "type": "`$STRING`",
           },
           {
             "name": "pieces",
+            "short": "Array of armor pieces in the set",
             "type": "`$ARRAY`",
           },
           {
             "name": "rank",
+            "short": "The rank of the armor set",
             "type": "`$STRING`",
           },
         ],
@@ -441,18 +460,22 @@ def make_config():
           },
           {
             "name": "id",
+            "short": "The ID of the charm",
             "type": "`$INTEGER`",
           },
           {
             "name": "name",
+            "short": "The name of the charm",
             "type": "`$STRING`",
           },
           {
             "name": "rarity",
+            "short": "The rarity of the charm",
             "type": "`$INTEGER`",
           },
           {
             "name": "skills",
+            "short": "An array of skill ranks granted by the charm",
             "type": "`$ARRAY`",
           },
         ],
@@ -551,22 +574,27 @@ def make_config():
         "fields": [
           {
             "name": "id",
+            "short": "The ID of the decoration",
             "type": "`$INTEGER`",
           },
           {
             "name": "name",
+            "short": "The name of the decoration",
             "type": "`$STRING`",
           },
           {
             "name": "rarity",
+            "short": "The rarity of the decoration",
             "type": "`$INTEGER`",
           },
           {
             "name": "skills",
+            "short": "An array of skill ranks granted by the decoration",
             "type": "`$ARRAY`",
           },
           {
             "name": "slot",
+            "short": "The slot rank required for the decoration",
             "type": "`$INTEGER`",
           },
         ],
@@ -665,26 +693,32 @@ def make_config():
         "fields": [
           {
             "name": "camps",
+            "short": "An array of camps in the location",
             "type": "`$ARRAY`",
           },
           {
             "name": "description",
+            "short": "A description of the event",
             "type": "`$STRING`",
           },
           {
             "name": "endTimestamp",
+            "short": "The end time of the event",
             "type": "`$STRING`",
           },
           {
             "name": "exclusive",
+            "short": "Whether the event is exclusive to a platform",
             "type": "`$STRING`",
           },
           {
             "name": "expansion",
+            "short": "The expansion the event belongs to",
             "type": "`$STRING`",
           },
           {
             "name": "id",
+            "short": "The ID of the location",
             "type": "`$INTEGER`",
           },
           {
@@ -693,34 +727,42 @@ def make_config():
           },
           {
             "name": "name",
+            "short": "The name of the location",
             "type": "`$STRING`",
           },
           {
             "name": "platform",
+            "short": "The platform for the event",
             "type": "`$STRING`",
           },
           {
             "name": "questRank",
+            "short": "The quest rank of the event",
             "type": "`$STRING`",
           },
           {
             "name": "requirements",
+            "short": "Requirements for the event",
             "type": "`$STRING`",
           },
           {
             "name": "startTimestamp",
+            "short": "The start time of the event",
             "type": "`$STRING`",
           },
           {
             "name": "successConditions",
+            "short": "Conditions for success",
             "type": "`$STRING`",
           },
           {
             "name": "type",
+            "short": "The type of event",
             "type": "`$STRING`",
           },
           {
             "name": "zoneCount",
+            "short": "The number of zones in the location",
             "type": "`$INTEGER`",
           },
         ],
@@ -819,34 +861,42 @@ def make_config():
         "fields": [
           {
             "name": "buyPrice",
+            "short": "The price when buying the item",
             "type": "`$INTEGER`",
           },
           {
             "name": "carryLimit",
+            "short": "The maximum number of this item that can be carried",
             "type": "`$INTEGER`",
           },
           {
             "name": "description",
+            "short": "A description of the item",
             "type": "`$STRING`",
           },
           {
             "name": "id",
+            "short": "The ID of the item",
             "type": "`$INTEGER`",
           },
           {
             "name": "name",
+            "short": "The name of the item",
             "type": "`$STRING`",
           },
           {
             "name": "rarity",
+            "short": "The rarity of the item",
             "type": "`$INTEGER`",
           },
           {
             "name": "sellPrice",
+            "short": "The price when selling the item",
             "type": "`$INTEGER`",
           },
           {
             "name": "value",
+            "short": "The value of the item",
             "type": "`$INTEGER`",
           },
         ],
@@ -945,18 +995,22 @@ def make_config():
         "fields": [
           {
             "name": "camps",
+            "short": "An array of camps in the location",
             "type": "`$ARRAY`",
           },
           {
             "name": "id",
+            "short": "The ID of the location",
             "type": "`$INTEGER`",
           },
           {
             "name": "name",
+            "short": "The name of the location",
             "type": "`$STRING`",
           },
           {
             "name": "zoneCount",
+            "short": "The number of zones in the location",
             "type": "`$INTEGER`",
           },
         ],
@@ -1055,46 +1109,57 @@ def make_config():
         "fields": [
           {
             "name": "ailments",
+            "short": "Ailments the monster can inflict",
             "type": "`$ARRAY`",
           },
           {
             "name": "description",
+            "short": "A description of the monster",
             "type": "`$STRING`",
           },
           {
             "name": "elements",
+            "short": "Elements the monster uses",
             "type": "`$ARRAY`",
           },
           {
             "name": "id",
+            "short": "The ID of the monster",
             "type": "`$INTEGER`",
           },
           {
             "name": "locations",
+            "short": "Locations where the monster can be found",
             "type": "`$ARRAY`",
           },
           {
             "name": "name",
+            "short": "The name of the monster",
             "type": "`$STRING`",
           },
           {
             "name": "resistances",
+            "short": "Resistances of the monster",
             "type": "`$ARRAY`",
           },
           {
             "name": "rewards",
+            "short": "Rewards obtained from the monster",
             "type": "`$ARRAY`",
           },
           {
             "name": "species",
+            "short": "The species of the monster",
             "type": "`$STRING`",
           },
           {
             "name": "type",
+            "short": "The type of monster",
             "type": "`$STRING`",
           },
           {
             "name": "weaknesses",
+            "short": "Weaknesses of the monster",
             "type": "`$ARRAY`",
           },
         ],
@@ -1193,26 +1258,32 @@ def make_config():
         "fields": [
           {
             "name": "damageType",
+            "short": "The type of damage",
             "type": "`$STRING`",
           },
           {
             "name": "exhaust",
+            "short": "Exhaust value",
             "type": "`$INTEGER`",
           },
           {
             "name": "hits",
+            "short": "Hit information",
             "type": "`$ARRAY`",
           },
           {
             "name": "id",
+            "short": "The ID of the motion value",
             "type": "`$INTEGER`",
           },
           {
             "name": "stun",
+            "short": "Stun value",
             "type": "`$INTEGER`",
           },
           {
             "name": "weaponType",
+            "short": "The type of weapon",
             "type": "`$STRING`",
           },
         ],
@@ -1311,18 +1382,22 @@ def make_config():
         "fields": [
           {
             "name": "description",
+            "short": "A description of the skill",
             "type": "`$STRING`",
           },
           {
             "name": "id",
+            "short": "The ID of the skill",
             "type": "`$INTEGER`",
           },
           {
             "name": "name",
+            "short": "The name of the skill",
             "type": "`$STRING`",
           },
           {
             "name": "ranks",
+            "short": "An array of skill ranks",
             "type": "`$ARRAY`",
           },
         ],
@@ -1421,46 +1496,57 @@ def make_config():
         "fields": [
           {
             "name": "assets",
+            "short": "Asset URLs for the weapon",
             "type": "`$OBJECT`",
           },
           {
             "name": "attack",
+            "short": "Attack values for the weapon",
             "type": "`$OBJECT`",
           },
           {
             "name": "attributes",
+            "short": "Additional weapon attributes",
             "type": "`$OBJECT`",
           },
           {
             "name": "crafting",
+            "short": "Crafting information for the weapon",
             "type": "`$OBJECT`",
           },
           {
             "name": "damageType",
+            "short": "The damage type of the weapon",
             "type": "`$STRING`",
           },
           {
             "name": "elements",
+            "short": "Elemental damage information",
             "type": "`$ARRAY`",
           },
           {
             "name": "id",
+            "short": "The ID of the weapon",
             "type": "`$INTEGER`",
           },
           {
             "name": "name",
+            "short": "The name of the weapon",
             "type": "`$STRING`",
           },
           {
             "name": "rarity",
+            "short": "The rarity of the weapon",
             "type": "`$INTEGER`",
           },
           {
             "name": "slots",
+            "short": "An array of decoration slot information",
             "type": "`$ARRAY`",
           },
           {
             "name": "type",
+            "short": "The type of weapon",
             "type": "`$STRING`",
           },
         ],

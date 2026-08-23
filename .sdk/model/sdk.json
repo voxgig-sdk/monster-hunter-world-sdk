@@ -36,18 +36,21 @@
               "active": true,
               "name": "description",
               "req": false,
+              "short": "A short description of the ailment",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "The ID of the ailment",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "The name of the ailment",
               "type": "`$STRING`"
             },
             {
@@ -189,6 +192,7 @@
               "active": true,
               "name": "attributes",
               "req": false,
+              "short": "Dictionary of attribute modifiers attached to the armor piece",
               "type": "`$OBJECT`"
             },
             {
@@ -207,24 +211,28 @@
               "active": true,
               "name": "id",
               "req": false,
+              "short": "The ID of the armor piece",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "The name of the armor piece",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "rank",
               "req": false,
+              "short": "The rank of the armor piece",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "rarity",
               "req": false,
+              "short": "The rarity of the armor piece",
               "type": "`$INTEGER`"
             },
             {
@@ -237,18 +245,21 @@
               "active": true,
               "name": "skills",
               "req": false,
+              "short": "An array of skill ranks granted by the armor",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "slots",
               "req": false,
+              "short": "An array of decoration slot information",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "The slot the armor piece fits in",
               "type": "`$STRING`"
             }
           ],
@@ -366,30 +377,35 @@
               "active": true,
               "name": "bonus",
               "req": false,
+              "short": "The set bonus, if any",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "The ID of the armor set",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "The name of the armor set",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "pieces",
               "req": false,
+              "short": "Array of armor pieces in the set",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "rank",
               "req": false,
+              "short": "The rank of the armor set",
               "type": "`$STRING`"
             }
           ],
@@ -515,24 +531,28 @@
               "active": true,
               "name": "id",
               "req": false,
+              "short": "The ID of the charm",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "The name of the charm",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "rarity",
               "req": false,
+              "short": "The rarity of the charm",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "skills",
               "req": false,
+              "short": "An array of skill ranks granted by the charm",
               "type": "`$ARRAY`"
             }
           ],
@@ -650,30 +670,35 @@
               "active": true,
               "name": "id",
               "req": false,
+              "short": "The ID of the decoration",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "The name of the decoration",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "rarity",
               "req": false,
+              "short": "The rarity of the decoration",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "skills",
               "req": false,
+              "short": "An array of skill ranks granted by the decoration",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "slot",
               "req": false,
+              "short": "The slot rank required for the decoration",
               "type": "`$INTEGER`"
             }
           ],
@@ -791,36 +816,42 @@
               "active": true,
               "name": "camps",
               "req": false,
+              "short": "An array of camps in the location",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "A description of the event",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "endTimestamp",
               "req": false,
+              "short": "The end time of the event",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "exclusive",
               "req": false,
+              "short": "Whether the event is exclusive to a platform",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "expansion",
               "req": false,
+              "short": "The expansion the event belongs to",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "The ID of the location",
               "type": "`$INTEGER`"
             },
             {
@@ -833,48 +864,56 @@
               "active": true,
               "name": "name",
               "req": false,
+              "short": "The name of the location",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "platform",
               "req": false,
+              "short": "The platform for the event",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "questRank",
               "req": false,
+              "short": "The quest rank of the event",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "requirements",
               "req": false,
+              "short": "Requirements for the event",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "startTimestamp",
               "req": false,
+              "short": "The start time of the event",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "successConditions",
               "req": false,
+              "short": "Conditions for success",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "The type of event",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "zoneCount",
               "req": false,
+              "short": "The number of zones in the location",
               "type": "`$INTEGER`"
             }
           ],
@@ -992,48 +1031,56 @@
               "active": true,
               "name": "buyPrice",
               "req": false,
+              "short": "The price when buying the item",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "carryLimit",
               "req": false,
+              "short": "The maximum number of this item that can be carried",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "A description of the item",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "The ID of the item",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "The name of the item",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "rarity",
               "req": false,
+              "short": "The rarity of the item",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "sellPrice",
               "req": false,
+              "short": "The price when selling the item",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "value",
               "req": false,
+              "short": "The value of the item",
               "type": "`$INTEGER`"
             }
           ],
@@ -1151,24 +1198,28 @@
               "active": true,
               "name": "camps",
               "req": false,
+              "short": "An array of camps in the location",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "The ID of the location",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "The name of the location",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "zoneCount",
               "req": false,
+              "short": "The number of zones in the location",
               "type": "`$INTEGER`"
             }
           ],
@@ -1286,66 +1337,77 @@
               "active": true,
               "name": "ailments",
               "req": false,
+              "short": "Ailments the monster can inflict",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "A description of the monster",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "elements",
               "req": false,
+              "short": "Elements the monster uses",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "The ID of the monster",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "locations",
               "req": false,
+              "short": "Locations where the monster can be found",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "The name of the monster",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "resistances",
               "req": false,
+              "short": "Resistances of the monster",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "rewards",
               "req": false,
+              "short": "Rewards obtained from the monster",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "species",
               "req": false,
+              "short": "The species of the monster",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "The type of monster",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "weaknesses",
               "req": false,
+              "short": "Weaknesses of the monster",
               "type": "`$ARRAY`"
             }
           ],
@@ -1463,36 +1525,42 @@
               "active": true,
               "name": "damageType",
               "req": false,
+              "short": "The type of damage",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "exhaust",
               "req": false,
+              "short": "Exhaust value",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "hits",
               "req": false,
+              "short": "Hit information",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "The ID of the motion value",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "stun",
               "req": false,
+              "short": "Stun value",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "weaponType",
               "req": false,
+              "short": "The type of weapon",
               "type": "`$STRING`"
             }
           ],
@@ -1610,24 +1678,28 @@
               "active": true,
               "name": "description",
               "req": false,
+              "short": "A description of the skill",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "The ID of the skill",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "The name of the skill",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "ranks",
               "req": false,
+              "short": "An array of skill ranks",
               "type": "`$ARRAY`"
             }
           ],
@@ -1745,66 +1817,77 @@
               "active": true,
               "name": "assets",
               "req": false,
+              "short": "Asset URLs for the weapon",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "attack",
               "req": false,
+              "short": "Attack values for the weapon",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "attributes",
               "req": false,
+              "short": "Additional weapon attributes",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "crafting",
               "req": false,
+              "short": "Crafting information for the weapon",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "damageType",
               "req": false,
+              "short": "The damage type of the weapon",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "elements",
               "req": false,
+              "short": "Elemental damage information",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "The ID of the weapon",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "The name of the weapon",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "rarity",
               "req": false,
+              "short": "The rarity of the weapon",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "slots",
               "req": false,
+              "short": "An array of decoration slot information",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "The type of weapon",
               "type": "`$STRING`"
             }
           ],

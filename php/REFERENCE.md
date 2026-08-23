@@ -136,9 +136,9 @@ $ailment = $client->Ailment();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
+| `description` | `string` | No | A short description of the ailment |
+| `id` | `int` | No | The ID of the ailment |
+| `name` | `string` | No | The name of the ailment |
 | `protection` | `array` | No |  |
 | `recovery` | `array` | No |  |
 
@@ -202,17 +202,17 @@ $armor = $client->Armor();
 | --- | --- | --- | --- |
 | `armorSet` | `array` | No |  |
 | `assets` | `array` | No |  |
-| `attributes` | `array` | No |  |
+| `attributes` | `array` | No | Dictionary of attribute modifiers attached to the armor piece |
 | `crafting` | `array` | No |  |
 | `defense` | `array` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `rank` | `string` | No |  |
-| `rarity` | `int` | No |  |
+| `id` | `int` | No | The ID of the armor piece |
+| `name` | `string` | No | The name of the armor piece |
+| `rank` | `string` | No | The rank of the armor piece |
+| `rarity` | `int` | No | The rarity of the armor piece |
 | `resistances` | `array` | No |  |
-| `skills` | `array` | No |  |
-| `slots` | `array` | No |  |
-| `type` | `string` | No |  |
+| `skills` | `array` | No | An array of skill ranks granted by the armor |
+| `slots` | `array` | No | An array of decoration slot information |
+| `type` | `string` | No | The slot the armor piece fits in |
 
 ### Operations
 
@@ -272,11 +272,11 @@ $armor_set = $client->ArmorSet();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bonus` | `array` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `pieces` | `array` | No |  |
-| `rank` | `string` | No |  |
+| `bonus` | `array` | No | The set bonus, if any |
+| `id` | `int` | No | The ID of the armor set |
+| `name` | `string` | No | The name of the armor set |
+| `pieces` | `array` | No | Array of armor pieces in the set |
+| `rank` | `string` | No | The rank of the armor set |
 
 ### Operations
 
@@ -337,10 +337,10 @@ $charm = $client->Charm();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `crafting` | `array` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `rarity` | `int` | No |  |
-| `skills` | `array` | No |  |
+| `id` | `int` | No | The ID of the charm |
+| `name` | `string` | No | The name of the charm |
+| `rarity` | `int` | No | The rarity of the charm |
+| `skills` | `array` | No | An array of skill ranks granted by the charm |
 
 ### Operations
 
@@ -400,11 +400,11 @@ $decoration = $client->Decoration();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `rarity` | `int` | No |  |
-| `skills` | `array` | No |  |
-| `slot` | `int` | No |  |
+| `id` | `int` | No | The ID of the decoration |
+| `name` | `string` | No | The name of the decoration |
+| `rarity` | `int` | No | The rarity of the decoration |
+| `skills` | `array` | No | An array of skill ranks granted by the decoration |
+| `slot` | `int` | No | The slot rank required for the decoration |
 
 ### Operations
 
@@ -464,21 +464,21 @@ $event = $client->Event();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `camps` | `array` | No |  |
-| `description` | `string` | No |  |
-| `endTimestamp` | `string` | No |  |
-| `exclusive` | `string` | No |  |
-| `expansion` | `string` | No |  |
-| `id` | `int` | No |  |
+| `camps` | `array` | No | An array of camps in the location |
+| `description` | `string` | No | A description of the event |
+| `endTimestamp` | `string` | No | The end time of the event |
+| `exclusive` | `string` | No | Whether the event is exclusive to a platform |
+| `expansion` | `string` | No | The expansion the event belongs to |
+| `id` | `int` | No | The ID of the location |
 | `location` | `array` | No |  |
-| `name` | `string` | No |  |
-| `platform` | `string` | No |  |
-| `questRank` | `string` | No |  |
-| `requirements` | `string` | No |  |
-| `startTimestamp` | `string` | No |  |
-| `successConditions` | `string` | No |  |
-| `type` | `string` | No |  |
-| `zoneCount` | `int` | No |  |
+| `name` | `string` | No | The name of the location |
+| `platform` | `string` | No | The platform for the event |
+| `questRank` | `string` | No | The quest rank of the event |
+| `requirements` | `string` | No | Requirements for the event |
+| `startTimestamp` | `string` | No | The start time of the event |
+| `successConditions` | `string` | No | Conditions for success |
+| `type` | `string` | No | The type of event |
+| `zoneCount` | `int` | No | The number of zones in the location |
 
 ### Operations
 
@@ -538,14 +538,14 @@ $item = $client->Item();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `buyPrice` | `int` | No |  |
-| `carryLimit` | `int` | No |  |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `rarity` | `int` | No |  |
-| `sellPrice` | `int` | No |  |
-| `value` | `int` | No |  |
+| `buyPrice` | `int` | No | The price when buying the item |
+| `carryLimit` | `int` | No | The maximum number of this item that can be carried |
+| `description` | `string` | No | A description of the item |
+| `id` | `int` | No | The ID of the item |
+| `name` | `string` | No | The name of the item |
+| `rarity` | `int` | No | The rarity of the item |
+| `sellPrice` | `int` | No | The price when selling the item |
+| `value` | `int` | No | The value of the item |
 
 ### Operations
 
@@ -605,10 +605,10 @@ $location = $client->Location();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `camps` | `array` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `zoneCount` | `int` | No |  |
+| `camps` | `array` | No | An array of camps in the location |
+| `id` | `int` | No | The ID of the location |
+| `name` | `string` | No | The name of the location |
+| `zoneCount` | `int` | No | The number of zones in the location |
 
 ### Operations
 
@@ -668,17 +668,17 @@ $monster = $client->Monster();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ailments` | `array` | No |  |
-| `description` | `string` | No |  |
-| `elements` | `array` | No |  |
-| `id` | `int` | No |  |
-| `locations` | `array` | No |  |
-| `name` | `string` | No |  |
-| `resistances` | `array` | No |  |
-| `rewards` | `array` | No |  |
-| `species` | `string` | No |  |
-| `type` | `string` | No |  |
-| `weaknesses` | `array` | No |  |
+| `ailments` | `array` | No | Ailments the monster can inflict |
+| `description` | `string` | No | A description of the monster |
+| `elements` | `array` | No | Elements the monster uses |
+| `id` | `int` | No | The ID of the monster |
+| `locations` | `array` | No | Locations where the monster can be found |
+| `name` | `string` | No | The name of the monster |
+| `resistances` | `array` | No | Resistances of the monster |
+| `rewards` | `array` | No | Rewards obtained from the monster |
+| `species` | `string` | No | The species of the monster |
+| `type` | `string` | No | The type of monster |
+| `weaknesses` | `array` | No | Weaknesses of the monster |
 
 ### Operations
 
@@ -738,12 +738,12 @@ $motion_value = $client->MotionValue();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `damageType` | `string` | No |  |
-| `exhaust` | `int` | No |  |
-| `hits` | `array` | No |  |
-| `id` | `int` | No |  |
-| `stun` | `int` | No |  |
-| `weaponType` | `string` | No |  |
+| `damageType` | `string` | No | The type of damage |
+| `exhaust` | `int` | No | Exhaust value |
+| `hits` | `array` | No | Hit information |
+| `id` | `int` | No | The ID of the motion value |
+| `stun` | `int` | No | Stun value |
+| `weaponType` | `string` | No | The type of weapon |
 
 ### Operations
 
@@ -803,10 +803,10 @@ $skill = $client->Skill();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `ranks` | `array` | No |  |
+| `description` | `string` | No | A description of the skill |
+| `id` | `int` | No | The ID of the skill |
+| `name` | `string` | No | The name of the skill |
+| `ranks` | `array` | No | An array of skill ranks |
 
 ### Operations
 
@@ -866,17 +866,17 @@ $weapon = $client->Weapon();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assets` | `array` | No |  |
-| `attack` | `array` | No |  |
-| `attributes` | `array` | No |  |
-| `crafting` | `array` | No |  |
-| `damageType` | `string` | No |  |
-| `elements` | `array` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `rarity` | `int` | No |  |
-| `slots` | `array` | No |  |
-| `type` | `string` | No |  |
+| `assets` | `array` | No | Asset URLs for the weapon |
+| `attack` | `array` | No | Attack values for the weapon |
+| `attributes` | `array` | No | Additional weapon attributes |
+| `crafting` | `array` | No | Crafting information for the weapon |
+| `damageType` | `string` | No | The damage type of the weapon |
+| `elements` | `array` | No | Elemental damage information |
+| `id` | `int` | No | The ID of the weapon |
+| `name` | `string` | No | The name of the weapon |
+| `rarity` | `int` | No | The rarity of the weapon |
+| `slots` | `array` | No | An array of decoration slot information |
+| `type` | `string` | No | The type of weapon |
 
 ### Operations
 

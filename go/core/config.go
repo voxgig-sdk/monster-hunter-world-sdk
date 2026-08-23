@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "MonsterHunterWorld",
+			"slug": "monster-hunter-world",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -44,14 +47,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "description",
+						"short": "A short description of the ailment",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "The ID of the ailment",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "The name of the ailment",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -166,6 +172,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "attributes",
+						"short": "Dictionary of attribute modifiers attached to the armor piece",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
@@ -178,18 +185,22 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "id",
+						"short": "The ID of the armor piece",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "The name of the armor piece",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "rank",
+						"short": "The rank of the armor piece",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "rarity",
+						"short": "The rarity of the armor piece",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -198,14 +209,17 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "skills",
+						"short": "An array of skill ranks granted by the armor",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "slots",
+						"short": "An array of decoration slot information",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "type",
+						"short": "The slot the armor piece fits in",
 						"type": "`$STRING`",
 					},
 				},
@@ -304,22 +318,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "bonus",
+						"short": "The set bonus, if any",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "The ID of the armor set",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "The name of the armor set",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "pieces",
+						"short": "Array of armor pieces in the set",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "rank",
+						"short": "The rank of the armor set",
 						"type": "`$STRING`",
 					},
 				},
@@ -424,18 +443,22 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "id",
+						"short": "The ID of the charm",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "The name of the charm",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "rarity",
+						"short": "The rarity of the charm",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "skills",
+						"short": "An array of skill ranks granted by the charm",
 						"type": "`$ARRAY`",
 					},
 				},
@@ -534,22 +557,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "id",
+						"short": "The ID of the decoration",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "The name of the decoration",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "rarity",
+						"short": "The rarity of the decoration",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "skills",
+						"short": "An array of skill ranks granted by the decoration",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "slot",
+						"short": "The slot rank required for the decoration",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -648,26 +676,32 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "camps",
+						"short": "An array of camps in the location",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "description",
+						"short": "A description of the event",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "endTimestamp",
+						"short": "The end time of the event",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "exclusive",
+						"short": "Whether the event is exclusive to a platform",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "expansion",
+						"short": "The expansion the event belongs to",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "The ID of the location",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -676,34 +710,42 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "name",
+						"short": "The name of the location",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "platform",
+						"short": "The platform for the event",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "questRank",
+						"short": "The quest rank of the event",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "requirements",
+						"short": "Requirements for the event",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "startTimestamp",
+						"short": "The start time of the event",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "successConditions",
+						"short": "Conditions for success",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "type",
+						"short": "The type of event",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "zoneCount",
+						"short": "The number of zones in the location",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -802,34 +844,42 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "buyPrice",
+						"short": "The price when buying the item",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "carryLimit",
+						"short": "The maximum number of this item that can be carried",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "description",
+						"short": "A description of the item",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "The ID of the item",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "The name of the item",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "rarity",
+						"short": "The rarity of the item",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "sellPrice",
+						"short": "The price when selling the item",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "value",
+						"short": "The value of the item",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -928,18 +978,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "camps",
+						"short": "An array of camps in the location",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "The ID of the location",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "The name of the location",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "zoneCount",
+						"short": "The number of zones in the location",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -1038,46 +1092,57 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "ailments",
+						"short": "Ailments the monster can inflict",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "description",
+						"short": "A description of the monster",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "elements",
+						"short": "Elements the monster uses",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "The ID of the monster",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "locations",
+						"short": "Locations where the monster can be found",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "The name of the monster",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "resistances",
+						"short": "Resistances of the monster",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "rewards",
+						"short": "Rewards obtained from the monster",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "species",
+						"short": "The species of the monster",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "type",
+						"short": "The type of monster",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "weaknesses",
+						"short": "Weaknesses of the monster",
 						"type": "`$ARRAY`",
 					},
 				},
@@ -1176,26 +1241,32 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "damageType",
+						"short": "The type of damage",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "exhaust",
+						"short": "Exhaust value",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "hits",
+						"short": "Hit information",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "The ID of the motion value",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "stun",
+						"short": "Stun value",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "weaponType",
+						"short": "The type of weapon",
 						"type": "`$STRING`",
 					},
 				},
@@ -1294,18 +1365,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "description",
+						"short": "A description of the skill",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "The ID of the skill",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "The name of the skill",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "ranks",
+						"short": "An array of skill ranks",
 						"type": "`$ARRAY`",
 					},
 				},
@@ -1404,46 +1479,57 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "assets",
+						"short": "Asset URLs for the weapon",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "attack",
+						"short": "Attack values for the weapon",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "attributes",
+						"short": "Additional weapon attributes",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "crafting",
+						"short": "Crafting information for the weapon",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "damageType",
+						"short": "The damage type of the weapon",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "elements",
+						"short": "Elemental damage information",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "The ID of the weapon",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "The name of the weapon",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "rarity",
+						"short": "The rarity of the weapon",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "slots",
+						"short": "An array of decoration slot information",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "type",
+						"short": "The type of weapon",
 						"type": "`$STRING`",
 					},
 				},

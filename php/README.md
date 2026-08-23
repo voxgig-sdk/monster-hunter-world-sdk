@@ -274,9 +274,9 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `id` |  |
-| `name` |  |
+| `description` | A short description of the ailment |
+| `id` | The ID of the ailment |
+| `name` | The name of the ailment |
 | `protection` |  |
 | `recovery` |  |
 
@@ -290,17 +290,17 @@ API path: `/ailments`
 | --- | --- |
 | `armorSet` |  |
 | `assets` |  |
-| `attributes` |  |
+| `attributes` | Dictionary of attribute modifiers attached to the armor piece |
 | `crafting` |  |
 | `defense` |  |
-| `id` |  |
-| `name` |  |
-| `rank` |  |
-| `rarity` |  |
+| `id` | The ID of the armor piece |
+| `name` | The name of the armor piece |
+| `rank` | The rank of the armor piece |
+| `rarity` | The rarity of the armor piece |
 | `resistances` |  |
-| `skills` |  |
-| `slots` |  |
-| `type` |  |
+| `skills` | An array of skill ranks granted by the armor |
+| `slots` | An array of decoration slot information |
+| `type` | The slot the armor piece fits in |
 
 Operations: List, Load.
 
@@ -310,11 +310,11 @@ API path: `/armor`
 
 | Field | Description |
 | --- | --- |
-| `bonus` |  |
-| `id` |  |
-| `name` |  |
-| `pieces` |  |
-| `rank` |  |
+| `bonus` | The set bonus, if any |
+| `id` | The ID of the armor set |
+| `name` | The name of the armor set |
+| `pieces` | Array of armor pieces in the set |
+| `rank` | The rank of the armor set |
 
 Operations: List, Load.
 
@@ -325,10 +325,10 @@ API path: `/armor/sets`
 | Field | Description |
 | --- | --- |
 | `crafting` |  |
-| `id` |  |
-| `name` |  |
-| `rarity` |  |
-| `skills` |  |
+| `id` | The ID of the charm |
+| `name` | The name of the charm |
+| `rarity` | The rarity of the charm |
+| `skills` | An array of skill ranks granted by the charm |
 
 Operations: List, Load.
 
@@ -338,11 +338,11 @@ API path: `/charms`
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `name` |  |
-| `rarity` |  |
-| `skills` |  |
-| `slot` |  |
+| `id` | The ID of the decoration |
+| `name` | The name of the decoration |
+| `rarity` | The rarity of the decoration |
+| `skills` | An array of skill ranks granted by the decoration |
+| `slot` | The slot rank required for the decoration |
 
 Operations: List, Load.
 
@@ -352,21 +352,21 @@ API path: `/decorations`
 
 | Field | Description |
 | --- | --- |
-| `camps` |  |
-| `description` |  |
-| `endTimestamp` |  |
-| `exclusive` |  |
-| `expansion` |  |
-| `id` |  |
+| `camps` | An array of camps in the location |
+| `description` | A description of the event |
+| `endTimestamp` | The end time of the event |
+| `exclusive` | Whether the event is exclusive to a platform |
+| `expansion` | The expansion the event belongs to |
+| `id` | The ID of the location |
 | `location` |  |
-| `name` |  |
-| `platform` |  |
-| `questRank` |  |
-| `requirements` |  |
-| `startTimestamp` |  |
-| `successConditions` |  |
-| `type` |  |
-| `zoneCount` |  |
+| `name` | The name of the location |
+| `platform` | The platform for the event |
+| `questRank` | The quest rank of the event |
+| `requirements` | Requirements for the event |
+| `startTimestamp` | The start time of the event |
+| `successConditions` | Conditions for success |
+| `type` | The type of event |
+| `zoneCount` | The number of zones in the location |
 
 Operations: List, Load.
 
@@ -376,14 +376,14 @@ API path: `/events`
 
 | Field | Description |
 | --- | --- |
-| `buyPrice` |  |
-| `carryLimit` |  |
-| `description` |  |
-| `id` |  |
-| `name` |  |
-| `rarity` |  |
-| `sellPrice` |  |
-| `value` |  |
+| `buyPrice` | The price when buying the item |
+| `carryLimit` | The maximum number of this item that can be carried |
+| `description` | A description of the item |
+| `id` | The ID of the item |
+| `name` | The name of the item |
+| `rarity` | The rarity of the item |
+| `sellPrice` | The price when selling the item |
+| `value` | The value of the item |
 
 Operations: List, Load.
 
@@ -393,10 +393,10 @@ API path: `/items`
 
 | Field | Description |
 | --- | --- |
-| `camps` |  |
-| `id` |  |
-| `name` |  |
-| `zoneCount` |  |
+| `camps` | An array of camps in the location |
+| `id` | The ID of the location |
+| `name` | The name of the location |
+| `zoneCount` | The number of zones in the location |
 
 Operations: List, Load.
 
@@ -406,17 +406,17 @@ API path: `/locations`
 
 | Field | Description |
 | --- | --- |
-| `ailments` |  |
-| `description` |  |
-| `elements` |  |
-| `id` |  |
-| `locations` |  |
-| `name` |  |
-| `resistances` |  |
-| `rewards` |  |
-| `species` |  |
-| `type` |  |
-| `weaknesses` |  |
+| `ailments` | Ailments the monster can inflict |
+| `description` | A description of the monster |
+| `elements` | Elements the monster uses |
+| `id` | The ID of the monster |
+| `locations` | Locations where the monster can be found |
+| `name` | The name of the monster |
+| `resistances` | Resistances of the monster |
+| `rewards` | Rewards obtained from the monster |
+| `species` | The species of the monster |
+| `type` | The type of monster |
+| `weaknesses` | Weaknesses of the monster |
 
 Operations: List, Load.
 
@@ -426,12 +426,12 @@ API path: `/monsters`
 
 | Field | Description |
 | --- | --- |
-| `damageType` |  |
-| `exhaust` |  |
-| `hits` |  |
-| `id` |  |
-| `stun` |  |
-| `weaponType` |  |
+| `damageType` | The type of damage |
+| `exhaust` | Exhaust value |
+| `hits` | Hit information |
+| `id` | The ID of the motion value |
+| `stun` | Stun value |
+| `weaponType` | The type of weapon |
 
 Operations: List, Load.
 
@@ -441,10 +441,10 @@ API path: `/motion-values`
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `id` |  |
-| `name` |  |
-| `ranks` |  |
+| `description` | A description of the skill |
+| `id` | The ID of the skill |
+| `name` | The name of the skill |
+| `ranks` | An array of skill ranks |
 
 Operations: List, Load.
 
@@ -454,17 +454,17 @@ API path: `/skills`
 
 | Field | Description |
 | --- | --- |
-| `assets` |  |
-| `attack` |  |
-| `attributes` |  |
-| `crafting` |  |
-| `damageType` |  |
-| `elements` |  |
-| `id` |  |
-| `name` |  |
-| `rarity` |  |
-| `slots` |  |
-| `type` |  |
+| `assets` | Asset URLs for the weapon |
+| `attack` | Attack values for the weapon |
+| `attributes` | Additional weapon attributes |
+| `crafting` | Crafting information for the weapon |
+| `damageType` | The damage type of the weapon |
+| `elements` | Elemental damage information |
+| `id` | The ID of the weapon |
+| `name` | The name of the weapon |
+| `rarity` | The rarity of the weapon |
+| `slots` | An array of decoration slot information |
+| `type` | The type of weapon |
 
 Operations: List, Load.
 
@@ -490,9 +490,9 @@ Create an instance: `$ailment = $client->Ailment();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `id` | `int` |  |
-| `name` | `string` |  |
+| `description` | `string` | A short description of the ailment |
+| `id` | `int` | The ID of the ailment |
+| `name` | `string` | The name of the ailment |
 | `protection` | `array` |  |
 | `recovery` | `array` |  |
 
@@ -528,17 +528,17 @@ Create an instance: `$armor = $client->Armor();`
 | --- | --- | --- |
 | `armorSet` | `array` |  |
 | `assets` | `array` |  |
-| `attributes` | `array` |  |
+| `attributes` | `array` | Dictionary of attribute modifiers attached to the armor piece |
 | `crafting` | `array` |  |
 | `defense` | `array` |  |
-| `id` | `int` |  |
-| `name` | `string` |  |
-| `rank` | `string` |  |
-| `rarity` | `int` |  |
+| `id` | `int` | The ID of the armor piece |
+| `name` | `string` | The name of the armor piece |
+| `rank` | `string` | The rank of the armor piece |
+| `rarity` | `int` | The rarity of the armor piece |
 | `resistances` | `array` |  |
-| `skills` | `array` |  |
-| `slots` | `array` |  |
-| `type` | `string` |  |
+| `skills` | `array` | An array of skill ranks granted by the armor |
+| `slots` | `array` | An array of decoration slot information |
+| `type` | `string` | The slot the armor piece fits in |
 
 #### Example: Load
 
@@ -570,11 +570,11 @@ Create an instance: `$armor_set = $client->ArmorSet();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `bonus` | `array` |  |
-| `id` | `int` |  |
-| `name` | `string` |  |
-| `pieces` | `array` |  |
-| `rank` | `string` |  |
+| `bonus` | `array` | The set bonus, if any |
+| `id` | `int` | The ID of the armor set |
+| `name` | `string` | The name of the armor set |
+| `pieces` | `array` | Array of armor pieces in the set |
+| `rank` | `string` | The rank of the armor set |
 
 #### Example: Load
 
@@ -607,10 +607,10 @@ Create an instance: `$charm = $client->Charm();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `crafting` | `array` |  |
-| `id` | `int` |  |
-| `name` | `string` |  |
-| `rarity` | `int` |  |
-| `skills` | `array` |  |
+| `id` | `int` | The ID of the charm |
+| `name` | `string` | The name of the charm |
+| `rarity` | `int` | The rarity of the charm |
+| `skills` | `array` | An array of skill ranks granted by the charm |
 
 #### Example: Load
 
@@ -642,11 +642,11 @@ Create an instance: `$decoration = $client->Decoration();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `int` |  |
-| `name` | `string` |  |
-| `rarity` | `int` |  |
-| `skills` | `array` |  |
-| `slot` | `int` |  |
+| `id` | `int` | The ID of the decoration |
+| `name` | `string` | The name of the decoration |
+| `rarity` | `int` | The rarity of the decoration |
+| `skills` | `array` | An array of skill ranks granted by the decoration |
+| `slot` | `int` | The slot rank required for the decoration |
 
 #### Example: Load
 
@@ -678,21 +678,21 @@ Create an instance: `$event = $client->Event();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `camps` | `array` |  |
-| `description` | `string` |  |
-| `endTimestamp` | `string` |  |
-| `exclusive` | `string` |  |
-| `expansion` | `string` |  |
-| `id` | `int` |  |
+| `camps` | `array` | An array of camps in the location |
+| `description` | `string` | A description of the event |
+| `endTimestamp` | `string` | The end time of the event |
+| `exclusive` | `string` | Whether the event is exclusive to a platform |
+| `expansion` | `string` | The expansion the event belongs to |
+| `id` | `int` | The ID of the location |
 | `location` | `array` |  |
-| `name` | `string` |  |
-| `platform` | `string` |  |
-| `questRank` | `string` |  |
-| `requirements` | `string` |  |
-| `startTimestamp` | `string` |  |
-| `successConditions` | `string` |  |
-| `type` | `string` |  |
-| `zoneCount` | `int` |  |
+| `name` | `string` | The name of the location |
+| `platform` | `string` | The platform for the event |
+| `questRank` | `string` | The quest rank of the event |
+| `requirements` | `string` | Requirements for the event |
+| `startTimestamp` | `string` | The start time of the event |
+| `successConditions` | `string` | Conditions for success |
+| `type` | `string` | The type of event |
+| `zoneCount` | `int` | The number of zones in the location |
 
 #### Example: Load
 
@@ -724,14 +724,14 @@ Create an instance: `$item = $client->Item();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `buyPrice` | `int` |  |
-| `carryLimit` | `int` |  |
-| `description` | `string` |  |
-| `id` | `int` |  |
-| `name` | `string` |  |
-| `rarity` | `int` |  |
-| `sellPrice` | `int` |  |
-| `value` | `int` |  |
+| `buyPrice` | `int` | The price when buying the item |
+| `carryLimit` | `int` | The maximum number of this item that can be carried |
+| `description` | `string` | A description of the item |
+| `id` | `int` | The ID of the item |
+| `name` | `string` | The name of the item |
+| `rarity` | `int` | The rarity of the item |
+| `sellPrice` | `int` | The price when selling the item |
+| `value` | `int` | The value of the item |
 
 #### Example: Load
 
@@ -763,10 +763,10 @@ Create an instance: `$location = $client->Location();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `camps` | `array` |  |
-| `id` | `int` |  |
-| `name` | `string` |  |
-| `zoneCount` | `int` |  |
+| `camps` | `array` | An array of camps in the location |
+| `id` | `int` | The ID of the location |
+| `name` | `string` | The name of the location |
+| `zoneCount` | `int` | The number of zones in the location |
 
 #### Example: Load
 
@@ -798,17 +798,17 @@ Create an instance: `$monster = $client->Monster();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ailments` | `array` |  |
-| `description` | `string` |  |
-| `elements` | `array` |  |
-| `id` | `int` |  |
-| `locations` | `array` |  |
-| `name` | `string` |  |
-| `resistances` | `array` |  |
-| `rewards` | `array` |  |
-| `species` | `string` |  |
-| `type` | `string` |  |
-| `weaknesses` | `array` |  |
+| `ailments` | `array` | Ailments the monster can inflict |
+| `description` | `string` | A description of the monster |
+| `elements` | `array` | Elements the monster uses |
+| `id` | `int` | The ID of the monster |
+| `locations` | `array` | Locations where the monster can be found |
+| `name` | `string` | The name of the monster |
+| `resistances` | `array` | Resistances of the monster |
+| `rewards` | `array` | Rewards obtained from the monster |
+| `species` | `string` | The species of the monster |
+| `type` | `string` | The type of monster |
+| `weaknesses` | `array` | Weaknesses of the monster |
 
 #### Example: Load
 
@@ -840,12 +840,12 @@ Create an instance: `$motion_value = $client->MotionValue();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `damageType` | `string` |  |
-| `exhaust` | `int` |  |
-| `hits` | `array` |  |
-| `id` | `int` |  |
-| `stun` | `int` |  |
-| `weaponType` | `string` |  |
+| `damageType` | `string` | The type of damage |
+| `exhaust` | `int` | Exhaust value |
+| `hits` | `array` | Hit information |
+| `id` | `int` | The ID of the motion value |
+| `stun` | `int` | Stun value |
+| `weaponType` | `string` | The type of weapon |
 
 #### Example: Load
 
@@ -877,10 +877,10 @@ Create an instance: `$skill = $client->Skill();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `id` | `int` |  |
-| `name` | `string` |  |
-| `ranks` | `array` |  |
+| `description` | `string` | A description of the skill |
+| `id` | `int` | The ID of the skill |
+| `name` | `string` | The name of the skill |
+| `ranks` | `array` | An array of skill ranks |
 
 #### Example: Load
 
@@ -912,17 +912,17 @@ Create an instance: `$weapon = $client->Weapon();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `assets` | `array` |  |
-| `attack` | `array` |  |
-| `attributes` | `array` |  |
-| `crafting` | `array` |  |
-| `damageType` | `string` |  |
-| `elements` | `array` |  |
-| `id` | `int` |  |
-| `name` | `string` |  |
-| `rarity` | `int` |  |
-| `slots` | `array` |  |
-| `type` | `string` |  |
+| `assets` | `array` | Asset URLs for the weapon |
+| `attack` | `array` | Attack values for the weapon |
+| `attributes` | `array` | Additional weapon attributes |
+| `crafting` | `array` | Crafting information for the weapon |
+| `damageType` | `string` | The damage type of the weapon |
+| `elements` | `array` | Elemental damage information |
+| `id` | `int` | The ID of the weapon |
+| `name` | `string` | The name of the weapon |
+| `rarity` | `int` | The rarity of the weapon |
+| `slots` | `array` | An array of decoration slot information |
+| `type` | `string` | The type of weapon |
 
 #### Example: Load
 

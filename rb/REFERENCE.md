@@ -137,9 +137,9 @@ ailment = client.Ailment
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
+| `description` | `String` | No | A short description of the ailment |
+| `id` | `Integer` | No | The ID of the ailment |
+| `name` | `String` | No | The name of the ailment |
 | `protection` | `Hash` | No |  |
 | `recovery` | `Hash` | No |  |
 
@@ -203,17 +203,17 @@ armor = client.Armor
 | --- | --- | --- | --- |
 | `armorSet` | `Hash` | No |  |
 | `assets` | `Hash` | No |  |
-| `attributes` | `Hash` | No |  |
+| `attributes` | `Hash` | No | Dictionary of attribute modifiers attached to the armor piece |
 | `crafting` | `Hash` | No |  |
 | `defense` | `Hash` | No |  |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
-| `rank` | `String` | No |  |
-| `rarity` | `Integer` | No |  |
+| `id` | `Integer` | No | The ID of the armor piece |
+| `name` | `String` | No | The name of the armor piece |
+| `rank` | `String` | No | The rank of the armor piece |
+| `rarity` | `Integer` | No | The rarity of the armor piece |
 | `resistances` | `Hash` | No |  |
-| `skills` | `Array` | No |  |
-| `slots` | `Array` | No |  |
-| `type` | `String` | No |  |
+| `skills` | `Array` | No | An array of skill ranks granted by the armor |
+| `slots` | `Array` | No | An array of decoration slot information |
+| `type` | `String` | No | The slot the armor piece fits in |
 
 ### Operations
 
@@ -273,11 +273,11 @@ armor_set = client.ArmorSet
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bonus` | `Hash` | No |  |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
-| `pieces` | `Array` | No |  |
-| `rank` | `String` | No |  |
+| `bonus` | `Hash` | No | The set bonus, if any |
+| `id` | `Integer` | No | The ID of the armor set |
+| `name` | `String` | No | The name of the armor set |
+| `pieces` | `Array` | No | Array of armor pieces in the set |
+| `rank` | `String` | No | The rank of the armor set |
 
 ### Operations
 
@@ -338,10 +338,10 @@ charm = client.Charm
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `crafting` | `Hash` | No |  |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
-| `rarity` | `Integer` | No |  |
-| `skills` | `Array` | No |  |
+| `id` | `Integer` | No | The ID of the charm |
+| `name` | `String` | No | The name of the charm |
+| `rarity` | `Integer` | No | The rarity of the charm |
+| `skills` | `Array` | No | An array of skill ranks granted by the charm |
 
 ### Operations
 
@@ -401,11 +401,11 @@ decoration = client.Decoration
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
-| `rarity` | `Integer` | No |  |
-| `skills` | `Array` | No |  |
-| `slot` | `Integer` | No |  |
+| `id` | `Integer` | No | The ID of the decoration |
+| `name` | `String` | No | The name of the decoration |
+| `rarity` | `Integer` | No | The rarity of the decoration |
+| `skills` | `Array` | No | An array of skill ranks granted by the decoration |
+| `slot` | `Integer` | No | The slot rank required for the decoration |
 
 ### Operations
 
@@ -465,21 +465,21 @@ event = client.Event
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `camps` | `Array` | No |  |
-| `description` | `String` | No |  |
-| `endTimestamp` | `String` | No |  |
-| `exclusive` | `String` | No |  |
-| `expansion` | `String` | No |  |
-| `id` | `Integer` | No |  |
+| `camps` | `Array` | No | An array of camps in the location |
+| `description` | `String` | No | A description of the event |
+| `endTimestamp` | `String` | No | The end time of the event |
+| `exclusive` | `String` | No | Whether the event is exclusive to a platform |
+| `expansion` | `String` | No | The expansion the event belongs to |
+| `id` | `Integer` | No | The ID of the location |
 | `location` | `Hash` | No |  |
-| `name` | `String` | No |  |
-| `platform` | `String` | No |  |
-| `questRank` | `String` | No |  |
-| `requirements` | `String` | No |  |
-| `startTimestamp` | `String` | No |  |
-| `successConditions` | `String` | No |  |
-| `type` | `String` | No |  |
-| `zoneCount` | `Integer` | No |  |
+| `name` | `String` | No | The name of the location |
+| `platform` | `String` | No | The platform for the event |
+| `questRank` | `String` | No | The quest rank of the event |
+| `requirements` | `String` | No | Requirements for the event |
+| `startTimestamp` | `String` | No | The start time of the event |
+| `successConditions` | `String` | No | Conditions for success |
+| `type` | `String` | No | The type of event |
+| `zoneCount` | `Integer` | No | The number of zones in the location |
 
 ### Operations
 
@@ -539,14 +539,14 @@ item = client.Item
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `buyPrice` | `Integer` | No |  |
-| `carryLimit` | `Integer` | No |  |
-| `description` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
-| `rarity` | `Integer` | No |  |
-| `sellPrice` | `Integer` | No |  |
-| `value` | `Integer` | No |  |
+| `buyPrice` | `Integer` | No | The price when buying the item |
+| `carryLimit` | `Integer` | No | The maximum number of this item that can be carried |
+| `description` | `String` | No | A description of the item |
+| `id` | `Integer` | No | The ID of the item |
+| `name` | `String` | No | The name of the item |
+| `rarity` | `Integer` | No | The rarity of the item |
+| `sellPrice` | `Integer` | No | The price when selling the item |
+| `value` | `Integer` | No | The value of the item |
 
 ### Operations
 
@@ -606,10 +606,10 @@ location = client.Location
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `camps` | `Array` | No |  |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
-| `zoneCount` | `Integer` | No |  |
+| `camps` | `Array` | No | An array of camps in the location |
+| `id` | `Integer` | No | The ID of the location |
+| `name` | `String` | No | The name of the location |
+| `zoneCount` | `Integer` | No | The number of zones in the location |
 
 ### Operations
 
@@ -669,17 +669,17 @@ monster = client.Monster
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ailments` | `Array` | No |  |
-| `description` | `String` | No |  |
-| `elements` | `Array` | No |  |
-| `id` | `Integer` | No |  |
-| `locations` | `Array` | No |  |
-| `name` | `String` | No |  |
-| `resistances` | `Array` | No |  |
-| `rewards` | `Array` | No |  |
-| `species` | `String` | No |  |
-| `type` | `String` | No |  |
-| `weaknesses` | `Array` | No |  |
+| `ailments` | `Array` | No | Ailments the monster can inflict |
+| `description` | `String` | No | A description of the monster |
+| `elements` | `Array` | No | Elements the monster uses |
+| `id` | `Integer` | No | The ID of the monster |
+| `locations` | `Array` | No | Locations where the monster can be found |
+| `name` | `String` | No | The name of the monster |
+| `resistances` | `Array` | No | Resistances of the monster |
+| `rewards` | `Array` | No | Rewards obtained from the monster |
+| `species` | `String` | No | The species of the monster |
+| `type` | `String` | No | The type of monster |
+| `weaknesses` | `Array` | No | Weaknesses of the monster |
 
 ### Operations
 
@@ -739,12 +739,12 @@ motion_value = client.MotionValue
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `damageType` | `String` | No |  |
-| `exhaust` | `Integer` | No |  |
-| `hits` | `Array` | No |  |
-| `id` | `Integer` | No |  |
-| `stun` | `Integer` | No |  |
-| `weaponType` | `String` | No |  |
+| `damageType` | `String` | No | The type of damage |
+| `exhaust` | `Integer` | No | Exhaust value |
+| `hits` | `Array` | No | Hit information |
+| `id` | `Integer` | No | The ID of the motion value |
+| `stun` | `Integer` | No | Stun value |
+| `weaponType` | `String` | No | The type of weapon |
 
 ### Operations
 
@@ -804,10 +804,10 @@ skill = client.Skill
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
-| `ranks` | `Array` | No |  |
+| `description` | `String` | No | A description of the skill |
+| `id` | `Integer` | No | The ID of the skill |
+| `name` | `String` | No | The name of the skill |
+| `ranks` | `Array` | No | An array of skill ranks |
 
 ### Operations
 
@@ -867,17 +867,17 @@ weapon = client.Weapon
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assets` | `Hash` | No |  |
-| `attack` | `Hash` | No |  |
-| `attributes` | `Hash` | No |  |
-| `crafting` | `Hash` | No |  |
-| `damageType` | `String` | No |  |
-| `elements` | `Array` | No |  |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
-| `rarity` | `Integer` | No |  |
-| `slots` | `Array` | No |  |
-| `type` | `String` | No |  |
+| `assets` | `Hash` | No | Asset URLs for the weapon |
+| `attack` | `Hash` | No | Attack values for the weapon |
+| `attributes` | `Hash` | No | Additional weapon attributes |
+| `crafting` | `Hash` | No | Crafting information for the weapon |
+| `damageType` | `String` | No | The damage type of the weapon |
+| `elements` | `Array` | No | Elemental damage information |
+| `id` | `Integer` | No | The ID of the weapon |
+| `name` | `String` | No | The name of the weapon |
+| `rarity` | `Integer` | No | The rarity of the weapon |
+| `slots` | `Array` | No | An array of decoration slot information |
+| `type` | `String` | No | The type of weapon |
 
 ### Operations
 

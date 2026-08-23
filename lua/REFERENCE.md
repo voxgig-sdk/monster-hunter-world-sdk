@@ -134,9 +134,9 @@ local ailment = client:Ailment(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
+| `description` | `string` | No | A short description of the ailment |
+| `id` | `number` | No | The ID of the ailment |
+| `name` | `string` | No | The name of the ailment |
 | `protection` | `table` | No |  |
 | `recovery` | `table` | No |  |
 
@@ -200,17 +200,17 @@ local armor = client:Armor(nil)
 | --- | --- | --- | --- |
 | `armorSet` | `table` | No |  |
 | `assets` | `table` | No |  |
-| `attributes` | `table` | No |  |
+| `attributes` | `table` | No | Dictionary of attribute modifiers attached to the armor piece |
 | `crafting` | `table` | No |  |
 | `defense` | `table` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `rank` | `string` | No |  |
-| `rarity` | `number` | No |  |
+| `id` | `number` | No | The ID of the armor piece |
+| `name` | `string` | No | The name of the armor piece |
+| `rank` | `string` | No | The rank of the armor piece |
+| `rarity` | `number` | No | The rarity of the armor piece |
 | `resistances` | `table` | No |  |
-| `skills` | `table` | No |  |
-| `slots` | `table` | No |  |
-| `type` | `string` | No |  |
+| `skills` | `table` | No | An array of skill ranks granted by the armor |
+| `slots` | `table` | No | An array of decoration slot information |
+| `type` | `string` | No | The slot the armor piece fits in |
 
 ### Operations
 
@@ -270,11 +270,11 @@ local armor_set = client:ArmorSet(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bonus` | `table` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `pieces` | `table` | No |  |
-| `rank` | `string` | No |  |
+| `bonus` | `table` | No | The set bonus, if any |
+| `id` | `number` | No | The ID of the armor set |
+| `name` | `string` | No | The name of the armor set |
+| `pieces` | `table` | No | Array of armor pieces in the set |
+| `rank` | `string` | No | The rank of the armor set |
 
 ### Operations
 
@@ -335,10 +335,10 @@ local charm = client:Charm(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `crafting` | `table` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `rarity` | `number` | No |  |
-| `skills` | `table` | No |  |
+| `id` | `number` | No | The ID of the charm |
+| `name` | `string` | No | The name of the charm |
+| `rarity` | `number` | No | The rarity of the charm |
+| `skills` | `table` | No | An array of skill ranks granted by the charm |
 
 ### Operations
 
@@ -398,11 +398,11 @@ local decoration = client:Decoration(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `rarity` | `number` | No |  |
-| `skills` | `table` | No |  |
-| `slot` | `number` | No |  |
+| `id` | `number` | No | The ID of the decoration |
+| `name` | `string` | No | The name of the decoration |
+| `rarity` | `number` | No | The rarity of the decoration |
+| `skills` | `table` | No | An array of skill ranks granted by the decoration |
+| `slot` | `number` | No | The slot rank required for the decoration |
 
 ### Operations
 
@@ -462,21 +462,21 @@ local event = client:Event(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `camps` | `table` | No |  |
-| `description` | `string` | No |  |
-| `endTimestamp` | `string` | No |  |
-| `exclusive` | `string` | No |  |
-| `expansion` | `string` | No |  |
-| `id` | `number` | No |  |
+| `camps` | `table` | No | An array of camps in the location |
+| `description` | `string` | No | A description of the event |
+| `endTimestamp` | `string` | No | The end time of the event |
+| `exclusive` | `string` | No | Whether the event is exclusive to a platform |
+| `expansion` | `string` | No | The expansion the event belongs to |
+| `id` | `number` | No | The ID of the location |
 | `location` | `table` | No |  |
-| `name` | `string` | No |  |
-| `platform` | `string` | No |  |
-| `questRank` | `string` | No |  |
-| `requirements` | `string` | No |  |
-| `startTimestamp` | `string` | No |  |
-| `successConditions` | `string` | No |  |
-| `type` | `string` | No |  |
-| `zoneCount` | `number` | No |  |
+| `name` | `string` | No | The name of the location |
+| `platform` | `string` | No | The platform for the event |
+| `questRank` | `string` | No | The quest rank of the event |
+| `requirements` | `string` | No | Requirements for the event |
+| `startTimestamp` | `string` | No | The start time of the event |
+| `successConditions` | `string` | No | Conditions for success |
+| `type` | `string` | No | The type of event |
+| `zoneCount` | `number` | No | The number of zones in the location |
 
 ### Operations
 
@@ -536,14 +536,14 @@ local item = client:Item(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `buyPrice` | `number` | No |  |
-| `carryLimit` | `number` | No |  |
-| `description` | `string` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `rarity` | `number` | No |  |
-| `sellPrice` | `number` | No |  |
-| `value` | `number` | No |  |
+| `buyPrice` | `number` | No | The price when buying the item |
+| `carryLimit` | `number` | No | The maximum number of this item that can be carried |
+| `description` | `string` | No | A description of the item |
+| `id` | `number` | No | The ID of the item |
+| `name` | `string` | No | The name of the item |
+| `rarity` | `number` | No | The rarity of the item |
+| `sellPrice` | `number` | No | The price when selling the item |
+| `value` | `number` | No | The value of the item |
 
 ### Operations
 
@@ -603,10 +603,10 @@ local location = client:Location(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `camps` | `table` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `zoneCount` | `number` | No |  |
+| `camps` | `table` | No | An array of camps in the location |
+| `id` | `number` | No | The ID of the location |
+| `name` | `string` | No | The name of the location |
+| `zoneCount` | `number` | No | The number of zones in the location |
 
 ### Operations
 
@@ -666,17 +666,17 @@ local monster = client:Monster(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ailments` | `table` | No |  |
-| `description` | `string` | No |  |
-| `elements` | `table` | No |  |
-| `id` | `number` | No |  |
-| `locations` | `table` | No |  |
-| `name` | `string` | No |  |
-| `resistances` | `table` | No |  |
-| `rewards` | `table` | No |  |
-| `species` | `string` | No |  |
-| `type` | `string` | No |  |
-| `weaknesses` | `table` | No |  |
+| `ailments` | `table` | No | Ailments the monster can inflict |
+| `description` | `string` | No | A description of the monster |
+| `elements` | `table` | No | Elements the monster uses |
+| `id` | `number` | No | The ID of the monster |
+| `locations` | `table` | No | Locations where the monster can be found |
+| `name` | `string` | No | The name of the monster |
+| `resistances` | `table` | No | Resistances of the monster |
+| `rewards` | `table` | No | Rewards obtained from the monster |
+| `species` | `string` | No | The species of the monster |
+| `type` | `string` | No | The type of monster |
+| `weaknesses` | `table` | No | Weaknesses of the monster |
 
 ### Operations
 
@@ -736,12 +736,12 @@ local motion_value = client:MotionValue(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `damageType` | `string` | No |  |
-| `exhaust` | `number` | No |  |
-| `hits` | `table` | No |  |
-| `id` | `number` | No |  |
-| `stun` | `number` | No |  |
-| `weaponType` | `string` | No |  |
+| `damageType` | `string` | No | The type of damage |
+| `exhaust` | `number` | No | Exhaust value |
+| `hits` | `table` | No | Hit information |
+| `id` | `number` | No | The ID of the motion value |
+| `stun` | `number` | No | Stun value |
+| `weaponType` | `string` | No | The type of weapon |
 
 ### Operations
 
@@ -801,10 +801,10 @@ local skill = client:Skill(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `ranks` | `table` | No |  |
+| `description` | `string` | No | A description of the skill |
+| `id` | `number` | No | The ID of the skill |
+| `name` | `string` | No | The name of the skill |
+| `ranks` | `table` | No | An array of skill ranks |
 
 ### Operations
 
@@ -864,17 +864,17 @@ local weapon = client:Weapon(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assets` | `table` | No |  |
-| `attack` | `table` | No |  |
-| `attributes` | `table` | No |  |
-| `crafting` | `table` | No |  |
-| `damageType` | `string` | No |  |
-| `elements` | `table` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `rarity` | `number` | No |  |
-| `slots` | `table` | No |  |
-| `type` | `string` | No |  |
+| `assets` | `table` | No | Asset URLs for the weapon |
+| `attack` | `table` | No | Attack values for the weapon |
+| `attributes` | `table` | No | Additional weapon attributes |
+| `crafting` | `table` | No | Crafting information for the weapon |
+| `damageType` | `string` | No | The damage type of the weapon |
+| `elements` | `table` | No | Elemental damage information |
+| `id` | `number` | No | The ID of the weapon |
+| `name` | `string` | No | The name of the weapon |
+| `rarity` | `number` | No | The rarity of the weapon |
+| `slots` | `table` | No | An array of decoration slot information |
+| `type` | `string` | No | The type of weapon |
 
 ### Operations
 

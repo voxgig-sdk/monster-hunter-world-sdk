@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -313,9 +313,9 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `id` |  |
-| `name` |  |
+| `description` | A short description of the ailment |
+| `id` | The ID of the ailment |
+| `name` | The name of the ailment |
 | `protection` |  |
 | `recovery` |  |
 
@@ -329,17 +329,17 @@ API path: `/ailments`
 | --- | --- |
 | `armorSet` |  |
 | `assets` |  |
-| `attributes` |  |
+| `attributes` | Dictionary of attribute modifiers attached to the armor piece |
 | `crafting` |  |
 | `defense` |  |
-| `id` |  |
-| `name` |  |
-| `rank` |  |
-| `rarity` |  |
+| `id` | The ID of the armor piece |
+| `name` | The name of the armor piece |
+| `rank` | The rank of the armor piece |
+| `rarity` | The rarity of the armor piece |
 | `resistances` |  |
-| `skills` |  |
-| `slots` |  |
-| `type` |  |
+| `skills` | An array of skill ranks granted by the armor |
+| `slots` | An array of decoration slot information |
+| `type` | The slot the armor piece fits in |
 
 Operations: list, load.
 
@@ -349,11 +349,11 @@ API path: `/armor`
 
 | Field | Description |
 | --- | --- |
-| `bonus` |  |
-| `id` |  |
-| `name` |  |
-| `pieces` |  |
-| `rank` |  |
+| `bonus` | The set bonus, if any |
+| `id` | The ID of the armor set |
+| `name` | The name of the armor set |
+| `pieces` | Array of armor pieces in the set |
+| `rank` | The rank of the armor set |
 
 Operations: list, load.
 
@@ -364,10 +364,10 @@ API path: `/armor/sets`
 | Field | Description |
 | --- | --- |
 | `crafting` |  |
-| `id` |  |
-| `name` |  |
-| `rarity` |  |
-| `skills` |  |
+| `id` | The ID of the charm |
+| `name` | The name of the charm |
+| `rarity` | The rarity of the charm |
+| `skills` | An array of skill ranks granted by the charm |
 
 Operations: list, load.
 
@@ -377,11 +377,11 @@ API path: `/charms`
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `name` |  |
-| `rarity` |  |
-| `skills` |  |
-| `slot` |  |
+| `id` | The ID of the decoration |
+| `name` | The name of the decoration |
+| `rarity` | The rarity of the decoration |
+| `skills` | An array of skill ranks granted by the decoration |
+| `slot` | The slot rank required for the decoration |
 
 Operations: list, load.
 
@@ -391,21 +391,21 @@ API path: `/decorations`
 
 | Field | Description |
 | --- | --- |
-| `camps` |  |
-| `description` |  |
-| `endTimestamp` |  |
-| `exclusive` |  |
-| `expansion` |  |
-| `id` |  |
+| `camps` | An array of camps in the location |
+| `description` | A description of the event |
+| `endTimestamp` | The end time of the event |
+| `exclusive` | Whether the event is exclusive to a platform |
+| `expansion` | The expansion the event belongs to |
+| `id` | The ID of the location |
 | `location` |  |
-| `name` |  |
-| `platform` |  |
-| `questRank` |  |
-| `requirements` |  |
-| `startTimestamp` |  |
-| `successConditions` |  |
-| `type` |  |
-| `zoneCount` |  |
+| `name` | The name of the location |
+| `platform` | The platform for the event |
+| `questRank` | The quest rank of the event |
+| `requirements` | Requirements for the event |
+| `startTimestamp` | The start time of the event |
+| `successConditions` | Conditions for success |
+| `type` | The type of event |
+| `zoneCount` | The number of zones in the location |
 
 Operations: list, load.
 
@@ -415,14 +415,14 @@ API path: `/events`
 
 | Field | Description |
 | --- | --- |
-| `buyPrice` |  |
-| `carryLimit` |  |
-| `description` |  |
-| `id` |  |
-| `name` |  |
-| `rarity` |  |
-| `sellPrice` |  |
-| `value` |  |
+| `buyPrice` | The price when buying the item |
+| `carryLimit` | The maximum number of this item that can be carried |
+| `description` | A description of the item |
+| `id` | The ID of the item |
+| `name` | The name of the item |
+| `rarity` | The rarity of the item |
+| `sellPrice` | The price when selling the item |
+| `value` | The value of the item |
 
 Operations: list, load.
 
@@ -432,10 +432,10 @@ API path: `/items`
 
 | Field | Description |
 | --- | --- |
-| `camps` |  |
-| `id` |  |
-| `name` |  |
-| `zoneCount` |  |
+| `camps` | An array of camps in the location |
+| `id` | The ID of the location |
+| `name` | The name of the location |
+| `zoneCount` | The number of zones in the location |
 
 Operations: list, load.
 
@@ -445,17 +445,17 @@ API path: `/locations`
 
 | Field | Description |
 | --- | --- |
-| `ailments` |  |
-| `description` |  |
-| `elements` |  |
-| `id` |  |
-| `locations` |  |
-| `name` |  |
-| `resistances` |  |
-| `rewards` |  |
-| `species` |  |
-| `type` |  |
-| `weaknesses` |  |
+| `ailments` | Ailments the monster can inflict |
+| `description` | A description of the monster |
+| `elements` | Elements the monster uses |
+| `id` | The ID of the monster |
+| `locations` | Locations where the monster can be found |
+| `name` | The name of the monster |
+| `resistances` | Resistances of the monster |
+| `rewards` | Rewards obtained from the monster |
+| `species` | The species of the monster |
+| `type` | The type of monster |
+| `weaknesses` | Weaknesses of the monster |
 
 Operations: list, load.
 
@@ -465,12 +465,12 @@ API path: `/monsters`
 
 | Field | Description |
 | --- | --- |
-| `damageType` |  |
-| `exhaust` |  |
-| `hits` |  |
-| `id` |  |
-| `stun` |  |
-| `weaponType` |  |
+| `damageType` | The type of damage |
+| `exhaust` | Exhaust value |
+| `hits` | Hit information |
+| `id` | The ID of the motion value |
+| `stun` | Stun value |
+| `weaponType` | The type of weapon |
 
 Operations: list, load.
 
@@ -480,10 +480,10 @@ API path: `/motion-values`
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `id` |  |
-| `name` |  |
-| `ranks` |  |
+| `description` | A description of the skill |
+| `id` | The ID of the skill |
+| `name` | The name of the skill |
+| `ranks` | An array of skill ranks |
 
 Operations: list, load.
 
@@ -493,17 +493,17 @@ API path: `/skills`
 
 | Field | Description |
 | --- | --- |
-| `assets` |  |
-| `attack` |  |
-| `attributes` |  |
-| `crafting` |  |
-| `damageType` |  |
-| `elements` |  |
-| `id` |  |
-| `name` |  |
-| `rarity` |  |
-| `slots` |  |
-| `type` |  |
+| `assets` | Asset URLs for the weapon |
+| `attack` | Attack values for the weapon |
+| `attributes` | Additional weapon attributes |
+| `crafting` | Crafting information for the weapon |
+| `damageType` | The damage type of the weapon |
+| `elements` | Elemental damage information |
+| `id` | The ID of the weapon |
+| `name` | The name of the weapon |
+| `rarity` | The rarity of the weapon |
+| `slots` | An array of decoration slot information |
+| `type` | The type of weapon |
 
 Operations: list, load.
 
@@ -529,9 +529,9 @@ Create an instance: `const ailment = client.Ailment()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `id` | `number` |  |
-| `name` | `string` |  |
+| `description` | `string` | A short description of the ailment |
+| `id` | `number` | The ID of the ailment |
+| `name` | `string` | The name of the ailment |
 | `protection` | `Record<string, any>` |  |
 | `recovery` | `Record<string, any>` |  |
 
@@ -565,17 +565,17 @@ Create an instance: `const armor = client.Armor()`
 | --- | --- | --- |
 | `armorSet` | `Record<string, any>` |  |
 | `assets` | `Record<string, any>` |  |
-| `attributes` | `Record<string, any>` |  |
+| `attributes` | `Record<string, any>` | Dictionary of attribute modifiers attached to the armor piece |
 | `crafting` | `Record<string, any>` |  |
 | `defense` | `Record<string, any>` |  |
-| `id` | `number` |  |
-| `name` | `string` |  |
-| `rank` | `string` |  |
-| `rarity` | `number` |  |
+| `id` | `number` | The ID of the armor piece |
+| `name` | `string` | The name of the armor piece |
+| `rank` | `string` | The rank of the armor piece |
+| `rarity` | `number` | The rarity of the armor piece |
 | `resistances` | `Record<string, any>` |  |
-| `skills` | `any[]` |  |
-| `slots` | `any[]` |  |
-| `type` | `string` |  |
+| `skills` | `any[]` | An array of skill ranks granted by the armor |
+| `slots` | `any[]` | An array of decoration slot information |
+| `type` | `string` | The slot the armor piece fits in |
 
 #### Example: Load
 
@@ -605,11 +605,11 @@ Create an instance: `const armor_set = client.ArmorSet()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `bonus` | `Record<string, any>` |  |
-| `id` | `number` |  |
-| `name` | `string` |  |
-| `pieces` | `any[]` |  |
-| `rank` | `string` |  |
+| `bonus` | `Record<string, any>` | The set bonus, if any |
+| `id` | `number` | The ID of the armor set |
+| `name` | `string` | The name of the armor set |
+| `pieces` | `any[]` | Array of armor pieces in the set |
+| `rank` | `string` | The rank of the armor set |
 
 #### Example: Load
 
@@ -640,10 +640,10 @@ Create an instance: `const charm = client.Charm()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `crafting` | `Record<string, any>` |  |
-| `id` | `number` |  |
-| `name` | `string` |  |
-| `rarity` | `number` |  |
-| `skills` | `any[]` |  |
+| `id` | `number` | The ID of the charm |
+| `name` | `string` | The name of the charm |
+| `rarity` | `number` | The rarity of the charm |
+| `skills` | `any[]` | An array of skill ranks granted by the charm |
 
 #### Example: Load
 
@@ -673,11 +673,11 @@ Create an instance: `const decoration = client.Decoration()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `number` |  |
-| `name` | `string` |  |
-| `rarity` | `number` |  |
-| `skills` | `any[]` |  |
-| `slot` | `number` |  |
+| `id` | `number` | The ID of the decoration |
+| `name` | `string` | The name of the decoration |
+| `rarity` | `number` | The rarity of the decoration |
+| `skills` | `any[]` | An array of skill ranks granted by the decoration |
+| `slot` | `number` | The slot rank required for the decoration |
 
 #### Example: Load
 
@@ -707,21 +707,21 @@ Create an instance: `const event = client.Event()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `camps` | `any[]` |  |
-| `description` | `string` |  |
-| `endTimestamp` | `string` |  |
-| `exclusive` | `string` |  |
-| `expansion` | `string` |  |
-| `id` | `number` |  |
+| `camps` | `any[]` | An array of camps in the location |
+| `description` | `string` | A description of the event |
+| `endTimestamp` | `string` | The end time of the event |
+| `exclusive` | `string` | Whether the event is exclusive to a platform |
+| `expansion` | `string` | The expansion the event belongs to |
+| `id` | `number` | The ID of the location |
 | `location` | `Record<string, any>` |  |
-| `name` | `string` |  |
-| `platform` | `string` |  |
-| `questRank` | `string` |  |
-| `requirements` | `string` |  |
-| `startTimestamp` | `string` |  |
-| `successConditions` | `string` |  |
-| `type` | `string` |  |
-| `zoneCount` | `number` |  |
+| `name` | `string` | The name of the location |
+| `platform` | `string` | The platform for the event |
+| `questRank` | `string` | The quest rank of the event |
+| `requirements` | `string` | Requirements for the event |
+| `startTimestamp` | `string` | The start time of the event |
+| `successConditions` | `string` | Conditions for success |
+| `type` | `string` | The type of event |
+| `zoneCount` | `number` | The number of zones in the location |
 
 #### Example: Load
 
@@ -751,14 +751,14 @@ Create an instance: `const item = client.Item()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `buyPrice` | `number` |  |
-| `carryLimit` | `number` |  |
-| `description` | `string` |  |
-| `id` | `number` |  |
-| `name` | `string` |  |
-| `rarity` | `number` |  |
-| `sellPrice` | `number` |  |
-| `value` | `number` |  |
+| `buyPrice` | `number` | The price when buying the item |
+| `carryLimit` | `number` | The maximum number of this item that can be carried |
+| `description` | `string` | A description of the item |
+| `id` | `number` | The ID of the item |
+| `name` | `string` | The name of the item |
+| `rarity` | `number` | The rarity of the item |
+| `sellPrice` | `number` | The price when selling the item |
+| `value` | `number` | The value of the item |
 
 #### Example: Load
 
@@ -788,10 +788,10 @@ Create an instance: `const location = client.Location()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `camps` | `any[]` |  |
-| `id` | `number` |  |
-| `name` | `string` |  |
-| `zoneCount` | `number` |  |
+| `camps` | `any[]` | An array of camps in the location |
+| `id` | `number` | The ID of the location |
+| `name` | `string` | The name of the location |
+| `zoneCount` | `number` | The number of zones in the location |
 
 #### Example: Load
 
@@ -821,17 +821,17 @@ Create an instance: `const monster = client.Monster()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ailments` | `any[]` |  |
-| `description` | `string` |  |
-| `elements` | `any[]` |  |
-| `id` | `number` |  |
-| `locations` | `any[]` |  |
-| `name` | `string` |  |
-| `resistances` | `any[]` |  |
-| `rewards` | `any[]` |  |
-| `species` | `string` |  |
-| `type` | `string` |  |
-| `weaknesses` | `any[]` |  |
+| `ailments` | `any[]` | Ailments the monster can inflict |
+| `description` | `string` | A description of the monster |
+| `elements` | `any[]` | Elements the monster uses |
+| `id` | `number` | The ID of the monster |
+| `locations` | `any[]` | Locations where the monster can be found |
+| `name` | `string` | The name of the monster |
+| `resistances` | `any[]` | Resistances of the monster |
+| `rewards` | `any[]` | Rewards obtained from the monster |
+| `species` | `string` | The species of the monster |
+| `type` | `string` | The type of monster |
+| `weaknesses` | `any[]` | Weaknesses of the monster |
 
 #### Example: Load
 
@@ -861,12 +861,12 @@ Create an instance: `const motion_value = client.MotionValue()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `damageType` | `string` |  |
-| `exhaust` | `number` |  |
-| `hits` | `any[]` |  |
-| `id` | `number` |  |
-| `stun` | `number` |  |
-| `weaponType` | `string` |  |
+| `damageType` | `string` | The type of damage |
+| `exhaust` | `number` | Exhaust value |
+| `hits` | `any[]` | Hit information |
+| `id` | `number` | The ID of the motion value |
+| `stun` | `number` | Stun value |
+| `weaponType` | `string` | The type of weapon |
 
 #### Example: Load
 
@@ -896,10 +896,10 @@ Create an instance: `const skill = client.Skill()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `id` | `number` |  |
-| `name` | `string` |  |
-| `ranks` | `any[]` |  |
+| `description` | `string` | A description of the skill |
+| `id` | `number` | The ID of the skill |
+| `name` | `string` | The name of the skill |
+| `ranks` | `any[]` | An array of skill ranks |
 
 #### Example: Load
 
@@ -929,17 +929,17 @@ Create an instance: `const weapon = client.Weapon()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `assets` | `Record<string, any>` |  |
-| `attack` | `Record<string, any>` |  |
-| `attributes` | `Record<string, any>` |  |
-| `crafting` | `Record<string, any>` |  |
-| `damageType` | `string` |  |
-| `elements` | `any[]` |  |
-| `id` | `number` |  |
-| `name` | `string` |  |
-| `rarity` | `number` |  |
-| `slots` | `any[]` |  |
-| `type` | `string` |  |
+| `assets` | `Record<string, any>` | Asset URLs for the weapon |
+| `attack` | `Record<string, any>` | Attack values for the weapon |
+| `attributes` | `Record<string, any>` | Additional weapon attributes |
+| `crafting` | `Record<string, any>` | Crafting information for the weapon |
+| `damageType` | `string` | The damage type of the weapon |
+| `elements` | `any[]` | Elemental damage information |
+| `id` | `number` | The ID of the weapon |
+| `name` | `string` | The name of the weapon |
+| `rarity` | `number` | The rarity of the weapon |
+| `slots` | `any[]` | An array of decoration slot information |
+| `type` | `string` | The type of weapon |
 
 #### Example: Load
 

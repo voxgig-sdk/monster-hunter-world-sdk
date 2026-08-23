@@ -131,9 +131,9 @@ ailment = client.Ailment()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `str` | No |  |
-| `id` | `int` | No |  |
-| `name` | `str` | No |  |
+| `description` | `str` | No | A short description of the ailment |
+| `id` | `int` | No | The ID of the ailment |
+| `name` | `str` | No | The name of the ailment |
 | `protection` | `dict` | No |  |
 | `recovery` | `dict` | No |  |
 
@@ -198,17 +198,17 @@ armor = client.Armor()
 | --- | --- | --- | --- |
 | `armorSet` | `dict` | No |  |
 | `assets` | `dict` | No |  |
-| `attributes` | `dict` | No |  |
+| `attributes` | `dict` | No | Dictionary of attribute modifiers attached to the armor piece |
 | `crafting` | `dict` | No |  |
 | `defense` | `dict` | No |  |
-| `id` | `int` | No |  |
-| `name` | `str` | No |  |
-| `rank` | `str` | No |  |
-| `rarity` | `int` | No |  |
+| `id` | `int` | No | The ID of the armor piece |
+| `name` | `str` | No | The name of the armor piece |
+| `rank` | `str` | No | The rank of the armor piece |
+| `rarity` | `int` | No | The rarity of the armor piece |
 | `resistances` | `dict` | No |  |
-| `skills` | `list` | No |  |
-| `slots` | `list` | No |  |
-| `type` | `str` | No |  |
+| `skills` | `list` | No | An array of skill ranks granted by the armor |
+| `slots` | `list` | No | An array of decoration slot information |
+| `type` | `str` | No | The slot the armor piece fits in |
 
 ### Operations
 
@@ -269,11 +269,11 @@ armor_set = client.ArmorSet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bonus` | `dict` | No |  |
-| `id` | `int` | No |  |
-| `name` | `str` | No |  |
-| `pieces` | `list` | No |  |
-| `rank` | `str` | No |  |
+| `bonus` | `dict` | No | The set bonus, if any |
+| `id` | `int` | No | The ID of the armor set |
+| `name` | `str` | No | The name of the armor set |
+| `pieces` | `list` | No | Array of armor pieces in the set |
+| `rank` | `str` | No | The rank of the armor set |
 
 ### Operations
 
@@ -335,10 +335,10 @@ charm = client.Charm()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `crafting` | `dict` | No |  |
-| `id` | `int` | No |  |
-| `name` | `str` | No |  |
-| `rarity` | `int` | No |  |
-| `skills` | `list` | No |  |
+| `id` | `int` | No | The ID of the charm |
+| `name` | `str` | No | The name of the charm |
+| `rarity` | `int` | No | The rarity of the charm |
+| `skills` | `list` | No | An array of skill ranks granted by the charm |
 
 ### Operations
 
@@ -399,11 +399,11 @@ decoration = client.Decoration()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `int` | No |  |
-| `name` | `str` | No |  |
-| `rarity` | `int` | No |  |
-| `skills` | `list` | No |  |
-| `slot` | `int` | No |  |
+| `id` | `int` | No | The ID of the decoration |
+| `name` | `str` | No | The name of the decoration |
+| `rarity` | `int` | No | The rarity of the decoration |
+| `skills` | `list` | No | An array of skill ranks granted by the decoration |
+| `slot` | `int` | No | The slot rank required for the decoration |
 
 ### Operations
 
@@ -464,21 +464,21 @@ event = client.Event()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `camps` | `list` | No |  |
-| `description` | `str` | No |  |
-| `endTimestamp` | `str` | No |  |
-| `exclusive` | `str` | No |  |
-| `expansion` | `str` | No |  |
-| `id` | `int` | No |  |
+| `camps` | `list` | No | An array of camps in the location |
+| `description` | `str` | No | A description of the event |
+| `endTimestamp` | `str` | No | The end time of the event |
+| `exclusive` | `str` | No | Whether the event is exclusive to a platform |
+| `expansion` | `str` | No | The expansion the event belongs to |
+| `id` | `int` | No | The ID of the location |
 | `location` | `dict` | No |  |
-| `name` | `str` | No |  |
-| `platform` | `str` | No |  |
-| `questRank` | `str` | No |  |
-| `requirements` | `str` | No |  |
-| `startTimestamp` | `str` | No |  |
-| `successConditions` | `str` | No |  |
-| `type` | `str` | No |  |
-| `zoneCount` | `int` | No |  |
+| `name` | `str` | No | The name of the location |
+| `platform` | `str` | No | The platform for the event |
+| `questRank` | `str` | No | The quest rank of the event |
+| `requirements` | `str` | No | Requirements for the event |
+| `startTimestamp` | `str` | No | The start time of the event |
+| `successConditions` | `str` | No | Conditions for success |
+| `type` | `str` | No | The type of event |
+| `zoneCount` | `int` | No | The number of zones in the location |
 
 ### Operations
 
@@ -539,14 +539,14 @@ item = client.Item()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `buyPrice` | `int` | No |  |
-| `carryLimit` | `int` | No |  |
-| `description` | `str` | No |  |
-| `id` | `int` | No |  |
-| `name` | `str` | No |  |
-| `rarity` | `int` | No |  |
-| `sellPrice` | `int` | No |  |
-| `value` | `int` | No |  |
+| `buyPrice` | `int` | No | The price when buying the item |
+| `carryLimit` | `int` | No | The maximum number of this item that can be carried |
+| `description` | `str` | No | A description of the item |
+| `id` | `int` | No | The ID of the item |
+| `name` | `str` | No | The name of the item |
+| `rarity` | `int` | No | The rarity of the item |
+| `sellPrice` | `int` | No | The price when selling the item |
+| `value` | `int` | No | The value of the item |
 
 ### Operations
 
@@ -607,10 +607,10 @@ location = client.Location()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `camps` | `list` | No |  |
-| `id` | `int` | No |  |
-| `name` | `str` | No |  |
-| `zoneCount` | `int` | No |  |
+| `camps` | `list` | No | An array of camps in the location |
+| `id` | `int` | No | The ID of the location |
+| `name` | `str` | No | The name of the location |
+| `zoneCount` | `int` | No | The number of zones in the location |
 
 ### Operations
 
@@ -671,17 +671,17 @@ monster = client.Monster()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ailments` | `list` | No |  |
-| `description` | `str` | No |  |
-| `elements` | `list` | No |  |
-| `id` | `int` | No |  |
-| `locations` | `list` | No |  |
-| `name` | `str` | No |  |
-| `resistances` | `list` | No |  |
-| `rewards` | `list` | No |  |
-| `species` | `str` | No |  |
-| `type` | `str` | No |  |
-| `weaknesses` | `list` | No |  |
+| `ailments` | `list` | No | Ailments the monster can inflict |
+| `description` | `str` | No | A description of the monster |
+| `elements` | `list` | No | Elements the monster uses |
+| `id` | `int` | No | The ID of the monster |
+| `locations` | `list` | No | Locations where the monster can be found |
+| `name` | `str` | No | The name of the monster |
+| `resistances` | `list` | No | Resistances of the monster |
+| `rewards` | `list` | No | Rewards obtained from the monster |
+| `species` | `str` | No | The species of the monster |
+| `type` | `str` | No | The type of monster |
+| `weaknesses` | `list` | No | Weaknesses of the monster |
 
 ### Operations
 
@@ -742,12 +742,12 @@ motion_value = client.MotionValue()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `damageType` | `str` | No |  |
-| `exhaust` | `int` | No |  |
-| `hits` | `list` | No |  |
-| `id` | `int` | No |  |
-| `stun` | `int` | No |  |
-| `weaponType` | `str` | No |  |
+| `damageType` | `str` | No | The type of damage |
+| `exhaust` | `int` | No | Exhaust value |
+| `hits` | `list` | No | Hit information |
+| `id` | `int` | No | The ID of the motion value |
+| `stun` | `int` | No | Stun value |
+| `weaponType` | `str` | No | The type of weapon |
 
 ### Operations
 
@@ -808,10 +808,10 @@ skill = client.Skill()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `str` | No |  |
-| `id` | `int` | No |  |
-| `name` | `str` | No |  |
-| `ranks` | `list` | No |  |
+| `description` | `str` | No | A description of the skill |
+| `id` | `int` | No | The ID of the skill |
+| `name` | `str` | No | The name of the skill |
+| `ranks` | `list` | No | An array of skill ranks |
 
 ### Operations
 
@@ -872,17 +872,17 @@ weapon = client.Weapon()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assets` | `dict` | No |  |
-| `attack` | `dict` | No |  |
-| `attributes` | `dict` | No |  |
-| `crafting` | `dict` | No |  |
-| `damageType` | `str` | No |  |
-| `elements` | `list` | No |  |
-| `id` | `int` | No |  |
-| `name` | `str` | No |  |
-| `rarity` | `int` | No |  |
-| `slots` | `list` | No |  |
-| `type` | `str` | No |  |
+| `assets` | `dict` | No | Asset URLs for the weapon |
+| `attack` | `dict` | No | Attack values for the weapon |
+| `attributes` | `dict` | No | Additional weapon attributes |
+| `crafting` | `dict` | No | Crafting information for the weapon |
+| `damageType` | `str` | No | The damage type of the weapon |
+| `elements` | `list` | No | Elemental damage information |
+| `id` | `int` | No | The ID of the weapon |
+| `name` | `str` | No | The name of the weapon |
+| `rarity` | `int` | No | The rarity of the weapon |
+| `slots` | `list` | No | An array of decoration slot information |
+| `type` | `str` | No | The type of weapon |
 
 ### Operations
 

@@ -248,9 +248,9 @@ const ailment = client.Ailment()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
+| `description` | `string` | No | A short description of the ailment |
+| `id` | `number` | No | The ID of the ailment |
+| `name` | `string` | No | The name of the ailment |
 | `protection` | `Record<string, any>` | No |  |
 | `recovery` | `Record<string, any>` | No |  |
 
@@ -312,17 +312,17 @@ const armor = client.Armor()
 | --- | --- | --- | --- |
 | `armorSet` | `Record<string, any>` | No |  |
 | `assets` | `Record<string, any>` | No |  |
-| `attributes` | `Record<string, any>` | No |  |
+| `attributes` | `Record<string, any>` | No | Dictionary of attribute modifiers attached to the armor piece |
 | `crafting` | `Record<string, any>` | No |  |
 | `defense` | `Record<string, any>` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `rank` | `string` | No |  |
-| `rarity` | `number` | No |  |
+| `id` | `number` | No | The ID of the armor piece |
+| `name` | `string` | No | The name of the armor piece |
+| `rank` | `string` | No | The rank of the armor piece |
+| `rarity` | `number` | No | The rarity of the armor piece |
 | `resistances` | `Record<string, any>` | No |  |
-| `skills` | `any[]` | No |  |
-| `slots` | `any[]` | No |  |
-| `type` | `string` | No |  |
+| `skills` | `any[]` | No | An array of skill ranks granted by the armor |
+| `slots` | `any[]` | No | An array of decoration slot information |
+| `type` | `string` | No | The slot the armor piece fits in |
 
 ### Operations
 
@@ -380,11 +380,11 @@ const armor_set = client.ArmorSet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `bonus` | `Record<string, any>` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `pieces` | `any[]` | No |  |
-| `rank` | `string` | No |  |
+| `bonus` | `Record<string, any>` | No | The set bonus, if any |
+| `id` | `number` | No | The ID of the armor set |
+| `name` | `string` | No | The name of the armor set |
+| `pieces` | `any[]` | No | Array of armor pieces in the set |
+| `rank` | `string` | No | The rank of the armor set |
 
 ### Operations
 
@@ -443,10 +443,10 @@ const charm = client.Charm()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `crafting` | `Record<string, any>` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `rarity` | `number` | No |  |
-| `skills` | `any[]` | No |  |
+| `id` | `number` | No | The ID of the charm |
+| `name` | `string` | No | The name of the charm |
+| `rarity` | `number` | No | The rarity of the charm |
+| `skills` | `any[]` | No | An array of skill ranks granted by the charm |
 
 ### Operations
 
@@ -504,11 +504,11 @@ const decoration = client.Decoration()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `rarity` | `number` | No |  |
-| `skills` | `any[]` | No |  |
-| `slot` | `number` | No |  |
+| `id` | `number` | No | The ID of the decoration |
+| `name` | `string` | No | The name of the decoration |
+| `rarity` | `number` | No | The rarity of the decoration |
+| `skills` | `any[]` | No | An array of skill ranks granted by the decoration |
+| `slot` | `number` | No | The slot rank required for the decoration |
 
 ### Operations
 
@@ -566,21 +566,21 @@ const event = client.Event()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `camps` | `any[]` | No |  |
-| `description` | `string` | No |  |
-| `endTimestamp` | `string` | No |  |
-| `exclusive` | `string` | No |  |
-| `expansion` | `string` | No |  |
-| `id` | `number` | No |  |
+| `camps` | `any[]` | No | An array of camps in the location |
+| `description` | `string` | No | A description of the event |
+| `endTimestamp` | `string` | No | The end time of the event |
+| `exclusive` | `string` | No | Whether the event is exclusive to a platform |
+| `expansion` | `string` | No | The expansion the event belongs to |
+| `id` | `number` | No | The ID of the location |
 | `location` | `Record<string, any>` | No |  |
-| `name` | `string` | No |  |
-| `platform` | `string` | No |  |
-| `questRank` | `string` | No |  |
-| `requirements` | `string` | No |  |
-| `startTimestamp` | `string` | No |  |
-| `successConditions` | `string` | No |  |
-| `type` | `string` | No |  |
-| `zoneCount` | `number` | No |  |
+| `name` | `string` | No | The name of the location |
+| `platform` | `string` | No | The platform for the event |
+| `questRank` | `string` | No | The quest rank of the event |
+| `requirements` | `string` | No | Requirements for the event |
+| `startTimestamp` | `string` | No | The start time of the event |
+| `successConditions` | `string` | No | Conditions for success |
+| `type` | `string` | No | The type of event |
+| `zoneCount` | `number` | No | The number of zones in the location |
 
 ### Operations
 
@@ -638,14 +638,14 @@ const item = client.Item()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `buyPrice` | `number` | No |  |
-| `carryLimit` | `number` | No |  |
-| `description` | `string` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `rarity` | `number` | No |  |
-| `sellPrice` | `number` | No |  |
-| `value` | `number` | No |  |
+| `buyPrice` | `number` | No | The price when buying the item |
+| `carryLimit` | `number` | No | The maximum number of this item that can be carried |
+| `description` | `string` | No | A description of the item |
+| `id` | `number` | No | The ID of the item |
+| `name` | `string` | No | The name of the item |
+| `rarity` | `number` | No | The rarity of the item |
+| `sellPrice` | `number` | No | The price when selling the item |
+| `value` | `number` | No | The value of the item |
 
 ### Operations
 
@@ -703,10 +703,10 @@ const location = client.Location()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `camps` | `any[]` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `zoneCount` | `number` | No |  |
+| `camps` | `any[]` | No | An array of camps in the location |
+| `id` | `number` | No | The ID of the location |
+| `name` | `string` | No | The name of the location |
+| `zoneCount` | `number` | No | The number of zones in the location |
 
 ### Operations
 
@@ -764,17 +764,17 @@ const monster = client.Monster()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ailments` | `any[]` | No |  |
-| `description` | `string` | No |  |
-| `elements` | `any[]` | No |  |
-| `id` | `number` | No |  |
-| `locations` | `any[]` | No |  |
-| `name` | `string` | No |  |
-| `resistances` | `any[]` | No |  |
-| `rewards` | `any[]` | No |  |
-| `species` | `string` | No |  |
-| `type` | `string` | No |  |
-| `weaknesses` | `any[]` | No |  |
+| `ailments` | `any[]` | No | Ailments the monster can inflict |
+| `description` | `string` | No | A description of the monster |
+| `elements` | `any[]` | No | Elements the monster uses |
+| `id` | `number` | No | The ID of the monster |
+| `locations` | `any[]` | No | Locations where the monster can be found |
+| `name` | `string` | No | The name of the monster |
+| `resistances` | `any[]` | No | Resistances of the monster |
+| `rewards` | `any[]` | No | Rewards obtained from the monster |
+| `species` | `string` | No | The species of the monster |
+| `type` | `string` | No | The type of monster |
+| `weaknesses` | `any[]` | No | Weaknesses of the monster |
 
 ### Operations
 
@@ -832,12 +832,12 @@ const motion_value = client.MotionValue()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `damageType` | `string` | No |  |
-| `exhaust` | `number` | No |  |
-| `hits` | `any[]` | No |  |
-| `id` | `number` | No |  |
-| `stun` | `number` | No |  |
-| `weaponType` | `string` | No |  |
+| `damageType` | `string` | No | The type of damage |
+| `exhaust` | `number` | No | Exhaust value |
+| `hits` | `any[]` | No | Hit information |
+| `id` | `number` | No | The ID of the motion value |
+| `stun` | `number` | No | Stun value |
+| `weaponType` | `string` | No | The type of weapon |
 
 ### Operations
 
@@ -895,10 +895,10 @@ const skill = client.Skill()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `ranks` | `any[]` | No |  |
+| `description` | `string` | No | A description of the skill |
+| `id` | `number` | No | The ID of the skill |
+| `name` | `string` | No | The name of the skill |
+| `ranks` | `any[]` | No | An array of skill ranks |
 
 ### Operations
 
@@ -956,17 +956,17 @@ const weapon = client.Weapon()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assets` | `Record<string, any>` | No |  |
-| `attack` | `Record<string, any>` | No |  |
-| `attributes` | `Record<string, any>` | No |  |
-| `crafting` | `Record<string, any>` | No |  |
-| `damageType` | `string` | No |  |
-| `elements` | `any[]` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `rarity` | `number` | No |  |
-| `slots` | `any[]` | No |  |
-| `type` | `string` | No |  |
+| `assets` | `Record<string, any>` | No | Asset URLs for the weapon |
+| `attack` | `Record<string, any>` | No | Attack values for the weapon |
+| `attributes` | `Record<string, any>` | No | Additional weapon attributes |
+| `crafting` | `Record<string, any>` | No | Crafting information for the weapon |
+| `damageType` | `string` | No | The damage type of the weapon |
+| `elements` | `any[]` | No | Elemental damage information |
+| `id` | `number` | No | The ID of the weapon |
+| `name` | `string` | No | The name of the weapon |
+| `rarity` | `number` | No | The rarity of the weapon |
+| `slots` | `any[]` | No | An array of decoration slot information |
+| `type` | `string` | No | The type of weapon |
 
 ### Operations
 
