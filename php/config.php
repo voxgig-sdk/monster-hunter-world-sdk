@@ -42,6 +42,7 @@ class MonsterHunterWorldConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [

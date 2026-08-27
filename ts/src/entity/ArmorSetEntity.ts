@@ -44,7 +44,8 @@ class ArmorSetEntity extends MonsterHunterWorldEntityBase<ArmorSet> {
     const {
       makeContext,
       done,
-      error,
+      // The registry name is `makeError`; `error` is the local alias.
+      makeError: error,
       featureHook,
       makePoint,
       makeRequest,
@@ -165,7 +166,8 @@ class ArmorSetEntity extends MonsterHunterWorldEntityBase<ArmorSet> {
     const {
       makeContext,
       done,
-      error,
+      // The registry name is `makeError`; `error` is the local alias.
+      makeError: error,
       featureHook,
       makePoint,
       makeRequest,
