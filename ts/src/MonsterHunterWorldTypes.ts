@@ -15,14 +15,12 @@ export interface Ailment {
 
 export interface AilmentLoadMatch {
   id: number
+  p?: string
 }
 
 export interface AilmentListMatch {
-  description?: string
-  id?: number
-  name?: string
-  protection?: Record<string, any>
-  recovery?: Record<string, any>
+  p?: string
+  q?: string
 }
 
 export interface Armor {
@@ -43,22 +41,12 @@ export interface Armor {
 
 export interface ArmorLoadMatch {
   id: number
+  p?: string
 }
 
 export interface ArmorListMatch {
-  armorSet?: Record<string, any>
-  assets?: Record<string, any>
-  attributes?: Record<string, any>
-  crafting?: Record<string, any>
-  defense?: Record<string, any>
-  id?: number
-  name?: string
-  rank?: string
-  rarity?: number
-  resistances?: Record<string, any>
-  skills?: any[]
-  slots?: any[]
-  type?: string
+  p?: string
+  q?: string
 }
 
 export interface ArmorSet {
@@ -71,14 +59,12 @@ export interface ArmorSet {
 
 export interface ArmorSetLoadMatch {
   id: number
+  p?: string
 }
 
 export interface ArmorSetListMatch {
-  bonus?: Record<string, any>
-  id?: number
-  name?: string
-  pieces?: any[]
-  rank?: string
+  p?: string
+  q?: string
 }
 
 export interface Charm {
@@ -91,14 +77,12 @@ export interface Charm {
 
 export interface CharmLoadMatch {
   id: number
+  p?: string
 }
 
 export interface CharmListMatch {
-  crafting?: Record<string, any>
-  id?: number
-  name?: string
-  rarity?: number
-  skills?: any[]
+  p?: string
+  q?: string
 }
 
 export interface Decoration {
@@ -111,14 +95,12 @@ export interface Decoration {
 
 export interface DecorationLoadMatch {
   id: number
+  p?: string
 }
 
 export interface DecorationListMatch {
-  id?: number
-  name?: string
-  rarity?: number
-  skills?: any[]
-  slot?: number
+  p?: string
+  q?: string
 }
 
 export interface Event {
@@ -141,24 +123,12 @@ export interface Event {
 
 export interface EventLoadMatch {
   id: number
+  p?: string
 }
 
 export interface EventListMatch {
-  camps?: any[]
-  description?: string
-  endTimestamp?: string
-  exclusive?: string
-  expansion?: string
-  id?: number
-  location?: Record<string, any>
-  name?: string
-  platform?: string
-  questRank?: string
-  requirements?: string
-  startTimestamp?: string
-  successConditions?: string
-  type?: string
-  zoneCount?: number
+  p?: string
+  q?: string
 }
 
 export interface Item {
@@ -174,17 +144,12 @@ export interface Item {
 
 export interface ItemLoadMatch {
   id: number
+  p?: string
 }
 
 export interface ItemListMatch {
-  buyPrice?: number
-  carryLimit?: number
-  description?: string
-  id?: number
-  name?: string
-  rarity?: number
-  sellPrice?: number
-  value?: number
+  p?: string
+  q?: string
 }
 
 export interface Location {
@@ -196,13 +161,12 @@ export interface Location {
 
 export interface LocationLoadMatch {
   id: number
+  p?: string
 }
 
 export interface LocationListMatch {
-  camps?: any[]
-  id?: number
-  name?: string
-  zoneCount?: number
+  p?: string
+  q?: string
 }
 
 export interface Monster {
@@ -221,20 +185,12 @@ export interface Monster {
 
 export interface MonsterLoadMatch {
   id: number
+  p?: string
 }
 
 export interface MonsterListMatch {
-  ailments?: any[]
-  description?: string
-  elements?: any[]
-  id?: number
-  locations?: any[]
-  name?: string
-  resistances?: any[]
-  rewards?: any[]
-  species?: string
-  type?: string
-  weaknesses?: any[]
+  p?: string
+  q?: string
 }
 
 export interface MotionValue {
@@ -248,15 +204,12 @@ export interface MotionValue {
 
 export interface MotionValueLoadMatch {
   id: number
+  p?: string
 }
 
 export interface MotionValueListMatch {
-  damageType?: string
-  exhaust?: number
-  hits?: any[]
-  id?: number
-  stun?: number
-  weaponType?: string
+  p?: string
+  q?: string
 }
 
 export interface Skill {
@@ -268,13 +221,12 @@ export interface Skill {
 
 export interface SkillLoadMatch {
   id: number
+  p?: string
 }
 
 export interface SkillListMatch {
-  description?: string
-  id?: number
-  name?: string
-  ranks?: any[]
+  p?: string
+  q?: string
 }
 
 export interface Weapon {
@@ -293,19 +245,11 @@ export interface Weapon {
 
 export interface WeaponLoadMatch {
   id: number
+  p?: string
 }
 
 export interface WeaponListMatch {
-  assets?: Record<string, any>
-  attack?: Record<string, any>
-  attributes?: Record<string, any>
-  crafting?: Record<string, any>
-  damageType?: string
-  elements?: any[]
-  id?: number
-  name?: string
-  rarity?: number
-  slots?: any[]
-  type?: string
+  p?: string
+  q?: string
 }
 

@@ -15,13 +15,11 @@
 
 ---@class AilmentLoadMatch
 ---@field id number
+---@field p? string
 
 ---@class AilmentListMatch
----@field description? string
----@field id? number
----@field name? string
----@field protection? table
----@field recovery? table
+---@field p? string
+---@field q? string
 
 ---@class Armor
 ---@field armorSet? table
@@ -40,21 +38,11 @@
 
 ---@class ArmorLoadMatch
 ---@field id number
+---@field p? string
 
 ---@class ArmorListMatch
----@field armorSet? table
----@field assets? table
----@field attributes? table
----@field crafting? table
----@field defense? table
----@field id? number
----@field name? string
----@field rank? string
----@field rarity? number
----@field resistances? table
----@field skills? table
----@field slots? table
----@field type? string
+---@field p? string
+---@field q? string
 
 ---@class ArmorSet
 ---@field bonus? table
@@ -65,13 +53,11 @@
 
 ---@class ArmorSetLoadMatch
 ---@field id number
+---@field p? string
 
 ---@class ArmorSetListMatch
----@field bonus? table
----@field id? number
----@field name? string
----@field pieces? table
----@field rank? string
+---@field p? string
+---@field q? string
 
 ---@class Charm
 ---@field crafting? table
@@ -82,13 +68,11 @@
 
 ---@class CharmLoadMatch
 ---@field id number
+---@field p? string
 
 ---@class CharmListMatch
----@field crafting? table
----@field id? number
----@field name? string
----@field rarity? number
----@field skills? table
+---@field p? string
+---@field q? string
 
 ---@class Decoration
 ---@field id? number
@@ -99,13 +83,11 @@
 
 ---@class DecorationLoadMatch
 ---@field id number
+---@field p? string
 
 ---@class DecorationListMatch
----@field id? number
----@field name? string
----@field rarity? number
----@field skills? table
----@field slot? number
+---@field p? string
+---@field q? string
 
 ---@class Event
 ---@field camps? table
@@ -126,23 +108,11 @@
 
 ---@class EventLoadMatch
 ---@field id number
+---@field p? string
 
 ---@class EventListMatch
----@field camps? table
----@field description? string
----@field endTimestamp? string
----@field exclusive? string
----@field expansion? string
----@field id? number
----@field location? table
----@field name? string
----@field platform? string
----@field questRank? string
----@field requirements? string
----@field startTimestamp? string
----@field successConditions? string
----@field type? string
----@field zoneCount? number
+---@field p? string
+---@field q? string
 
 ---@class Item
 ---@field buyPrice? number
@@ -156,16 +126,11 @@
 
 ---@class ItemLoadMatch
 ---@field id number
+---@field p? string
 
 ---@class ItemListMatch
----@field buyPrice? number
----@field carryLimit? number
----@field description? string
----@field id? number
----@field name? string
----@field rarity? number
----@field sellPrice? number
----@field value? number
+---@field p? string
+---@field q? string
 
 ---@class Location
 ---@field camps? table
@@ -175,12 +140,11 @@
 
 ---@class LocationLoadMatch
 ---@field id number
+---@field p? string
 
 ---@class LocationListMatch
----@field camps? table
----@field id? number
----@field name? string
----@field zoneCount? number
+---@field p? string
+---@field q? string
 
 ---@class Monster
 ---@field ailments? table
@@ -197,19 +161,11 @@
 
 ---@class MonsterLoadMatch
 ---@field id number
+---@field p? string
 
 ---@class MonsterListMatch
----@field ailments? table
----@field description? string
----@field elements? table
----@field id? number
----@field locations? table
----@field name? string
----@field resistances? table
----@field rewards? table
----@field species? string
----@field type? string
----@field weaknesses? table
+---@field p? string
+---@field q? string
 
 ---@class MotionValue
 ---@field damageType? string
@@ -221,14 +177,11 @@
 
 ---@class MotionValueLoadMatch
 ---@field id number
+---@field p? string
 
 ---@class MotionValueListMatch
----@field damageType? string
----@field exhaust? number
----@field hits? table
----@field id? number
----@field stun? number
----@field weaponType? string
+---@field p? string
+---@field q? string
 
 ---@class Skill
 ---@field description? string
@@ -238,12 +191,11 @@
 
 ---@class SkillLoadMatch
 ---@field id number
+---@field p? string
 
 ---@class SkillListMatch
----@field description? string
----@field id? number
----@field name? string
----@field ranks? table
+---@field p? string
+---@field q? string
 
 ---@class Weapon
 ---@field assets? table
@@ -260,19 +212,11 @@
 
 ---@class WeaponLoadMatch
 ---@field id number
+---@field p? string
 
 ---@class WeaponListMatch
----@field assets? table
----@field attack? table
----@field attributes? table
----@field crafting? table
----@field damageType? string
----@field elements? table
----@field id? number
----@field name? string
----@field rarity? number
----@field slots? table
----@field type? string
+---@field p? string
+---@field q? string
 
 local M = {}
 

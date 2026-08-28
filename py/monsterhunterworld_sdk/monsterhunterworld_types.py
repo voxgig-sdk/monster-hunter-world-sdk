@@ -24,16 +24,17 @@ class Ailment(TypedDict, total=False):
     recovery: dict
 
 
-class AilmentLoadMatch(TypedDict):
+class AilmentLoadMatchRequired(TypedDict):
     id: int
+
+
+class AilmentLoadMatch(AilmentLoadMatchRequired, total=False):
+    p: str
 
 
 class AilmentListMatch(TypedDict, total=False):
-    description: str
-    id: int
-    name: str
-    protection: dict
-    recovery: dict
+    p: str
+    q: str
 
 
 class Armor(TypedDict, total=False):
@@ -52,24 +53,17 @@ class Armor(TypedDict, total=False):
     type: str
 
 
-class ArmorLoadMatch(TypedDict):
+class ArmorLoadMatchRequired(TypedDict):
     id: int
+
+
+class ArmorLoadMatch(ArmorLoadMatchRequired, total=False):
+    p: str
 
 
 class ArmorListMatch(TypedDict, total=False):
-    armorSet: dict
-    assets: dict
-    attributes: dict
-    crafting: dict
-    defense: dict
-    id: int
-    name: str
-    rank: str
-    rarity: int
-    resistances: dict
-    skills: list
-    slots: list
-    type: str
+    p: str
+    q: str
 
 
 class ArmorSet(TypedDict, total=False):
@@ -80,16 +74,17 @@ class ArmorSet(TypedDict, total=False):
     rank: str
 
 
-class ArmorSetLoadMatch(TypedDict):
+class ArmorSetLoadMatchRequired(TypedDict):
     id: int
+
+
+class ArmorSetLoadMatch(ArmorSetLoadMatchRequired, total=False):
+    p: str
 
 
 class ArmorSetListMatch(TypedDict, total=False):
-    bonus: dict
-    id: int
-    name: str
-    pieces: list
-    rank: str
+    p: str
+    q: str
 
 
 class Charm(TypedDict, total=False):
@@ -100,16 +95,17 @@ class Charm(TypedDict, total=False):
     skills: list
 
 
-class CharmLoadMatch(TypedDict):
+class CharmLoadMatchRequired(TypedDict):
     id: int
+
+
+class CharmLoadMatch(CharmLoadMatchRequired, total=False):
+    p: str
 
 
 class CharmListMatch(TypedDict, total=False):
-    crafting: dict
-    id: int
-    name: str
-    rarity: int
-    skills: list
+    p: str
+    q: str
 
 
 class Decoration(TypedDict, total=False):
@@ -120,16 +116,17 @@ class Decoration(TypedDict, total=False):
     slot: int
 
 
-class DecorationLoadMatch(TypedDict):
+class DecorationLoadMatchRequired(TypedDict):
     id: int
+
+
+class DecorationLoadMatch(DecorationLoadMatchRequired, total=False):
+    p: str
 
 
 class DecorationListMatch(TypedDict, total=False):
-    id: int
-    name: str
-    rarity: int
-    skills: list
-    slot: int
+    p: str
+    q: str
 
 
 class Event(TypedDict, total=False):
@@ -150,26 +147,17 @@ class Event(TypedDict, total=False):
     zoneCount: int
 
 
-class EventLoadMatch(TypedDict):
+class EventLoadMatchRequired(TypedDict):
     id: int
+
+
+class EventLoadMatch(EventLoadMatchRequired, total=False):
+    p: str
 
 
 class EventListMatch(TypedDict, total=False):
-    camps: list
-    description: str
-    endTimestamp: str
-    exclusive: str
-    expansion: str
-    id: int
-    location: dict
-    name: str
-    platform: str
-    questRank: str
-    requirements: str
-    startTimestamp: str
-    successConditions: str
-    type: str
-    zoneCount: int
+    p: str
+    q: str
 
 
 class Item(TypedDict, total=False):
@@ -183,19 +171,17 @@ class Item(TypedDict, total=False):
     value: int
 
 
-class ItemLoadMatch(TypedDict):
+class ItemLoadMatchRequired(TypedDict):
     id: int
+
+
+class ItemLoadMatch(ItemLoadMatchRequired, total=False):
+    p: str
 
 
 class ItemListMatch(TypedDict, total=False):
-    buyPrice: int
-    carryLimit: int
-    description: str
-    id: int
-    name: str
-    rarity: int
-    sellPrice: int
-    value: int
+    p: str
+    q: str
 
 
 class Location(TypedDict, total=False):
@@ -205,15 +191,17 @@ class Location(TypedDict, total=False):
     zoneCount: int
 
 
-class LocationLoadMatch(TypedDict):
+class LocationLoadMatchRequired(TypedDict):
     id: int
+
+
+class LocationLoadMatch(LocationLoadMatchRequired, total=False):
+    p: str
 
 
 class LocationListMatch(TypedDict, total=False):
-    camps: list
-    id: int
-    name: str
-    zoneCount: int
+    p: str
+    q: str
 
 
 class Monster(TypedDict, total=False):
@@ -230,22 +218,17 @@ class Monster(TypedDict, total=False):
     weaknesses: list
 
 
-class MonsterLoadMatch(TypedDict):
+class MonsterLoadMatchRequired(TypedDict):
     id: int
+
+
+class MonsterLoadMatch(MonsterLoadMatchRequired, total=False):
+    p: str
 
 
 class MonsterListMatch(TypedDict, total=False):
-    ailments: list
-    description: str
-    elements: list
-    id: int
-    locations: list
-    name: str
-    resistances: list
-    rewards: list
-    species: str
-    type: str
-    weaknesses: list
+    p: str
+    q: str
 
 
 class MotionValue(TypedDict, total=False):
@@ -257,17 +240,17 @@ class MotionValue(TypedDict, total=False):
     weaponType: str
 
 
-class MotionValueLoadMatch(TypedDict):
+class MotionValueLoadMatchRequired(TypedDict):
     id: int
+
+
+class MotionValueLoadMatch(MotionValueLoadMatchRequired, total=False):
+    p: str
 
 
 class MotionValueListMatch(TypedDict, total=False):
-    damageType: str
-    exhaust: int
-    hits: list
-    id: int
-    stun: int
-    weaponType: str
+    p: str
+    q: str
 
 
 class Skill(TypedDict, total=False):
@@ -277,15 +260,17 @@ class Skill(TypedDict, total=False):
     ranks: list
 
 
-class SkillLoadMatch(TypedDict):
+class SkillLoadMatchRequired(TypedDict):
     id: int
+
+
+class SkillLoadMatch(SkillLoadMatchRequired, total=False):
+    p: str
 
 
 class SkillListMatch(TypedDict, total=False):
-    description: str
-    id: int
-    name: str
-    ranks: list
+    p: str
+    q: str
 
 
 class Weapon(TypedDict, total=False):
@@ -302,19 +287,14 @@ class Weapon(TypedDict, total=False):
     type: str
 
 
-class WeaponLoadMatch(TypedDict):
+class WeaponLoadMatchRequired(TypedDict):
     id: int
+
+
+class WeaponLoadMatch(WeaponLoadMatchRequired, total=False):
+    p: str
 
 
 class WeaponListMatch(TypedDict, total=False):
-    assets: dict
-    attack: dict
-    attributes: dict
-    crafting: dict
-    damageType: str
-    elements: list
-    id: int
-    name: str
-    rarity: int
-    slots: list
-    type: str
+    p: str
+    q: str
