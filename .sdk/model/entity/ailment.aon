@@ -66,8 +66,10 @@ main: kit: entity: ailment: {
           }
           method: "GET"
           orig: "/ailments"
-          parts: [
-            "ailments"
+          segments: [
+            {
+              lit: "ailments"
+            }
           ]
           select: {
             exist: [
@@ -108,9 +110,13 @@ main: kit: entity: ailment: {
           }
           method: "GET"
           orig: "/ailments/{id}"
-          parts: [
-            "ailments"
-            "{id}"
+          segments: [
+            {
+              lit: "ailments"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

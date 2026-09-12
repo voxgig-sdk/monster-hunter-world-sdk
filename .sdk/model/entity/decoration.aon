@@ -68,8 +68,10 @@ main: kit: entity: decoration: {
           }
           method: "GET"
           orig: "/decorations"
-          parts: [
-            "decorations"
+          segments: [
+            {
+              lit: "decorations"
+            }
           ]
           select: {
             exist: [
@@ -110,9 +112,13 @@ main: kit: entity: decoration: {
           }
           method: "GET"
           orig: "/decorations/{id}"
-          parts: [
-            "decorations"
-            "{id}"
+          segments: [
+            {
+              lit: "decorations"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

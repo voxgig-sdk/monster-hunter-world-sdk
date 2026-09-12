@@ -67,8 +67,10 @@ main: kit: entity: charm: {
           }
           method: "GET"
           orig: "/charms"
-          parts: [
-            "charms"
+          segments: [
+            {
+              lit: "charms"
+            }
           ]
           select: {
             exist: [
@@ -109,9 +111,13 @@ main: kit: entity: charm: {
           }
           method: "GET"
           orig: "/charms/{id}"
-          parts: [
-            "charms"
-            "{id}"
+          segments: [
+            {
+              lit: "charms"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

@@ -104,8 +104,10 @@ main: kit: entity: weapon: {
           }
           method: "GET"
           orig: "/weapons"
-          parts: [
-            "weapons"
+          segments: [
+            {
+              lit: "weapons"
+            }
           ]
           select: {
             exist: [
@@ -146,9 +148,13 @@ main: kit: entity: weapon: {
           }
           method: "GET"
           orig: "/weapons/{id}"
-          parts: [
-            "weapons"
-            "{id}"
+          segments: [
+            {
+              lit: "weapons"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

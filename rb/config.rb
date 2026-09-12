@@ -78,6 +78,10 @@ module MonsterHunterWorldConfig
               "type" => "`$OBJECT`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "ailment",
           "op" => {
             "list" => {
@@ -104,8 +108,10 @@ module MonsterHunterWorldConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/ailments",
-                  "parts" => [
-                    "ailments",
+                  "segments" => [
+                    {
+                      "lit" => "ailments",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -117,6 +123,9 @@ module MonsterHunterWorldConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "ailments",
+                  ],
                 },
               ],
             },
@@ -147,9 +156,13 @@ module MonsterHunterWorldConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/ailments/{id}",
-                  "parts" => [
-                    "ailments",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "ailments",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -161,6 +174,10 @@ module MonsterHunterWorldConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "ailments",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -232,6 +249,10 @@ module MonsterHunterWorldConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "armor",
           "op" => {
             "list" => {
@@ -258,8 +279,10 @@ module MonsterHunterWorldConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/armor",
-                  "parts" => [
-                    "armor",
+                  "segments" => [
+                    {
+                      "lit" => "armor",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -271,6 +294,9 @@ module MonsterHunterWorldConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "armor",
+                  ],
                 },
               ],
             },
@@ -301,9 +327,13 @@ module MonsterHunterWorldConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/armor/{id}",
-                  "parts" => [
-                    "armor",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "armor",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -315,6 +345,10 @@ module MonsterHunterWorldConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "armor",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -351,6 +385,10 @@ module MonsterHunterWorldConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "armor_set",
           "op" => {
             "list" => {
@@ -377,9 +415,13 @@ module MonsterHunterWorldConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/armor/sets",
-                  "parts" => [
-                    "armor",
-                    "sets",
+                  "segments" => [
+                    {
+                      "lit" => "armor",
+                    },
+                    {
+                      "lit" => "sets",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -391,6 +433,10 @@ module MonsterHunterWorldConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "armor",
+                    "sets",
+                  ],
                 },
               ],
             },
@@ -421,10 +467,16 @@ module MonsterHunterWorldConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/armor/sets/{id}",
-                  "parts" => [
-                    "armor",
-                    "sets",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "armor",
+                    },
+                    {
+                      "lit" => "sets",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -436,6 +488,11 @@ module MonsterHunterWorldConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "armor",
+                    "sets",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -471,6 +528,10 @@ module MonsterHunterWorldConfig
               "type" => "`$ARRAY`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "charm",
           "op" => {
             "list" => {
@@ -497,8 +558,10 @@ module MonsterHunterWorldConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/charms",
-                  "parts" => [
-                    "charms",
+                  "segments" => [
+                    {
+                      "lit" => "charms",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -510,6 +573,9 @@ module MonsterHunterWorldConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "charms",
+                  ],
                 },
               ],
             },
@@ -540,9 +606,13 @@ module MonsterHunterWorldConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/charms/{id}",
-                  "parts" => [
-                    "charms",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "charms",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -554,6 +624,10 @@ module MonsterHunterWorldConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "charms",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -590,6 +664,10 @@ module MonsterHunterWorldConfig
               "type" => "`$INTEGER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "decoration",
           "op" => {
             "list" => {
@@ -616,8 +694,10 @@ module MonsterHunterWorldConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/decorations",
-                  "parts" => [
-                    "decorations",
+                  "segments" => [
+                    {
+                      "lit" => "decorations",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -629,6 +709,9 @@ module MonsterHunterWorldConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "decorations",
+                  ],
                 },
               ],
             },
@@ -659,9 +742,13 @@ module MonsterHunterWorldConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/decorations/{id}",
-                  "parts" => [
-                    "decorations",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "decorations",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -673,6 +760,10 @@ module MonsterHunterWorldConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "decorations",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -694,6 +785,7 @@ module MonsterHunterWorldConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "endTimestamp",
               "short" => "The end time of the event",
               "type" => "`$STRING`",
@@ -738,6 +830,7 @@ module MonsterHunterWorldConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "startTimestamp",
               "short" => "The start time of the event",
               "type" => "`$STRING`",
@@ -758,6 +851,10 @@ module MonsterHunterWorldConfig
               "type" => "`$INTEGER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "event",
           "op" => {
             "list" => {
@@ -784,8 +881,10 @@ module MonsterHunterWorldConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/events",
-                  "parts" => [
-                    "events",
+                  "segments" => [
+                    {
+                      "lit" => "events",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -797,6 +896,9 @@ module MonsterHunterWorldConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "events",
+                  ],
                 },
               ],
             },
@@ -827,9 +929,13 @@ module MonsterHunterWorldConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/events/{id}",
-                  "parts" => [
-                    "events",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "events",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -841,6 +947,10 @@ module MonsterHunterWorldConfig
                     "req" => "`reqdata`",
                     "res" => "`body.location`",
                   },
+                  "parts" => [
+                    "events",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -892,6 +1002,10 @@ module MonsterHunterWorldConfig
               "type" => "`$INTEGER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "item",
           "op" => {
             "list" => {
@@ -918,8 +1032,10 @@ module MonsterHunterWorldConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/items",
-                  "parts" => [
-                    "items",
+                  "segments" => [
+                    {
+                      "lit" => "items",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -931,6 +1047,9 @@ module MonsterHunterWorldConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "items",
+                  ],
                 },
               ],
             },
@@ -961,9 +1080,13 @@ module MonsterHunterWorldConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/items/{id}",
-                  "parts" => [
-                    "items",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "items",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -975,6 +1098,10 @@ module MonsterHunterWorldConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "items",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -1006,6 +1133,10 @@ module MonsterHunterWorldConfig
               "type" => "`$INTEGER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "location",
           "op" => {
             "list" => {
@@ -1032,8 +1163,10 @@ module MonsterHunterWorldConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/locations",
-                  "parts" => [
-                    "locations",
+                  "segments" => [
+                    {
+                      "lit" => "locations",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1045,6 +1178,9 @@ module MonsterHunterWorldConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "locations",
+                  ],
                 },
               ],
             },
@@ -1075,9 +1211,13 @@ module MonsterHunterWorldConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/locations/{id}",
-                  "parts" => [
-                    "locations",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "locations",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1089,6 +1229,10 @@ module MonsterHunterWorldConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "locations",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -1155,6 +1299,10 @@ module MonsterHunterWorldConfig
               "type" => "`$ARRAY`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "monster",
           "op" => {
             "list" => {
@@ -1181,8 +1329,10 @@ module MonsterHunterWorldConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/monsters",
-                  "parts" => [
-                    "monsters",
+                  "segments" => [
+                    {
+                      "lit" => "monsters",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1194,6 +1344,9 @@ module MonsterHunterWorldConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "monsters",
+                  ],
                 },
               ],
             },
@@ -1224,9 +1377,13 @@ module MonsterHunterWorldConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/monsters/{id}",
-                  "parts" => [
-                    "monsters",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "monsters",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1238,6 +1395,10 @@ module MonsterHunterWorldConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "monsters",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -1279,6 +1440,10 @@ module MonsterHunterWorldConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "motion_value",
           "op" => {
             "list" => {
@@ -1305,8 +1470,10 @@ module MonsterHunterWorldConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/motion-values",
-                  "parts" => [
-                    "motion-values",
+                  "segments" => [
+                    {
+                      "lit" => "motion-values",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1318,6 +1485,9 @@ module MonsterHunterWorldConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "motion-values",
+                  ],
                 },
               ],
             },
@@ -1348,9 +1518,13 @@ module MonsterHunterWorldConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/motion-values/{id}",
-                  "parts" => [
-                    "motion-values",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "motion-values",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1362,6 +1536,10 @@ module MonsterHunterWorldConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "motion-values",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -1393,6 +1571,10 @@ module MonsterHunterWorldConfig
               "type" => "`$ARRAY`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "skill",
           "op" => {
             "list" => {
@@ -1419,8 +1601,10 @@ module MonsterHunterWorldConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/skills",
-                  "parts" => [
-                    "skills",
+                  "segments" => [
+                    {
+                      "lit" => "skills",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1432,6 +1616,9 @@ module MonsterHunterWorldConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "skills",
+                  ],
                 },
               ],
             },
@@ -1462,9 +1649,13 @@ module MonsterHunterWorldConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/skills/{id}",
-                  "parts" => [
-                    "skills",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "skills",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1476,6 +1667,10 @@ module MonsterHunterWorldConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "skills",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -1542,6 +1737,10 @@ module MonsterHunterWorldConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "weapon",
           "op" => {
             "list" => {
@@ -1568,8 +1767,10 @@ module MonsterHunterWorldConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/weapons",
-                  "parts" => [
-                    "weapons",
+                  "segments" => [
+                    {
+                      "lit" => "weapons",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1581,6 +1782,9 @@ module MonsterHunterWorldConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "weapons",
+                  ],
                 },
               ],
             },
@@ -1611,9 +1815,13 @@ module MonsterHunterWorldConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/weapons/{id}",
-                  "parts" => [
-                    "weapons",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "weapons",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1625,6 +1833,10 @@ module MonsterHunterWorldConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "weapons",
+                    "{id}",
+                  ],
                 },
               ],
             },

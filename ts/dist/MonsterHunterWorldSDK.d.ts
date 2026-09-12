@@ -1,0 +1,79 @@
+import { AilmentEntity } from './entity/AilmentEntity';
+import { ArmorEntity } from './entity/ArmorEntity';
+import { ArmorSetEntity } from './entity/ArmorSetEntity';
+import { CharmEntity } from './entity/CharmEntity';
+import { DecorationEntity } from './entity/DecorationEntity';
+import { EventEntity } from './entity/EventEntity';
+import { ItemEntity } from './entity/ItemEntity';
+import { LocationEntity } from './entity/LocationEntity';
+import { MonsterEntity } from './entity/MonsterEntity';
+import { MotionValueEntity } from './entity/MotionValueEntity';
+import { SkillEntity } from './entity/SkillEntity';
+import { WeaponEntity } from './entity/WeaponEntity';
+export type * from './MonsterHunterWorldTypes';
+import { inspect } from 'node:util';
+import type { Context, Feature } from './types';
+import { config } from './Config';
+import { MonsterHunterWorldEntityBase } from './MonsterHunterWorldEntityBase';
+import { Utility } from './utility/Utility';
+import { BaseFeature } from './feature/base/BaseFeature';
+declare const stdutil: Utility;
+declare class MonsterHunterWorldSDK {
+    _mode: string;
+    _options: any;
+    _utility: Utility;
+    _features: Feature[];
+    _rootctx: Context;
+    constructor(options?: any);
+    options(): any;
+    utility(): any;
+    prepare(fetchargs?: any): Promise<any>;
+    direct(fetchargs?: any): Promise<Error | {
+        ok: boolean;
+        status: number;
+        headers: any;
+        data: any;
+        err?: undefined;
+    } | {
+        ok: boolean;
+        err: any;
+        status?: undefined;
+        headers?: undefined;
+        data?: undefined;
+    }>;
+    _rawRequest(fetchargs?: any): Promise<Error | {
+        ok: boolean;
+        status: number;
+        headers: any;
+        data: any;
+        err?: undefined;
+    } | {
+        ok: boolean;
+        err: any;
+        status?: undefined;
+        headers?: undefined;
+        data?: undefined;
+    }>;
+    graphql(query: string, variables?: any, ctrl?: any): Promise<any>;
+    Ailment(entopts?: Record<string, any>): AilmentEntity;
+    Armor(entopts?: Record<string, any>): ArmorEntity;
+    ArmorSet(entopts?: Record<string, any>): ArmorSetEntity;
+    Charm(entopts?: Record<string, any>): CharmEntity;
+    Decoration(entopts?: Record<string, any>): DecorationEntity;
+    Event(entopts?: Record<string, any>): EventEntity;
+    Item(entopts?: Record<string, any>): ItemEntity;
+    Location(entopts?: Record<string, any>): LocationEntity;
+    Monster(entopts?: Record<string, any>): MonsterEntity;
+    MotionValue(entopts?: Record<string, any>): MotionValueEntity;
+    Skill(entopts?: Record<string, any>): SkillEntity;
+    Weapon(entopts?: Record<string, any>): WeaponEntity;
+    static test(testoptsarg?: any, sdkoptsarg?: any): MonsterHunterWorldSDK;
+    tester(testopts?: any, sdkopts?: any): MonsterHunterWorldSDK;
+    toJSON(): {
+        name: string;
+    };
+    toString(): string;
+    [inspect.custom](): string;
+}
+declare const SDK: typeof MonsterHunterWorldSDK;
+export { stdutil, config, BaseFeature, MonsterHunterWorldEntityBase, MonsterHunterWorldSDK, SDK, };

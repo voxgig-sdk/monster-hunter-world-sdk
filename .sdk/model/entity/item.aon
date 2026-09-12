@@ -86,8 +86,10 @@ main: kit: entity: item: {
           }
           method: "GET"
           orig: "/items"
-          parts: [
-            "items"
+          segments: [
+            {
+              lit: "items"
+            }
           ]
           select: {
             exist: [
@@ -128,9 +130,13 @@ main: kit: entity: item: {
           }
           method: "GET"
           orig: "/items/{id}"
-          parts: [
-            "items"
-            "{id}"
+          segments: [
+            {
+              lit: "items"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

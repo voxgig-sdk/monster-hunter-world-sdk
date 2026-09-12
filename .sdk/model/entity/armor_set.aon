@@ -68,9 +68,13 @@ main: kit: entity: armor_set: {
           }
           method: "GET"
           orig: "/armor/sets"
-          parts: [
-            "armor"
-            "sets"
+          segments: [
+            {
+              lit: "armor"
+            }
+            {
+              lit: "sets"
+            }
           ]
           select: {
             exist: [
@@ -111,10 +115,16 @@ main: kit: entity: armor_set: {
           }
           method: "GET"
           orig: "/armor/sets/{id}"
-          parts: [
-            "armor"
-            "sets"
-            "{id}"
+          segments: [
+            {
+              lit: "armor"
+            }
+            {
+              lit: "sets"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

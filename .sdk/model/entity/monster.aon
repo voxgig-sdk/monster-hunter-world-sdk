@@ -104,8 +104,10 @@ main: kit: entity: monster: {
           }
           method: "GET"
           orig: "/monsters"
-          parts: [
-            "monsters"
+          segments: [
+            {
+              lit: "monsters"
+            }
           ]
           select: {
             exist: [
@@ -146,9 +148,13 @@ main: kit: entity: monster: {
           }
           method: "GET"
           orig: "/monsters/{id}"
-          parts: [
-            "monsters"
-            "{id}"
+          segments: [
+            {
+              lit: "monsters"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

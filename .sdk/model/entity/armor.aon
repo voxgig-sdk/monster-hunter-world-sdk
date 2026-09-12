@@ -111,8 +111,10 @@ main: kit: entity: armor: {
           }
           method: "GET"
           orig: "/armor"
-          parts: [
-            "armor"
+          segments: [
+            {
+              lit: "armor"
+            }
           ]
           select: {
             exist: [
@@ -153,9 +155,13 @@ main: kit: entity: armor: {
           }
           method: "GET"
           orig: "/armor/{id}"
-          parts: [
-            "armor"
-            "{id}"
+          segments: [
+            {
+              lit: "armor"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

@@ -1,0 +1,1075 @@
+import { BaseFeature } from './feature/base/BaseFeature';
+declare const FEATURE_PLUGINS: Record<string, any[]>;
+declare class Config {
+    makeFeature(this: any, fn: string): BaseFeature;
+    hasFeature(this: any, fn: string): boolean;
+    main: {
+        name: string;
+        slug: string;
+        version: string;
+        target: string;
+    };
+    feature: {
+        test: {
+            options: {
+                active: boolean;
+            };
+            transport: string;
+        };
+    };
+    options: {
+        base: string;
+        headers: {
+            "content-type": string;
+        };
+        entity: {
+            ailment: {};
+            armor: {};
+            armor_set: {};
+            charm: {};
+            decoration: {};
+            event: {};
+            item: {};
+            location: {};
+            monster: {};
+            motion_value: {};
+            skill: {};
+            weapon: {};
+        };
+    };
+    entity: {
+        ailment: {
+            fields: ({
+                name: string;
+                short: string;
+                type: string;
+            } | {
+                name: string;
+                type: string;
+                short?: undefined;
+            })[];
+            id: {
+                field: string;
+                name: string;
+            };
+            name: string;
+            op: {
+                list: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            query: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: {
+                            lit: string;
+                        }[];
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                        parts: string[];
+                    }[];
+                };
+                load: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            params: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                reqd: boolean;
+                                type: string;
+                            }[];
+                            query: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: ({
+                            lit: string;
+                            var?: undefined;
+                        } | {
+                            var: string;
+                            lit?: undefined;
+                        })[];
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                        parts: string[];
+                    }[];
+                };
+            };
+            relations: {
+                ancestors: never[];
+            };
+        };
+        armor: {
+            fields: ({
+                name: string;
+                type: string;
+                short?: undefined;
+            } | {
+                name: string;
+                short: string;
+                type: string;
+            })[];
+            id: {
+                field: string;
+                name: string;
+            };
+            name: string;
+            op: {
+                list: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            query: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: {
+                            lit: string;
+                        }[];
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                        parts: string[];
+                    }[];
+                };
+                load: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            params: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                reqd: boolean;
+                                type: string;
+                            }[];
+                            query: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: ({
+                            lit: string;
+                            var?: undefined;
+                        } | {
+                            var: string;
+                            lit?: undefined;
+                        })[];
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                        parts: string[];
+                    }[];
+                };
+            };
+            relations: {
+                ancestors: never[];
+            };
+        };
+        armor_set: {
+            fields: {
+                name: string;
+                short: string;
+                type: string;
+            }[];
+            id: {
+                field: string;
+                name: string;
+            };
+            name: string;
+            op: {
+                list: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            query: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: {
+                            lit: string;
+                        }[];
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                        parts: string[];
+                    }[];
+                };
+                load: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            params: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                reqd: boolean;
+                                type: string;
+                            }[];
+                            query: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: ({
+                            lit: string;
+                            var?: undefined;
+                        } | {
+                            var: string;
+                            lit?: undefined;
+                        })[];
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                        parts: string[];
+                    }[];
+                };
+            };
+            relations: {
+                ancestors: never[];
+            };
+        };
+        charm: {
+            fields: ({
+                name: string;
+                type: string;
+                short?: undefined;
+            } | {
+                name: string;
+                short: string;
+                type: string;
+            })[];
+            id: {
+                field: string;
+                name: string;
+            };
+            name: string;
+            op: {
+                list: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            query: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: {
+                            lit: string;
+                        }[];
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                        parts: string[];
+                    }[];
+                };
+                load: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            params: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                reqd: boolean;
+                                type: string;
+                            }[];
+                            query: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: ({
+                            lit: string;
+                            var?: undefined;
+                        } | {
+                            var: string;
+                            lit?: undefined;
+                        })[];
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                        parts: string[];
+                    }[];
+                };
+            };
+            relations: {
+                ancestors: never[];
+            };
+        };
+        decoration: {
+            fields: {
+                name: string;
+                short: string;
+                type: string;
+            }[];
+            id: {
+                field: string;
+                name: string;
+            };
+            name: string;
+            op: {
+                list: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            query: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: {
+                            lit: string;
+                        }[];
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                        parts: string[];
+                    }[];
+                };
+                load: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            params: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                reqd: boolean;
+                                type: string;
+                            }[];
+                            query: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: ({
+                            lit: string;
+                            var?: undefined;
+                        } | {
+                            var: string;
+                            lit?: undefined;
+                        })[];
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                        parts: string[];
+                    }[];
+                };
+            };
+            relations: {
+                ancestors: never[];
+            };
+        };
+        event: {
+            fields: ({
+                name: string;
+                short: string;
+                type: string;
+                format?: undefined;
+            } | {
+                format: string;
+                name: string;
+                short: string;
+                type: string;
+            } | {
+                name: string;
+                type: string;
+                short?: undefined;
+                format?: undefined;
+            })[];
+            id: {
+                field: string;
+                name: string;
+            };
+            name: string;
+            op: {
+                list: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            query: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: {
+                            lit: string;
+                        }[];
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                        parts: string[];
+                    }[];
+                };
+                load: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            params: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                reqd: boolean;
+                                type: string;
+                            }[];
+                            query: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: ({
+                            lit: string;
+                            var?: undefined;
+                        } | {
+                            var: string;
+                            lit?: undefined;
+                        })[];
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                        parts: string[];
+                    }[];
+                };
+            };
+            relations: {
+                ancestors: never[];
+            };
+        };
+        item: {
+            fields: {
+                name: string;
+                short: string;
+                type: string;
+            }[];
+            id: {
+                field: string;
+                name: string;
+            };
+            name: string;
+            op: {
+                list: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            query: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: {
+                            lit: string;
+                        }[];
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                        parts: string[];
+                    }[];
+                };
+                load: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            params: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                reqd: boolean;
+                                type: string;
+                            }[];
+                            query: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: ({
+                            lit: string;
+                            var?: undefined;
+                        } | {
+                            var: string;
+                            lit?: undefined;
+                        })[];
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                        parts: string[];
+                    }[];
+                };
+            };
+            relations: {
+                ancestors: never[];
+            };
+        };
+        location: {
+            fields: {
+                name: string;
+                short: string;
+                type: string;
+            }[];
+            id: {
+                field: string;
+                name: string;
+            };
+            name: string;
+            op: {
+                list: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            query: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: {
+                            lit: string;
+                        }[];
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                        parts: string[];
+                    }[];
+                };
+                load: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            params: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                reqd: boolean;
+                                type: string;
+                            }[];
+                            query: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: ({
+                            lit: string;
+                            var?: undefined;
+                        } | {
+                            var: string;
+                            lit?: undefined;
+                        })[];
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                        parts: string[];
+                    }[];
+                };
+            };
+            relations: {
+                ancestors: never[];
+            };
+        };
+        monster: {
+            fields: {
+                name: string;
+                short: string;
+                type: string;
+            }[];
+            id: {
+                field: string;
+                name: string;
+            };
+            name: string;
+            op: {
+                list: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            query: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: {
+                            lit: string;
+                        }[];
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                        parts: string[];
+                    }[];
+                };
+                load: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            params: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                reqd: boolean;
+                                type: string;
+                            }[];
+                            query: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: ({
+                            lit: string;
+                            var?: undefined;
+                        } | {
+                            var: string;
+                            lit?: undefined;
+                        })[];
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                        parts: string[];
+                    }[];
+                };
+            };
+            relations: {
+                ancestors: never[];
+            };
+        };
+        motion_value: {
+            fields: {
+                name: string;
+                short: string;
+                type: string;
+            }[];
+            id: {
+                field: string;
+                name: string;
+            };
+            name: string;
+            op: {
+                list: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            query: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: {
+                            lit: string;
+                        }[];
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                        parts: string[];
+                    }[];
+                };
+                load: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            params: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                reqd: boolean;
+                                type: string;
+                            }[];
+                            query: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: ({
+                            lit: string;
+                            var?: undefined;
+                        } | {
+                            var: string;
+                            lit?: undefined;
+                        })[];
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                        parts: string[];
+                    }[];
+                };
+            };
+            relations: {
+                ancestors: never[];
+            };
+        };
+        skill: {
+            fields: {
+                name: string;
+                short: string;
+                type: string;
+            }[];
+            id: {
+                field: string;
+                name: string;
+            };
+            name: string;
+            op: {
+                list: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            query: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: {
+                            lit: string;
+                        }[];
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                        parts: string[];
+                    }[];
+                };
+                load: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            params: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                reqd: boolean;
+                                type: string;
+                            }[];
+                            query: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: ({
+                            lit: string;
+                            var?: undefined;
+                        } | {
+                            var: string;
+                            lit?: undefined;
+                        })[];
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                        parts: string[];
+                    }[];
+                };
+            };
+            relations: {
+                ancestors: never[];
+            };
+        };
+        weapon: {
+            fields: {
+                name: string;
+                short: string;
+                type: string;
+            }[];
+            id: {
+                field: string;
+                name: string;
+            };
+            name: string;
+            op: {
+                list: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            query: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: {
+                            lit: string;
+                        }[];
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                        parts: string[];
+                    }[];
+                };
+                load: {
+                    input: string;
+                    name: string;
+                    points: {
+                        args: {
+                            params: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                reqd: boolean;
+                                type: string;
+                            }[];
+                            query: {
+                                kind: string;
+                                name: string;
+                                orig: string;
+                                type: string;
+                            }[];
+                        };
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: ({
+                            lit: string;
+                            var?: undefined;
+                        } | {
+                            var: string;
+                            lit?: undefined;
+                        })[];
+                        select: {
+                            exist: string[];
+                        };
+                        transform: {
+                            req: string;
+                            res: string;
+                        };
+                        parts: string[];
+                    }[];
+                };
+            };
+            relations: {
+                ancestors: never[];
+            };
+        };
+    };
+}
+declare const config: Config;
+export { config, FEATURE_PLUGINS, };

@@ -74,8 +74,10 @@ main: kit: entity: motion_value: {
           }
           method: "GET"
           orig: "/motion-values"
-          parts: [
-            "motion-values"
+          segments: [
+            {
+              lit: "motion-values"
+            }
           ]
           select: {
             exist: [
@@ -116,9 +118,13 @@ main: kit: entity: motion_value: {
           }
           method: "GET"
           orig: "/motion-values/{id}"
-          parts: [
-            "motion-values"
-            "{id}"
+          segments: [
+            {
+              lit: "motion-values"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

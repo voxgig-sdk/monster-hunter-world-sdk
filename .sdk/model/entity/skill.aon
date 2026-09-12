@@ -62,8 +62,10 @@ main: kit: entity: skill: {
           }
           method: "GET"
           orig: "/skills"
-          parts: [
-            "skills"
+          segments: [
+            {
+              lit: "skills"
+            }
           ]
           select: {
             exist: [
@@ -104,9 +106,13 @@ main: kit: entity: skill: {
           }
           method: "GET"
           orig: "/skills/{id}"
-          parts: [
-            "skills"
-            "{id}"
+          segments: [
+            {
+              lit: "skills"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [
