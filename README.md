@@ -105,7 +105,7 @@ local results, err = client:Ailment():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/monster-hunter-world` | publish pending — [install from git tag](https://github.com/voxgig-sdk/monster-hunter-world-sdk/releases) |
+| TypeScript | `@voxgig-sdk/monster-hunter-world-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/monster-hunter-world-sdk/releases) |
 | Python | `voxgig-sdk-monster-hunter-world` | publish pending — [install from git tag](https://github.com/voxgig-sdk/monster-hunter-world-sdk/releases) |
 | PHP | `voxgig-sdk/monster-hunter-world` | publish pending — [install from git tag](https://github.com/voxgig-sdk/monster-hunter-world-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/monster-hunter-world-sdk/go` | `go get github.com/voxgig-sdk/monster-hunter-world-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Ailment():list()
 ### TypeScript
 
 ```ts
-import { MonsterHunterWorldSDK } from '@voxgig-sdk/monster-hunter-world'
+import { MonsterHunterWorldSDK } from '@voxgig-sdk/monster-hunter-world-sdk'
 
 const client = new MonsterHunterWorldSDK()
 

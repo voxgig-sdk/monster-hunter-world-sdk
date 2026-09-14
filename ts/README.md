@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { MonsterHunterWorldSDK } from '@voxgig-sdk/monster-hunter-world'
+import { MonsterHunterWorldSDK } from '@voxgig-sdk/monster-hunter-world-sdk'
 
 const client = new MonsterHunterWorldSDK()
 ```
@@ -1036,7 +1036,7 @@ monster-hunter-world/
 Import the SDK from the package root:
 
 ```ts
-import { MonsterHunterWorldSDK } from '@voxgig-sdk/monster-hunter-world'
+import { MonsterHunterWorldSDK } from '@voxgig-sdk/monster-hunter-world-sdk'
 ```
 
 ### Entity state
