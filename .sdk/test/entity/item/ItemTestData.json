@@ -2,47 +2,203 @@
   "existing": {
     "item": {
       "ITEM00": {
-        "buyPrice": "s50",
-        "carryLimit": "s51",
+        "buyPrice": 80,
+        "carryLimit": 81,
         "description": "s52",
         "id": "ITEM00",
         "name": "s54",
-        "rarity": "s55",
-        "sellPrice": "s56",
-        "value": "s57"
+        "rarity": 85,
+        "sellPrice": 86,
+        "value": 87
       },
       "ITEM01": {
-        "buyPrice": "sa0",
-        "carryLimit": "sa1",
+        "buyPrice": 160,
+        "carryLimit": 161,
         "description": "sa2",
         "id": "ITEM01",
         "name": "sa4",
-        "rarity": "sa5",
-        "sellPrice": "sa6",
-        "value": "sa7"
+        "rarity": 165,
+        "sellPrice": 166,
+        "value": 167
       },
       "ITEM02": {
-        "buyPrice": "sf0",
-        "carryLimit": "sf1",
+        "buyPrice": 240,
+        "carryLimit": 241,
         "description": "sf2",
         "id": "ITEM02",
         "name": "sf4",
-        "rarity": "sf5",
-        "sellPrice": "sf6",
-        "value": "sf7"
+        "rarity": 245,
+        "sellPrice": 246,
+        "value": 247
       }
     }
   },
   "new": {
     "item": {
       "item_ref01": {
-        "buyPrice": "s140",
-        "carryLimit": "s141",
+        "buyPrice": 320,
+        "carryLimit": 321,
         "description": "s142",
         "name": "s144",
-        "rarity": "s145",
-        "sellPrice": "s146",
-        "value": "s147"
+        "rarity": 325,
+        "sellPrice": 326,
+        "value": 327
+      }
+    }
+  },
+  "requests": {
+    "GET /items": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllItems",
+        "parameters": [
+          {
+            "description": "Projection parameter for filtering returned fields",
+            "in": "query",
+            "name": "p",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Query parameter for searching",
+            "in": "query",
+            "name": "q",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "buyPrice": {
+                        "description": "The price when buying the item",
+                        "type": "integer"
+                      },
+                      "carryLimit": {
+                        "description": "The maximum number of this item that can be carried",
+                        "type": "integer"
+                      },
+                      "description": {
+                        "description": "A description of the item",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "The ID of the item",
+                        "type": "integer"
+                      },
+                      "name": {
+                        "description": "The name of the item",
+                        "type": "string"
+                      },
+                      "rarity": {
+                        "description": "The rarity of the item",
+                        "type": "integer"
+                      },
+                      "sellPrice": {
+                        "description": "The price when selling the item",
+                        "type": "integer"
+                      },
+                      "value": {
+                        "description": "The value of the item",
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /items/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getItemById",
+        "parameters": [
+          {
+            "description": "The ID of the item to retrieve",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Projection parameter for filtering returned fields",
+            "in": "query",
+            "name": "p",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "buyPrice": {
+                      "description": "The price when buying the item",
+                      "type": "integer"
+                    },
+                    "carryLimit": {
+                      "description": "The maximum number of this item that can be carried",
+                      "type": "integer"
+                    },
+                    "description": {
+                      "description": "A description of the item",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "The ID of the item",
+                      "type": "integer"
+                    },
+                    "name": {
+                      "description": "The name of the item",
+                      "type": "string"
+                    },
+                    "rarity": {
+                      "description": "The rarity of the item",
+                      "type": "integer"
+                    },
+                    "sellPrice": {
+                      "description": "The price when selling the item",
+                      "type": "integer"
+                    },
+                    "value": {
+                      "description": "The value of the item",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "Item not found"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

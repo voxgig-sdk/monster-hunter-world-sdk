@@ -16,7 +16,7 @@
         "startTimestamp": "sa1",
         "successConditions": "sa2",
         "type": "sa3",
-        "zoneCount": "sa4"
+        "zoneCount": 164
       },
       "EVENT01": {
         "camps": [],
@@ -33,7 +33,7 @@
         "startTimestamp": "s137",
         "successConditions": "s138",
         "type": "s139",
-        "zoneCount": "s13a"
+        "zoneCount": 314
       },
       "EVENT02": {
         "camps": [],
@@ -50,7 +50,7 @@
         "startTimestamp": "s1cd",
         "successConditions": "s1ce",
         "type": "s1cf",
-        "zoneCount": "s1d0"
+        "zoneCount": 464
       }
     }
   },
@@ -70,7 +70,271 @@
         "startTimestamp": "s263",
         "successConditions": "s264",
         "type": "s265",
-        "zoneCount": "s266"
+        "zoneCount": 614
+      }
+    }
+  },
+  "requests": {
+    "GET /events": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllEvents",
+        "parameters": [
+          {
+            "description": "Projection parameter for filtering returned fields",
+            "in": "query",
+            "name": "p",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Query parameter for searching",
+            "in": "query",
+            "name": "q",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "description": {
+                        "description": "A description of the event",
+                        "type": "string"
+                      },
+                      "endTimestamp": {
+                        "description": "The end time of the event",
+                        "format": "date-time",
+                        "type": "string"
+                      },
+                      "exclusive": {
+                        "description": "Whether the event is exclusive to a platform",
+                        "nullable": true,
+                        "type": "string"
+                      },
+                      "expansion": {
+                        "description": "The expansion the event belongs to",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "The ID of the event",
+                        "type": "integer"
+                      },
+                      "location": {
+                        "properties": {
+                          "camps": {
+                            "description": "An array of camps in the location",
+                            "items": {
+                              "properties": {
+                                "id": {
+                                  "type": "integer"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "zone": {
+                                  "type": "integer"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          },
+                          "id": {
+                            "description": "The ID of the location",
+                            "type": "integer"
+                          },
+                          "name": {
+                            "description": "The name of the location",
+                            "type": "string"
+                          },
+                          "zoneCount": {
+                            "description": "The number of zones in the location",
+                            "type": "integer"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "name": {
+                        "description": "The name of the event",
+                        "type": "string"
+                      },
+                      "platform": {
+                        "description": "The platform for the event",
+                        "type": "string"
+                      },
+                      "questRank": {
+                        "description": "The quest rank of the event",
+                        "type": "string"
+                      },
+                      "requirements": {
+                        "description": "Requirements for the event",
+                        "type": "string"
+                      },
+                      "startTimestamp": {
+                        "description": "The start time of the event",
+                        "format": "date-time",
+                        "type": "string"
+                      },
+                      "successConditions": {
+                        "description": "Conditions for success",
+                        "type": "string"
+                      },
+                      "type": {
+                        "description": "The type of event",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /events/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getEventById",
+        "parameters": [
+          {
+            "description": "The ID of the event to retrieve",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Projection parameter for filtering returned fields",
+            "in": "query",
+            "name": "p",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "description": {
+                      "description": "A description of the event",
+                      "type": "string"
+                    },
+                    "endTimestamp": {
+                      "description": "The end time of the event",
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "exclusive": {
+                      "description": "Whether the event is exclusive to a platform",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "expansion": {
+                      "description": "The expansion the event belongs to",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "The ID of the event",
+                      "type": "integer"
+                    },
+                    "location": {
+                      "properties": {
+                        "camps": {
+                          "description": "An array of camps in the location",
+                          "items": {
+                            "properties": {
+                              "id": {
+                                "type": "integer"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "zone": {
+                                "type": "integer"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "id": {
+                          "description": "The ID of the location",
+                          "type": "integer"
+                        },
+                        "name": {
+                          "description": "The name of the location",
+                          "type": "string"
+                        },
+                        "zoneCount": {
+                          "description": "The number of zones in the location",
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "name": {
+                      "description": "The name of the event",
+                      "type": "string"
+                    },
+                    "platform": {
+                      "description": "The platform for the event",
+                      "type": "string"
+                    },
+                    "questRank": {
+                      "description": "The quest rank of the event",
+                      "type": "string"
+                    },
+                    "requirements": {
+                      "description": "Requirements for the event",
+                      "type": "string"
+                    },
+                    "startTimestamp": {
+                      "description": "The start time of the event",
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "successConditions": {
+                      "description": "Conditions for success",
+                      "type": "string"
+                    },
+                    "type": {
+                      "description": "The type of event",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "Event not found"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

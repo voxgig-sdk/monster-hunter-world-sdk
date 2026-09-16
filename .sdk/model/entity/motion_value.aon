@@ -72,6 +72,12 @@ main: kit: entity: motion_value: {
               }
             ]
           }
+          contract: {
+            id: "GET /motion-values"
+            json: "{\"operationId\":\"getAllMotionValues\",\"parameters\":[{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Query parameter for searching\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"damageType\":{\"description\":\"The type of damage\",\"type\":\"string\"},\"exhaust\":{\"description\":\"Exhaust value\",\"type\":\"integer\"},\"hits\":{\"description\":\"Hit information\",\"items\":{\"properties\":{\"type\":{\"type\":\"string\"},\"value\":{\"type\":\"number\"}},\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the motion value\",\"type\":\"integer\"},\"stun\":{\"description\":\"Stun value\",\"type\":\"integer\"},\"weaponType\":{\"description\":\"The type of weapon\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/motion-values"
           segments: [
@@ -115,6 +121,12 @@ main: kit: entity: motion_value: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /motion-values/{id}"
+            json: "{\"operationId\":\"getMotionValueById\",\"parameters\":[{\"description\":\"The ID of the motion value to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"damageType\":{\"description\":\"The type of damage\",\"type\":\"string\"},\"exhaust\":{\"description\":\"Exhaust value\",\"type\":\"integer\"},\"hits\":{\"description\":\"Hit information\",\"items\":{\"properties\":{\"type\":{\"type\":\"string\"},\"value\":{\"type\":\"number\"}},\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the motion value\",\"type\":\"integer\"},\"stun\":{\"description\":\"Stun value\",\"type\":\"integer\"},\"weaponType\":{\"description\":\"The type of weapon\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Motion value not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/motion-values/{id}"

@@ -1,12 +1,18 @@
 # MonsterHunterWorld SDK feature factory
 
 from monsterhunterworld_sdk.feature.base_feature import MonsterHunterWorldBaseFeature
+from monsterhunterworld_sdk.feature.ratelimit_feature import MonsterHunterWorldRatelimitFeature
+from monsterhunterworld_sdk.feature.retry_feature import MonsterHunterWorldRetryFeature
 from monsterhunterworld_sdk.feature.test_feature import MonsterHunterWorldTestFeature
+from monsterhunterworld_sdk.feature.timeout_feature import MonsterHunterWorldTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: MonsterHunterWorldBaseFeature(),
+    "ratelimit": lambda: MonsterHunterWorldRatelimitFeature(),
+    "retry": lambda: MonsterHunterWorldRetryFeature(),
     "test": lambda: MonsterHunterWorldTestFeature(),
+    "timeout": lambda: MonsterHunterWorldTimeoutFeature(),
 }
 
 

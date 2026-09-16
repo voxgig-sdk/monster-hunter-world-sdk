@@ -24,7 +24,71 @@
         "repr": "auto"
       },
       "contributor": {},
-      "docs": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "ailment": {
           "active": true,
@@ -98,6 +162,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /ailments",
+                    "json": "{\"operationId\":\"getAllAilments\",\"parameters\":[{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Query parameter for searching\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"A short description of the ailment\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the ailment\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the ailment\",\"type\":\"string\"},\"protection\":{\"properties\":{\"items\":{\"description\":\"An array of items that can prevent the ailment\",\"items\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"skills\":{\"description\":\"An array of skills that can prevent the ailment\",\"items\":{\"properties\":{\"description\":{\"description\":\"A description of the skill\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the skill\",\"type\":\"string\"},\"ranks\":{\"description\":\"An array of skill ranks\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"recovery\":{\"properties\":{\"actions\":{\"description\":\"An array of actions that can be taken to remove the ailment\",\"items\":{\"enum\":[\"crouch\",\"dodge\"],\"type\":\"string\"},\"type\":\"array\"},\"items\":{\"description\":\"An array of items that can remove the ailment\",\"items\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/ailments",
@@ -146,6 +216,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /ailments/{id}",
+                    "json": "{\"operationId\":\"getAilmentById\",\"parameters\":[{\"description\":\"The ID of the ailment to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"A short description of the ailment\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the ailment\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the ailment\",\"type\":\"string\"},\"protection\":{\"properties\":{\"items\":{\"description\":\"An array of items that can prevent the ailment\",\"items\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"skills\":{\"description\":\"An array of skills that can prevent the ailment\",\"items\":{\"properties\":{\"description\":{\"description\":\"A description of the skill\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the skill\",\"type\":\"string\"},\"ranks\":{\"description\":\"An array of skill ranks\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"recovery\":{\"properties\":{\"actions\":{\"description\":\"An array of actions that can be taken to remove the ailment\",\"items\":{\"enum\":[\"crouch\",\"dodge\"],\"type\":\"string\"},\"type\":\"array\"},\"items\":{\"description\":\"An array of items that can remove the ailment\",\"items\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Ailment not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -301,6 +377,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /armor",
+                    "json": "{\"operationId\":\"getAllArmor\",\"parameters\":[{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Query parameter for searching\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"armorSet\":{\"properties\":{\"id\":{\"description\":\"The ID of the armor set\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the armor set\",\"type\":\"string\"},\"pieces\":{\"description\":\"An array of IDs of all armor pieces in the set\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"rank\":{\"description\":\"The rank of the armor set\",\"enum\":[\"low\",\"high\"],\"type\":\"string\"}},\"type\":\"object\"},\"assets\":{\"properties\":{\"imageFemale\":{\"description\":\"URL to the female preview image, or null if one does not exist\",\"nullable\":true,\"type\":\"string\"},\"imageMale\":{\"description\":\"URL to the male preview image, or null if one does not exist\",\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"attributes\":{\"description\":\"Dictionary of attribute modifiers attached to the armor piece\",\"type\":\"object\"},\"crafting\":{\"properties\":{\"materials\":{\"description\":\"An array of crafting material costs\",\"items\":{\"properties\":{\"item\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"quantity\":{\"description\":\"The quantity of the item required\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"defense\":{\"properties\":{\"augmented\":{\"description\":\"The armor's defense value when augmented\",\"type\":\"integer\"},\"base\":{\"description\":\"The armor's base defense value\",\"type\":\"integer\"},\"max\":{\"description\":\"The armor's defense value at max level\",\"type\":\"integer\"}},\"type\":\"object\"},\"id\":{\"description\":\"The ID of the armor piece\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the armor piece\",\"type\":\"string\"},\"rank\":{\"description\":\"The rank of the armor piece\",\"enum\":[\"low\",\"high\"],\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the armor piece\",\"type\":\"integer\"},\"resistances\":{\"properties\":{\"dragon\":{\"description\":\"The armor's dragon resistance\",\"type\":\"integer\"},\"fire\":{\"description\":\"The armor's fire resistance\",\"type\":\"integer\"},\"ice\":{\"description\":\"The armor's ice resistance\",\"type\":\"integer\"},\"thunder\":{\"description\":\"The armor's thunder resistance\",\"type\":\"integer\"},\"water\":{\"description\":\"The armor's water resistance\",\"type\":\"integer\"}},\"type\":\"object\"},\"skills\":{\"description\":\"An array of skill ranks granted by the armor\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"slots\":{\"description\":\"An array of decoration slot information\",\"items\":{\"properties\":{\"rank\":{\"description\":\"The rank of the decoration slot\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"type\":{\"description\":\"The slot the armor piece fits in\",\"enum\":[\"head\",\"chest\",\"gloves\",\"waist\",\"legs\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/armor",
@@ -349,6 +431,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /armor/{id}",
+                    "json": "{\"operationId\":\"getArmorById\",\"parameters\":[{\"description\":\"The ID of the armor piece to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"armorSet\":{\"properties\":{\"id\":{\"description\":\"The ID of the armor set\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the armor set\",\"type\":\"string\"},\"pieces\":{\"description\":\"An array of IDs of all armor pieces in the set\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"rank\":{\"description\":\"The rank of the armor set\",\"enum\":[\"low\",\"high\"],\"type\":\"string\"}},\"type\":\"object\"},\"assets\":{\"properties\":{\"imageFemale\":{\"description\":\"URL to the female preview image, or null if one does not exist\",\"nullable\":true,\"type\":\"string\"},\"imageMale\":{\"description\":\"URL to the male preview image, or null if one does not exist\",\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"attributes\":{\"description\":\"Dictionary of attribute modifiers attached to the armor piece\",\"type\":\"object\"},\"crafting\":{\"properties\":{\"materials\":{\"description\":\"An array of crafting material costs\",\"items\":{\"properties\":{\"item\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"quantity\":{\"description\":\"The quantity of the item required\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"defense\":{\"properties\":{\"augmented\":{\"description\":\"The armor's defense value when augmented\",\"type\":\"integer\"},\"base\":{\"description\":\"The armor's base defense value\",\"type\":\"integer\"},\"max\":{\"description\":\"The armor's defense value at max level\",\"type\":\"integer\"}},\"type\":\"object\"},\"id\":{\"description\":\"The ID of the armor piece\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the armor piece\",\"type\":\"string\"},\"rank\":{\"description\":\"The rank of the armor piece\",\"enum\":[\"low\",\"high\"],\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the armor piece\",\"type\":\"integer\"},\"resistances\":{\"properties\":{\"dragon\":{\"description\":\"The armor's dragon resistance\",\"type\":\"integer\"},\"fire\":{\"description\":\"The armor's fire resistance\",\"type\":\"integer\"},\"ice\":{\"description\":\"The armor's ice resistance\",\"type\":\"integer\"},\"thunder\":{\"description\":\"The armor's thunder resistance\",\"type\":\"integer\"},\"water\":{\"description\":\"The armor's water resistance\",\"type\":\"integer\"}},\"type\":\"object\"},\"skills\":{\"description\":\"An array of skill ranks granted by the armor\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"slots\":{\"description\":\"An array of decoration slot information\",\"items\":{\"properties\":{\"rank\":{\"description\":\"The rank of the decoration slot\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"type\":{\"description\":\"The slot the armor piece fits in\",\"enum\":[\"head\",\"chest\",\"gloves\",\"waist\",\"legs\"],\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Armor piece not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -453,6 +541,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /armor/sets",
+                    "json": "{\"operationId\":\"getAllArmorSets\",\"parameters\":[{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Query parameter for searching\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"bonus\":{\"description\":\"The set bonus, if any\",\"nullable\":true,\"properties\":{\"id\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"ranks\":{\"items\":{\"properties\":{\"pieces\":{\"type\":\"integer\"},\"skill\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"id\":{\"description\":\"The ID of the armor set\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the armor set\",\"type\":\"string\"},\"pieces\":{\"description\":\"Array of armor pieces in the set\",\"items\":{\"properties\":{\"armorSet\":{\"properties\":{\"id\":{\"description\":\"The ID of the armor set\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the armor set\",\"type\":\"string\"},\"pieces\":{\"description\":\"An array of IDs of all armor pieces in the set\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"rank\":{\"description\":\"The rank of the armor set\",\"enum\":[\"low\",\"high\"],\"type\":\"string\"}},\"type\":\"object\"},\"assets\":{\"properties\":{\"imageFemale\":{\"description\":\"URL to the female preview image, or null if one does not exist\",\"nullable\":true,\"type\":\"string\"},\"imageMale\":{\"description\":\"URL to the male preview image, or null if one does not exist\",\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"attributes\":{\"description\":\"Dictionary of attribute modifiers attached to the armor piece\",\"type\":\"object\"},\"crafting\":{\"properties\":{\"materials\":{\"description\":\"An array of crafting material costs\",\"items\":{\"properties\":{\"item\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"quantity\":{\"description\":\"The quantity of the item required\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"defense\":{\"properties\":{\"augmented\":{\"description\":\"The armor's defense value when augmented\",\"type\":\"integer\"},\"base\":{\"description\":\"The armor's base defense value\",\"type\":\"integer\"},\"max\":{\"description\":\"The armor's defense value at max level\",\"type\":\"integer\"}},\"type\":\"object\"},\"id\":{\"description\":\"The ID of the armor piece\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the armor piece\",\"type\":\"string\"},\"rank\":{\"description\":\"The rank of the armor piece\",\"enum\":[\"low\",\"high\"],\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the armor piece\",\"type\":\"integer\"},\"resistances\":{\"properties\":{\"dragon\":{\"description\":\"The armor's dragon resistance\",\"type\":\"integer\"},\"fire\":{\"description\":\"The armor's fire resistance\",\"type\":\"integer\"},\"ice\":{\"description\":\"The armor's ice resistance\",\"type\":\"integer\"},\"thunder\":{\"description\":\"The armor's thunder resistance\",\"type\":\"integer\"},\"water\":{\"description\":\"The armor's water resistance\",\"type\":\"integer\"}},\"type\":\"object\"},\"skills\":{\"description\":\"An array of skill ranks granted by the armor\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"slots\":{\"description\":\"An array of decoration slot information\",\"items\":{\"properties\":{\"rank\":{\"description\":\"The rank of the decoration slot\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"type\":{\"description\":\"The slot the armor piece fits in\",\"enum\":[\"head\",\"chest\",\"gloves\",\"waist\",\"legs\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"rank\":{\"description\":\"The rank of the armor set\",\"enum\":[\"low\",\"high\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/armor/sets",
@@ -504,6 +598,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /armor/sets/{id}",
+                    "json": "{\"operationId\":\"getArmorSetById\",\"parameters\":[{\"description\":\"The ID of the armor set to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"bonus\":{\"description\":\"The set bonus, if any\",\"nullable\":true,\"properties\":{\"id\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"ranks\":{\"items\":{\"properties\":{\"pieces\":{\"type\":\"integer\"},\"skill\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"id\":{\"description\":\"The ID of the armor set\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the armor set\",\"type\":\"string\"},\"pieces\":{\"description\":\"Array of armor pieces in the set\",\"items\":{\"properties\":{\"armorSet\":{\"properties\":{\"id\":{\"description\":\"The ID of the armor set\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the armor set\",\"type\":\"string\"},\"pieces\":{\"description\":\"An array of IDs of all armor pieces in the set\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"rank\":{\"description\":\"The rank of the armor set\",\"enum\":[\"low\",\"high\"],\"type\":\"string\"}},\"type\":\"object\"},\"assets\":{\"properties\":{\"imageFemale\":{\"description\":\"URL to the female preview image, or null if one does not exist\",\"nullable\":true,\"type\":\"string\"},\"imageMale\":{\"description\":\"URL to the male preview image, or null if one does not exist\",\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"attributes\":{\"description\":\"Dictionary of attribute modifiers attached to the armor piece\",\"type\":\"object\"},\"crafting\":{\"properties\":{\"materials\":{\"description\":\"An array of crafting material costs\",\"items\":{\"properties\":{\"item\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"quantity\":{\"description\":\"The quantity of the item required\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"defense\":{\"properties\":{\"augmented\":{\"description\":\"The armor's defense value when augmented\",\"type\":\"integer\"},\"base\":{\"description\":\"The armor's base defense value\",\"type\":\"integer\"},\"max\":{\"description\":\"The armor's defense value at max level\",\"type\":\"integer\"}},\"type\":\"object\"},\"id\":{\"description\":\"The ID of the armor piece\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the armor piece\",\"type\":\"string\"},\"rank\":{\"description\":\"The rank of the armor piece\",\"enum\":[\"low\",\"high\"],\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the armor piece\",\"type\":\"integer\"},\"resistances\":{\"properties\":{\"dragon\":{\"description\":\"The armor's dragon resistance\",\"type\":\"integer\"},\"fire\":{\"description\":\"The armor's fire resistance\",\"type\":\"integer\"},\"ice\":{\"description\":\"The armor's ice resistance\",\"type\":\"integer\"},\"thunder\":{\"description\":\"The armor's thunder resistance\",\"type\":\"integer\"},\"water\":{\"description\":\"The armor's water resistance\",\"type\":\"integer\"}},\"type\":\"object\"},\"skills\":{\"description\":\"An array of skill ranks granted by the armor\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"slots\":{\"description\":\"An array of decoration slot information\",\"items\":{\"properties\":{\"rank\":{\"description\":\"The rank of the decoration slot\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"type\":{\"description\":\"The slot the armor piece fits in\",\"enum\":[\"head\",\"chest\",\"gloves\",\"waist\",\"legs\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"rank\":{\"description\":\"The rank of the armor set\",\"enum\":[\"low\",\"high\"],\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Armor set not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -610,6 +710,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /charms",
+                    "json": "{\"operationId\":\"getAllCharms\",\"parameters\":[{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Query parameter for searching\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"crafting\":{\"properties\":{\"materials\":{\"items\":{\"properties\":{\"item\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"quantity\":{\"description\":\"The quantity of the item required\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"id\":{\"description\":\"The ID of the charm\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the charm\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the charm\",\"type\":\"integer\"},\"skills\":{\"description\":\"An array of skill ranks granted by the charm\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/charms",
@@ -658,6 +764,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /charms/{id}",
+                    "json": "{\"operationId\":\"getCharmById\",\"parameters\":[{\"description\":\"The ID of the charm to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"crafting\":{\"properties\":{\"materials\":{\"items\":{\"properties\":{\"item\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"quantity\":{\"description\":\"The quantity of the item required\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"id\":{\"description\":\"The ID of the charm\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the charm\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the charm\",\"type\":\"integer\"},\"skills\":{\"description\":\"An array of skill ranks granted by the charm\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Charm not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -762,6 +874,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /decorations",
+                    "json": "{\"operationId\":\"getAllDecorations\",\"parameters\":[{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Query parameter for searching\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"id\":{\"description\":\"The ID of the decoration\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the decoration\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the decoration\",\"type\":\"integer\"},\"skills\":{\"description\":\"An array of skill ranks granted by the decoration\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"slot\":{\"description\":\"The slot rank required for the decoration\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/decorations",
@@ -810,6 +928,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /decorations/{id}",
+                    "json": "{\"operationId\":\"getDecorationById\",\"parameters\":[{\"description\":\"The ID of the decoration to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"id\":{\"description\":\"The ID of the decoration\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the decoration\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the decoration\",\"type\":\"integer\"},\"skills\":{\"description\":\"An array of skill ranks granted by the decoration\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"slot\":{\"description\":\"The slot rank required for the decoration\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Decoration not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -985,6 +1109,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /events",
+                    "json": "{\"operationId\":\"getAllEvents\",\"parameters\":[{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Query parameter for searching\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"A description of the event\",\"type\":\"string\"},\"endTimestamp\":{\"description\":\"The end time of the event\",\"format\":\"date-time\",\"type\":\"string\"},\"exclusive\":{\"description\":\"Whether the event is exclusive to a platform\",\"nullable\":true,\"type\":\"string\"},\"expansion\":{\"description\":\"The expansion the event belongs to\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the event\",\"type\":\"integer\"},\"location\":{\"properties\":{\"camps\":{\"description\":\"An array of camps in the location\",\"items\":{\"properties\":{\"id\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"zone\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the location\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the location\",\"type\":\"string\"},\"zoneCount\":{\"description\":\"The number of zones in the location\",\"type\":\"integer\"}},\"type\":\"object\"},\"name\":{\"description\":\"The name of the event\",\"type\":\"string\"},\"platform\":{\"description\":\"The platform for the event\",\"type\":\"string\"},\"questRank\":{\"description\":\"The quest rank of the event\",\"type\":\"string\"},\"requirements\":{\"description\":\"Requirements for the event\",\"type\":\"string\"},\"startTimestamp\":{\"description\":\"The start time of the event\",\"format\":\"date-time\",\"type\":\"string\"},\"successConditions\":{\"description\":\"Conditions for success\",\"type\":\"string\"},\"type\":{\"description\":\"The type of event\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/events",
@@ -1033,6 +1163,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /events/{id}",
+                    "json": "{\"operationId\":\"getEventById\",\"parameters\":[{\"description\":\"The ID of the event to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"A description of the event\",\"type\":\"string\"},\"endTimestamp\":{\"description\":\"The end time of the event\",\"format\":\"date-time\",\"type\":\"string\"},\"exclusive\":{\"description\":\"Whether the event is exclusive to a platform\",\"nullable\":true,\"type\":\"string\"},\"expansion\":{\"description\":\"The expansion the event belongs to\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the event\",\"type\":\"integer\"},\"location\":{\"properties\":{\"camps\":{\"description\":\"An array of camps in the location\",\"items\":{\"properties\":{\"id\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"zone\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the location\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the location\",\"type\":\"string\"},\"zoneCount\":{\"description\":\"The number of zones in the location\",\"type\":\"integer\"}},\"type\":\"object\"},\"name\":{\"description\":\"The name of the event\",\"type\":\"string\"},\"platform\":{\"description\":\"The platform for the event\",\"type\":\"string\"},\"questRank\":{\"description\":\"The quest rank of the event\",\"type\":\"string\"},\"requirements\":{\"description\":\"Requirements for the event\",\"type\":\"string\"},\"startTimestamp\":{\"description\":\"The start time of the event\",\"format\":\"date-time\",\"type\":\"string\"},\"successConditions\":{\"description\":\"Conditions for success\",\"type\":\"string\"},\"type\":{\"description\":\"The type of event\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Event not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1158,6 +1294,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /items",
+                    "json": "{\"operationId\":\"getAllItems\",\"parameters\":[{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Query parameter for searching\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/items",
@@ -1206,6 +1348,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /items/{id}",
+                    "json": "{\"operationId\":\"getItemById\",\"parameters\":[{\"description\":\"The ID of the item to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Item not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1303,6 +1451,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /locations",
+                    "json": "{\"operationId\":\"getAllLocations\",\"parameters\":[{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Query parameter for searching\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"camps\":{\"description\":\"An array of camps in the location\",\"items\":{\"properties\":{\"id\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"zone\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the location\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the location\",\"type\":\"string\"},\"zoneCount\":{\"description\":\"The number of zones in the location\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/locations",
@@ -1351,6 +1505,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /locations/{id}",
+                    "json": "{\"operationId\":\"getLocationById\",\"parameters\":[{\"description\":\"The ID of the location to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"camps\":{\"description\":\"An array of camps in the location\",\"items\":{\"properties\":{\"id\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"zone\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the location\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the location\",\"type\":\"string\"},\"zoneCount\":{\"description\":\"The number of zones in the location\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Location not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1497,6 +1657,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /monsters",
+                    "json": "{\"operationId\":\"getAllMonsters\",\"parameters\":[{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Query parameter for searching\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"ailments\":{\"description\":\"Ailments the monster can inflict\",\"items\":{\"properties\":{\"description\":{\"description\":\"A short description of the ailment\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the ailment\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the ailment\",\"type\":\"string\"},\"protection\":{\"properties\":{\"items\":{\"description\":\"An array of items that can prevent the ailment\",\"items\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"skills\":{\"description\":\"An array of skills that can prevent the ailment\",\"items\":{\"properties\":{\"description\":{\"description\":\"A description of the skill\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the skill\",\"type\":\"string\"},\"ranks\":{\"description\":\"An array of skill ranks\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"recovery\":{\"properties\":{\"actions\":{\"description\":\"An array of actions that can be taken to remove the ailment\",\"items\":{\"enum\":[\"crouch\",\"dodge\"],\"type\":\"string\"},\"type\":\"array\"},\"items\":{\"description\":\"An array of items that can remove the ailment\",\"items\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"},\"description\":{\"description\":\"A description of the monster\",\"type\":\"string\"},\"elements\":{\"description\":\"Elements the monster uses\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the monster\",\"type\":\"integer\"},\"locations\":{\"description\":\"Locations where the monster can be found\",\"items\":{\"properties\":{\"camps\":{\"description\":\"An array of camps in the location\",\"items\":{\"properties\":{\"id\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"zone\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the location\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the location\",\"type\":\"string\"},\"zoneCount\":{\"description\":\"The number of zones in the location\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"name\":{\"description\":\"The name of the monster\",\"type\":\"string\"},\"resistances\":{\"description\":\"Resistances of the monster\",\"items\":{\"properties\":{\"condition\":{\"nullable\":true,\"type\":\"string\"},\"element\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"rewards\":{\"description\":\"Rewards obtained from the monster\",\"items\":{\"properties\":{\"conditions\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"type\":\"integer\"},\"item\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"},\"species\":{\"description\":\"The species of the monster\",\"type\":\"string\"},\"type\":{\"description\":\"The type of monster\",\"type\":\"string\"},\"weaknesses\":{\"description\":\"Weaknesses of the monster\",\"items\":{\"properties\":{\"condition\":{\"nullable\":true,\"type\":\"string\"},\"element\":{\"type\":\"string\"},\"stars\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/monsters",
@@ -1545,6 +1711,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /monsters/{id}",
+                    "json": "{\"operationId\":\"getMonsterById\",\"parameters\":[{\"description\":\"The ID of the monster to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"ailments\":{\"description\":\"Ailments the monster can inflict\",\"items\":{\"properties\":{\"description\":{\"description\":\"A short description of the ailment\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the ailment\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the ailment\",\"type\":\"string\"},\"protection\":{\"properties\":{\"items\":{\"description\":\"An array of items that can prevent the ailment\",\"items\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"skills\":{\"description\":\"An array of skills that can prevent the ailment\",\"items\":{\"properties\":{\"description\":{\"description\":\"A description of the skill\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the skill\",\"type\":\"string\"},\"ranks\":{\"description\":\"An array of skill ranks\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"recovery\":{\"properties\":{\"actions\":{\"description\":\"An array of actions that can be taken to remove the ailment\",\"items\":{\"enum\":[\"crouch\",\"dodge\"],\"type\":\"string\"},\"type\":\"array\"},\"items\":{\"description\":\"An array of items that can remove the ailment\",\"items\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"},\"description\":{\"description\":\"A description of the monster\",\"type\":\"string\"},\"elements\":{\"description\":\"Elements the monster uses\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the monster\",\"type\":\"integer\"},\"locations\":{\"description\":\"Locations where the monster can be found\",\"items\":{\"properties\":{\"camps\":{\"description\":\"An array of camps in the location\",\"items\":{\"properties\":{\"id\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"zone\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the location\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the location\",\"type\":\"string\"},\"zoneCount\":{\"description\":\"The number of zones in the location\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"name\":{\"description\":\"The name of the monster\",\"type\":\"string\"},\"resistances\":{\"description\":\"Resistances of the monster\",\"items\":{\"properties\":{\"condition\":{\"nullable\":true,\"type\":\"string\"},\"element\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"rewards\":{\"description\":\"Rewards obtained from the monster\",\"items\":{\"properties\":{\"conditions\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"type\":\"integer\"},\"item\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"},\"species\":{\"description\":\"The species of the monster\",\"type\":\"string\"},\"type\":{\"description\":\"The type of monster\",\"type\":\"string\"},\"weaknesses\":{\"description\":\"Weaknesses of the monster\",\"items\":{\"properties\":{\"condition\":{\"nullable\":true,\"type\":\"string\"},\"element\":{\"type\":\"string\"},\"stars\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Monster not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1656,6 +1828,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /motion-values",
+                    "json": "{\"operationId\":\"getAllMotionValues\",\"parameters\":[{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Query parameter for searching\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"damageType\":{\"description\":\"The type of damage\",\"type\":\"string\"},\"exhaust\":{\"description\":\"Exhaust value\",\"type\":\"integer\"},\"hits\":{\"description\":\"Hit information\",\"items\":{\"properties\":{\"type\":{\"type\":\"string\"},\"value\":{\"type\":\"number\"}},\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the motion value\",\"type\":\"integer\"},\"stun\":{\"description\":\"Stun value\",\"type\":\"integer\"},\"weaponType\":{\"description\":\"The type of weapon\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/motion-values",
@@ -1704,6 +1882,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /motion-values/{id}",
+                    "json": "{\"operationId\":\"getMotionValueById\",\"parameters\":[{\"description\":\"The ID of the motion value to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"damageType\":{\"description\":\"The type of damage\",\"type\":\"string\"},\"exhaust\":{\"description\":\"Exhaust value\",\"type\":\"integer\"},\"hits\":{\"description\":\"Hit information\",\"items\":{\"properties\":{\"type\":{\"type\":\"string\"},\"value\":{\"type\":\"number\"}},\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the motion value\",\"type\":\"integer\"},\"stun\":{\"description\":\"Stun value\",\"type\":\"integer\"},\"weaponType\":{\"description\":\"The type of weapon\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Motion value not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1801,6 +1985,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /skills",
+                    "json": "{\"operationId\":\"getAllSkills\",\"parameters\":[{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Query parameter for searching\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"A description of the skill\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the skill\",\"type\":\"string\"},\"ranks\":{\"description\":\"An array of skill ranks\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/skills",
@@ -1849,6 +2039,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /skills/{id}",
+                    "json": "{\"operationId\":\"getSkillById\",\"parameters\":[{\"description\":\"The ID of the skill to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"A description of the skill\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the skill\",\"type\":\"string\"},\"ranks\":{\"description\":\"An array of skill ranks\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Skill not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1995,6 +2191,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /weapons",
+                    "json": "{\"operationId\":\"getAllWeapons\",\"parameters\":[{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Query parameter for searching\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"assets\":{\"description\":\"Asset URLs for the weapon\",\"properties\":{\"icon\":{\"nullable\":true,\"type\":\"string\"},\"image\":{\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"attack\":{\"description\":\"Attack values for the weapon\",\"properties\":{\"display\":{\"type\":\"integer\"},\"raw\":{\"type\":\"integer\"}},\"type\":\"object\"},\"attributes\":{\"description\":\"Additional weapon attributes\",\"type\":\"object\"},\"crafting\":{\"description\":\"Crafting information for the weapon\",\"properties\":{\"branches\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"craftable\":{\"type\":\"boolean\"},\"craftingMaterials\":{\"items\":{\"properties\":{\"item\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"quantity\":{\"description\":\"The quantity of the item required\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"previous\":{\"nullable\":true,\"type\":\"integer\"},\"upgradeMaterials\":{\"items\":{\"properties\":{\"item\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"quantity\":{\"description\":\"The quantity of the item required\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"damageType\":{\"description\":\"The damage type of the weapon\",\"type\":\"string\"},\"elements\":{\"description\":\"Elemental damage information\",\"items\":{\"properties\":{\"damage\":{\"type\":\"integer\"},\"hidden\":{\"type\":\"boolean\"},\"type\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the weapon\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the weapon\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the weapon\",\"type\":\"integer\"},\"slots\":{\"description\":\"An array of decoration slot information\",\"items\":{\"properties\":{\"rank\":{\"description\":\"The rank of the decoration slot\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"type\":{\"description\":\"The type of weapon\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/weapons",
@@ -2044,6 +2246,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /weapons/{id}",
+                    "json": "{\"operationId\":\"getWeaponById\",\"parameters\":[{\"description\":\"The ID of the weapon to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"assets\":{\"description\":\"Asset URLs for the weapon\",\"properties\":{\"icon\":{\"nullable\":true,\"type\":\"string\"},\"image\":{\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"attack\":{\"description\":\"Attack values for the weapon\",\"properties\":{\"display\":{\"type\":\"integer\"},\"raw\":{\"type\":\"integer\"}},\"type\":\"object\"},\"attributes\":{\"description\":\"Additional weapon attributes\",\"type\":\"object\"},\"crafting\":{\"description\":\"Crafting information for the weapon\",\"properties\":{\"branches\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"craftable\":{\"type\":\"boolean\"},\"craftingMaterials\":{\"items\":{\"properties\":{\"item\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"quantity\":{\"description\":\"The quantity of the item required\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"previous\":{\"nullable\":true,\"type\":\"integer\"},\"upgradeMaterials\":{\"items\":{\"properties\":{\"item\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"quantity\":{\"description\":\"The quantity of the item required\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"damageType\":{\"description\":\"The damage type of the weapon\",\"type\":\"string\"},\"elements\":{\"description\":\"Elemental damage information\",\"items\":{\"properties\":{\"damage\":{\"type\":\"integer\"},\"hidden\":{\"type\":\"boolean\"},\"type\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the weapon\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the weapon\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the weapon\",\"type\":\"integer\"},\"slots\":{\"description\":\"An array of decoration slot information\",\"items\":{\"properties\":{\"rank\":{\"description\":\"The rank of the decoration slot\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"type\":{\"description\":\"The type of weapon\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Weapon not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/weapons/{id}",
@@ -2075,13 +2283,223 @@
         }
       },
       "feature": {
+        "ratelimit": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "burst": 5,
+              "rate": 5
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "ratelimit",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Client-side rate limiting via a token bucket",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "retry": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "factor": 2,
+              "maxDelay": 2000,
+              "minDelay": 50,
+              "retries": 2,
+              "statuses": [
+                408,
+                425,
+                429,
+                500,
+                502,
+                503,
+                504
+              ]
+            },
+            "optspec": {
+              "jitter": "`$BOOLEAN`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "retry",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Automatic retry of transient failures with exponential backoff",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
         "test": {
           "active": true,
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "config": {
             "options": {
               "active": false
-            }
+            },
+            "optspec": {
+              "entity": "`$MAP`",
+              "net": "`$MAP`"
+            },
+            "strict": false
           },
           "hook": {
             "GetData": {
@@ -2171,6 +2589,102 @@
           },
           "title": "In-memory mock transport for testing without a live server",
           "transport": "base",
+          "version": "0.0.1"
+        },
+        "timeout": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "ms": 30000
+            },
+            "optspec": {
+              "clearTimer": "`$FUNCTION`",
+              "setTimer": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "timeout",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Per-request timeout with transport abort",
+          "transport": "wrap",
           "version": "0.0.1"
         }
       },
@@ -2788,6 +3302,48 @@
         "website": "https://mhw-db.com"
       },
       "option": {},
+      "optspec": {
+        "allow": {
+          "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+          "op": "create,update,load,list,remove,command,direct,graphql"
+        },
+        "apikey": "",
+        "auth": {
+          "basic": false,
+          "prefix": ""
+        },
+        "base": "http://localhost:8000",
+        "clean": {
+          "keys": "key,token,id"
+        },
+        "entity": {
+          "`$CHILD`": {
+            "`$OPEN`": true,
+            "active": false,
+            "alias": {}
+          }
+        },
+        "extend": "`$ANY`",
+        "headers": {
+          "`$CHILD`": "`$STRING`"
+        },
+        "prefix": "",
+        "secret": "",
+        "server": {
+          "`$CHILD`": ""
+        },
+        "suffix": "",
+        "system": {
+          "fetch": "`$ANY`"
+        },
+        "test": {
+          "active": false,
+          "entity": {
+            "`$OPEN`": true
+          }
+        },
+        "utility": {}
+      },
       "repo": {
         "host": "github.com",
         "path": ""
@@ -3342,6 +3898,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {
@@ -3383,7 +3940,7 @@
         "live": {
           "app": false,
           "base": "",
-          "strict": false
+          "strict": true
         }
       }
     }

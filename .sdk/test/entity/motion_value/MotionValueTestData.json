@@ -3,26 +3,26 @@
     "motion_value": {
       "MOTION_VALUE00": {
         "damageType": "s3c",
-        "exhaust": "s3d",
+        "exhaust": 61,
         "hits": [],
         "id": "MOTION_VALUE00",
-        "stun": "s40",
+        "stun": 64,
         "weaponType": "s41"
       },
       "MOTION_VALUE01": {
         "damageType": "s78",
-        "exhaust": "s79",
+        "exhaust": 121,
         "hits": [],
         "id": "MOTION_VALUE01",
-        "stun": "s7c",
+        "stun": 124,
         "weaponType": "s7d"
       },
       "MOTION_VALUE02": {
         "damageType": "sb4",
-        "exhaust": "sb5",
+        "exhaust": 181,
         "hits": [],
         "id": "MOTION_VALUE02",
-        "stun": "sb8",
+        "stun": 184,
         "weaponType": "sb9"
       }
     }
@@ -31,10 +31,172 @@
     "motion_value": {
       "motion_value_ref01": {
         "damageType": "sf0",
-        "exhaust": "sf1",
+        "exhaust": 241,
         "hits": [],
-        "stun": "sf4",
+        "stun": 244,
         "weaponType": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "GET /motion-values": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllMotionValues",
+        "parameters": [
+          {
+            "description": "Projection parameter for filtering returned fields",
+            "in": "query",
+            "name": "p",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Query parameter for searching",
+            "in": "query",
+            "name": "q",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "damageType": {
+                        "description": "The type of damage",
+                        "type": "string"
+                      },
+                      "exhaust": {
+                        "description": "Exhaust value",
+                        "type": "integer"
+                      },
+                      "hits": {
+                        "description": "Hit information",
+                        "items": {
+                          "properties": {
+                            "type": {
+                              "type": "string"
+                            },
+                            "value": {
+                              "type": "number"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      },
+                      "id": {
+                        "description": "The ID of the motion value",
+                        "type": "integer"
+                      },
+                      "stun": {
+                        "description": "Stun value",
+                        "type": "integer"
+                      },
+                      "weaponType": {
+                        "description": "The type of weapon",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /motion-values/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getMotionValueById",
+        "parameters": [
+          {
+            "description": "The ID of the motion value to retrieve",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Projection parameter for filtering returned fields",
+            "in": "query",
+            "name": "p",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "damageType": {
+                      "description": "The type of damage",
+                      "type": "string"
+                    },
+                    "exhaust": {
+                      "description": "Exhaust value",
+                      "type": "integer"
+                    },
+                    "hits": {
+                      "description": "Hit information",
+                      "items": {
+                        "properties": {
+                          "type": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": "number"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "id": {
+                      "description": "The ID of the motion value",
+                      "type": "integer"
+                    },
+                    "stun": {
+                      "description": "Stun value",
+                      "type": "integer"
+                    },
+                    "weaponType": {
+                      "description": "The type of weapon",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "Motion value not found"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.MONSTER_HUNTER_WORLD_TEST_LIVE;
         for (const op of ['list', 'load']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'event.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'event.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set MONSTER_HUNTER_WORLD_TEST_EVENT_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [{ "active": true, "name": "camps", "req": false, "short": "An array of camps in the location", "type": "`$ARRAY`", "index$": 0 }, { "active": true, "name": "description", "req": false, "short": "A description of the event", "type": "`$STRING`", "index$": 1 }, { "active": true, "format": "date-time", "name": "endTimestamp", "req": false, "short": "The end time of the event", "type": "`$STRING`", "index$": 2 }, { "active": true, "name": "exclusive", "req": false, "short": "Whether the event is exclusive to a platform", "type": "`$STRING`", "index$": 3 }, { "active": true, "name": "expansion", "req": false, "short": "The expansion the event belongs to", "type": "`$STRING`", "index$": 4 }, { "active": true, "name": "id", "req": false, "short": "The ID of the location", "type": "`$INTEGER`", "index$": 5 }, { "active": true, "name": "location", "req": false, "type": "`$OBJECT`", "index$": 6 }, { "active": true, "name": "name", "req": false, "short": "The name of the location", "type": "`$STRING`", "index$": 7 }, { "active": true, "name": "platform", "req": false, "short": "The platform for the event", "type": "`$STRING`", "index$": 8 }, { "active": true, "name": "questRank", "req": false, "short": "The quest rank of the event", "type": "`$STRING`", "index$": 9 }, { "active": true, "name": "requirements", "req": false, "short": "Requirements for the event", "type": "`$STRING`", "index$": 10 }, { "active": true, "format": "date-time", "name": "startTimestamp", "req": false, "short": "The start time of the event", "type": "`$STRING`", "index$": 11 }, { "active": true, "name": "successConditions", "req": false, "short": "Conditions for success", "type": "`$STRING`", "index$": 12 }, { "active": true, "name": "type", "req": false, "short": "The type of event", "type": "`$STRING`", "index$": 13 }, { "active": true, "name": "zoneCount", "req": false, "short": "The number of zones in the location", "type": "`$INTEGER`", "index$": 14 }], "id": { "field": "id", "name": "id" }, "name": "event", "op": { "list": { "input": "data", "name": "list", "points": [{ "active": true, "args": { "query": [{ "active": true, "kind": "query", "name": "p", "orig": "p", "reqd": false, "type": "`$STRING`", "index$": 0 }, { "active": true, "kind": "query", "name": "q", "orig": "q", "reqd": false, "type": "`$STRING`", "index$": 1 }] }, "contract": { "id": "GET /events", "json": "{\"operationId\":\"getAllEvents\",\"parameters\":[{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Query parameter for searching\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"A description of the event\",\"type\":\"string\"},\"endTimestamp\":{\"description\":\"The end time of the event\",\"format\":\"date-time\",\"type\":\"string\"},\"exclusive\":{\"description\":\"Whether the event is exclusive to a platform\",\"nullable\":true,\"type\":\"string\"},\"expansion\":{\"description\":\"The expansion the event belongs to\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the event\",\"type\":\"integer\"},\"location\":{\"properties\":{\"camps\":{\"description\":\"An array of camps in the location\",\"items\":{\"properties\":{\"id\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"zone\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the location\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the location\",\"type\":\"string\"},\"zoneCount\":{\"description\":\"The number of zones in the location\",\"type\":\"integer\"}},\"type\":\"object\"},\"name\":{\"description\":\"The name of the event\",\"type\":\"string\"},\"platform\":{\"description\":\"The platform for the event\",\"type\":\"string\"},\"questRank\":{\"description\":\"The quest rank of the event\",\"type\":\"string\"},\"requirements\":{\"description\":\"Requirements for the event\",\"type\":\"string\"},\"startTimestamp\":{\"description\":\"The start time of the event\",\"format\":\"date-time\",\"type\":\"string\"},\"successConditions\":{\"description\":\"Conditions for success\",\"type\":\"string\"},\"type\":{\"description\":\"The type of event\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}", "source": "openapi3", "version": 1 }, "kind": "http", "method": "GET", "orig": "/events", "segments": [{ "lit": "events" }], "select": { "exist": ["p", "q"] }, "transform": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "active": true, "args": { "params": [{ "active": true, "kind": "param", "name": "id", "orig": "id", "reqd": true, "type": "`$INTEGER`", "index$": 0 }], "query": [{ "active": true, "kind": "query", "name": "p", "orig": "p", "reqd": false, "type": "`$STRING`", "index$": 0 }] }, "contract": { "id": "GET /events/{id}", "json": "{\"operationId\":\"getEventById\",\"parameters\":[{\"description\":\"The ID of the event to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"A description of the event\",\"type\":\"string\"},\"endTimestamp\":{\"description\":\"The end time of the event\",\"format\":\"date-time\",\"type\":\"string\"},\"exclusive\":{\"description\":\"Whether the event is exclusive to a platform\",\"nullable\":true,\"type\":\"string\"},\"expansion\":{\"description\":\"The expansion the event belongs to\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the event\",\"type\":\"integer\"},\"location\":{\"properties\":{\"camps\":{\"description\":\"An array of camps in the location\",\"items\":{\"properties\":{\"id\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"zone\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the location\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the location\",\"type\":\"string\"},\"zoneCount\":{\"description\":\"The number of zones in the location\",\"type\":\"integer\"}},\"type\":\"object\"},\"name\":{\"description\":\"The name of the event\",\"type\":\"string\"},\"platform\":{\"description\":\"The platform for the event\",\"type\":\"string\"},\"questRank\":{\"description\":\"The quest rank of the event\",\"type\":\"string\"},\"requirements\":{\"description\":\"Requirements for the event\",\"type\":\"string\"},\"startTimestamp\":{\"description\":\"The start time of the event\",\"format\":\"date-time\",\"type\":\"string\"},\"successConditions\":{\"description\":\"Conditions for success\",\"type\":\"string\"},\"type\":{\"description\":\"The type of event\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Event not found\"}},\"securitySource\":\"unspecified\"}", "source": "openapi3", "version": 1 }, "kind": "http", "method": "GET", "orig": "/events/{id}", "segments": [{ "lit": "events" }, { "var": "id" }], "select": { "exist": ["id", "p"] }, "transform": { "req": "`reqdata`", "res": "`body.location`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "event", "name__orig": "event", "Name": "Event", "name_": "event", "name-": "event", "NAME": "EVENT", "index$": 5 }, { "active": true, "entity": "event", "key$": "BasicEventFlow", "kind": "basic", "name": "BasicEventFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": {}, "match": {}, "op": "list", "spec": [], "valid": [{ "apply": "ItemExists", "def": { "ref": "event_ref01" } }], "index$": 0 }, { "active": true, "data": {}, "input": { "ref": "event_ref01", "srcdatavar": "event_ref01_data", "suffix": "_dt0" }, "match": { "id": "event01" }, "op": "load", "spec": [], "valid": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-event_ref01" } }], "index$": 1 }] }, 'Event');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -106,12 +104,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['MONSTER_HUNTER_WORLD_TEST_EVENT_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'MONSTER_HUNTER_WORLD_TEST_EVENT_ENTID': idmap,
         'MONSTER_HUNTER_WORLD_TEST_LIVE': 'FALSE',
@@ -119,7 +111,13 @@ function basicSetup(extra) {
     });
     idmap = env['MONSTER_HUNTER_WORLD_TEST_EVENT_ENTID'];
     const live = 'TRUE' === env.MONSTER_HUNTER_WORLD_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['MONSTER_HUNTER_WORLD_TEST_EVENT_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.MonsterHunterWorldSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -130,7 +128,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -142,7 +141,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.MONSTER_HUNTER_WORLD_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;

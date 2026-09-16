@@ -5,21 +5,21 @@
         "crafting": {},
         "id": "CHARM00",
         "name": "s34",
-        "rarity": "s35",
+        "rarity": 53,
         "skills": []
       },
       "CHARM01": {
         "crafting": {},
         "id": "CHARM01",
         "name": "s66",
-        "rarity": "s67",
+        "rarity": 103,
         "skills": []
       },
       "CHARM02": {
         "crafting": {},
         "id": "CHARM02",
         "name": "s98",
-        "rarity": "s99",
+        "rarity": 153,
         "skills": []
       }
     }
@@ -29,8 +29,304 @@
       "charm_ref01": {
         "crafting": {},
         "name": "sca",
-        "rarity": "scb",
+        "rarity": 203,
         "skills": []
+      }
+    }
+  },
+  "requests": {
+    "GET /charms": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllCharms",
+        "parameters": [
+          {
+            "description": "Projection parameter for filtering returned fields",
+            "in": "query",
+            "name": "p",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Query parameter for searching",
+            "in": "query",
+            "name": "q",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "crafting": {
+                        "properties": {
+                          "materials": {
+                            "items": {
+                              "properties": {
+                                "item": {
+                                  "properties": {
+                                    "buyPrice": {
+                                      "description": "The price when buying the item",
+                                      "type": "integer"
+                                    },
+                                    "carryLimit": {
+                                      "description": "The maximum number of this item that can be carried",
+                                      "type": "integer"
+                                    },
+                                    "description": {
+                                      "description": "A description of the item",
+                                      "type": "string"
+                                    },
+                                    "id": {
+                                      "description": "The ID of the item",
+                                      "type": "integer"
+                                    },
+                                    "name": {
+                                      "description": "The name of the item",
+                                      "type": "string"
+                                    },
+                                    "rarity": {
+                                      "description": "The rarity of the item",
+                                      "type": "integer"
+                                    },
+                                    "sellPrice": {
+                                      "description": "The price when selling the item",
+                                      "type": "integer"
+                                    },
+                                    "value": {
+                                      "description": "The value of the item",
+                                      "type": "integer"
+                                    }
+                                  },
+                                  "type": "object"
+                                },
+                                "quantity": {
+                                  "description": "The quantity of the item required",
+                                  "type": "integer"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "id": {
+                        "description": "The ID of the charm",
+                        "type": "integer"
+                      },
+                      "name": {
+                        "description": "The name of the charm",
+                        "type": "string"
+                      },
+                      "rarity": {
+                        "description": "The rarity of the charm",
+                        "type": "integer"
+                      },
+                      "skills": {
+                        "description": "An array of skill ranks granted by the charm",
+                        "items": {
+                          "properties": {
+                            "description": {
+                              "description": "Description of the skill at this level",
+                              "type": "string"
+                            },
+                            "id": {
+                              "description": "The ID of the skill rank",
+                              "type": "integer"
+                            },
+                            "level": {
+                              "description": "The level of the skill",
+                              "type": "integer"
+                            },
+                            "modifiers": {
+                              "description": "Array of modifiers for the skill",
+                              "items": {
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "skill": {
+                              "description": "The skill ID reference",
+                              "type": "integer"
+                            },
+                            "skillName": {
+                              "description": "The name of the skill",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /charms/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getCharmById",
+        "parameters": [
+          {
+            "description": "The ID of the charm to retrieve",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Projection parameter for filtering returned fields",
+            "in": "query",
+            "name": "p",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "crafting": {
+                      "properties": {
+                        "materials": {
+                          "items": {
+                            "properties": {
+                              "item": {
+                                "properties": {
+                                  "buyPrice": {
+                                    "description": "The price when buying the item",
+                                    "type": "integer"
+                                  },
+                                  "carryLimit": {
+                                    "description": "The maximum number of this item that can be carried",
+                                    "type": "integer"
+                                  },
+                                  "description": {
+                                    "description": "A description of the item",
+                                    "type": "string"
+                                  },
+                                  "id": {
+                                    "description": "The ID of the item",
+                                    "type": "integer"
+                                  },
+                                  "name": {
+                                    "description": "The name of the item",
+                                    "type": "string"
+                                  },
+                                  "rarity": {
+                                    "description": "The rarity of the item",
+                                    "type": "integer"
+                                  },
+                                  "sellPrice": {
+                                    "description": "The price when selling the item",
+                                    "type": "integer"
+                                  },
+                                  "value": {
+                                    "description": "The value of the item",
+                                    "type": "integer"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "quantity": {
+                                "description": "The quantity of the item required",
+                                "type": "integer"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "id": {
+                      "description": "The ID of the charm",
+                      "type": "integer"
+                    },
+                    "name": {
+                      "description": "The name of the charm",
+                      "type": "string"
+                    },
+                    "rarity": {
+                      "description": "The rarity of the charm",
+                      "type": "integer"
+                    },
+                    "skills": {
+                      "description": "An array of skill ranks granted by the charm",
+                      "items": {
+                        "properties": {
+                          "description": {
+                            "description": "Description of the skill at this level",
+                            "type": "string"
+                          },
+                          "id": {
+                            "description": "The ID of the skill rank",
+                            "type": "integer"
+                          },
+                          "level": {
+                            "description": "The level of the skill",
+                            "type": "integer"
+                          },
+                          "modifiers": {
+                            "description": "Array of modifiers for the skill",
+                            "items": {
+                              "type": "object"
+                            },
+                            "type": "array"
+                          },
+                          "skill": {
+                            "description": "The skill ID reference",
+                            "type": "integer"
+                          },
+                          "skillName": {
+                            "description": "The name of the skill",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "Charm not found"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

@@ -4,7 +4,10 @@ declare(strict_types=1);
 // MonsterHunterWorld SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class MonsterHunterWorldFeatures
@@ -14,8 +17,14 @@ class MonsterHunterWorldFeatures
         switch ($name) {
             case "base":
                 return new MonsterHunterWorldBaseFeature();
+            case "ratelimit":
+                return new MonsterHunterWorldRatelimitFeature();
+            case "retry":
+                return new MonsterHunterWorldRetryFeature();
             case "test":
                 return new MonsterHunterWorldTestFeature();
+            case "timeout":
+                return new MonsterHunterWorldTimeoutFeature();
             default:
                 return new MonsterHunterWorldBaseFeature();
         }
@@ -31,7 +40,10 @@ class MonsterHunterWorldFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;
