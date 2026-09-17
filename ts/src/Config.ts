@@ -127,42 +127,42 @@ class Config {
 
     entity: {
       
-      ailment: {
-      },
-
-      armor: {
-      },
-
-      armor_set: {
-      },
-
-      charm: {
-      },
-
-      decoration: {
-      },
-
-      event: {
-      },
-
-      item: {
-      },
-
-      location: {
-      },
-
-      monster: {
-      },
-
-      motion_value: {
-      },
-
-      skill: {
-      },
-
-      weapon: {
-      },
-
+        ailment: {
+        },
+  
+        armor: {
+        },
+  
+        armor_set: {
+        },
+  
+        charm: {
+        },
+  
+        decoration: {
+        },
+  
+        event: {
+        },
+  
+        item: {
+        },
+  
+        location: {
+        },
+  
+        monster: {
+        },
+  
+        motion_value: {
+        },
+  
+        skill: {
+        },
+  
+        weapon: {
+        },
+  
     }
   }
 

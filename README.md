@@ -105,12 +105,12 @@ local results, err = client:Ailment():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/monster-hunter-world-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/monster-hunter-world-sdk/releases) |
-| Python | `voxgig-sdk-monster-hunter-world` | publish pending — [install from git tag](https://github.com/voxgig-sdk/monster-hunter-world-sdk/releases) |
-| PHP | `voxgig-sdk/monster-hunter-world` | publish pending — [install from git tag](https://github.com/voxgig-sdk/monster-hunter-world-sdk/releases) |
+| TypeScript | `@voxgig-sdk/monster-hunter-world-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/monster-hunter-world-sdk/tags) |
+| Python | `voxgig-sdk-monster-hunter-world` | publish pending — [install from git tag](https://github.com/voxgig-sdk/monster-hunter-world-sdk/tags) |
+| PHP | `voxgig-sdk/monster-hunter-world` | publish pending — [install from git tag](https://github.com/voxgig-sdk/monster-hunter-world-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/monster-hunter-world-sdk/go` | `go get github.com/voxgig-sdk/monster-hunter-world-sdk/go@latest` |
-| Ruby | `voxgig-sdk-monster-hunter-world` | publish pending — [install from git tag](https://github.com/voxgig-sdk/monster-hunter-world-sdk/releases) |
-| Lua | `voxgig-sdk-monster-hunter-world` | publish pending — [install from git tag](https://github.com/voxgig-sdk/monster-hunter-world-sdk/releases) |
+| Ruby | `voxgig-sdk-monster-hunter-world` | publish pending — [install from git tag](https://github.com/voxgig-sdk/monster-hunter-world-sdk/tags) |
+| Lua | `voxgig-sdk-monster-hunter-world` | publish pending — [install from git tag](https://github.com/voxgig-sdk/monster-hunter-world-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/monster-hunter-world-sdk/go-cli` | `go install github.com/voxgig-sdk/monster-hunter-world-sdk/go-cli/cmd/monster-hunter-world@latest` |
 | Go MCP server | `github.com/voxgig-sdk/monster-hunter-world-sdk/go-mcp` | `go get github.com/voxgig-sdk/monster-hunter-world-sdk/go-mcp@latest` |
 
