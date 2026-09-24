@@ -98,25 +98,30 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "description",
-            ["short"] = "A short description of the ailment",
+            ["title"] = "Description",
             ["type"] = "`$STRING`",
+            ["short"] = "A short description of the ailment",
           },
           {
             ["name"] = "id",
-            ["short"] = "The ID of the ailment",
+            ["title"] = "Id",
             ["type"] = "`$INTEGER`",
+            ["short"] = "The ID of the ailment",
           },
           {
             ["name"] = "name",
-            ["short"] = "The name of the ailment",
+            ["title"] = "Name",
             ["type"] = "`$STRING`",
+            ["short"] = "The name of the ailment",
           },
           {
             ["name"] = "protection",
+            ["title"] = "Protection",
             ["type"] = "`$OBJECT`",
           },
           {
             ["name"] = "recovery",
+            ["title"] = "Recovery",
             ["type"] = "`$OBJECT`",
           },
         },
@@ -131,22 +136,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "p",
-                      ["orig"] = "p",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "q",
-                      ["orig"] = "q",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/ailments",
@@ -155,18 +144,35 @@ local function make_config()
                     ["lit"] = "ailments",
                   },
                 },
+                ["parts"] = {
+                  "ailments",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "p",
+                      ["orig"] = "p",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "q",
+                      ["orig"] = "q",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "p",
                     "q",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "ailments",
                 },
               },
             },
@@ -176,25 +182,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["kind"] = "param",
-                      ["name"] = "id",
-                      ["orig"] = "id",
-                      ["reqd"] = true,
-                      ["type"] = "`$INTEGER`",
-                    },
-                  },
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "p",
-                      ["orig"] = "p",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/ailments/{id}",
@@ -206,19 +193,39 @@ local function make_config()
                     ["var"] = "id",
                   },
                 },
+                ["parts"] = {
+                  "ailments",
+                  "{id}",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "id",
+                      ["orig"] = "id",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                    },
+                  },
+                  ["query"] = {
+                    {
+                      ["name"] = "p",
+                      ["orig"] = "p",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "id",
                     "p",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "ailments",
-                  "{id}",
                 },
               },
             },
@@ -232,63 +239,76 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "armorSet",
+            ["title"] = "Armor Set",
             ["type"] = "`$OBJECT`",
           },
           {
             ["name"] = "assets",
+            ["title"] = "Assets",
             ["type"] = "`$OBJECT`",
           },
           {
             ["name"] = "attributes",
-            ["short"] = "Dictionary of attribute modifiers attached to the armor piece",
+            ["title"] = "Attributes",
             ["type"] = "`$OBJECT`",
+            ["short"] = "Dictionary of attribute modifiers attached to the armor piece",
           },
           {
             ["name"] = "crafting",
+            ["title"] = "Crafting",
             ["type"] = "`$OBJECT`",
           },
           {
             ["name"] = "defense",
+            ["title"] = "Defense",
             ["type"] = "`$OBJECT`",
           },
           {
             ["name"] = "id",
-            ["short"] = "The ID of the armor piece",
+            ["title"] = "Id",
             ["type"] = "`$INTEGER`",
+            ["short"] = "The ID of the armor piece",
           },
           {
             ["name"] = "name",
-            ["short"] = "The name of the armor piece",
+            ["title"] = "Name",
             ["type"] = "`$STRING`",
+            ["short"] = "The name of the armor piece",
           },
           {
             ["name"] = "rank",
-            ["short"] = "The rank of the armor piece",
+            ["title"] = "Rank",
             ["type"] = "`$STRING`",
+            ["short"] = "The rank of the armor piece",
           },
           {
             ["name"] = "rarity",
-            ["short"] = "The rarity of the armor piece",
+            ["title"] = "Rarity",
             ["type"] = "`$INTEGER`",
+            ["short"] = "The rarity of the armor piece",
           },
           {
             ["name"] = "resistances",
+            ["title"] = "Resistances",
             ["type"] = "`$OBJECT`",
           },
           {
             ["name"] = "skills",
-            ["short"] = "An array of skill ranks granted by the armor",
+            ["title"] = "Skills",
             ["type"] = "`$ARRAY`",
+            ["short"] = "An array of skill ranks granted by the armor",
           },
           {
             ["name"] = "slots",
-            ["short"] = "An array of decoration slot information",
+            ["title"] = "Slots",
             ["type"] = "`$ARRAY`",
+            ["short"] = "An array of decoration slot information",
           },
           {
             ["name"] = "type",
-            ["short"] = "The slot the armor piece fits in",
+            ["title"] = "Type",
             ["type"] = "`$STRING`",
+            ["short"] = "The slot the armor piece fits in",
           },
         },
         ["id"] = {
@@ -302,22 +322,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "p",
-                      ["orig"] = "p",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "q",
-                      ["orig"] = "q",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/armor",
@@ -326,18 +330,35 @@ local function make_config()
                     ["lit"] = "armor",
                   },
                 },
+                ["parts"] = {
+                  "armor",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "p",
+                      ["orig"] = "p",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "q",
+                      ["orig"] = "q",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "p",
                     "q",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "armor",
                 },
               },
             },
@@ -347,25 +368,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["kind"] = "param",
-                      ["name"] = "id",
-                      ["orig"] = "id",
-                      ["reqd"] = true,
-                      ["type"] = "`$INTEGER`",
-                    },
-                  },
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "p",
-                      ["orig"] = "p",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/armor/{id}",
@@ -377,19 +379,39 @@ local function make_config()
                     ["var"] = "id",
                   },
                 },
+                ["parts"] = {
+                  "armor",
+                  "{id}",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "id",
+                      ["orig"] = "id",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                    },
+                  },
+                  ["query"] = {
+                    {
+                      ["name"] = "p",
+                      ["orig"] = "p",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "id",
                     "p",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "armor",
-                  "{id}",
                 },
               },
             },
@@ -403,28 +425,33 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "bonus",
-            ["short"] = "The set bonus, if any",
+            ["title"] = "Bonus",
             ["type"] = "`$OBJECT`",
+            ["short"] = "The set bonus, if any",
           },
           {
             ["name"] = "id",
-            ["short"] = "The ID of the armor set",
+            ["title"] = "Id",
             ["type"] = "`$INTEGER`",
+            ["short"] = "The ID of the armor set",
           },
           {
             ["name"] = "name",
-            ["short"] = "The name of the armor set",
+            ["title"] = "Name",
             ["type"] = "`$STRING`",
+            ["short"] = "The name of the armor set",
           },
           {
             ["name"] = "pieces",
-            ["short"] = "Array of armor pieces in the set",
+            ["title"] = "Pieces",
             ["type"] = "`$ARRAY`",
+            ["short"] = "Array of armor pieces in the set",
           },
           {
             ["name"] = "rank",
-            ["short"] = "The rank of the armor set",
+            ["title"] = "Rank",
             ["type"] = "`$STRING`",
+            ["short"] = "The rank of the armor set",
           },
         },
         ["id"] = {
@@ -438,22 +465,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "p",
-                      ["orig"] = "p",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "q",
-                      ["orig"] = "q",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/armor/sets",
@@ -465,19 +476,36 @@ local function make_config()
                     ["lit"] = "sets",
                   },
                 },
+                ["parts"] = {
+                  "armor",
+                  "sets",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "p",
+                      ["orig"] = "p",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "q",
+                      ["orig"] = "q",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "p",
                     "q",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "armor",
-                  "sets",
                 },
               },
             },
@@ -487,25 +515,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["kind"] = "param",
-                      ["name"] = "id",
-                      ["orig"] = "id",
-                      ["reqd"] = true,
-                      ["type"] = "`$INTEGER`",
-                    },
-                  },
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "p",
-                      ["orig"] = "p",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/armor/sets/{id}",
@@ -520,20 +529,40 @@ local function make_config()
                     ["var"] = "id",
                   },
                 },
+                ["parts"] = {
+                  "armor",
+                  "sets",
+                  "{id}",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "id",
+                      ["orig"] = "id",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                    },
+                  },
+                  ["query"] = {
+                    {
+                      ["name"] = "p",
+                      ["orig"] = "p",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "id",
                     "p",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "armor",
-                  "sets",
-                  "{id}",
                 },
               },
             },
@@ -547,27 +576,32 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "crafting",
+            ["title"] = "Crafting",
             ["type"] = "`$OBJECT`",
           },
           {
             ["name"] = "id",
-            ["short"] = "The ID of the charm",
+            ["title"] = "Id",
             ["type"] = "`$INTEGER`",
+            ["short"] = "The ID of the charm",
           },
           {
             ["name"] = "name",
-            ["short"] = "The name of the charm",
+            ["title"] = "Name",
             ["type"] = "`$STRING`",
+            ["short"] = "The name of the charm",
           },
           {
             ["name"] = "rarity",
-            ["short"] = "The rarity of the charm",
+            ["title"] = "Rarity",
             ["type"] = "`$INTEGER`",
+            ["short"] = "The rarity of the charm",
           },
           {
             ["name"] = "skills",
-            ["short"] = "An array of skill ranks granted by the charm",
+            ["title"] = "Skills",
             ["type"] = "`$ARRAY`",
+            ["short"] = "An array of skill ranks granted by the charm",
           },
         },
         ["id"] = {
@@ -581,22 +615,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "p",
-                      ["orig"] = "p",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "q",
-                      ["orig"] = "q",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/charms",
@@ -605,18 +623,35 @@ local function make_config()
                     ["lit"] = "charms",
                   },
                 },
+                ["parts"] = {
+                  "charms",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "p",
+                      ["orig"] = "p",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "q",
+                      ["orig"] = "q",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "p",
                     "q",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "charms",
                 },
               },
             },
@@ -626,25 +661,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["kind"] = "param",
-                      ["name"] = "id",
-                      ["orig"] = "id",
-                      ["reqd"] = true,
-                      ["type"] = "`$INTEGER`",
-                    },
-                  },
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "p",
-                      ["orig"] = "p",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/charms/{id}",
@@ -656,19 +672,39 @@ local function make_config()
                     ["var"] = "id",
                   },
                 },
+                ["parts"] = {
+                  "charms",
+                  "{id}",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "id",
+                      ["orig"] = "id",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                    },
+                  },
+                  ["query"] = {
+                    {
+                      ["name"] = "p",
+                      ["orig"] = "p",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "id",
                     "p",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "charms",
-                  "{id}",
                 },
               },
             },
@@ -682,28 +718,33 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "id",
-            ["short"] = "The ID of the decoration",
+            ["title"] = "Id",
             ["type"] = "`$INTEGER`",
+            ["short"] = "The ID of the decoration",
           },
           {
             ["name"] = "name",
-            ["short"] = "The name of the decoration",
+            ["title"] = "Name",
             ["type"] = "`$STRING`",
+            ["short"] = "The name of the decoration",
           },
           {
             ["name"] = "rarity",
-            ["short"] = "The rarity of the decoration",
+            ["title"] = "Rarity",
             ["type"] = "`$INTEGER`",
+            ["short"] = "The rarity of the decoration",
           },
           {
             ["name"] = "skills",
-            ["short"] = "An array of skill ranks granted by the decoration",
+            ["title"] = "Skills",
             ["type"] = "`$ARRAY`",
+            ["short"] = "An array of skill ranks granted by the decoration",
           },
           {
             ["name"] = "slot",
-            ["short"] = "The slot rank required for the decoration",
+            ["title"] = "Slot",
             ["type"] = "`$INTEGER`",
+            ["short"] = "The slot rank required for the decoration",
           },
         },
         ["id"] = {
@@ -717,22 +758,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "p",
-                      ["orig"] = "p",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "q",
-                      ["orig"] = "q",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/decorations",
@@ -741,18 +766,35 @@ local function make_config()
                     ["lit"] = "decorations",
                   },
                 },
+                ["parts"] = {
+                  "decorations",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "p",
+                      ["orig"] = "p",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "q",
+                      ["orig"] = "q",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "p",
                     "q",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "decorations",
                 },
               },
             },
@@ -762,25 +804,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["kind"] = "param",
-                      ["name"] = "id",
-                      ["orig"] = "id",
-                      ["reqd"] = true,
-                      ["type"] = "`$INTEGER`",
-                    },
-                  },
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "p",
-                      ["orig"] = "p",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/decorations/{id}",
@@ -792,19 +815,39 @@ local function make_config()
                     ["var"] = "id",
                   },
                 },
+                ["parts"] = {
+                  "decorations",
+                  "{id}",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "id",
+                      ["orig"] = "id",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                    },
+                  },
+                  ["query"] = {
+                    {
+                      ["name"] = "p",
+                      ["orig"] = "p",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "id",
                     "p",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "decorations",
-                  "{id}",
                 },
               },
             },
@@ -818,79 +861,94 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "camps",
-            ["short"] = "An array of camps in the location",
+            ["title"] = "Camps",
             ["type"] = "`$ARRAY`",
+            ["short"] = "An array of camps in the location",
           },
           {
             ["name"] = "description",
-            ["short"] = "A description of the event",
+            ["title"] = "Description",
             ["type"] = "`$STRING`",
+            ["short"] = "A description of the event",
           },
           {
-            ["format"] = "date-time",
             ["name"] = "endTimestamp",
-            ["short"] = "The end time of the event",
+            ["title"] = "End Timestamp",
             ["type"] = "`$STRING`",
+            ["short"] = "The end time of the event",
+            ["format"] = "date-time",
           },
           {
             ["name"] = "exclusive",
-            ["short"] = "Whether the event is exclusive to a platform",
+            ["title"] = "Exclusive",
             ["type"] = "`$STRING`",
+            ["short"] = "Whether the event is exclusive to a platform",
           },
           {
             ["name"] = "expansion",
-            ["short"] = "The expansion the event belongs to",
+            ["title"] = "Expansion",
             ["type"] = "`$STRING`",
+            ["short"] = "The expansion the event belongs to",
           },
           {
             ["name"] = "id",
-            ["short"] = "The ID of the location",
+            ["title"] = "Id",
             ["type"] = "`$INTEGER`",
+            ["short"] = "The ID of the location",
           },
           {
             ["name"] = "location",
+            ["title"] = "Location",
             ["type"] = "`$OBJECT`",
           },
           {
             ["name"] = "name",
-            ["short"] = "The name of the location",
+            ["title"] = "Name",
             ["type"] = "`$STRING`",
+            ["short"] = "The name of the location",
           },
           {
             ["name"] = "platform",
-            ["short"] = "The platform for the event",
+            ["title"] = "Platform",
             ["type"] = "`$STRING`",
+            ["short"] = "The platform for the event",
           },
           {
             ["name"] = "questRank",
-            ["short"] = "The quest rank of the event",
+            ["title"] = "Quest Rank",
             ["type"] = "`$STRING`",
+            ["short"] = "The quest rank of the event",
           },
           {
             ["name"] = "requirements",
-            ["short"] = "Requirements for the event",
+            ["title"] = "Requirements",
             ["type"] = "`$STRING`",
+            ["short"] = "Requirements for the event",
           },
           {
-            ["format"] = "date-time",
             ["name"] = "startTimestamp",
-            ["short"] = "The start time of the event",
+            ["title"] = "Start Timestamp",
             ["type"] = "`$STRING`",
+            ["short"] = "The start time of the event",
+            ["format"] = "date-time",
           },
           {
             ["name"] = "successConditions",
-            ["short"] = "Conditions for success",
+            ["title"] = "Success Conditions",
             ["type"] = "`$STRING`",
+            ["short"] = "Conditions for success",
           },
           {
             ["name"] = "type",
-            ["short"] = "The type of event",
+            ["title"] = "Type",
             ["type"] = "`$STRING`",
+            ["short"] = "The type of event",
           },
           {
             ["name"] = "zoneCount",
-            ["short"] = "The number of zones in the location",
+            ["title"] = "Zone Count",
             ["type"] = "`$INTEGER`",
+            ["short"] = "The number of zones in the location",
           },
         },
         ["id"] = {
@@ -904,22 +962,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "p",
-                      ["orig"] = "p",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "q",
-                      ["orig"] = "q",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/events",
@@ -928,18 +970,35 @@ local function make_config()
                     ["lit"] = "events",
                   },
                 },
+                ["parts"] = {
+                  "events",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "p",
+                      ["orig"] = "p",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "q",
+                      ["orig"] = "q",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "p",
                     "q",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "events",
                 },
               },
             },
@@ -949,25 +1008,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["kind"] = "param",
-                      ["name"] = "id",
-                      ["orig"] = "id",
-                      ["reqd"] = true,
-                      ["type"] = "`$INTEGER`",
-                    },
-                  },
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "p",
-                      ["orig"] = "p",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/events/{id}",
@@ -979,19 +1019,39 @@ local function make_config()
                     ["var"] = "id",
                   },
                 },
+                ["parts"] = {
+                  "events",
+                  "{id}",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body.location`",
+                },
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "id",
+                      ["orig"] = "id",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                    },
+                  },
+                  ["query"] = {
+                    {
+                      ["name"] = "p",
+                      ["orig"] = "p",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "id",
                     "p",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body.location`",
-                },
-                ["parts"] = {
-                  "events",
-                  "{id}",
                 },
               },
             },
@@ -1005,43 +1065,51 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "buyPrice",
-            ["short"] = "The price when buying the item",
+            ["title"] = "Buy Price",
             ["type"] = "`$INTEGER`",
+            ["short"] = "The price when buying the item",
           },
           {
             ["name"] = "carryLimit",
-            ["short"] = "The maximum number of this item that can be carried",
+            ["title"] = "Carry Limit",
             ["type"] = "`$INTEGER`",
+            ["short"] = "The maximum number of this item that can be carried",
           },
           {
             ["name"] = "description",
-            ["short"] = "A description of the item",
+            ["title"] = "Description",
             ["type"] = "`$STRING`",
+            ["short"] = "A description of the item",
           },
           {
             ["name"] = "id",
-            ["short"] = "The ID of the item",
+            ["title"] = "Id",
             ["type"] = "`$INTEGER`",
+            ["short"] = "The ID of the item",
           },
           {
             ["name"] = "name",
-            ["short"] = "The name of the item",
+            ["title"] = "Name",
             ["type"] = "`$STRING`",
+            ["short"] = "The name of the item",
           },
           {
             ["name"] = "rarity",
-            ["short"] = "The rarity of the item",
+            ["title"] = "Rarity",
             ["type"] = "`$INTEGER`",
+            ["short"] = "The rarity of the item",
           },
           {
             ["name"] = "sellPrice",
-            ["short"] = "The price when selling the item",
+            ["title"] = "Sell Price",
             ["type"] = "`$INTEGER`",
+            ["short"] = "The price when selling the item",
           },
           {
             ["name"] = "value",
-            ["short"] = "The value of the item",
+            ["title"] = "Value",
             ["type"] = "`$INTEGER`",
+            ["short"] = "The value of the item",
           },
         },
         ["id"] = {
@@ -1055,22 +1123,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "p",
-                      ["orig"] = "p",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "q",
-                      ["orig"] = "q",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/items",
@@ -1079,18 +1131,35 @@ local function make_config()
                     ["lit"] = "items",
                   },
                 },
+                ["parts"] = {
+                  "items",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "p",
+                      ["orig"] = "p",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "q",
+                      ["orig"] = "q",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "p",
                     "q",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "items",
                 },
               },
             },
@@ -1100,25 +1169,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["kind"] = "param",
-                      ["name"] = "id",
-                      ["orig"] = "id",
-                      ["reqd"] = true,
-                      ["type"] = "`$INTEGER`",
-                    },
-                  },
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "p",
-                      ["orig"] = "p",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/items/{id}",
@@ -1130,19 +1180,39 @@ local function make_config()
                     ["var"] = "id",
                   },
                 },
+                ["parts"] = {
+                  "items",
+                  "{id}",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "id",
+                      ["orig"] = "id",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                    },
+                  },
+                  ["query"] = {
+                    {
+                      ["name"] = "p",
+                      ["orig"] = "p",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "id",
                     "p",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "items",
-                  "{id}",
                 },
               },
             },
@@ -1156,23 +1226,27 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "camps",
-            ["short"] = "An array of camps in the location",
+            ["title"] = "Camps",
             ["type"] = "`$ARRAY`",
+            ["short"] = "An array of camps in the location",
           },
           {
             ["name"] = "id",
-            ["short"] = "The ID of the location",
+            ["title"] = "Id",
             ["type"] = "`$INTEGER`",
+            ["short"] = "The ID of the location",
           },
           {
             ["name"] = "name",
-            ["short"] = "The name of the location",
+            ["title"] = "Name",
             ["type"] = "`$STRING`",
+            ["short"] = "The name of the location",
           },
           {
             ["name"] = "zoneCount",
-            ["short"] = "The number of zones in the location",
+            ["title"] = "Zone Count",
             ["type"] = "`$INTEGER`",
+            ["short"] = "The number of zones in the location",
           },
         },
         ["id"] = {
@@ -1186,22 +1260,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "p",
-                      ["orig"] = "p",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "q",
-                      ["orig"] = "q",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/locations",
@@ -1210,18 +1268,35 @@ local function make_config()
                     ["lit"] = "locations",
                   },
                 },
+                ["parts"] = {
+                  "locations",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "p",
+                      ["orig"] = "p",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "q",
+                      ["orig"] = "q",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "p",
                     "q",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "locations",
                 },
               },
             },
@@ -1231,25 +1306,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["kind"] = "param",
-                      ["name"] = "id",
-                      ["orig"] = "id",
-                      ["reqd"] = true,
-                      ["type"] = "`$INTEGER`",
-                    },
-                  },
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "p",
-                      ["orig"] = "p",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/locations/{id}",
@@ -1261,19 +1317,39 @@ local function make_config()
                     ["var"] = "id",
                   },
                 },
+                ["parts"] = {
+                  "locations",
+                  "{id}",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "id",
+                      ["orig"] = "id",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                    },
+                  },
+                  ["query"] = {
+                    {
+                      ["name"] = "p",
+                      ["orig"] = "p",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "id",
                     "p",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "locations",
-                  "{id}",
                 },
               },
             },
@@ -1287,58 +1363,69 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "ailments",
-            ["short"] = "Ailments the monster can inflict",
+            ["title"] = "Ailments",
             ["type"] = "`$ARRAY`",
+            ["short"] = "Ailments the monster can inflict",
           },
           {
             ["name"] = "description",
-            ["short"] = "A description of the monster",
+            ["title"] = "Description",
             ["type"] = "`$STRING`",
+            ["short"] = "A description of the monster",
           },
           {
             ["name"] = "elements",
-            ["short"] = "Elements the monster uses",
+            ["title"] = "Elements",
             ["type"] = "`$ARRAY`",
+            ["short"] = "Elements the monster uses",
           },
           {
             ["name"] = "id",
-            ["short"] = "The ID of the monster",
+            ["title"] = "Id",
             ["type"] = "`$INTEGER`",
+            ["short"] = "The ID of the monster",
           },
           {
             ["name"] = "locations",
-            ["short"] = "Locations where the monster can be found",
+            ["title"] = "Locations",
             ["type"] = "`$ARRAY`",
+            ["short"] = "Locations where the monster can be found",
           },
           {
             ["name"] = "name",
-            ["short"] = "The name of the monster",
+            ["title"] = "Name",
             ["type"] = "`$STRING`",
+            ["short"] = "The name of the monster",
           },
           {
             ["name"] = "resistances",
-            ["short"] = "Resistances of the monster",
+            ["title"] = "Resistances",
             ["type"] = "`$ARRAY`",
+            ["short"] = "Resistances of the monster",
           },
           {
             ["name"] = "rewards",
-            ["short"] = "Rewards obtained from the monster",
+            ["title"] = "Rewards",
             ["type"] = "`$ARRAY`",
+            ["short"] = "Rewards obtained from the monster",
           },
           {
             ["name"] = "species",
-            ["short"] = "The species of the monster",
+            ["title"] = "Species",
             ["type"] = "`$STRING`",
+            ["short"] = "The species of the monster",
           },
           {
             ["name"] = "type",
-            ["short"] = "The type of monster",
+            ["title"] = "Type",
             ["type"] = "`$STRING`",
+            ["short"] = "The type of monster",
           },
           {
             ["name"] = "weaknesses",
-            ["short"] = "Weaknesses of the monster",
+            ["title"] = "Weaknesses",
             ["type"] = "`$ARRAY`",
+            ["short"] = "Weaknesses of the monster",
           },
         },
         ["id"] = {
@@ -1352,22 +1439,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "p",
-                      ["orig"] = "p",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "q",
-                      ["orig"] = "q",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/monsters",
@@ -1376,18 +1447,35 @@ local function make_config()
                     ["lit"] = "monsters",
                   },
                 },
+                ["parts"] = {
+                  "monsters",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "p",
+                      ["orig"] = "p",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "q",
+                      ["orig"] = "q",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "p",
                     "q",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "monsters",
                 },
               },
             },
@@ -1397,25 +1485,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["kind"] = "param",
-                      ["name"] = "id",
-                      ["orig"] = "id",
-                      ["reqd"] = true,
-                      ["type"] = "`$INTEGER`",
-                    },
-                  },
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "p",
-                      ["orig"] = "p",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/monsters/{id}",
@@ -1427,19 +1496,39 @@ local function make_config()
                     ["var"] = "id",
                   },
                 },
+                ["parts"] = {
+                  "monsters",
+                  "{id}",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "id",
+                      ["orig"] = "id",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                    },
+                  },
+                  ["query"] = {
+                    {
+                      ["name"] = "p",
+                      ["orig"] = "p",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "id",
                     "p",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "monsters",
-                  "{id}",
                 },
               },
             },
@@ -1453,33 +1542,39 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "damageType",
-            ["short"] = "The type of damage",
+            ["title"] = "Damage Type",
             ["type"] = "`$STRING`",
+            ["short"] = "The type of damage",
           },
           {
             ["name"] = "exhaust",
-            ["short"] = "Exhaust value",
+            ["title"] = "Exhaust",
             ["type"] = "`$INTEGER`",
+            ["short"] = "Exhaust value",
           },
           {
             ["name"] = "hits",
-            ["short"] = "Hit information",
+            ["title"] = "Hits",
             ["type"] = "`$ARRAY`",
+            ["short"] = "Hit information",
           },
           {
             ["name"] = "id",
-            ["short"] = "The ID of the motion value",
+            ["title"] = "Id",
             ["type"] = "`$INTEGER`",
+            ["short"] = "The ID of the motion value",
           },
           {
             ["name"] = "stun",
-            ["short"] = "Stun value",
+            ["title"] = "Stun",
             ["type"] = "`$INTEGER`",
+            ["short"] = "Stun value",
           },
           {
             ["name"] = "weaponType",
-            ["short"] = "The type of weapon",
+            ["title"] = "Weapon Type",
             ["type"] = "`$STRING`",
+            ["short"] = "The type of weapon",
           },
         },
         ["id"] = {
@@ -1493,22 +1588,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "p",
-                      ["orig"] = "p",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "q",
-                      ["orig"] = "q",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/motion-values",
@@ -1517,18 +1596,35 @@ local function make_config()
                     ["lit"] = "motion-values",
                   },
                 },
+                ["parts"] = {
+                  "motion-values",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "p",
+                      ["orig"] = "p",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "q",
+                      ["orig"] = "q",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "p",
                     "q",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "motion-values",
                 },
               },
             },
@@ -1538,25 +1634,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["kind"] = "param",
-                      ["name"] = "id",
-                      ["orig"] = "id",
-                      ["reqd"] = true,
-                      ["type"] = "`$INTEGER`",
-                    },
-                  },
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "p",
-                      ["orig"] = "p",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/motion-values/{id}",
@@ -1568,19 +1645,39 @@ local function make_config()
                     ["var"] = "id",
                   },
                 },
+                ["parts"] = {
+                  "motion-values",
+                  "{id}",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "id",
+                      ["orig"] = "id",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                    },
+                  },
+                  ["query"] = {
+                    {
+                      ["name"] = "p",
+                      ["orig"] = "p",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "id",
                     "p",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "motion-values",
-                  "{id}",
                 },
               },
             },
@@ -1594,23 +1691,27 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "description",
-            ["short"] = "A description of the skill",
+            ["title"] = "Description",
             ["type"] = "`$STRING`",
+            ["short"] = "A description of the skill",
           },
           {
             ["name"] = "id",
-            ["short"] = "The ID of the skill",
+            ["title"] = "Id",
             ["type"] = "`$INTEGER`",
+            ["short"] = "The ID of the skill",
           },
           {
             ["name"] = "name",
-            ["short"] = "The name of the skill",
+            ["title"] = "Name",
             ["type"] = "`$STRING`",
+            ["short"] = "The name of the skill",
           },
           {
             ["name"] = "ranks",
-            ["short"] = "An array of skill ranks",
+            ["title"] = "Ranks",
             ["type"] = "`$ARRAY`",
+            ["short"] = "An array of skill ranks",
           },
         },
         ["id"] = {
@@ -1624,22 +1725,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "p",
-                      ["orig"] = "p",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "q",
-                      ["orig"] = "q",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/skills",
@@ -1648,18 +1733,35 @@ local function make_config()
                     ["lit"] = "skills",
                   },
                 },
+                ["parts"] = {
+                  "skills",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "p",
+                      ["orig"] = "p",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "q",
+                      ["orig"] = "q",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "p",
                     "q",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "skills",
                 },
               },
             },
@@ -1669,25 +1771,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["kind"] = "param",
-                      ["name"] = "id",
-                      ["orig"] = "id",
-                      ["reqd"] = true,
-                      ["type"] = "`$INTEGER`",
-                    },
-                  },
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "p",
-                      ["orig"] = "p",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/skills/{id}",
@@ -1699,19 +1782,39 @@ local function make_config()
                     ["var"] = "id",
                   },
                 },
+                ["parts"] = {
+                  "skills",
+                  "{id}",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "id",
+                      ["orig"] = "id",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                    },
+                  },
+                  ["query"] = {
+                    {
+                      ["name"] = "p",
+                      ["orig"] = "p",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "id",
                     "p",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "skills",
-                  "{id}",
                 },
               },
             },
@@ -1725,58 +1828,69 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "assets",
-            ["short"] = "Asset URLs for the weapon",
+            ["title"] = "Assets",
             ["type"] = "`$OBJECT`",
+            ["short"] = "Asset URLs for the weapon",
           },
           {
             ["name"] = "attack",
-            ["short"] = "Attack values for the weapon",
+            ["title"] = "Attack",
             ["type"] = "`$OBJECT`",
+            ["short"] = "Attack values for the weapon",
           },
           {
             ["name"] = "attributes",
-            ["short"] = "Additional weapon attributes",
+            ["title"] = "Attributes",
             ["type"] = "`$OBJECT`",
+            ["short"] = "Additional weapon attributes",
           },
           {
             ["name"] = "crafting",
-            ["short"] = "Crafting information for the weapon",
+            ["title"] = "Crafting",
             ["type"] = "`$OBJECT`",
+            ["short"] = "Crafting information for the weapon",
           },
           {
             ["name"] = "damageType",
-            ["short"] = "The damage type of the weapon",
+            ["title"] = "Damage Type",
             ["type"] = "`$STRING`",
+            ["short"] = "The damage type of the weapon",
           },
           {
             ["name"] = "elements",
-            ["short"] = "Elemental damage information",
+            ["title"] = "Elements",
             ["type"] = "`$ARRAY`",
+            ["short"] = "Elemental damage information",
           },
           {
             ["name"] = "id",
-            ["short"] = "The ID of the weapon",
+            ["title"] = "Id",
             ["type"] = "`$INTEGER`",
+            ["short"] = "The ID of the weapon",
           },
           {
             ["name"] = "name",
-            ["short"] = "The name of the weapon",
+            ["title"] = "Name",
             ["type"] = "`$STRING`",
+            ["short"] = "The name of the weapon",
           },
           {
             ["name"] = "rarity",
-            ["short"] = "The rarity of the weapon",
+            ["title"] = "Rarity",
             ["type"] = "`$INTEGER`",
+            ["short"] = "The rarity of the weapon",
           },
           {
             ["name"] = "slots",
-            ["short"] = "An array of decoration slot information",
+            ["title"] = "Slots",
             ["type"] = "`$ARRAY`",
+            ["short"] = "An array of decoration slot information",
           },
           {
             ["name"] = "type",
-            ["short"] = "The type of weapon",
+            ["title"] = "Type",
             ["type"] = "`$STRING`",
+            ["short"] = "The type of weapon",
           },
         },
         ["id"] = {
@@ -1790,22 +1904,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "p",
-                      ["orig"] = "p",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "q",
-                      ["orig"] = "q",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/weapons",
@@ -1814,18 +1912,35 @@ local function make_config()
                     ["lit"] = "weapons",
                   },
                 },
+                ["parts"] = {
+                  "weapons",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "p",
+                      ["orig"] = "p",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "q",
+                      ["orig"] = "q",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "p",
                     "q",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "weapons",
                 },
               },
             },
@@ -1835,25 +1950,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["kind"] = "param",
-                      ["name"] = "id",
-                      ["orig"] = "id",
-                      ["reqd"] = true,
-                      ["type"] = "`$INTEGER`",
-                    },
-                  },
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "p",
-                      ["orig"] = "p",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/weapons/{id}",
@@ -1865,19 +1961,39 @@ local function make_config()
                     ["var"] = "id",
                   },
                 },
+                ["parts"] = {
+                  "weapons",
+                  "{id}",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "id",
+                      ["orig"] = "id",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                    },
+                  },
+                  ["query"] = {
+                    {
+                      ["name"] = "p",
+                      ["orig"] = "p",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "id",
                     "p",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "weapons",
-                  "{id}",
                 },
               },
             },

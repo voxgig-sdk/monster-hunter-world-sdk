@@ -1,0 +1,226 @@
+# Entity: event
+
+main: kit: entity: event: {
+
+  alias: field: {}
+
+  fields: {
+    camps: {
+      h: "Camps"
+      n: "camps"
+      r: false
+      sh: "An array of camps in the location"
+      t: "`$ARRAY`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "A description of the event"
+      t: "`$STRING`"
+    }
+    endTimestamp: {
+      fo: "date-time"
+      h: "End Timestamp"
+      n: "endTimestamp"
+      r: false
+      sh: "The end time of the event"
+      t: "`$STRING`"
+    }
+    exclusive: {
+      h: "Exclusive"
+      n: "exclusive"
+      r: false
+      sh: "Whether the event is exclusive to a platform"
+      t: "`$STRING`"
+    }
+    expansion: {
+      h: "Expansion"
+      n: "expansion"
+      r: false
+      sh: "The expansion the event belongs to"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "The ID of the location"
+      t: "`$INTEGER`"
+    }
+    location: {
+      h: "Location"
+      n: "location"
+      r: false
+      t: "`$OBJECT`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The name of the location"
+      t: "`$STRING`"
+    }
+    platform: {
+      h: "Platform"
+      n: "platform"
+      r: false
+      sh: "The platform for the event"
+      t: "`$STRING`"
+    }
+    questRank: {
+      h: "Quest Rank"
+      n: "questRank"
+      r: false
+      sh: "The quest rank of the event"
+      t: "`$STRING`"
+    }
+    requirements: {
+      h: "Requirements"
+      n: "requirements"
+      r: false
+      sh: "Requirements for the event"
+      t: "`$STRING`"
+    }
+    startTimestamp: {
+      fo: "date-time"
+      h: "Start Timestamp"
+      n: "startTimestamp"
+      r: false
+      sh: "The start time of the event"
+      t: "`$STRING`"
+    }
+    successConditions: {
+      h: "Success Conditions"
+      n: "successConditions"
+      r: false
+      sh: "Conditions for success"
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "The type of event"
+      t: "`$STRING`"
+    }
+    zoneCount: {
+      h: "Zone Count"
+      n: "zoneCount"
+      r: false
+      sh: "The number of zones in the location"
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "event"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /events"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "p"
+                or: "p"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "q"
+                or: "q"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/events"
+          q: {
+            exist: [
+              "p"
+              "q"
+            ]
+          }
+          s: [
+            {
+              lit: "events"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /events/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "p"
+                or: "p"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/events/{id}"
+          q: {
+            exist: [
+              "id"
+              "p"
+            ]
+          }
+          s: [
+            {
+              lit: "events"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.location`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

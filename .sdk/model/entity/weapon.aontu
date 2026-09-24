@@ -1,0 +1,197 @@
+# Entity: weapon
+
+main: kit: entity: weapon: {
+
+  alias: field: {}
+
+  fields: {
+    assets: {
+      h: "Assets"
+      n: "assets"
+      r: false
+      sh: "Asset URLs for the weapon"
+      t: "`$OBJECT`"
+    }
+    attack: {
+      h: "Attack"
+      n: "attack"
+      r: false
+      sh: "Attack values for the weapon"
+      t: "`$OBJECT`"
+    }
+    attributes: {
+      h: "Attributes"
+      n: "attributes"
+      r: false
+      sh: "Additional weapon attributes"
+      t: "`$OBJECT`"
+    }
+    crafting: {
+      h: "Crafting"
+      n: "crafting"
+      r: false
+      sh: "Crafting information for the weapon"
+      t: "`$OBJECT`"
+    }
+    damageType: {
+      h: "Damage Type"
+      n: "damageType"
+      r: false
+      sh: "The damage type of the weapon"
+      t: "`$STRING`"
+    }
+    elements: {
+      h: "Elements"
+      n: "elements"
+      r: false
+      sh: "Elemental damage information"
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "The ID of the weapon"
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The name of the weapon"
+      t: "`$STRING`"
+    }
+    rarity: {
+      h: "Rarity"
+      n: "rarity"
+      r: false
+      sh: "The rarity of the weapon"
+      t: "`$INTEGER`"
+    }
+    slots: {
+      h: "Slots"
+      n: "slots"
+      r: false
+      sh: "An array of decoration slot information"
+      t: "`$ARRAY`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "The type of weapon"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "weapon"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /weapons"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "p"
+                or: "p"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "q"
+                or: "q"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/weapons"
+          q: {
+            exist: [
+              "p"
+              "q"
+            ]
+          }
+          s: [
+            {
+              lit: "weapons"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /weapons/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "p"
+                or: "p"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/weapons/{id}"
+          q: {
+            exist: [
+              "id"
+              "p"
+            ]
+          }
+          s: [
+            {
+              lit: "weapons"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

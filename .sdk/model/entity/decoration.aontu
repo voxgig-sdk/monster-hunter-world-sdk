@@ -1,0 +1,155 @@
+# Entity: decoration
+
+main: kit: entity: decoration: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "The ID of the decoration"
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The name of the decoration"
+      t: "`$STRING`"
+    }
+    rarity: {
+      h: "Rarity"
+      n: "rarity"
+      r: false
+      sh: "The rarity of the decoration"
+      t: "`$INTEGER`"
+    }
+    skills: {
+      h: "Skills"
+      n: "skills"
+      r: false
+      sh: "An array of skill ranks granted by the decoration"
+      t: "`$ARRAY`"
+    }
+    slot: {
+      h: "Slot"
+      n: "slot"
+      r: false
+      sh: "The slot rank required for the decoration"
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "decoration"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /decorations"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "p"
+                or: "p"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "q"
+                or: "q"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/decorations"
+          q: {
+            exist: [
+              "p"
+              "q"
+            ]
+          }
+          s: [
+            {
+              lit: "decorations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /decorations/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "p"
+                or: "p"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/decorations/{id}"
+          q: {
+            exist: [
+              "id"
+              "p"
+            ]
+          }
+          s: [
+            {
+              lit: "decorations"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,44 @@
+# BasicDecorationFlow
+
+main: kit: flow: BasicDecorationFlow:
+{
+  entity: "decoration",
+  kind: "basic",
+  name: "BasicDecorationFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "decoration_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "decoration_ref01",
+        srcdatavar: "decoration_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "decoration01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-decoration_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDecorationFlow"
+}

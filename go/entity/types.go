@@ -1,7 +1,7 @@
 // Typed models for the MonsterHunterWorld SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,11 +14,6 @@ import (
 
 // Ailment is the typed data model for the ailment entity.
 type Ailment struct {
-	Description *string `json:"description,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Protection *map[string]any `json:"protection,omitempty"`
-	Recovery *map[string]any `json:"recovery,omitempty"`
 }
 
 // AilmentLoadMatch is the typed request payload for Ailment.LoadTyped.
@@ -35,19 +30,6 @@ type AilmentListMatch struct {
 
 // Armor is the typed data model for the armor entity.
 type Armor struct {
-	ArmorSet *map[string]any `json:"armorSet,omitempty"`
-	Assets *map[string]any `json:"assets,omitempty"`
-	Attributes *map[string]any `json:"attributes,omitempty"`
-	Crafting *map[string]any `json:"crafting,omitempty"`
-	Defense *map[string]any `json:"defense,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Rank *string `json:"rank,omitempty"`
-	Rarity *int `json:"rarity,omitempty"`
-	Resistances *map[string]any `json:"resistances,omitempty"`
-	Skills *[]any `json:"skills,omitempty"`
-	Slots *[]any `json:"slots,omitempty"`
-	Type *string `json:"type,omitempty"`
 }
 
 // ArmorLoadMatch is the typed request payload for Armor.LoadTyped.
@@ -64,11 +46,6 @@ type ArmorListMatch struct {
 
 // ArmorSet is the typed data model for the armor_set entity.
 type ArmorSet struct {
-	Bonus *map[string]any `json:"bonus,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Pieces *[]any `json:"pieces,omitempty"`
-	Rank *string `json:"rank,omitempty"`
 }
 
 // ArmorSetLoadMatch is the typed request payload for ArmorSet.LoadTyped.
@@ -85,11 +62,6 @@ type ArmorSetListMatch struct {
 
 // Charm is the typed data model for the charm entity.
 type Charm struct {
-	Crafting *map[string]any `json:"crafting,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Rarity *int `json:"rarity,omitempty"`
-	Skills *[]any `json:"skills,omitempty"`
 }
 
 // CharmLoadMatch is the typed request payload for Charm.LoadTyped.
@@ -106,11 +78,6 @@ type CharmListMatch struct {
 
 // Decoration is the typed data model for the decoration entity.
 type Decoration struct {
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Rarity *int `json:"rarity,omitempty"`
-	Skills *[]any `json:"skills,omitempty"`
-	Slot *int `json:"slot,omitempty"`
 }
 
 // DecorationLoadMatch is the typed request payload for Decoration.LoadTyped.
@@ -127,21 +94,6 @@ type DecorationListMatch struct {
 
 // Event is the typed data model for the event entity.
 type Event struct {
-	Camps *[]any `json:"camps,omitempty"`
-	Description *string `json:"description,omitempty"`
-	EndTimestamp *string `json:"endTimestamp,omitempty"`
-	Exclusive *string `json:"exclusive,omitempty"`
-	Expansion *string `json:"expansion,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Location *map[string]any `json:"location,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Platform *string `json:"platform,omitempty"`
-	QuestRank *string `json:"questRank,omitempty"`
-	Requirements *string `json:"requirements,omitempty"`
-	StartTimestamp *string `json:"startTimestamp,omitempty"`
-	SuccessConditions *string `json:"successConditions,omitempty"`
-	Type *string `json:"type,omitempty"`
-	ZoneCount *int `json:"zoneCount,omitempty"`
 }
 
 // EventLoadMatch is the typed request payload for Event.LoadTyped.
@@ -158,14 +110,6 @@ type EventListMatch struct {
 
 // Item is the typed data model for the item entity.
 type Item struct {
-	BuyPrice *int `json:"buyPrice,omitempty"`
-	CarryLimit *int `json:"carryLimit,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Rarity *int `json:"rarity,omitempty"`
-	SellPrice *int `json:"sellPrice,omitempty"`
-	Value *int `json:"value,omitempty"`
 }
 
 // ItemLoadMatch is the typed request payload for Item.LoadTyped.
@@ -182,10 +126,6 @@ type ItemListMatch struct {
 
 // Location is the typed data model for the location entity.
 type Location struct {
-	Camps *[]any `json:"camps,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	ZoneCount *int `json:"zoneCount,omitempty"`
 }
 
 // LocationLoadMatch is the typed request payload for Location.LoadTyped.
@@ -202,17 +142,6 @@ type LocationListMatch struct {
 
 // Monster is the typed data model for the monster entity.
 type Monster struct {
-	Ailments *[]any `json:"ailments,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Elements *[]any `json:"elements,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Locations *[]any `json:"locations,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Resistances *[]any `json:"resistances,omitempty"`
-	Rewards *[]any `json:"rewards,omitempty"`
-	Species *string `json:"species,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Weaknesses *[]any `json:"weaknesses,omitempty"`
 }
 
 // MonsterLoadMatch is the typed request payload for Monster.LoadTyped.
@@ -229,12 +158,6 @@ type MonsterListMatch struct {
 
 // MotionValue is the typed data model for the motion_value entity.
 type MotionValue struct {
-	DamageType *string `json:"damageType,omitempty"`
-	Exhaust *int `json:"exhaust,omitempty"`
-	Hits *[]any `json:"hits,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Stun *int `json:"stun,omitempty"`
-	WeaponType *string `json:"weaponType,omitempty"`
 }
 
 // MotionValueLoadMatch is the typed request payload for MotionValue.LoadTyped.
@@ -251,10 +174,6 @@ type MotionValueListMatch struct {
 
 // Skill is the typed data model for the skill entity.
 type Skill struct {
-	Description *string `json:"description,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Ranks *[]any `json:"ranks,omitempty"`
 }
 
 // SkillLoadMatch is the typed request payload for Skill.LoadTyped.
@@ -271,17 +190,6 @@ type SkillListMatch struct {
 
 // Weapon is the typed data model for the weapon entity.
 type Weapon struct {
-	Assets *map[string]any `json:"assets,omitempty"`
-	Attack *map[string]any `json:"attack,omitempty"`
-	Attributes *map[string]any `json:"attributes,omitempty"`
-	Crafting *map[string]any `json:"crafting,omitempty"`
-	DamageType *string `json:"damageType,omitempty"`
-	Elements *[]any `json:"elements,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Rarity *int `json:"rarity,omitempty"`
-	Slots *[]any `json:"slots,omitempty"`
-	Type *string `json:"type,omitempty"`
 }
 
 // WeaponLoadMatch is the typed request payload for Weapon.LoadTyped.

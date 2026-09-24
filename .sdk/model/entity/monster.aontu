@@ -1,0 +1,197 @@
+# Entity: monster
+
+main: kit: entity: monster: {
+
+  alias: field: {}
+
+  fields: {
+    ailments: {
+      h: "Ailments"
+      n: "ailments"
+      r: false
+      sh: "Ailments the monster can inflict"
+      t: "`$ARRAY`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "A description of the monster"
+      t: "`$STRING`"
+    }
+    elements: {
+      h: "Elements"
+      n: "elements"
+      r: false
+      sh: "Elements the monster uses"
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "The ID of the monster"
+      t: "`$INTEGER`"
+    }
+    locations: {
+      h: "Locations"
+      n: "locations"
+      r: false
+      sh: "Locations where the monster can be found"
+      t: "`$ARRAY`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The name of the monster"
+      t: "`$STRING`"
+    }
+    resistances: {
+      h: "Resistances"
+      n: "resistances"
+      r: false
+      sh: "Resistances of the monster"
+      t: "`$ARRAY`"
+    }
+    rewards: {
+      h: "Rewards"
+      n: "rewards"
+      r: false
+      sh: "Rewards obtained from the monster"
+      t: "`$ARRAY`"
+    }
+    species: {
+      h: "Species"
+      n: "species"
+      r: false
+      sh: "The species of the monster"
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "The type of monster"
+      t: "`$STRING`"
+    }
+    weaknesses: {
+      h: "Weaknesses"
+      n: "weaknesses"
+      r: false
+      sh: "Weaknesses of the monster"
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "monster"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /monsters"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "p"
+                or: "p"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "q"
+                or: "q"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/monsters"
+          q: {
+            exist: [
+              "p"
+              "q"
+            ]
+          }
+          s: [
+            {
+              lit: "monsters"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /monsters/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "p"
+                or: "p"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/monsters/{id}"
+          q: {
+            exist: [
+              "id"
+              "p"
+            ]
+          }
+          s: [
+            {
+              lit: "monsters"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

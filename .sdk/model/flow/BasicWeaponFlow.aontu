@@ -1,0 +1,44 @@
+# BasicWeaponFlow
+
+main: kit: flow: BasicWeaponFlow:
+{
+  entity: "weapon",
+  kind: "basic",
+  name: "BasicWeaponFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "weapon_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "weapon_ref01",
+        srcdatavar: "weapon_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "weapon01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-weapon_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicWeaponFlow"
+}

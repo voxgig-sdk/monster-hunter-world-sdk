@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -125,25 +118,30 @@ class Config {
             "fields": [
                 {
                     "name": "description",
-                    "short": "A short description of the ailment",
-                    "type": "`$STRING`"
+                    "title": "Description",
+                    "type": "`$STRING`",
+                    "short": "A short description of the ailment"
                 },
                 {
                     "name": "id",
-                    "short": "The ID of the ailment",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "The ID of the ailment"
                 },
                 {
                     "name": "name",
-                    "short": "The name of the ailment",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "The name of the ailment"
                 },
                 {
                     "name": "protection",
+                    "title": "Protection",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "recovery",
+                    "title": "Recovery",
                     "type": "`$OBJECT`"
                 }
             ],
@@ -158,22 +156,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "p",
-                                        "orig": "p",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "q",
-                                        "orig": "q",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/ailments",
@@ -182,19 +164,36 @@ class Config {
                                     "lit": "ailments"
                                 }
                             ],
+                            "parts": [
+                                "ailments"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "p",
+                                        "orig": "p",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "q",
+                                        "orig": "q",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "p",
                                     "q"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "ailments"
-                            ]
+                            }
                         }
                     ]
                 },
@@ -203,25 +202,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ],
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "p",
-                                        "orig": "p",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/ailments/{id}",
@@ -233,20 +213,40 @@ class Config {
                                     "var": "id"
                                 }
                             ],
+                            "parts": [
+                                "ailments",
+                                "{id}"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ],
+                                "query": [
+                                    {
+                                        "name": "p",
+                                        "orig": "p",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "id",
                                     "p"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "ailments",
-                                "{id}"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -259,63 +259,76 @@ class Config {
             "fields": [
                 {
                     "name": "armorSet",
+                    "title": "Armor Set",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "assets",
+                    "title": "Assets",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "attributes",
-                    "short": "Dictionary of attribute modifiers attached to the armor piece",
-                    "type": "`$OBJECT`"
+                    "title": "Attributes",
+                    "type": "`$OBJECT`",
+                    "short": "Dictionary of attribute modifiers attached to the armor piece"
                 },
                 {
                     "name": "crafting",
+                    "title": "Crafting",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "defense",
+                    "title": "Defense",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "id",
-                    "short": "The ID of the armor piece",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "The ID of the armor piece"
                 },
                 {
                     "name": "name",
-                    "short": "The name of the armor piece",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "The name of the armor piece"
                 },
                 {
                     "name": "rank",
-                    "short": "The rank of the armor piece",
-                    "type": "`$STRING`"
+                    "title": "Rank",
+                    "type": "`$STRING`",
+                    "short": "The rank of the armor piece"
                 },
                 {
                     "name": "rarity",
-                    "short": "The rarity of the armor piece",
-                    "type": "`$INTEGER`"
+                    "title": "Rarity",
+                    "type": "`$INTEGER`",
+                    "short": "The rarity of the armor piece"
                 },
                 {
                     "name": "resistances",
+                    "title": "Resistances",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "skills",
-                    "short": "An array of skill ranks granted by the armor",
-                    "type": "`$ARRAY`"
+                    "title": "Skills",
+                    "type": "`$ARRAY`",
+                    "short": "An array of skill ranks granted by the armor"
                 },
                 {
                     "name": "slots",
-                    "short": "An array of decoration slot information",
-                    "type": "`$ARRAY`"
+                    "title": "Slots",
+                    "type": "`$ARRAY`",
+                    "short": "An array of decoration slot information"
                 },
                 {
                     "name": "type",
-                    "short": "The slot the armor piece fits in",
-                    "type": "`$STRING`"
+                    "title": "Type",
+                    "type": "`$STRING`",
+                    "short": "The slot the armor piece fits in"
                 }
             ],
             "id": {
@@ -329,22 +342,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "p",
-                                        "orig": "p",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "q",
-                                        "orig": "q",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/armor",
@@ -353,19 +350,36 @@ class Config {
                                     "lit": "armor"
                                 }
                             ],
+                            "parts": [
+                                "armor"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "p",
+                                        "orig": "p",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "q",
+                                        "orig": "q",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "p",
                                     "q"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "armor"
-                            ]
+                            }
                         }
                     ]
                 },
@@ -374,25 +388,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ],
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "p",
-                                        "orig": "p",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/armor/{id}",
@@ -404,20 +399,40 @@ class Config {
                                     "var": "id"
                                 }
                             ],
+                            "parts": [
+                                "armor",
+                                "{id}"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ],
+                                "query": [
+                                    {
+                                        "name": "p",
+                                        "orig": "p",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "id",
                                     "p"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "armor",
-                                "{id}"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -430,28 +445,33 @@ class Config {
             "fields": [
                 {
                     "name": "bonus",
-                    "short": "The set bonus, if any",
-                    "type": "`$OBJECT`"
+                    "title": "Bonus",
+                    "type": "`$OBJECT`",
+                    "short": "The set bonus, if any"
                 },
                 {
                     "name": "id",
-                    "short": "The ID of the armor set",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "The ID of the armor set"
                 },
                 {
                     "name": "name",
-                    "short": "The name of the armor set",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "The name of the armor set"
                 },
                 {
                     "name": "pieces",
-                    "short": "Array of armor pieces in the set",
-                    "type": "`$ARRAY`"
+                    "title": "Pieces",
+                    "type": "`$ARRAY`",
+                    "short": "Array of armor pieces in the set"
                 },
                 {
                     "name": "rank",
-                    "short": "The rank of the armor set",
-                    "type": "`$STRING`"
+                    "title": "Rank",
+                    "type": "`$STRING`",
+                    "short": "The rank of the armor set"
                 }
             ],
             "id": {
@@ -465,22 +485,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "p",
-                                        "orig": "p",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "q",
-                                        "orig": "q",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/armor/sets",
@@ -492,20 +496,37 @@ class Config {
                                     "lit": "sets"
                                 }
                             ],
+                            "parts": [
+                                "armor",
+                                "sets"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "p",
+                                        "orig": "p",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "q",
+                                        "orig": "q",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "p",
                                     "q"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "armor",
-                                "sets"
-                            ]
+                            }
                         }
                     ]
                 },
@@ -514,25 +535,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ],
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "p",
-                                        "orig": "p",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/armor/sets/{id}",
@@ -547,21 +549,41 @@ class Config {
                                     "var": "id"
                                 }
                             ],
+                            "parts": [
+                                "armor",
+                                "sets",
+                                "{id}"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ],
+                                "query": [
+                                    {
+                                        "name": "p",
+                                        "orig": "p",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "id",
                                     "p"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "armor",
-                                "sets",
-                                "{id}"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -574,27 +596,32 @@ class Config {
             "fields": [
                 {
                     "name": "crafting",
+                    "title": "Crafting",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "id",
-                    "short": "The ID of the charm",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "The ID of the charm"
                 },
                 {
                     "name": "name",
-                    "short": "The name of the charm",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "The name of the charm"
                 },
                 {
                     "name": "rarity",
-                    "short": "The rarity of the charm",
-                    "type": "`$INTEGER`"
+                    "title": "Rarity",
+                    "type": "`$INTEGER`",
+                    "short": "The rarity of the charm"
                 },
                 {
                     "name": "skills",
-                    "short": "An array of skill ranks granted by the charm",
-                    "type": "`$ARRAY`"
+                    "title": "Skills",
+                    "type": "`$ARRAY`",
+                    "short": "An array of skill ranks granted by the charm"
                 }
             ],
             "id": {
@@ -608,22 +635,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "p",
-                                        "orig": "p",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "q",
-                                        "orig": "q",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/charms",
@@ -632,19 +643,36 @@ class Config {
                                     "lit": "charms"
                                 }
                             ],
+                            "parts": [
+                                "charms"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "p",
+                                        "orig": "p",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "q",
+                                        "orig": "q",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "p",
                                     "q"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "charms"
-                            ]
+                            }
                         }
                     ]
                 },
@@ -653,25 +681,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ],
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "p",
-                                        "orig": "p",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/charms/{id}",
@@ -683,20 +692,40 @@ class Config {
                                     "var": "id"
                                 }
                             ],
+                            "parts": [
+                                "charms",
+                                "{id}"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ],
+                                "query": [
+                                    {
+                                        "name": "p",
+                                        "orig": "p",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "id",
                                     "p"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "charms",
-                                "{id}"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -709,28 +738,33 @@ class Config {
             "fields": [
                 {
                     "name": "id",
-                    "short": "The ID of the decoration",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "The ID of the decoration"
                 },
                 {
                     "name": "name",
-                    "short": "The name of the decoration",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "The name of the decoration"
                 },
                 {
                     "name": "rarity",
-                    "short": "The rarity of the decoration",
-                    "type": "`$INTEGER`"
+                    "title": "Rarity",
+                    "type": "`$INTEGER`",
+                    "short": "The rarity of the decoration"
                 },
                 {
                     "name": "skills",
-                    "short": "An array of skill ranks granted by the decoration",
-                    "type": "`$ARRAY`"
+                    "title": "Skills",
+                    "type": "`$ARRAY`",
+                    "short": "An array of skill ranks granted by the decoration"
                 },
                 {
                     "name": "slot",
-                    "short": "The slot rank required for the decoration",
-                    "type": "`$INTEGER`"
+                    "title": "Slot",
+                    "type": "`$INTEGER`",
+                    "short": "The slot rank required for the decoration"
                 }
             ],
             "id": {
@@ -744,22 +778,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "p",
-                                        "orig": "p",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "q",
-                                        "orig": "q",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/decorations",
@@ -768,19 +786,36 @@ class Config {
                                     "lit": "decorations"
                                 }
                             ],
+                            "parts": [
+                                "decorations"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "p",
+                                        "orig": "p",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "q",
+                                        "orig": "q",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "p",
                                     "q"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "decorations"
-                            ]
+                            }
                         }
                     ]
                 },
@@ -789,25 +824,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ],
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "p",
-                                        "orig": "p",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/decorations/{id}",
@@ -819,20 +835,40 @@ class Config {
                                     "var": "id"
                                 }
                             ],
+                            "parts": [
+                                "decorations",
+                                "{id}"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ],
+                                "query": [
+                                    {
+                                        "name": "p",
+                                        "orig": "p",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "id",
                                     "p"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "decorations",
-                                "{id}"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -845,79 +881,94 @@ class Config {
             "fields": [
                 {
                     "name": "camps",
-                    "short": "An array of camps in the location",
-                    "type": "`$ARRAY`"
+                    "title": "Camps",
+                    "type": "`$ARRAY`",
+                    "short": "An array of camps in the location"
                 },
                 {
                     "name": "description",
-                    "short": "A description of the event",
-                    "type": "`$STRING`"
+                    "title": "Description",
+                    "type": "`$STRING`",
+                    "short": "A description of the event"
                 },
                 {
-                    "format": "date-time",
                     "name": "endTimestamp",
+                    "title": "End Timestamp",
+                    "type": "`$STRING`",
                     "short": "The end time of the event",
-                    "type": "`$STRING`"
+                    "format": "date-time"
                 },
                 {
                     "name": "exclusive",
-                    "short": "Whether the event is exclusive to a platform",
-                    "type": "`$STRING`"
+                    "title": "Exclusive",
+                    "type": "`$STRING`",
+                    "short": "Whether the event is exclusive to a platform"
                 },
                 {
                     "name": "expansion",
-                    "short": "The expansion the event belongs to",
-                    "type": "`$STRING`"
+                    "title": "Expansion",
+                    "type": "`$STRING`",
+                    "short": "The expansion the event belongs to"
                 },
                 {
                     "name": "id",
-                    "short": "The ID of the location",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "The ID of the location"
                 },
                 {
                     "name": "location",
+                    "title": "Location",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "name",
-                    "short": "The name of the location",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "The name of the location"
                 },
                 {
                     "name": "platform",
-                    "short": "The platform for the event",
-                    "type": "`$STRING`"
+                    "title": "Platform",
+                    "type": "`$STRING`",
+                    "short": "The platform for the event"
                 },
                 {
                     "name": "questRank",
-                    "short": "The quest rank of the event",
-                    "type": "`$STRING`"
+                    "title": "Quest Rank",
+                    "type": "`$STRING`",
+                    "short": "The quest rank of the event"
                 },
                 {
                     "name": "requirements",
-                    "short": "Requirements for the event",
-                    "type": "`$STRING`"
+                    "title": "Requirements",
+                    "type": "`$STRING`",
+                    "short": "Requirements for the event"
                 },
                 {
-                    "format": "date-time",
                     "name": "startTimestamp",
+                    "title": "Start Timestamp",
+                    "type": "`$STRING`",
                     "short": "The start time of the event",
-                    "type": "`$STRING`"
+                    "format": "date-time"
                 },
                 {
                     "name": "successConditions",
-                    "short": "Conditions for success",
-                    "type": "`$STRING`"
+                    "title": "Success Conditions",
+                    "type": "`$STRING`",
+                    "short": "Conditions for success"
                 },
                 {
                     "name": "type",
-                    "short": "The type of event",
-                    "type": "`$STRING`"
+                    "title": "Type",
+                    "type": "`$STRING`",
+                    "short": "The type of event"
                 },
                 {
                     "name": "zoneCount",
-                    "short": "The number of zones in the location",
-                    "type": "`$INTEGER`"
+                    "title": "Zone Count",
+                    "type": "`$INTEGER`",
+                    "short": "The number of zones in the location"
                 }
             ],
             "id": {
@@ -931,22 +982,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "p",
-                                        "orig": "p",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "q",
-                                        "orig": "q",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/events",
@@ -955,19 +990,36 @@ class Config {
                                     "lit": "events"
                                 }
                             ],
+                            "parts": [
+                                "events"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "p",
+                                        "orig": "p",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "q",
+                                        "orig": "q",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "p",
                                     "q"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "events"
-                            ]
+                            }
                         }
                     ]
                 },
@@ -976,25 +1028,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ],
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "p",
-                                        "orig": "p",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/events/{id}",
@@ -1006,20 +1039,40 @@ class Config {
                                     "var": "id"
                                 }
                             ],
+                            "parts": [
+                                "events",
+                                "{id}"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body.location`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ],
+                                "query": [
+                                    {
+                                        "name": "p",
+                                        "orig": "p",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "id",
                                     "p"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body.location`"
-                            },
-                            "parts": [
-                                "events",
-                                "{id}"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -1032,43 +1085,51 @@ class Config {
             "fields": [
                 {
                     "name": "buyPrice",
-                    "short": "The price when buying the item",
-                    "type": "`$INTEGER`"
+                    "title": "Buy Price",
+                    "type": "`$INTEGER`",
+                    "short": "The price when buying the item"
                 },
                 {
                     "name": "carryLimit",
-                    "short": "The maximum number of this item that can be carried",
-                    "type": "`$INTEGER`"
+                    "title": "Carry Limit",
+                    "type": "`$INTEGER`",
+                    "short": "The maximum number of this item that can be carried"
                 },
                 {
                     "name": "description",
-                    "short": "A description of the item",
-                    "type": "`$STRING`"
+                    "title": "Description",
+                    "type": "`$STRING`",
+                    "short": "A description of the item"
                 },
                 {
                     "name": "id",
-                    "short": "The ID of the item",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "The ID of the item"
                 },
                 {
                     "name": "name",
-                    "short": "The name of the item",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "The name of the item"
                 },
                 {
                     "name": "rarity",
-                    "short": "The rarity of the item",
-                    "type": "`$INTEGER`"
+                    "title": "Rarity",
+                    "type": "`$INTEGER`",
+                    "short": "The rarity of the item"
                 },
                 {
                     "name": "sellPrice",
-                    "short": "The price when selling the item",
-                    "type": "`$INTEGER`"
+                    "title": "Sell Price",
+                    "type": "`$INTEGER`",
+                    "short": "The price when selling the item"
                 },
                 {
                     "name": "value",
-                    "short": "The value of the item",
-                    "type": "`$INTEGER`"
+                    "title": "Value",
+                    "type": "`$INTEGER`",
+                    "short": "The value of the item"
                 }
             ],
             "id": {
@@ -1082,22 +1143,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "p",
-                                        "orig": "p",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "q",
-                                        "orig": "q",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/items",
@@ -1106,19 +1151,36 @@ class Config {
                                     "lit": "items"
                                 }
                             ],
+                            "parts": [
+                                "items"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "p",
+                                        "orig": "p",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "q",
+                                        "orig": "q",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "p",
                                     "q"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "items"
-                            ]
+                            }
                         }
                     ]
                 },
@@ -1127,25 +1189,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ],
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "p",
-                                        "orig": "p",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/items/{id}",
@@ -1157,20 +1200,40 @@ class Config {
                                     "var": "id"
                                 }
                             ],
+                            "parts": [
+                                "items",
+                                "{id}"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ],
+                                "query": [
+                                    {
+                                        "name": "p",
+                                        "orig": "p",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "id",
                                     "p"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "items",
-                                "{id}"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -1183,23 +1246,27 @@ class Config {
             "fields": [
                 {
                     "name": "camps",
-                    "short": "An array of camps in the location",
-                    "type": "`$ARRAY`"
+                    "title": "Camps",
+                    "type": "`$ARRAY`",
+                    "short": "An array of camps in the location"
                 },
                 {
                     "name": "id",
-                    "short": "The ID of the location",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "The ID of the location"
                 },
                 {
                     "name": "name",
-                    "short": "The name of the location",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "The name of the location"
                 },
                 {
                     "name": "zoneCount",
-                    "short": "The number of zones in the location",
-                    "type": "`$INTEGER`"
+                    "title": "Zone Count",
+                    "type": "`$INTEGER`",
+                    "short": "The number of zones in the location"
                 }
             ],
             "id": {
@@ -1213,22 +1280,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "p",
-                                        "orig": "p",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "q",
-                                        "orig": "q",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/locations",
@@ -1237,19 +1288,36 @@ class Config {
                                     "lit": "locations"
                                 }
                             ],
+                            "parts": [
+                                "locations"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "p",
+                                        "orig": "p",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "q",
+                                        "orig": "q",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "p",
                                     "q"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "locations"
-                            ]
+                            }
                         }
                     ]
                 },
@@ -1258,25 +1326,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ],
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "p",
-                                        "orig": "p",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/locations/{id}",
@@ -1288,20 +1337,40 @@ class Config {
                                     "var": "id"
                                 }
                             ],
+                            "parts": [
+                                "locations",
+                                "{id}"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ],
+                                "query": [
+                                    {
+                                        "name": "p",
+                                        "orig": "p",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "id",
                                     "p"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "locations",
-                                "{id}"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -1314,58 +1383,69 @@ class Config {
             "fields": [
                 {
                     "name": "ailments",
-                    "short": "Ailments the monster can inflict",
-                    "type": "`$ARRAY`"
+                    "title": "Ailments",
+                    "type": "`$ARRAY`",
+                    "short": "Ailments the monster can inflict"
                 },
                 {
                     "name": "description",
-                    "short": "A description of the monster",
-                    "type": "`$STRING`"
+                    "title": "Description",
+                    "type": "`$STRING`",
+                    "short": "A description of the monster"
                 },
                 {
                     "name": "elements",
-                    "short": "Elements the monster uses",
-                    "type": "`$ARRAY`"
+                    "title": "Elements",
+                    "type": "`$ARRAY`",
+                    "short": "Elements the monster uses"
                 },
                 {
                     "name": "id",
-                    "short": "The ID of the monster",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "The ID of the monster"
                 },
                 {
                     "name": "locations",
-                    "short": "Locations where the monster can be found",
-                    "type": "`$ARRAY`"
+                    "title": "Locations",
+                    "type": "`$ARRAY`",
+                    "short": "Locations where the monster can be found"
                 },
                 {
                     "name": "name",
-                    "short": "The name of the monster",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "The name of the monster"
                 },
                 {
                     "name": "resistances",
-                    "short": "Resistances of the monster",
-                    "type": "`$ARRAY`"
+                    "title": "Resistances",
+                    "type": "`$ARRAY`",
+                    "short": "Resistances of the monster"
                 },
                 {
                     "name": "rewards",
-                    "short": "Rewards obtained from the monster",
-                    "type": "`$ARRAY`"
+                    "title": "Rewards",
+                    "type": "`$ARRAY`",
+                    "short": "Rewards obtained from the monster"
                 },
                 {
                     "name": "species",
-                    "short": "The species of the monster",
-                    "type": "`$STRING`"
+                    "title": "Species",
+                    "type": "`$STRING`",
+                    "short": "The species of the monster"
                 },
                 {
                     "name": "type",
-                    "short": "The type of monster",
-                    "type": "`$STRING`"
+                    "title": "Type",
+                    "type": "`$STRING`",
+                    "short": "The type of monster"
                 },
                 {
                     "name": "weaknesses",
-                    "short": "Weaknesses of the monster",
-                    "type": "`$ARRAY`"
+                    "title": "Weaknesses",
+                    "type": "`$ARRAY`",
+                    "short": "Weaknesses of the monster"
                 }
             ],
             "id": {
@@ -1379,22 +1459,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "p",
-                                        "orig": "p",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "q",
-                                        "orig": "q",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/monsters",
@@ -1403,19 +1467,36 @@ class Config {
                                     "lit": "monsters"
                                 }
                             ],
+                            "parts": [
+                                "monsters"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "p",
+                                        "orig": "p",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "q",
+                                        "orig": "q",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "p",
                                     "q"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "monsters"
-                            ]
+                            }
                         }
                     ]
                 },
@@ -1424,25 +1505,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ],
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "p",
-                                        "orig": "p",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/monsters/{id}",
@@ -1454,20 +1516,40 @@ class Config {
                                     "var": "id"
                                 }
                             ],
+                            "parts": [
+                                "monsters",
+                                "{id}"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ],
+                                "query": [
+                                    {
+                                        "name": "p",
+                                        "orig": "p",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "id",
                                     "p"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "monsters",
-                                "{id}"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -1480,33 +1562,39 @@ class Config {
             "fields": [
                 {
                     "name": "damageType",
-                    "short": "The type of damage",
-                    "type": "`$STRING`"
+                    "title": "Damage Type",
+                    "type": "`$STRING`",
+                    "short": "The type of damage"
                 },
                 {
                     "name": "exhaust",
-                    "short": "Exhaust value",
-                    "type": "`$INTEGER`"
+                    "title": "Exhaust",
+                    "type": "`$INTEGER`",
+                    "short": "Exhaust value"
                 },
                 {
                     "name": "hits",
-                    "short": "Hit information",
-                    "type": "`$ARRAY`"
+                    "title": "Hits",
+                    "type": "`$ARRAY`",
+                    "short": "Hit information"
                 },
                 {
                     "name": "id",
-                    "short": "The ID of the motion value",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "The ID of the motion value"
                 },
                 {
                     "name": "stun",
-                    "short": "Stun value",
-                    "type": "`$INTEGER`"
+                    "title": "Stun",
+                    "type": "`$INTEGER`",
+                    "short": "Stun value"
                 },
                 {
                     "name": "weaponType",
-                    "short": "The type of weapon",
-                    "type": "`$STRING`"
+                    "title": "Weapon Type",
+                    "type": "`$STRING`",
+                    "short": "The type of weapon"
                 }
             ],
             "id": {
@@ -1520,22 +1608,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "p",
-                                        "orig": "p",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "q",
-                                        "orig": "q",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/motion-values",
@@ -1544,19 +1616,36 @@ class Config {
                                     "lit": "motion-values"
                                 }
                             ],
+                            "parts": [
+                                "motion-values"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "p",
+                                        "orig": "p",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "q",
+                                        "orig": "q",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "p",
                                     "q"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "motion-values"
-                            ]
+                            }
                         }
                     ]
                 },
@@ -1565,25 +1654,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ],
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "p",
-                                        "orig": "p",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/motion-values/{id}",
@@ -1595,20 +1665,40 @@ class Config {
                                     "var": "id"
                                 }
                             ],
+                            "parts": [
+                                "motion-values",
+                                "{id}"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ],
+                                "query": [
+                                    {
+                                        "name": "p",
+                                        "orig": "p",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "id",
                                     "p"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "motion-values",
-                                "{id}"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -1621,23 +1711,27 @@ class Config {
             "fields": [
                 {
                     "name": "description",
-                    "short": "A description of the skill",
-                    "type": "`$STRING`"
+                    "title": "Description",
+                    "type": "`$STRING`",
+                    "short": "A description of the skill"
                 },
                 {
                     "name": "id",
-                    "short": "The ID of the skill",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "The ID of the skill"
                 },
                 {
                     "name": "name",
-                    "short": "The name of the skill",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "The name of the skill"
                 },
                 {
                     "name": "ranks",
-                    "short": "An array of skill ranks",
-                    "type": "`$ARRAY`"
+                    "title": "Ranks",
+                    "type": "`$ARRAY`",
+                    "short": "An array of skill ranks"
                 }
             ],
             "id": {
@@ -1651,22 +1745,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "p",
-                                        "orig": "p",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "q",
-                                        "orig": "q",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/skills",
@@ -1675,19 +1753,36 @@ class Config {
                                     "lit": "skills"
                                 }
                             ],
+                            "parts": [
+                                "skills"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "p",
+                                        "orig": "p",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "q",
+                                        "orig": "q",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "p",
                                     "q"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "skills"
-                            ]
+                            }
                         }
                     ]
                 },
@@ -1696,25 +1791,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ],
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "p",
-                                        "orig": "p",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/skills/{id}",
@@ -1726,20 +1802,40 @@ class Config {
                                     "var": "id"
                                 }
                             ],
+                            "parts": [
+                                "skills",
+                                "{id}"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ],
+                                "query": [
+                                    {
+                                        "name": "p",
+                                        "orig": "p",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "id",
                                     "p"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "skills",
-                                "{id}"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -1752,58 +1848,69 @@ class Config {
             "fields": [
                 {
                     "name": "assets",
-                    "short": "Asset URLs for the weapon",
-                    "type": "`$OBJECT`"
+                    "title": "Assets",
+                    "type": "`$OBJECT`",
+                    "short": "Asset URLs for the weapon"
                 },
                 {
                     "name": "attack",
-                    "short": "Attack values for the weapon",
-                    "type": "`$OBJECT`"
+                    "title": "Attack",
+                    "type": "`$OBJECT`",
+                    "short": "Attack values for the weapon"
                 },
                 {
                     "name": "attributes",
-                    "short": "Additional weapon attributes",
-                    "type": "`$OBJECT`"
+                    "title": "Attributes",
+                    "type": "`$OBJECT`",
+                    "short": "Additional weapon attributes"
                 },
                 {
                     "name": "crafting",
-                    "short": "Crafting information for the weapon",
-                    "type": "`$OBJECT`"
+                    "title": "Crafting",
+                    "type": "`$OBJECT`",
+                    "short": "Crafting information for the weapon"
                 },
                 {
                     "name": "damageType",
-                    "short": "The damage type of the weapon",
-                    "type": "`$STRING`"
+                    "title": "Damage Type",
+                    "type": "`$STRING`",
+                    "short": "The damage type of the weapon"
                 },
                 {
                     "name": "elements",
-                    "short": "Elemental damage information",
-                    "type": "`$ARRAY`"
+                    "title": "Elements",
+                    "type": "`$ARRAY`",
+                    "short": "Elemental damage information"
                 },
                 {
                     "name": "id",
-                    "short": "The ID of the weapon",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "The ID of the weapon"
                 },
                 {
                     "name": "name",
-                    "short": "The name of the weapon",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "The name of the weapon"
                 },
                 {
                     "name": "rarity",
-                    "short": "The rarity of the weapon",
-                    "type": "`$INTEGER`"
+                    "title": "Rarity",
+                    "type": "`$INTEGER`",
+                    "short": "The rarity of the weapon"
                 },
                 {
                     "name": "slots",
-                    "short": "An array of decoration slot information",
-                    "type": "`$ARRAY`"
+                    "title": "Slots",
+                    "type": "`$ARRAY`",
+                    "short": "An array of decoration slot information"
                 },
                 {
                     "name": "type",
-                    "short": "The type of weapon",
-                    "type": "`$STRING`"
+                    "title": "Type",
+                    "type": "`$STRING`",
+                    "short": "The type of weapon"
                 }
             ],
             "id": {
@@ -1817,22 +1924,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "p",
-                                        "orig": "p",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "q",
-                                        "orig": "q",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/weapons",
@@ -1841,19 +1932,36 @@ class Config {
                                     "lit": "weapons"
                                 }
                             ],
+                            "parts": [
+                                "weapons"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "p",
+                                        "orig": "p",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "q",
+                                        "orig": "q",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "p",
                                     "q"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "weapons"
-                            ]
+                            }
                         }
                     ]
                 },
@@ -1862,25 +1970,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ],
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "p",
-                                        "orig": "p",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/weapons/{id}",
@@ -1892,20 +1981,40 @@ class Config {
                                     "var": "id"
                                 }
                             ],
+                            "parts": [
+                                "weapons",
+                                "{id}"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ],
+                                "query": [
+                                    {
+                                        "name": "p",
+                                        "orig": "p",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "id",
                                     "p"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "weapons",
-                                "{id}"
-                            ]
+                            }
                         }
                     ]
                 }

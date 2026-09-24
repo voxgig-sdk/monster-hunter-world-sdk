@@ -1,0 +1,206 @@
+# Entity: armor
+
+main: kit: entity: armor: {
+
+  alias: field: {}
+
+  fields: {
+    armorSet: {
+      h: "Armor Set"
+      n: "armorSet"
+      r: false
+      t: "`$OBJECT`"
+    }
+    assets: {
+      h: "Assets"
+      n: "assets"
+      r: false
+      t: "`$OBJECT`"
+    }
+    attributes: {
+      h: "Attributes"
+      n: "attributes"
+      r: false
+      sh: "Dictionary of attribute modifiers attached to the armor piece"
+      t: "`$OBJECT`"
+    }
+    crafting: {
+      h: "Crafting"
+      n: "crafting"
+      r: false
+      t: "`$OBJECT`"
+    }
+    defense: {
+      h: "Defense"
+      n: "defense"
+      r: false
+      t: "`$OBJECT`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "The ID of the armor piece"
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The name of the armor piece"
+      t: "`$STRING`"
+    }
+    rank: {
+      h: "Rank"
+      n: "rank"
+      r: false
+      sh: "The rank of the armor piece"
+      t: "`$STRING`"
+    }
+    rarity: {
+      h: "Rarity"
+      n: "rarity"
+      r: false
+      sh: "The rarity of the armor piece"
+      t: "`$INTEGER`"
+    }
+    resistances: {
+      h: "Resistances"
+      n: "resistances"
+      r: false
+      t: "`$OBJECT`"
+    }
+    skills: {
+      h: "Skills"
+      n: "skills"
+      r: false
+      sh: "An array of skill ranks granted by the armor"
+      t: "`$ARRAY`"
+    }
+    slots: {
+      h: "Slots"
+      n: "slots"
+      r: false
+      sh: "An array of decoration slot information"
+      t: "`$ARRAY`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "The slot the armor piece fits in"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "armor"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /armor"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "p"
+                or: "p"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "q"
+                or: "q"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/armor"
+          q: {
+            exist: [
+              "p"
+              "q"
+            ]
+          }
+          s: [
+            {
+              lit: "armor"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /armor/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "p"
+                or: "p"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/armor/{id}"
+          q: {
+            exist: [
+              "id"
+              "p"
+            ]
+          }
+          s: [
+            {
+              lit: "armor"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

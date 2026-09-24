@@ -1,0 +1,162 @@
+# Entity: motion_value
+
+main: kit: entity: motion_value: {
+
+  alias: field: {}
+
+  fields: {
+    damageType: {
+      h: "Damage Type"
+      n: "damageType"
+      r: false
+      sh: "The type of damage"
+      t: "`$STRING`"
+    }
+    exhaust: {
+      h: "Exhaust"
+      n: "exhaust"
+      r: false
+      sh: "Exhaust value"
+      t: "`$INTEGER`"
+    }
+    hits: {
+      h: "Hits"
+      n: "hits"
+      r: false
+      sh: "Hit information"
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "The ID of the motion value"
+      t: "`$INTEGER`"
+    }
+    stun: {
+      h: "Stun"
+      n: "stun"
+      r: false
+      sh: "Stun value"
+      t: "`$INTEGER`"
+    }
+    weaponType: {
+      h: "Weapon Type"
+      n: "weaponType"
+      r: false
+      sh: "The type of weapon"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "motion_value"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /motion-values"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "p"
+                or: "p"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "q"
+                or: "q"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/motion-values"
+          q: {
+            exist: [
+              "p"
+              "q"
+            ]
+          }
+          s: [
+            {
+              lit: "motion-values"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /motion-values/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "p"
+                or: "p"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/motion-values/{id}"
+          q: {
+            exist: [
+              "id"
+              "p"
+            ]
+          }
+          s: [
+            {
+              lit: "motion-values"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

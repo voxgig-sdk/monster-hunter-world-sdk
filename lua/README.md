@@ -43,7 +43,7 @@ local ailments, err = client:Ailment():list()
 if err then error(err) end
 
 for _, item in ipairs(ailments) do
-  print(item["id"], item["description"])
+  print(item["id"])
 end
 ```
 

@@ -1,0 +1,176 @@
+# Entity: item
+
+main: kit: entity: item: {
+
+  alias: field: {}
+
+  fields: {
+    buyPrice: {
+      h: "Buy Price"
+      n: "buyPrice"
+      r: false
+      sh: "The price when buying the item"
+      t: "`$INTEGER`"
+    }
+    carryLimit: {
+      h: "Carry Limit"
+      n: "carryLimit"
+      r: false
+      sh: "The maximum number of this item that can be carried"
+      t: "`$INTEGER`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "A description of the item"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "The ID of the item"
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The name of the item"
+      t: "`$STRING`"
+    }
+    rarity: {
+      h: "Rarity"
+      n: "rarity"
+      r: false
+      sh: "The rarity of the item"
+      t: "`$INTEGER`"
+    }
+    sellPrice: {
+      h: "Sell Price"
+      n: "sellPrice"
+      r: false
+      sh: "The price when selling the item"
+      t: "`$INTEGER`"
+    }
+    value: {
+      h: "Value"
+      n: "value"
+      r: false
+      sh: "The value of the item"
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "item"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /items"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "p"
+                or: "p"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "q"
+                or: "q"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/items"
+          q: {
+            exist: [
+              "p"
+              "q"
+            ]
+          }
+          s: [
+            {
+              lit: "items"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /items/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "p"
+                or: "p"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/items/{id}"
+          q: {
+            exist: [
+              "id"
+              "p"
+            ]
+          }
+          s: [
+            {
+              lit: "items"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

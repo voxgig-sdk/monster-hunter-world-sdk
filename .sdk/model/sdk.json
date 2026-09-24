@@ -24,47 +24,118 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "ailment": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "A short description of the ailment",
-              "type": "`$STRING`"
+          "fields": {
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "A short description of the ailment",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "The ID of the ailment",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "The ID of the ailment",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "The name of the ailment",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "The name of the ailment",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "protection",
-              "req": false,
-              "type": "`$OBJECT`"
+            "protection": {
+              "a": true,
+              "h": "Protection",
+              "n": "protection",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "recovery",
-              "req": false,
-              "type": "`$OBJECT`"
+            "recovery": {
+              "a": true,
+              "h": "Recovery",
+              "n": "recovery",
+              "r": false,
+              "t": "`$OBJECT`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -76,48 +147,48 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /ailments",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "p",
-                        "orig": "p",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "p",
+                        "or": "p",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "q",
-                        "orig": "q",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "q",
+                        "or": "q",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /ailments",
-                    "json": "{\"operationId\":\"getAllAilments\",\"parameters\":[{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Query parameter for searching\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"A short description of the ailment\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the ailment\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the ailment\",\"type\":\"string\"},\"protection\":{\"properties\":{\"items\":{\"description\":\"An array of items that can prevent the ailment\",\"items\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"skills\":{\"description\":\"An array of skills that can prevent the ailment\",\"items\":{\"properties\":{\"description\":{\"description\":\"A description of the skill\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the skill\",\"type\":\"string\"},\"ranks\":{\"description\":\"An array of skill ranks\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"recovery\":{\"properties\":{\"actions\":{\"description\":\"An array of actions that can be taken to remove the ailment\",\"items\":{\"enum\":[\"crouch\",\"dodge\"],\"type\":\"string\"},\"type\":\"array\"},\"items\":{\"description\":\"An array of items that can remove the ailment\",\"items\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/ailments",
-                  "segments": [
-                    {
-                      "lit": "ailments"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/ailments",
+                  "q": {
                     "exist": [
                       "p",
                       "q"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "ailments"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -129,39 +200,45 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /ailments/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "p",
-                        "orig": "p",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "p",
+                        "or": "p",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /ailments/{id}",
-                    "json": "{\"operationId\":\"getAilmentById\",\"parameters\":[{\"description\":\"The ID of the ailment to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"A short description of the ailment\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the ailment\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the ailment\",\"type\":\"string\"},\"protection\":{\"properties\":{\"items\":{\"description\":\"An array of items that can prevent the ailment\",\"items\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"skills\":{\"description\":\"An array of skills that can prevent the ailment\",\"items\":{\"properties\":{\"description\":{\"description\":\"A description of the skill\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the skill\",\"type\":\"string\"},\"ranks\":{\"description\":\"An array of skill ranks\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"recovery\":{\"properties\":{\"actions\":{\"description\":\"An array of actions that can be taken to remove the ailment\",\"items\":{\"enum\":[\"crouch\",\"dodge\"],\"type\":\"string\"},\"type\":\"array\"},\"items\":{\"description\":\"An array of items that can remove the ailment\",\"items\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Ailment not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/ailments/{id}",
+                  "q": {
+                    "exist": [
+                      "id",
+                      "p"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/ailments/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "ailments"
                     },
@@ -169,13 +246,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id",
-                      "p"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -192,94 +263,107 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "armorSet",
-              "req": false,
-              "type": "`$OBJECT`"
+          "fields": {
+            "armorSet": {
+              "a": true,
+              "h": "Armor Set",
+              "n": "armorSet",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "assets",
-              "req": false,
-              "type": "`$OBJECT`"
+            "assets": {
+              "a": true,
+              "h": "Assets",
+              "n": "assets",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "attributes",
-              "req": false,
-              "short": "Dictionary of attribute modifiers attached to the armor piece",
-              "type": "`$OBJECT`"
+            "attributes": {
+              "a": true,
+              "h": "Attributes",
+              "n": "attributes",
+              "r": false,
+              "sh": "Dictionary of attribute modifiers attached to the armor piece",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "crafting",
-              "req": false,
-              "type": "`$OBJECT`"
+            "crafting": {
+              "a": true,
+              "h": "Crafting",
+              "n": "crafting",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "defense",
-              "req": false,
-              "type": "`$OBJECT`"
+            "defense": {
+              "a": true,
+              "h": "Defense",
+              "n": "defense",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "The ID of the armor piece",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "The ID of the armor piece",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "The name of the armor piece",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "The name of the armor piece",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "rank",
-              "req": false,
-              "short": "The rank of the armor piece",
-              "type": "`$STRING`"
+            "rank": {
+              "a": true,
+              "h": "Rank",
+              "n": "rank",
+              "r": false,
+              "sh": "The rank of the armor piece",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "rarity",
-              "req": false,
-              "short": "The rarity of the armor piece",
-              "type": "`$INTEGER`"
+            "rarity": {
+              "a": true,
+              "h": "Rarity",
+              "n": "rarity",
+              "r": false,
+              "sh": "The rarity of the armor piece",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "resistances",
-              "req": false,
-              "type": "`$OBJECT`"
+            "resistances": {
+              "a": true,
+              "h": "Resistances",
+              "n": "resistances",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "skills",
-              "req": false,
-              "short": "An array of skill ranks granted by the armor",
-              "type": "`$ARRAY`"
+            "skills": {
+              "a": true,
+              "h": "Skills",
+              "n": "skills",
+              "r": false,
+              "sh": "An array of skill ranks granted by the armor",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "slots",
-              "req": false,
-              "short": "An array of decoration slot information",
-              "type": "`$ARRAY`"
+            "slots": {
+              "a": true,
+              "h": "Slots",
+              "n": "slots",
+              "r": false,
+              "sh": "An array of decoration slot information",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "type",
-              "req": false,
-              "short": "The slot the armor piece fits in",
-              "type": "`$STRING`"
+            "type": {
+              "a": true,
+              "h": "Type",
+              "n": "type",
+              "r": false,
+              "sh": "The slot the armor piece fits in",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -291,48 +375,48 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /armor",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "p",
-                        "orig": "p",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "p",
+                        "or": "p",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "q",
-                        "orig": "q",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "q",
+                        "or": "q",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /armor",
-                    "json": "{\"operationId\":\"getAllArmor\",\"parameters\":[{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Query parameter for searching\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"armorSet\":{\"properties\":{\"id\":{\"description\":\"The ID of the armor set\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the armor set\",\"type\":\"string\"},\"pieces\":{\"description\":\"An array of IDs of all armor pieces in the set\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"rank\":{\"description\":\"The rank of the armor set\",\"enum\":[\"low\",\"high\"],\"type\":\"string\"}},\"type\":\"object\"},\"assets\":{\"properties\":{\"imageFemale\":{\"description\":\"URL to the female preview image, or null if one does not exist\",\"nullable\":true,\"type\":\"string\"},\"imageMale\":{\"description\":\"URL to the male preview image, or null if one does not exist\",\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"attributes\":{\"description\":\"Dictionary of attribute modifiers attached to the armor piece\",\"type\":\"object\"},\"crafting\":{\"properties\":{\"materials\":{\"description\":\"An array of crafting material costs\",\"items\":{\"properties\":{\"item\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"quantity\":{\"description\":\"The quantity of the item required\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"defense\":{\"properties\":{\"augmented\":{\"description\":\"The armor's defense value when augmented\",\"type\":\"integer\"},\"base\":{\"description\":\"The armor's base defense value\",\"type\":\"integer\"},\"max\":{\"description\":\"The armor's defense value at max level\",\"type\":\"integer\"}},\"type\":\"object\"},\"id\":{\"description\":\"The ID of the armor piece\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the armor piece\",\"type\":\"string\"},\"rank\":{\"description\":\"The rank of the armor piece\",\"enum\":[\"low\",\"high\"],\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the armor piece\",\"type\":\"integer\"},\"resistances\":{\"properties\":{\"dragon\":{\"description\":\"The armor's dragon resistance\",\"type\":\"integer\"},\"fire\":{\"description\":\"The armor's fire resistance\",\"type\":\"integer\"},\"ice\":{\"description\":\"The armor's ice resistance\",\"type\":\"integer\"},\"thunder\":{\"description\":\"The armor's thunder resistance\",\"type\":\"integer\"},\"water\":{\"description\":\"The armor's water resistance\",\"type\":\"integer\"}},\"type\":\"object\"},\"skills\":{\"description\":\"An array of skill ranks granted by the armor\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"slots\":{\"description\":\"An array of decoration slot information\",\"items\":{\"properties\":{\"rank\":{\"description\":\"The rank of the decoration slot\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"type\":{\"description\":\"The slot the armor piece fits in\",\"enum\":[\"head\",\"chest\",\"gloves\",\"waist\",\"legs\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/armor",
-                  "segments": [
-                    {
-                      "lit": "armor"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/armor",
+                  "q": {
                     "exist": [
                       "p",
                       "q"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "armor"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -344,39 +428,45 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /armor/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "p",
-                        "orig": "p",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "p",
+                        "or": "p",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /armor/{id}",
-                    "json": "{\"operationId\":\"getArmorById\",\"parameters\":[{\"description\":\"The ID of the armor piece to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"armorSet\":{\"properties\":{\"id\":{\"description\":\"The ID of the armor set\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the armor set\",\"type\":\"string\"},\"pieces\":{\"description\":\"An array of IDs of all armor pieces in the set\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"rank\":{\"description\":\"The rank of the armor set\",\"enum\":[\"low\",\"high\"],\"type\":\"string\"}},\"type\":\"object\"},\"assets\":{\"properties\":{\"imageFemale\":{\"description\":\"URL to the female preview image, or null if one does not exist\",\"nullable\":true,\"type\":\"string\"},\"imageMale\":{\"description\":\"URL to the male preview image, or null if one does not exist\",\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"attributes\":{\"description\":\"Dictionary of attribute modifiers attached to the armor piece\",\"type\":\"object\"},\"crafting\":{\"properties\":{\"materials\":{\"description\":\"An array of crafting material costs\",\"items\":{\"properties\":{\"item\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"quantity\":{\"description\":\"The quantity of the item required\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"defense\":{\"properties\":{\"augmented\":{\"description\":\"The armor's defense value when augmented\",\"type\":\"integer\"},\"base\":{\"description\":\"The armor's base defense value\",\"type\":\"integer\"},\"max\":{\"description\":\"The armor's defense value at max level\",\"type\":\"integer\"}},\"type\":\"object\"},\"id\":{\"description\":\"The ID of the armor piece\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the armor piece\",\"type\":\"string\"},\"rank\":{\"description\":\"The rank of the armor piece\",\"enum\":[\"low\",\"high\"],\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the armor piece\",\"type\":\"integer\"},\"resistances\":{\"properties\":{\"dragon\":{\"description\":\"The armor's dragon resistance\",\"type\":\"integer\"},\"fire\":{\"description\":\"The armor's fire resistance\",\"type\":\"integer\"},\"ice\":{\"description\":\"The armor's ice resistance\",\"type\":\"integer\"},\"thunder\":{\"description\":\"The armor's thunder resistance\",\"type\":\"integer\"},\"water\":{\"description\":\"The armor's water resistance\",\"type\":\"integer\"}},\"type\":\"object\"},\"skills\":{\"description\":\"An array of skill ranks granted by the armor\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"slots\":{\"description\":\"An array of decoration slot information\",\"items\":{\"properties\":{\"rank\":{\"description\":\"The rank of the decoration slot\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"type\":{\"description\":\"The slot the armor piece fits in\",\"enum\":[\"head\",\"chest\",\"gloves\",\"waist\",\"legs\"],\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Armor piece not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/armor/{id}",
+                  "q": {
+                    "exist": [
+                      "id",
+                      "p"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/armor/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "armor"
                     },
@@ -384,13 +474,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id",
-                      "p"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -407,43 +491,48 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "bonus",
-              "req": false,
-              "short": "The set bonus, if any",
-              "type": "`$OBJECT`"
+          "fields": {
+            "bonus": {
+              "a": true,
+              "h": "Bonus",
+              "n": "bonus",
+              "r": false,
+              "sh": "The set bonus, if any",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "The ID of the armor set",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "The ID of the armor set",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "The name of the armor set",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "The name of the armor set",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "pieces",
-              "req": false,
-              "short": "Array of armor pieces in the set",
-              "type": "`$ARRAY`"
+            "pieces": {
+              "a": true,
+              "h": "Pieces",
+              "n": "pieces",
+              "r": false,
+              "sh": "Array of armor pieces in the set",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "rank",
-              "req": false,
-              "short": "The rank of the armor set",
-              "type": "`$STRING`"
+            "rank": {
+              "a": true,
+              "h": "Rank",
+              "n": "rank",
+              "r": false,
+              "sh": "The rank of the armor set",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -455,37 +544,43 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /armor/sets",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "p",
-                        "orig": "p",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "p",
+                        "or": "p",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "q",
-                        "orig": "q",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "q",
+                        "or": "q",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /armor/sets",
-                    "json": "{\"operationId\":\"getAllArmorSets\",\"parameters\":[{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Query parameter for searching\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"bonus\":{\"description\":\"The set bonus, if any\",\"nullable\":true,\"properties\":{\"id\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"ranks\":{\"items\":{\"properties\":{\"pieces\":{\"type\":\"integer\"},\"skill\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"id\":{\"description\":\"The ID of the armor set\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the armor set\",\"type\":\"string\"},\"pieces\":{\"description\":\"Array of armor pieces in the set\",\"items\":{\"properties\":{\"armorSet\":{\"properties\":{\"id\":{\"description\":\"The ID of the armor set\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the armor set\",\"type\":\"string\"},\"pieces\":{\"description\":\"An array of IDs of all armor pieces in the set\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"rank\":{\"description\":\"The rank of the armor set\",\"enum\":[\"low\",\"high\"],\"type\":\"string\"}},\"type\":\"object\"},\"assets\":{\"properties\":{\"imageFemale\":{\"description\":\"URL to the female preview image, or null if one does not exist\",\"nullable\":true,\"type\":\"string\"},\"imageMale\":{\"description\":\"URL to the male preview image, or null if one does not exist\",\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"attributes\":{\"description\":\"Dictionary of attribute modifiers attached to the armor piece\",\"type\":\"object\"},\"crafting\":{\"properties\":{\"materials\":{\"description\":\"An array of crafting material costs\",\"items\":{\"properties\":{\"item\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"quantity\":{\"description\":\"The quantity of the item required\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"defense\":{\"properties\":{\"augmented\":{\"description\":\"The armor's defense value when augmented\",\"type\":\"integer\"},\"base\":{\"description\":\"The armor's base defense value\",\"type\":\"integer\"},\"max\":{\"description\":\"The armor's defense value at max level\",\"type\":\"integer\"}},\"type\":\"object\"},\"id\":{\"description\":\"The ID of the armor piece\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the armor piece\",\"type\":\"string\"},\"rank\":{\"description\":\"The rank of the armor piece\",\"enum\":[\"low\",\"high\"],\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the armor piece\",\"type\":\"integer\"},\"resistances\":{\"properties\":{\"dragon\":{\"description\":\"The armor's dragon resistance\",\"type\":\"integer\"},\"fire\":{\"description\":\"The armor's fire resistance\",\"type\":\"integer\"},\"ice\":{\"description\":\"The armor's ice resistance\",\"type\":\"integer\"},\"thunder\":{\"description\":\"The armor's thunder resistance\",\"type\":\"integer\"},\"water\":{\"description\":\"The armor's water resistance\",\"type\":\"integer\"}},\"type\":\"object\"},\"skills\":{\"description\":\"An array of skill ranks granted by the armor\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"slots\":{\"description\":\"An array of decoration slot information\",\"items\":{\"properties\":{\"rank\":{\"description\":\"The rank of the decoration slot\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"type\":{\"description\":\"The slot the armor piece fits in\",\"enum\":[\"head\",\"chest\",\"gloves\",\"waist\",\"legs\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"rank\":{\"description\":\"The rank of the armor set\",\"enum\":[\"low\",\"high\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/armor/sets",
+                  "q": {
+                    "exist": [
+                      "p",
+                      "q"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/armor/sets",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "armor"
                     },
@@ -493,13 +588,7 @@
                       "lit": "sets"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "p",
-                      "q"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -511,39 +600,45 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /armor/sets/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "p",
-                        "orig": "p",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "p",
+                        "or": "p",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /armor/sets/{id}",
-                    "json": "{\"operationId\":\"getArmorSetById\",\"parameters\":[{\"description\":\"The ID of the armor set to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"bonus\":{\"description\":\"The set bonus, if any\",\"nullable\":true,\"properties\":{\"id\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"ranks\":{\"items\":{\"properties\":{\"pieces\":{\"type\":\"integer\"},\"skill\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"id\":{\"description\":\"The ID of the armor set\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the armor set\",\"type\":\"string\"},\"pieces\":{\"description\":\"Array of armor pieces in the set\",\"items\":{\"properties\":{\"armorSet\":{\"properties\":{\"id\":{\"description\":\"The ID of the armor set\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the armor set\",\"type\":\"string\"},\"pieces\":{\"description\":\"An array of IDs of all armor pieces in the set\",\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"rank\":{\"description\":\"The rank of the armor set\",\"enum\":[\"low\",\"high\"],\"type\":\"string\"}},\"type\":\"object\"},\"assets\":{\"properties\":{\"imageFemale\":{\"description\":\"URL to the female preview image, or null if one does not exist\",\"nullable\":true,\"type\":\"string\"},\"imageMale\":{\"description\":\"URL to the male preview image, or null if one does not exist\",\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"attributes\":{\"description\":\"Dictionary of attribute modifiers attached to the armor piece\",\"type\":\"object\"},\"crafting\":{\"properties\":{\"materials\":{\"description\":\"An array of crafting material costs\",\"items\":{\"properties\":{\"item\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"quantity\":{\"description\":\"The quantity of the item required\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"defense\":{\"properties\":{\"augmented\":{\"description\":\"The armor's defense value when augmented\",\"type\":\"integer\"},\"base\":{\"description\":\"The armor's base defense value\",\"type\":\"integer\"},\"max\":{\"description\":\"The armor's defense value at max level\",\"type\":\"integer\"}},\"type\":\"object\"},\"id\":{\"description\":\"The ID of the armor piece\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the armor piece\",\"type\":\"string\"},\"rank\":{\"description\":\"The rank of the armor piece\",\"enum\":[\"low\",\"high\"],\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the armor piece\",\"type\":\"integer\"},\"resistances\":{\"properties\":{\"dragon\":{\"description\":\"The armor's dragon resistance\",\"type\":\"integer\"},\"fire\":{\"description\":\"The armor's fire resistance\",\"type\":\"integer\"},\"ice\":{\"description\":\"The armor's ice resistance\",\"type\":\"integer\"},\"thunder\":{\"description\":\"The armor's thunder resistance\",\"type\":\"integer\"},\"water\":{\"description\":\"The armor's water resistance\",\"type\":\"integer\"}},\"type\":\"object\"},\"skills\":{\"description\":\"An array of skill ranks granted by the armor\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"slots\":{\"description\":\"An array of decoration slot information\",\"items\":{\"properties\":{\"rank\":{\"description\":\"The rank of the decoration slot\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"type\":{\"description\":\"The slot the armor piece fits in\",\"enum\":[\"head\",\"chest\",\"gloves\",\"waist\",\"legs\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"rank\":{\"description\":\"The rank of the armor set\",\"enum\":[\"low\",\"high\"],\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Armor set not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/armor/sets/{id}",
+                  "q": {
+                    "exist": [
+                      "id",
+                      "p"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/armor/sets/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "armor"
                     },
@@ -554,13 +649,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id",
-                      "p"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -577,42 +666,47 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "crafting",
-              "req": false,
-              "type": "`$OBJECT`"
+          "fields": {
+            "crafting": {
+              "a": true,
+              "h": "Crafting",
+              "n": "crafting",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "The ID of the charm",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "The ID of the charm",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "The name of the charm",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "The name of the charm",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "rarity",
-              "req": false,
-              "short": "The rarity of the charm",
-              "type": "`$INTEGER`"
+            "rarity": {
+              "a": true,
+              "h": "Rarity",
+              "n": "rarity",
+              "r": false,
+              "sh": "The rarity of the charm",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "skills",
-              "req": false,
-              "short": "An array of skill ranks granted by the charm",
-              "type": "`$ARRAY`"
+            "skills": {
+              "a": true,
+              "h": "Skills",
+              "n": "skills",
+              "r": false,
+              "sh": "An array of skill ranks granted by the charm",
+              "t": "`$ARRAY`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -624,48 +718,48 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /charms",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "p",
-                        "orig": "p",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "p",
+                        "or": "p",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "q",
-                        "orig": "q",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "q",
+                        "or": "q",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /charms",
-                    "json": "{\"operationId\":\"getAllCharms\",\"parameters\":[{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Query parameter for searching\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"crafting\":{\"properties\":{\"materials\":{\"items\":{\"properties\":{\"item\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"quantity\":{\"description\":\"The quantity of the item required\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"id\":{\"description\":\"The ID of the charm\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the charm\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the charm\",\"type\":\"integer\"},\"skills\":{\"description\":\"An array of skill ranks granted by the charm\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/charms",
-                  "segments": [
-                    {
-                      "lit": "charms"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/charms",
+                  "q": {
                     "exist": [
                       "p",
                       "q"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "charms"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -677,39 +771,45 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /charms/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "p",
-                        "orig": "p",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "p",
+                        "or": "p",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /charms/{id}",
-                    "json": "{\"operationId\":\"getCharmById\",\"parameters\":[{\"description\":\"The ID of the charm to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"crafting\":{\"properties\":{\"materials\":{\"items\":{\"properties\":{\"item\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"quantity\":{\"description\":\"The quantity of the item required\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"id\":{\"description\":\"The ID of the charm\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the charm\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the charm\",\"type\":\"integer\"},\"skills\":{\"description\":\"An array of skill ranks granted by the charm\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Charm not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/charms/{id}",
+                  "q": {
+                    "exist": [
+                      "id",
+                      "p"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/charms/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "charms"
                     },
@@ -717,13 +817,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id",
-                      "p"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -740,43 +834,48 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "The ID of the decoration",
-              "type": "`$INTEGER`"
+          "fields": {
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "The ID of the decoration",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "The name of the decoration",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "The name of the decoration",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "rarity",
-              "req": false,
-              "short": "The rarity of the decoration",
-              "type": "`$INTEGER`"
+            "rarity": {
+              "a": true,
+              "h": "Rarity",
+              "n": "rarity",
+              "r": false,
+              "sh": "The rarity of the decoration",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "skills",
-              "req": false,
-              "short": "An array of skill ranks granted by the decoration",
-              "type": "`$ARRAY`"
+            "skills": {
+              "a": true,
+              "h": "Skills",
+              "n": "skills",
+              "r": false,
+              "sh": "An array of skill ranks granted by the decoration",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "slot",
-              "req": false,
-              "short": "The slot rank required for the decoration",
-              "type": "`$INTEGER`"
+            "slot": {
+              "a": true,
+              "h": "Slot",
+              "n": "slot",
+              "r": false,
+              "sh": "The slot rank required for the decoration",
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -788,48 +887,48 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /decorations",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "p",
-                        "orig": "p",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "p",
+                        "or": "p",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "q",
-                        "orig": "q",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "q",
+                        "or": "q",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /decorations",
-                    "json": "{\"operationId\":\"getAllDecorations\",\"parameters\":[{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Query parameter for searching\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"id\":{\"description\":\"The ID of the decoration\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the decoration\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the decoration\",\"type\":\"integer\"},\"skills\":{\"description\":\"An array of skill ranks granted by the decoration\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"slot\":{\"description\":\"The slot rank required for the decoration\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/decorations",
-                  "segments": [
-                    {
-                      "lit": "decorations"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/decorations",
+                  "q": {
                     "exist": [
                       "p",
                       "q"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "decorations"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -841,39 +940,45 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /decorations/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "p",
-                        "orig": "p",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "p",
+                        "or": "p",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /decorations/{id}",
-                    "json": "{\"operationId\":\"getDecorationById\",\"parameters\":[{\"description\":\"The ID of the decoration to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"id\":{\"description\":\"The ID of the decoration\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the decoration\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the decoration\",\"type\":\"integer\"},\"skills\":{\"description\":\"An array of skill ranks granted by the decoration\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"slot\":{\"description\":\"The slot rank required for the decoration\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Decoration not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/decorations/{id}",
+                  "q": {
+                    "exist": [
+                      "id",
+                      "p"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/decorations/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "decorations"
                     },
@@ -881,13 +986,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id",
-                      "p"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -904,114 +1003,129 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "camps",
-              "req": false,
-              "short": "An array of camps in the location",
-              "type": "`$ARRAY`"
+          "fields": {
+            "camps": {
+              "a": true,
+              "h": "Camps",
+              "n": "camps",
+              "r": false,
+              "sh": "An array of camps in the location",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "A description of the event",
-              "type": "`$STRING`"
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "A description of the event",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "endTimestamp",
-              "req": false,
-              "short": "The end time of the event",
-              "type": "`$STRING`"
+            "endTimestamp": {
+              "a": true,
+              "fo": "date-time",
+              "h": "End Timestamp",
+              "n": "endTimestamp",
+              "r": false,
+              "sh": "The end time of the event",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "exclusive",
-              "req": false,
-              "short": "Whether the event is exclusive to a platform",
-              "type": "`$STRING`"
+            "exclusive": {
+              "a": true,
+              "h": "Exclusive",
+              "n": "exclusive",
+              "r": false,
+              "sh": "Whether the event is exclusive to a platform",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "expansion",
-              "req": false,
-              "short": "The expansion the event belongs to",
-              "type": "`$STRING`"
+            "expansion": {
+              "a": true,
+              "h": "Expansion",
+              "n": "expansion",
+              "r": false,
+              "sh": "The expansion the event belongs to",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "The ID of the location",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "The ID of the location",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "location",
-              "req": false,
-              "type": "`$OBJECT`"
+            "location": {
+              "a": true,
+              "h": "Location",
+              "n": "location",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "The name of the location",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "The name of the location",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "platform",
-              "req": false,
-              "short": "The platform for the event",
-              "type": "`$STRING`"
+            "platform": {
+              "a": true,
+              "h": "Platform",
+              "n": "platform",
+              "r": false,
+              "sh": "The platform for the event",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "questRank",
-              "req": false,
-              "short": "The quest rank of the event",
-              "type": "`$STRING`"
+            "questRank": {
+              "a": true,
+              "h": "Quest Rank",
+              "n": "questRank",
+              "r": false,
+              "sh": "The quest rank of the event",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "requirements",
-              "req": false,
-              "short": "Requirements for the event",
-              "type": "`$STRING`"
+            "requirements": {
+              "a": true,
+              "h": "Requirements",
+              "n": "requirements",
+              "r": false,
+              "sh": "Requirements for the event",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "startTimestamp",
-              "req": false,
-              "short": "The start time of the event",
-              "type": "`$STRING`"
+            "startTimestamp": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Start Timestamp",
+              "n": "startTimestamp",
+              "r": false,
+              "sh": "The start time of the event",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "successConditions",
-              "req": false,
-              "short": "Conditions for success",
-              "type": "`$STRING`"
+            "successConditions": {
+              "a": true,
+              "h": "Success Conditions",
+              "n": "successConditions",
+              "r": false,
+              "sh": "Conditions for success",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "type",
-              "req": false,
-              "short": "The type of event",
-              "type": "`$STRING`"
+            "type": {
+              "a": true,
+              "h": "Type",
+              "n": "type",
+              "r": false,
+              "sh": "The type of event",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "zoneCount",
-              "req": false,
-              "short": "The number of zones in the location",
-              "type": "`$INTEGER`"
+            "zoneCount": {
+              "a": true,
+              "h": "Zone Count",
+              "n": "zoneCount",
+              "r": false,
+              "sh": "The number of zones in the location",
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -1023,48 +1137,48 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /events",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "p",
-                        "orig": "p",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "p",
+                        "or": "p",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "q",
-                        "orig": "q",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "q",
+                        "or": "q",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /events",
-                    "json": "{\"operationId\":\"getAllEvents\",\"parameters\":[{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Query parameter for searching\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"A description of the event\",\"type\":\"string\"},\"endTimestamp\":{\"description\":\"The end time of the event\",\"format\":\"date-time\",\"type\":\"string\"},\"exclusive\":{\"description\":\"Whether the event is exclusive to a platform\",\"nullable\":true,\"type\":\"string\"},\"expansion\":{\"description\":\"The expansion the event belongs to\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the event\",\"type\":\"integer\"},\"location\":{\"properties\":{\"camps\":{\"description\":\"An array of camps in the location\",\"items\":{\"properties\":{\"id\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"zone\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the location\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the location\",\"type\":\"string\"},\"zoneCount\":{\"description\":\"The number of zones in the location\",\"type\":\"integer\"}},\"type\":\"object\"},\"name\":{\"description\":\"The name of the event\",\"type\":\"string\"},\"platform\":{\"description\":\"The platform for the event\",\"type\":\"string\"},\"questRank\":{\"description\":\"The quest rank of the event\",\"type\":\"string\"},\"requirements\":{\"description\":\"Requirements for the event\",\"type\":\"string\"},\"startTimestamp\":{\"description\":\"The start time of the event\",\"format\":\"date-time\",\"type\":\"string\"},\"successConditions\":{\"description\":\"Conditions for success\",\"type\":\"string\"},\"type\":{\"description\":\"The type of event\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/events",
-                  "segments": [
-                    {
-                      "lit": "events"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/events",
+                  "q": {
                     "exist": [
                       "p",
                       "q"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "events"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1076,39 +1190,45 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /events/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "p",
-                        "orig": "p",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "p",
+                        "or": "p",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /events/{id}",
-                    "json": "{\"operationId\":\"getEventById\",\"parameters\":[{\"description\":\"The ID of the event to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"A description of the event\",\"type\":\"string\"},\"endTimestamp\":{\"description\":\"The end time of the event\",\"format\":\"date-time\",\"type\":\"string\"},\"exclusive\":{\"description\":\"Whether the event is exclusive to a platform\",\"nullable\":true,\"type\":\"string\"},\"expansion\":{\"description\":\"The expansion the event belongs to\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the event\",\"type\":\"integer\"},\"location\":{\"properties\":{\"camps\":{\"description\":\"An array of camps in the location\",\"items\":{\"properties\":{\"id\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"zone\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the location\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the location\",\"type\":\"string\"},\"zoneCount\":{\"description\":\"The number of zones in the location\",\"type\":\"integer\"}},\"type\":\"object\"},\"name\":{\"description\":\"The name of the event\",\"type\":\"string\"},\"platform\":{\"description\":\"The platform for the event\",\"type\":\"string\"},\"questRank\":{\"description\":\"The quest rank of the event\",\"type\":\"string\"},\"requirements\":{\"description\":\"Requirements for the event\",\"type\":\"string\"},\"startTimestamp\":{\"description\":\"The start time of the event\",\"format\":\"date-time\",\"type\":\"string\"},\"successConditions\":{\"description\":\"Conditions for success\",\"type\":\"string\"},\"type\":{\"description\":\"The type of event\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Event not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/events/{id}",
+                  "q": {
+                    "exist": [
+                      "id",
+                      "p"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/events/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "events"
                     },
@@ -1116,13 +1236,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id",
-                      "p"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.location`"
                   }
@@ -1139,64 +1253,72 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "buyPrice",
-              "req": false,
-              "short": "The price when buying the item",
-              "type": "`$INTEGER`"
+          "fields": {
+            "buyPrice": {
+              "a": true,
+              "h": "Buy Price",
+              "n": "buyPrice",
+              "r": false,
+              "sh": "The price when buying the item",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "carryLimit",
-              "req": false,
-              "short": "The maximum number of this item that can be carried",
-              "type": "`$INTEGER`"
+            "carryLimit": {
+              "a": true,
+              "h": "Carry Limit",
+              "n": "carryLimit",
+              "r": false,
+              "sh": "The maximum number of this item that can be carried",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "A description of the item",
-              "type": "`$STRING`"
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "A description of the item",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "The ID of the item",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "The ID of the item",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "The name of the item",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "The name of the item",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "rarity",
-              "req": false,
-              "short": "The rarity of the item",
-              "type": "`$INTEGER`"
+            "rarity": {
+              "a": true,
+              "h": "Rarity",
+              "n": "rarity",
+              "r": false,
+              "sh": "The rarity of the item",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "sellPrice",
-              "req": false,
-              "short": "The price when selling the item",
-              "type": "`$INTEGER`"
+            "sellPrice": {
+              "a": true,
+              "h": "Sell Price",
+              "n": "sellPrice",
+              "r": false,
+              "sh": "The price when selling the item",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "value",
-              "req": false,
-              "short": "The value of the item",
-              "type": "`$INTEGER`"
+            "value": {
+              "a": true,
+              "h": "Value",
+              "n": "value",
+              "r": false,
+              "sh": "The value of the item",
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -1208,48 +1330,48 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /items",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "p",
-                        "orig": "p",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "p",
+                        "or": "p",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "q",
-                        "orig": "q",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "q",
+                        "or": "q",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /items",
-                    "json": "{\"operationId\":\"getAllItems\",\"parameters\":[{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Query parameter for searching\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/items",
-                  "segments": [
-                    {
-                      "lit": "items"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/items",
+                  "q": {
                     "exist": [
                       "p",
                       "q"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "items"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1261,39 +1383,45 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /items/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "p",
-                        "orig": "p",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "p",
+                        "or": "p",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /items/{id}",
-                    "json": "{\"operationId\":\"getItemById\",\"parameters\":[{\"description\":\"The ID of the item to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Item not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/items/{id}",
+                  "q": {
+                    "exist": [
+                      "id",
+                      "p"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/items/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "items"
                     },
@@ -1301,13 +1429,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id",
-                      "p"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1324,36 +1446,40 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "camps",
-              "req": false,
-              "short": "An array of camps in the location",
-              "type": "`$ARRAY`"
+          "fields": {
+            "camps": {
+              "a": true,
+              "h": "Camps",
+              "n": "camps",
+              "r": false,
+              "sh": "An array of camps in the location",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "The ID of the location",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "The ID of the location",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "The name of the location",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "The name of the location",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "zoneCount",
-              "req": false,
-              "short": "The number of zones in the location",
-              "type": "`$INTEGER`"
+            "zoneCount": {
+              "a": true,
+              "h": "Zone Count",
+              "n": "zoneCount",
+              "r": false,
+              "sh": "The number of zones in the location",
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -1365,48 +1491,48 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /locations",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "p",
-                        "orig": "p",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "p",
+                        "or": "p",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "q",
-                        "orig": "q",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "q",
+                        "or": "q",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /locations",
-                    "json": "{\"operationId\":\"getAllLocations\",\"parameters\":[{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Query parameter for searching\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"camps\":{\"description\":\"An array of camps in the location\",\"items\":{\"properties\":{\"id\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"zone\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the location\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the location\",\"type\":\"string\"},\"zoneCount\":{\"description\":\"The number of zones in the location\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/locations",
-                  "segments": [
-                    {
-                      "lit": "locations"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/locations",
+                  "q": {
                     "exist": [
                       "p",
                       "q"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "locations"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1418,39 +1544,45 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /locations/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "p",
-                        "orig": "p",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "p",
+                        "or": "p",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /locations/{id}",
-                    "json": "{\"operationId\":\"getLocationById\",\"parameters\":[{\"description\":\"The ID of the location to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"camps\":{\"description\":\"An array of camps in the location\",\"items\":{\"properties\":{\"id\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"zone\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the location\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the location\",\"type\":\"string\"},\"zoneCount\":{\"description\":\"The number of zones in the location\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Location not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/locations/{id}",
+                  "q": {
+                    "exist": [
+                      "id",
+                      "p"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/locations/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "locations"
                     },
@@ -1458,13 +1590,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id",
-                      "p"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1481,85 +1607,96 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "ailments",
-              "req": false,
-              "short": "Ailments the monster can inflict",
-              "type": "`$ARRAY`"
+          "fields": {
+            "ailments": {
+              "a": true,
+              "h": "Ailments",
+              "n": "ailments",
+              "r": false,
+              "sh": "Ailments the monster can inflict",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "A description of the monster",
-              "type": "`$STRING`"
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "A description of the monster",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "elements",
-              "req": false,
-              "short": "Elements the monster uses",
-              "type": "`$ARRAY`"
+            "elements": {
+              "a": true,
+              "h": "Elements",
+              "n": "elements",
+              "r": false,
+              "sh": "Elements the monster uses",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "The ID of the monster",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "The ID of the monster",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "locations",
-              "req": false,
-              "short": "Locations where the monster can be found",
-              "type": "`$ARRAY`"
+            "locations": {
+              "a": true,
+              "h": "Locations",
+              "n": "locations",
+              "r": false,
+              "sh": "Locations where the monster can be found",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "The name of the monster",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "The name of the monster",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "resistances",
-              "req": false,
-              "short": "Resistances of the monster",
-              "type": "`$ARRAY`"
+            "resistances": {
+              "a": true,
+              "h": "Resistances",
+              "n": "resistances",
+              "r": false,
+              "sh": "Resistances of the monster",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "rewards",
-              "req": false,
-              "short": "Rewards obtained from the monster",
-              "type": "`$ARRAY`"
+            "rewards": {
+              "a": true,
+              "h": "Rewards",
+              "n": "rewards",
+              "r": false,
+              "sh": "Rewards obtained from the monster",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "species",
-              "req": false,
-              "short": "The species of the monster",
-              "type": "`$STRING`"
+            "species": {
+              "a": true,
+              "h": "Species",
+              "n": "species",
+              "r": false,
+              "sh": "The species of the monster",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "type",
-              "req": false,
-              "short": "The type of monster",
-              "type": "`$STRING`"
+            "type": {
+              "a": true,
+              "h": "Type",
+              "n": "type",
+              "r": false,
+              "sh": "The type of monster",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "weaknesses",
-              "req": false,
-              "short": "Weaknesses of the monster",
-              "type": "`$ARRAY`"
+            "weaknesses": {
+              "a": true,
+              "h": "Weaknesses",
+              "n": "weaknesses",
+              "r": false,
+              "sh": "Weaknesses of the monster",
+              "t": "`$ARRAY`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -1571,48 +1708,48 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /monsters",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "p",
-                        "orig": "p",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "p",
+                        "or": "p",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "q",
-                        "orig": "q",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "q",
+                        "or": "q",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /monsters",
-                    "json": "{\"operationId\":\"getAllMonsters\",\"parameters\":[{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Query parameter for searching\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"ailments\":{\"description\":\"Ailments the monster can inflict\",\"items\":{\"properties\":{\"description\":{\"description\":\"A short description of the ailment\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the ailment\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the ailment\",\"type\":\"string\"},\"protection\":{\"properties\":{\"items\":{\"description\":\"An array of items that can prevent the ailment\",\"items\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"skills\":{\"description\":\"An array of skills that can prevent the ailment\",\"items\":{\"properties\":{\"description\":{\"description\":\"A description of the skill\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the skill\",\"type\":\"string\"},\"ranks\":{\"description\":\"An array of skill ranks\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"recovery\":{\"properties\":{\"actions\":{\"description\":\"An array of actions that can be taken to remove the ailment\",\"items\":{\"enum\":[\"crouch\",\"dodge\"],\"type\":\"string\"},\"type\":\"array\"},\"items\":{\"description\":\"An array of items that can remove the ailment\",\"items\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"},\"description\":{\"description\":\"A description of the monster\",\"type\":\"string\"},\"elements\":{\"description\":\"Elements the monster uses\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the monster\",\"type\":\"integer\"},\"locations\":{\"description\":\"Locations where the monster can be found\",\"items\":{\"properties\":{\"camps\":{\"description\":\"An array of camps in the location\",\"items\":{\"properties\":{\"id\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"zone\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the location\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the location\",\"type\":\"string\"},\"zoneCount\":{\"description\":\"The number of zones in the location\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"name\":{\"description\":\"The name of the monster\",\"type\":\"string\"},\"resistances\":{\"description\":\"Resistances of the monster\",\"items\":{\"properties\":{\"condition\":{\"nullable\":true,\"type\":\"string\"},\"element\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"rewards\":{\"description\":\"Rewards obtained from the monster\",\"items\":{\"properties\":{\"conditions\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"type\":\"integer\"},\"item\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"},\"species\":{\"description\":\"The species of the monster\",\"type\":\"string\"},\"type\":{\"description\":\"The type of monster\",\"type\":\"string\"},\"weaknesses\":{\"description\":\"Weaknesses of the monster\",\"items\":{\"properties\":{\"condition\":{\"nullable\":true,\"type\":\"string\"},\"element\":{\"type\":\"string\"},\"stars\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/monsters",
-                  "segments": [
-                    {
-                      "lit": "monsters"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/monsters",
+                  "q": {
                     "exist": [
                       "p",
                       "q"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "monsters"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1624,39 +1761,45 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /monsters/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "p",
-                        "orig": "p",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "p",
+                        "or": "p",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /monsters/{id}",
-                    "json": "{\"operationId\":\"getMonsterById\",\"parameters\":[{\"description\":\"The ID of the monster to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"ailments\":{\"description\":\"Ailments the monster can inflict\",\"items\":{\"properties\":{\"description\":{\"description\":\"A short description of the ailment\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the ailment\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the ailment\",\"type\":\"string\"},\"protection\":{\"properties\":{\"items\":{\"description\":\"An array of items that can prevent the ailment\",\"items\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"skills\":{\"description\":\"An array of skills that can prevent the ailment\",\"items\":{\"properties\":{\"description\":{\"description\":\"A description of the skill\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the skill\",\"type\":\"string\"},\"ranks\":{\"description\":\"An array of skill ranks\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"recovery\":{\"properties\":{\"actions\":{\"description\":\"An array of actions that can be taken to remove the ailment\",\"items\":{\"enum\":[\"crouch\",\"dodge\"],\"type\":\"string\"},\"type\":\"array\"},\"items\":{\"description\":\"An array of items that can remove the ailment\",\"items\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"},\"description\":{\"description\":\"A description of the monster\",\"type\":\"string\"},\"elements\":{\"description\":\"Elements the monster uses\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the monster\",\"type\":\"integer\"},\"locations\":{\"description\":\"Locations where the monster can be found\",\"items\":{\"properties\":{\"camps\":{\"description\":\"An array of camps in the location\",\"items\":{\"properties\":{\"id\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"zone\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the location\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the location\",\"type\":\"string\"},\"zoneCount\":{\"description\":\"The number of zones in the location\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"name\":{\"description\":\"The name of the monster\",\"type\":\"string\"},\"resistances\":{\"description\":\"Resistances of the monster\",\"items\":{\"properties\":{\"condition\":{\"nullable\":true,\"type\":\"string\"},\"element\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"rewards\":{\"description\":\"Rewards obtained from the monster\",\"items\":{\"properties\":{\"conditions\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"type\":\"integer\"},\"item\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"},\"species\":{\"description\":\"The species of the monster\",\"type\":\"string\"},\"type\":{\"description\":\"The type of monster\",\"type\":\"string\"},\"weaknesses\":{\"description\":\"Weaknesses of the monster\",\"items\":{\"properties\":{\"condition\":{\"nullable\":true,\"type\":\"string\"},\"element\":{\"type\":\"string\"},\"stars\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Monster not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/monsters/{id}",
+                  "q": {
+                    "exist": [
+                      "id",
+                      "p"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/monsters/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "monsters"
                     },
@@ -1664,13 +1807,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id",
-                      "p"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1687,50 +1824,56 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "damageType",
-              "req": false,
-              "short": "The type of damage",
-              "type": "`$STRING`"
+          "fields": {
+            "damageType": {
+              "a": true,
+              "h": "Damage Type",
+              "n": "damageType",
+              "r": false,
+              "sh": "The type of damage",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "exhaust",
-              "req": false,
-              "short": "Exhaust value",
-              "type": "`$INTEGER`"
+            "exhaust": {
+              "a": true,
+              "h": "Exhaust",
+              "n": "exhaust",
+              "r": false,
+              "sh": "Exhaust value",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "hits",
-              "req": false,
-              "short": "Hit information",
-              "type": "`$ARRAY`"
+            "hits": {
+              "a": true,
+              "h": "Hits",
+              "n": "hits",
+              "r": false,
+              "sh": "Hit information",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "The ID of the motion value",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "The ID of the motion value",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "stun",
-              "req": false,
-              "short": "Stun value",
-              "type": "`$INTEGER`"
+            "stun": {
+              "a": true,
+              "h": "Stun",
+              "n": "stun",
+              "r": false,
+              "sh": "Stun value",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "weaponType",
-              "req": false,
-              "short": "The type of weapon",
-              "type": "`$STRING`"
+            "weaponType": {
+              "a": true,
+              "h": "Weapon Type",
+              "n": "weaponType",
+              "r": false,
+              "sh": "The type of weapon",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -1742,48 +1885,48 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /motion-values",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "p",
-                        "orig": "p",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "p",
+                        "or": "p",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "q",
-                        "orig": "q",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "q",
+                        "or": "q",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /motion-values",
-                    "json": "{\"operationId\":\"getAllMotionValues\",\"parameters\":[{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Query parameter for searching\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"damageType\":{\"description\":\"The type of damage\",\"type\":\"string\"},\"exhaust\":{\"description\":\"Exhaust value\",\"type\":\"integer\"},\"hits\":{\"description\":\"Hit information\",\"items\":{\"properties\":{\"type\":{\"type\":\"string\"},\"value\":{\"type\":\"number\"}},\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the motion value\",\"type\":\"integer\"},\"stun\":{\"description\":\"Stun value\",\"type\":\"integer\"},\"weaponType\":{\"description\":\"The type of weapon\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/motion-values",
-                  "segments": [
-                    {
-                      "lit": "motion-values"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/motion-values",
+                  "q": {
                     "exist": [
                       "p",
                       "q"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "motion-values"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1795,39 +1938,45 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /motion-values/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "p",
-                        "orig": "p",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "p",
+                        "or": "p",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /motion-values/{id}",
-                    "json": "{\"operationId\":\"getMotionValueById\",\"parameters\":[{\"description\":\"The ID of the motion value to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"damageType\":{\"description\":\"The type of damage\",\"type\":\"string\"},\"exhaust\":{\"description\":\"Exhaust value\",\"type\":\"integer\"},\"hits\":{\"description\":\"Hit information\",\"items\":{\"properties\":{\"type\":{\"type\":\"string\"},\"value\":{\"type\":\"number\"}},\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the motion value\",\"type\":\"integer\"},\"stun\":{\"description\":\"Stun value\",\"type\":\"integer\"},\"weaponType\":{\"description\":\"The type of weapon\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Motion value not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/motion-values/{id}",
+                  "q": {
+                    "exist": [
+                      "id",
+                      "p"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/motion-values/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "motion-values"
                     },
@@ -1835,13 +1984,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id",
-                      "p"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1858,36 +2001,40 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "A description of the skill",
-              "type": "`$STRING`"
+          "fields": {
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "A description of the skill",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "The ID of the skill",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "The ID of the skill",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "The name of the skill",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "The name of the skill",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "ranks",
-              "req": false,
-              "short": "An array of skill ranks",
-              "type": "`$ARRAY`"
+            "ranks": {
+              "a": true,
+              "h": "Ranks",
+              "n": "ranks",
+              "r": false,
+              "sh": "An array of skill ranks",
+              "t": "`$ARRAY`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -1899,48 +2046,48 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /skills",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "p",
-                        "orig": "p",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "p",
+                        "or": "p",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "q",
-                        "orig": "q",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "q",
+                        "or": "q",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /skills",
-                    "json": "{\"operationId\":\"getAllSkills\",\"parameters\":[{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Query parameter for searching\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"description\":{\"description\":\"A description of the skill\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the skill\",\"type\":\"string\"},\"ranks\":{\"description\":\"An array of skill ranks\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/skills",
-                  "segments": [
-                    {
-                      "lit": "skills"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/skills",
+                  "q": {
                     "exist": [
                       "p",
                       "q"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "skills"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1952,39 +2099,45 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /skills/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "p",
-                        "orig": "p",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "p",
+                        "or": "p",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /skills/{id}",
-                    "json": "{\"operationId\":\"getSkillById\",\"parameters\":[{\"description\":\"The ID of the skill to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"description\":\"A description of the skill\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the skill\",\"type\":\"string\"},\"ranks\":{\"description\":\"An array of skill ranks\",\"items\":{\"properties\":{\"description\":{\"description\":\"Description of the skill at this level\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the skill rank\",\"type\":\"integer\"},\"level\":{\"description\":\"The level of the skill\",\"type\":\"integer\"},\"modifiers\":{\"description\":\"Array of modifiers for the skill\",\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"skill\":{\"description\":\"The skill ID reference\",\"type\":\"integer\"},\"skillName\":{\"description\":\"The name of the skill\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Skill not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/skills/{id}",
+                  "q": {
+                    "exist": [
+                      "id",
+                      "p"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/skills/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "skills"
                     },
@@ -1992,13 +2145,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id",
-                      "p"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -2015,85 +2162,96 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "assets",
-              "req": false,
-              "short": "Asset URLs for the weapon",
-              "type": "`$OBJECT`"
+          "fields": {
+            "assets": {
+              "a": true,
+              "h": "Assets",
+              "n": "assets",
+              "r": false,
+              "sh": "Asset URLs for the weapon",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "attack",
-              "req": false,
-              "short": "Attack values for the weapon",
-              "type": "`$OBJECT`"
+            "attack": {
+              "a": true,
+              "h": "Attack",
+              "n": "attack",
+              "r": false,
+              "sh": "Attack values for the weapon",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "attributes",
-              "req": false,
-              "short": "Additional weapon attributes",
-              "type": "`$OBJECT`"
+            "attributes": {
+              "a": true,
+              "h": "Attributes",
+              "n": "attributes",
+              "r": false,
+              "sh": "Additional weapon attributes",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "crafting",
-              "req": false,
-              "short": "Crafting information for the weapon",
-              "type": "`$OBJECT`"
+            "crafting": {
+              "a": true,
+              "h": "Crafting",
+              "n": "crafting",
+              "r": false,
+              "sh": "Crafting information for the weapon",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "damageType",
-              "req": false,
-              "short": "The damage type of the weapon",
-              "type": "`$STRING`"
+            "damageType": {
+              "a": true,
+              "h": "Damage Type",
+              "n": "damageType",
+              "r": false,
+              "sh": "The damage type of the weapon",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "elements",
-              "req": false,
-              "short": "Elemental damage information",
-              "type": "`$ARRAY`"
+            "elements": {
+              "a": true,
+              "h": "Elements",
+              "n": "elements",
+              "r": false,
+              "sh": "Elemental damage information",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "The ID of the weapon",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "The ID of the weapon",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "The name of the weapon",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "The name of the weapon",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "rarity",
-              "req": false,
-              "short": "The rarity of the weapon",
-              "type": "`$INTEGER`"
+            "rarity": {
+              "a": true,
+              "h": "Rarity",
+              "n": "rarity",
+              "r": false,
+              "sh": "The rarity of the weapon",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "slots",
-              "req": false,
-              "short": "An array of decoration slot information",
-              "type": "`$ARRAY`"
+            "slots": {
+              "a": true,
+              "h": "Slots",
+              "n": "slots",
+              "r": false,
+              "sh": "An array of decoration slot information",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "type",
-              "req": false,
-              "short": "The type of weapon",
-              "type": "`$STRING`"
+            "type": {
+              "a": true,
+              "h": "Type",
+              "n": "type",
+              "r": false,
+              "sh": "The type of weapon",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -2105,48 +2263,48 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /weapons",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "p",
-                        "orig": "p",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "p",
+                        "or": "p",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "q",
-                        "orig": "q",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "q",
+                        "or": "q",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /weapons",
-                    "json": "{\"operationId\":\"getAllWeapons\",\"parameters\":[{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Query parameter for searching\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"assets\":{\"description\":\"Asset URLs for the weapon\",\"properties\":{\"icon\":{\"nullable\":true,\"type\":\"string\"},\"image\":{\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"attack\":{\"description\":\"Attack values for the weapon\",\"properties\":{\"display\":{\"type\":\"integer\"},\"raw\":{\"type\":\"integer\"}},\"type\":\"object\"},\"attributes\":{\"description\":\"Additional weapon attributes\",\"type\":\"object\"},\"crafting\":{\"description\":\"Crafting information for the weapon\",\"properties\":{\"branches\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"craftable\":{\"type\":\"boolean\"},\"craftingMaterials\":{\"items\":{\"properties\":{\"item\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"quantity\":{\"description\":\"The quantity of the item required\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"previous\":{\"nullable\":true,\"type\":\"integer\"},\"upgradeMaterials\":{\"items\":{\"properties\":{\"item\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"quantity\":{\"description\":\"The quantity of the item required\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"damageType\":{\"description\":\"The damage type of the weapon\",\"type\":\"string\"},\"elements\":{\"description\":\"Elemental damage information\",\"items\":{\"properties\":{\"damage\":{\"type\":\"integer\"},\"hidden\":{\"type\":\"boolean\"},\"type\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the weapon\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the weapon\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the weapon\",\"type\":\"integer\"},\"slots\":{\"description\":\"An array of decoration slot information\",\"items\":{\"properties\":{\"rank\":{\"description\":\"The rank of the decoration slot\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"type\":{\"description\":\"The type of weapon\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/weapons",
-                  "segments": [
-                    {
-                      "lit": "weapons"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/weapons",
+                  "q": {
                     "exist": [
                       "p",
                       "q"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "weapons"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -2158,39 +2316,45 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /weapons/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "p",
-                        "orig": "p",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "p",
+                        "or": "p",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /weapons/{id}",
-                    "json": "{\"operationId\":\"getWeaponById\",\"parameters\":[{\"description\":\"The ID of the weapon to retrieve\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Projection parameter for filtering returned fields\",\"in\":\"query\",\"name\":\"p\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"assets\":{\"description\":\"Asset URLs for the weapon\",\"properties\":{\"icon\":{\"nullable\":true,\"type\":\"string\"},\"image\":{\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"attack\":{\"description\":\"Attack values for the weapon\",\"properties\":{\"display\":{\"type\":\"integer\"},\"raw\":{\"type\":\"integer\"}},\"type\":\"object\"},\"attributes\":{\"description\":\"Additional weapon attributes\",\"type\":\"object\"},\"crafting\":{\"description\":\"Crafting information for the weapon\",\"properties\":{\"branches\":{\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"craftable\":{\"type\":\"boolean\"},\"craftingMaterials\":{\"items\":{\"properties\":{\"item\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"quantity\":{\"description\":\"The quantity of the item required\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"previous\":{\"nullable\":true,\"type\":\"integer\"},\"upgradeMaterials\":{\"items\":{\"properties\":{\"item\":{\"properties\":{\"buyPrice\":{\"description\":\"The price when buying the item\",\"type\":\"integer\"},\"carryLimit\":{\"description\":\"The maximum number of this item that can be carried\",\"type\":\"integer\"},\"description\":{\"description\":\"A description of the item\",\"type\":\"string\"},\"id\":{\"description\":\"The ID of the item\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the item\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the item\",\"type\":\"integer\"},\"sellPrice\":{\"description\":\"The price when selling the item\",\"type\":\"integer\"},\"value\":{\"description\":\"The value of the item\",\"type\":\"integer\"}},\"type\":\"object\"},\"quantity\":{\"description\":\"The quantity of the item required\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"damageType\":{\"description\":\"The damage type of the weapon\",\"type\":\"string\"},\"elements\":{\"description\":\"Elemental damage information\",\"items\":{\"properties\":{\"damage\":{\"type\":\"integer\"},\"hidden\":{\"type\":\"boolean\"},\"type\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"description\":\"The ID of the weapon\",\"type\":\"integer\"},\"name\":{\"description\":\"The name of the weapon\",\"type\":\"string\"},\"rarity\":{\"description\":\"The rarity of the weapon\",\"type\":\"integer\"},\"slots\":{\"description\":\"An array of decoration slot information\",\"items\":{\"properties\":{\"rank\":{\"description\":\"The rank of the decoration slot\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"type\":{\"description\":\"The type of weapon\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Weapon not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/weapons/{id}",
+                  "q": {
+                    "exist": [
+                      "id",
+                      "p"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/weapons/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "weapons"
                     },
@@ -2198,13 +2362,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id",
-                      "p"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -2633,13 +2791,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2649,19 +2807,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "ailment_ref01",
                 "srcdatavar": "ailment_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "ailment01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2681,13 +2839,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2697,19 +2855,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "armor_ref01",
                 "srcdatavar": "armor_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "armor01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2729,13 +2887,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2745,19 +2903,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "armor_set_ref01",
                 "srcdatavar": "armor_set_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "armor_set01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2777,13 +2935,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2793,19 +2951,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "charm_ref01",
                 "srcdatavar": "charm_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "charm01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2825,13 +2983,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2841,19 +2999,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "decoration_ref01",
                 "srcdatavar": "decoration_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "decoration01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2873,13 +3031,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2889,19 +3047,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "event_ref01",
                 "srcdatavar": "event_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "event01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2921,13 +3079,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2937,19 +3095,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "item_ref01",
                 "srcdatavar": "item_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "item01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -2969,13 +3127,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2985,19 +3143,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "location_ref01",
                 "srcdatavar": "location_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "location01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -3017,13 +3175,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -3033,19 +3191,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "monster_ref01",
                 "srcdatavar": "monster_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "monster01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -3065,13 +3223,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -3081,19 +3239,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "motion_value_ref01",
                 "srcdatavar": "motion_value_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "motion_value01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -3113,13 +3271,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -3129,19 +3287,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "skill_ref01",
                 "srcdatavar": "skill_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "skill01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -3161,13 +3319,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -3177,19 +3335,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "weapon_ref01",
                 "srcdatavar": "weapon_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "weapon01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {

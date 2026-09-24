@@ -1,0 +1,44 @@
+# BasicMotionValueFlow
+
+main: kit: flow: BasicMotionValueFlow:
+{
+  entity: "motion_value",
+  kind: "basic",
+  name: "BasicMotionValueFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "motion_value_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "motion_value_ref01",
+        srcdatavar: "motion_value_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "motion_value01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-motion_value_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMotionValueFlow"
+}
