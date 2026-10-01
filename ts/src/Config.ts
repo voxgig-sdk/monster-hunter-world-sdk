@@ -927,12 +927,6 @@ class Config {
     "event": {
       "fields": [
         {
-          "name": "camps",
-          "title": "Camps",
-          "type": "`$ARRAY`",
-          "short": "An array of camps in the location"
-        },
-        {
           "name": "description",
           "title": "Description",
           "type": "`$STRING`",
@@ -961,7 +955,7 @@ class Config {
           "name": "id",
           "title": "Id",
           "type": "`$INTEGER`",
-          "short": "The ID of the location"
+          "short": "The ID of the event"
         },
         {
           "name": "location",
@@ -972,7 +966,7 @@ class Config {
           "name": "name",
           "title": "Name",
           "type": "`$STRING`",
-          "short": "The name of the location"
+          "short": "The name of the event"
         },
         {
           "name": "platform",
@@ -1010,12 +1004,6 @@ class Config {
           "title": "Type",
           "type": "`$STRING`",
           "short": "The type of event"
-        },
-        {
-          "name": "zoneCount",
-          "title": "Zone Count",
-          "type": "`$INTEGER`",
-          "short": "The number of zones in the location"
         }
       ],
       "id": {
@@ -1093,7 +1081,7 @@ class Config {
               "rename": {},
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body.location`"
+                "res": "`body`"
               },
               "args": {
                 "params": [

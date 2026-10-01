@@ -864,12 +864,6 @@ func MakeConfig() map[string]any {
 			"event": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"name": "camps",
-						"title": "Camps",
-						"type": "`$ARRAY`",
-						"short": "An array of camps in the location",
-					},
-					map[string]any{
 						"name": "description",
 						"title": "Description",
 						"type": "`$STRING`",
@@ -898,7 +892,7 @@ func MakeConfig() map[string]any {
 						"name": "id",
 						"title": "Id",
 						"type": "`$INTEGER`",
-						"short": "The ID of the location",
+						"short": "The ID of the event",
 					},
 					map[string]any{
 						"name": "location",
@@ -909,7 +903,7 @@ func MakeConfig() map[string]any {
 						"name": "name",
 						"title": "Name",
 						"type": "`$STRING`",
-						"short": "The name of the location",
+						"short": "The name of the event",
 					},
 					map[string]any{
 						"name": "platform",
@@ -947,12 +941,6 @@ func MakeConfig() map[string]any {
 						"title": "Type",
 						"type": "`$STRING`",
 						"short": "The type of event",
-					},
-					map[string]any{
-						"name": "zoneCount",
-						"title": "Zone Count",
-						"type": "`$INTEGER`",
-						"short": "The number of zones in the location",
 					},
 				},
 				"id": map[string]any{
@@ -1030,7 +1018,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body.location`",
+									"res": "`body`",
 								},
 								"args": map[string]any{
 									"params": []any{

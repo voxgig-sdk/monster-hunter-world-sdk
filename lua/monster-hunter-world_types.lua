@@ -90,7 +90,6 @@
 ---@field q? string
 
 ---@class Event
----@field camps? table
 ---@field description? string
 ---@field endTimestamp? string
 ---@field exclusive? string
@@ -104,7 +103,6 @@
 ---@field startTimestamp? string
 ---@field successConditions? string
 ---@field type? string
----@field zoneCount? number
 
 ---@class EventLoadMatch
 ---@field id number

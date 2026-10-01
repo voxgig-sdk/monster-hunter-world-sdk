@@ -345,21 +345,19 @@ API path: `/decorations`
 
 | Field | Description |
 | --- | --- |
-| `camps` | An array of camps in the location |
 | `description` | A description of the event |
 | `endTimestamp` | The end time of the event |
 | `exclusive` | Whether the event is exclusive to a platform |
 | `expansion` | The expansion the event belongs to |
-| `id` | The ID of the location |
+| `id` | The ID of the event |
 | `location` |  |
-| `name` | The name of the location |
+| `name` | The name of the event |
 | `platform` | The platform for the event |
 | `questRank` | The quest rank of the event |
 | `requirements` | Requirements for the event |
 | `startTimestamp` | The start time of the event |
 | `successConditions` | Conditions for success |
 | `type` | The type of event |
-| `zoneCount` | The number of zones in the location |
 
 Operations: List, Load.
 
@@ -661,21 +659,19 @@ Create an instance: `event = client.Event()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `camps` | `list` | An array of camps in the location |
 | `description` | `str` | A description of the event |
 | `endTimestamp` | `str` | The end time of the event |
 | `exclusive` | `str` | Whether the event is exclusive to a platform |
 | `expansion` | `str` | The expansion the event belongs to |
-| `id` | `int` | The ID of the location |
+| `id` | `int` | The ID of the event |
 | `location` | `dict` |  |
-| `name` | `str` | The name of the location |
+| `name` | `str` | The name of the event |
 | `platform` | `str` | The platform for the event |
 | `questRank` | `str` | The quest rank of the event |
 | `requirements` | `str` | Requirements for the event |
 | `startTimestamp` | `str` | The start time of the event |
 | `successConditions` | `str` | Conditions for success |
 | `type` | `str` | The type of event |
-| `zoneCount` | `int` | The number of zones in the location |
 
 #### Example: Load
 

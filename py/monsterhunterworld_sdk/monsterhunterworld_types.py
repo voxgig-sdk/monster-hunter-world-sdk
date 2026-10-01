@@ -130,7 +130,6 @@ class DecorationListMatch(TypedDict, total=False):
 
 
 class Event(TypedDict, total=False):
-    camps: list
     description: str
     endTimestamp: str
     exclusive: str
@@ -144,7 +143,6 @@ class Event(TypedDict, total=False):
     startTimestamp: str
     successConditions: str
     type: str
-    zoneCount: int
 
 
 class EventLoadMatchRequired(TypedDict):

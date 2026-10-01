@@ -1004,14 +1004,6 @@
             "field": {}
           },
           "fields": {
-            "camps": {
-              "a": true,
-              "h": "Camps",
-              "n": "camps",
-              "r": false,
-              "sh": "An array of camps in the location",
-              "t": "`$ARRAY`"
-            },
             "description": {
               "a": true,
               "h": "Description",
@@ -1050,7 +1042,7 @@
               "h": "Id",
               "n": "id",
               "r": false,
-              "sh": "The ID of the location",
+              "sh": "The ID of the event",
               "t": "`$INTEGER`"
             },
             "location": {
@@ -1065,7 +1057,7 @@
               "h": "Name",
               "n": "name",
               "r": false,
-              "sh": "The name of the location",
+              "sh": "The name of the event",
               "t": "`$STRING`"
             },
             "platform": {
@@ -1116,14 +1108,6 @@
               "r": false,
               "sh": "The type of event",
               "t": "`$STRING`"
-            },
-            "zoneCount": {
-              "a": true,
-              "h": "Zone Count",
-              "n": "zoneCount",
-              "r": false,
-              "sh": "The number of zones in the location",
-              "t": "`$INTEGER`"
             }
           },
           "id": {
@@ -1238,7 +1222,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body.location`"
+                    "res": "`body`"
                   }
                 }
               ]
@@ -3413,7 +3397,12 @@
         },
         "base": "http://localhost:8000",
         "clean": {
-          "keys": "key,token,id"
+          "active": true,
+          "hint": "0",
+          "keys": "key,secret,token,password,passwd,authorization,cookie,credential,signature",
+          "mask": "[redacted]",
+          "min": "4",
+          "values": ""
         },
         "entity": {
           "`$CHILD`": {

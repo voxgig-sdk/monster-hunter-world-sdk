@@ -464,21 +464,19 @@ $event = $client->Event();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `camps` | `array` | No | An array of camps in the location |
 | `description` | `string` | No | A description of the event |
 | `endTimestamp` | `string` | No | The end time of the event |
 | `exclusive` | `string` | No | Whether the event is exclusive to a platform |
 | `expansion` | `string` | No | The expansion the event belongs to |
-| `id` | `int` | No | The ID of the location |
+| `id` | `int` | No | The ID of the event |
 | `location` | `array` | No |  |
-| `name` | `string` | No | The name of the location |
+| `name` | `string` | No | The name of the event |
 | `platform` | `string` | No | The platform for the event |
 | `questRank` | `string` | No | The quest rank of the event |
 | `requirements` | `string` | No | Requirements for the event |
 | `startTimestamp` | `string` | No | The start time of the event |
 | `successConditions` | `string` | No | Conditions for success |
 | `type` | `string` | No | The type of event |
-| `zoneCount` | `int` | No | The number of zones in the location |
 
 ### Operations
 

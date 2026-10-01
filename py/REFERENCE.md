@@ -464,21 +464,19 @@ event = client.Event()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `camps` | `list` | No | An array of camps in the location |
 | `description` | `str` | No | A description of the event |
 | `endTimestamp` | `str` | No | The end time of the event |
 | `exclusive` | `str` | No | Whether the event is exclusive to a platform |
 | `expansion` | `str` | No | The expansion the event belongs to |
-| `id` | `int` | No | The ID of the location |
+| `id` | `int` | No | The ID of the event |
 | `location` | `dict` | No |  |
-| `name` | `str` | No | The name of the location |
+| `name` | `str` | No | The name of the event |
 | `platform` | `str` | No | The platform for the event |
 | `questRank` | `str` | No | The quest rank of the event |
 | `requirements` | `str` | No | Requirements for the event |
 | `startTimestamp` | `str` | No | The start time of the event |
 | `successConditions` | `str` | No | Conditions for success |
 | `type` | `str` | No | The type of event |
-| `zoneCount` | `int` | No | The number of zones in the location |
 
 ### Operations
 

@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 MonsterHunterWorldUtility::setRegistrar(function (MonsterHunterWorldUtility $u): void {
     $u->clean = [MonsterHunterWorldClean::class, 'call'];
+    $u->clean_add = [MonsterHunterWorldClean::class, 'add'];
+    $u->clean_explain = [MonsterHunterWorldDone::class, 'clean_explain'];
     $u->done = [MonsterHunterWorldDone::class, 'call'];
     $u->make_error = [MonsterHunterWorldMakeError::class, 'call'];
     $u->feature_add = [MonsterHunterWorldFeatureAdd::class, 'call'];

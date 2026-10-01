@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 MonsterHunterWorldUtility.registrar = ->(u) {
   u.clean = MonsterHunterWorldUtilities::Clean
+  u.clean_add = MonsterHunterWorldUtilities::CleanAdd
+  u.clean_explain = MonsterHunterWorldUtilities::CleanExplain
   u.done = MonsterHunterWorldUtilities::Done
   u.make_error = MonsterHunterWorldUtilities::MakeError
   u.feature_add = MonsterHunterWorldUtilities::FeatureAdd

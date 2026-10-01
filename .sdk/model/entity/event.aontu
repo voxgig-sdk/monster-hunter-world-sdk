@@ -5,13 +5,6 @@ main: kit: entity: event: {
   alias: field: {}
 
   fields: {
-    camps: {
-      h: "Camps"
-      n: "camps"
-      r: false
-      sh: "An array of camps in the location"
-      t: "`$ARRAY`"
-    }
     description: {
       h: "Description"
       n: "description"
@@ -45,7 +38,7 @@ main: kit: entity: event: {
       h: "Id"
       n: "id"
       r: false
-      sh: "The ID of the location"
+      sh: "The ID of the event"
       t: "`$INTEGER`"
     }
     location: {
@@ -58,7 +51,7 @@ main: kit: entity: event: {
       h: "Name"
       n: "name"
       r: false
-      sh: "The name of the location"
+      sh: "The name of the event"
       t: "`$STRING`"
     }
     platform: {
@@ -103,13 +96,6 @@ main: kit: entity: event: {
       r: false
       sh: "The type of event"
       t: "`$STRING`"
-    }
-    zoneCount: {
-      h: "Zone Count"
-      n: "zoneCount"
-      r: false
-      sh: "The number of zones in the location"
-      t: "`$INTEGER`"
     }
   }
 
@@ -214,7 +200,7 @@ main: kit: entity: event: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.location`"
+            res: "`body`"
           }
         }
       ]

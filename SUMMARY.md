@@ -87,11 +87,11 @@ SDK operations: `list`, `load`.
 
 Key fields to recognise:
 
-- `camps`: An array of camps in the location
 - `description`: A description of the event
 - `endTimestamp`: The end time of the event
 - `exclusive`: Whether the event is exclusive to a platform
 - `expansion`: The expansion the event belongs to
+- `id`: The ID of the event
 
 ### Item
 

@@ -297,9 +297,6 @@ DecorationListMatch = Struct.new(
 
 # Event entity data model.
 #
-# @!attribute [rw] camps
-#   @return [Array, nil]
-#
 # @!attribute [rw] description
 #   @return [String, nil]
 #
@@ -338,11 +335,7 @@ DecorationListMatch = Struct.new(
 #
 # @!attribute [rw] type
 #   @return [String, nil]
-#
-# @!attribute [rw] zoneCount
-#   @return [Integer, nil]
 Event = Struct.new(
-  :camps,
   :description,
   :endTimestamp,
   :exclusive,
@@ -356,7 +349,6 @@ Event = Struct.new(
   :startTimestamp,
   :successConditions,
   :type,
-  :zoneCount,
   keyword_init: true
 )
 

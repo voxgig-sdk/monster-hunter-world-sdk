@@ -104,7 +104,6 @@ export interface DecorationListMatch {
 }
 
 export interface Event {
-  camps?: any[]
   description?: string
   endTimestamp?: string
   exclusive?: string
@@ -118,7 +117,6 @@ export interface Event {
   startTimestamp?: string
   successConditions?: string
   type?: string
-  zoneCount?: number
 }
 
 export interface EventLoadMatch {

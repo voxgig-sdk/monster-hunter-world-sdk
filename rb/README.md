@@ -12,9 +12,18 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`):
+GitHub release tag (`rb/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/monster-hunter-world-sdk/releases)), or
+from a clone:
 
-- Releases: [https://github.com/voxgig-sdk/monster-hunter-world-sdk/releases](https://github.com/voxgig-sdk/monster-hunter-world-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/monster-hunter-world-sdk
+```
+
+Then add it to your `Gemfile` by path, and run `bundle install`:
+
+```ruby
+gem "voxgig-sdk-monster-hunter-world-sdk", path: "./monster-hunter-world-sdk/rb"
+```
 
 
 ## Tutorial: your first API call
@@ -342,21 +351,19 @@ API path: `/decorations`
 
 | Field | Description |
 | --- | --- |
-| `camps` | An array of camps in the location |
 | `description` | A description of the event |
 | `endTimestamp` | The end time of the event |
 | `exclusive` | Whether the event is exclusive to a platform |
 | `expansion` | The expansion the event belongs to |
-| `id` | The ID of the location |
+| `id` | The ID of the event |
 | `location` |  |
-| `name` | The name of the location |
+| `name` | The name of the event |
 | `platform` | The platform for the event |
 | `questRank` | The quest rank of the event |
 | `requirements` | Requirements for the event |
 | `startTimestamp` | The start time of the event |
 | `successConditions` | Conditions for success |
 | `type` | The type of event |
-| `zoneCount` | The number of zones in the location |
 
 Operations: List, Load.
 
@@ -668,21 +675,19 @@ Create an instance: `event = client.Event`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `camps` | `Array` | An array of camps in the location |
 | `description` | `String` | A description of the event |
 | `endTimestamp` | `String` | The end time of the event |
 | `exclusive` | `String` | Whether the event is exclusive to a platform |
 | `expansion` | `String` | The expansion the event belongs to |
-| `id` | `Integer` | The ID of the location |
+| `id` | `Integer` | The ID of the event |
 | `location` | `Hash` |  |
-| `name` | `String` | The name of the location |
+| `name` | `String` | The name of the event |
 | `platform` | `String` | The platform for the event |
 | `questRank` | `String` | The quest rank of the event |
 | `requirements` | `String` | Requirements for the event |
 | `startTimestamp` | `String` | The start time of the event |
 | `successConditions` | `String` | Conditions for success |
 | `type` | `String` | The type of event |
-| `zoneCount` | `Integer` | The number of zones in the location |
 
 #### Example: Load
 

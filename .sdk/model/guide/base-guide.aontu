@@ -59,7 +59,6 @@ guide: {
     }
     path: "/events/{id}": {
       op: load: method: *GET
-      op: load: transform: res: *("`body.location`")|top
     }
   }
 

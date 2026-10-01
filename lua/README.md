@@ -330,21 +330,19 @@ API path: `/decorations`
 
 | Field | Description |
 | --- | --- |
-| `camps` | An array of camps in the location |
 | `description` | A description of the event |
 | `endTimestamp` | The end time of the event |
 | `exclusive` | Whether the event is exclusive to a platform |
 | `expansion` | The expansion the event belongs to |
-| `id` | The ID of the location |
+| `id` | The ID of the event |
 | `location` |  |
-| `name` | The name of the location |
+| `name` | The name of the event |
 | `platform` | The platform for the event |
 | `questRank` | The quest rank of the event |
 | `requirements` | Requirements for the event |
 | `startTimestamp` | The start time of the event |
 | `successConditions` | Conditions for success |
 | `type` | The type of event |
-| `zoneCount` | The number of zones in the location |
 
 Operations: List, Load.
 
@@ -646,21 +644,19 @@ Create an instance: `local event = client:Event(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `camps` | `table` | An array of camps in the location |
 | `description` | `string` | A description of the event |
 | `endTimestamp` | `string` | The end time of the event |
 | `exclusive` | `string` | Whether the event is exclusive to a platform |
 | `expansion` | `string` | The expansion the event belongs to |
-| `id` | `number` | The ID of the location |
+| `id` | `number` | The ID of the event |
 | `location` | `table` |  |
-| `name` | `string` | The name of the location |
+| `name` | `string` | The name of the event |
 | `platform` | `string` | The platform for the event |
 | `questRank` | `string` | The quest rank of the event |
 | `requirements` | `string` | Requirements for the event |
 | `startTimestamp` | `string` | The start time of the event |
 | `successConditions` | `string` | Conditions for success |
 | `type` | `string` | The type of event |
-| `zoneCount` | `number` | The number of zones in the location |
 
 #### Example: Load
 

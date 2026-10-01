@@ -143,7 +143,6 @@ class DecorationListMatch
 /** Event entity data model. */
 class Event
 {
-    public ?array $camps = null;
     public ?string $description = null;
     public ?string $endTimestamp = null;
     public ?string $exclusive = null;
@@ -157,7 +156,6 @@ class Event
     public ?string $startTimestamp = null;
     public ?string $successConditions = null;
     public ?string $type = null;
-    public ?int $zoneCount = null;
 }
 
 /** Request payload for Event#load. */
