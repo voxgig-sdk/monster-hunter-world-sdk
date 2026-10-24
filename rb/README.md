@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/monster-hunter-world-sdk/releases)), or
+GitHub release tag (`rb/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/monster-hunter-world-sdk/tags)), or
 from a clone:
 
 ```bash
@@ -43,10 +43,11 @@ client = MonsterHunterWorldSDK.new
 
 ```ruby
 begin
-  # list returns an Array of Ailment records — iterate directly.
+  # list returns an Array of Ailment entities, one per record; data_get reads the record.
   ailments = client.Ailment.list
   ailments.each do |item|
-    puts "#{item["id"]} #{item["description"]}"
+    record = item.data_get
+    puts "#{record["id"]} #{record["description"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -59,7 +60,7 @@ end
 begin
   # load returns the ENTITY — call data_get for the Ailment record (raises on error).
   ailment = client.Ailment.load({ "id" => 1 })
-  puts ailment
+  puts ailment.data_get
 rescue => err
   warn "load failed: #{err}"
 end
@@ -143,10 +144,10 @@ client = MonsterHunterWorldSDK.test({
   "entity" => { "ailment" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the ENTITY (raises on error);
-# call data_get for the mock record.
-ailment = client.Ailment.list()
-puts ailment
+# list returns an Array of Ailment entities, one per mock record (raises on
+# error); data_get reads each record.
+ailments = client.Ailment.list()
+ailments.each { |item| puts item.data_get }
 ```
 
 ### Use a custom fetch function
@@ -241,8 +242,8 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
-| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all). Raises on error. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria, and return it. Raises on error. |
+| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all), one per record. Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -252,9 +253,10 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the result data directly. On failure they
-raise a `MonsterHunterWorldError` (a `StandardError` subclass), so wrap
-calls in `begin`/`rescue` where you need to handle errors.
+Entity operations return the entity, and `list` an `Array` of entities, one
+per record; an entity's `data_get` reads its record. On failure they raise a
+`MonsterHunterWorldError` (a `StandardError` subclass), so wrap calls in
+`begin`/`rescue` where you need to handle errors.
 
 The `direct` escape hatch is the exception: it never raises and instead
 returns a result `Hash` with these keys:
@@ -503,8 +505,9 @@ ailment = client.Ailment.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Ailment records (raises on error).
+# list returns an Array of Ailment entities, one per record (raises on error).
 ailments = client.Ailment.list
+ailments.each { |item| puts item.data_get }
 ```
 
 
@@ -547,8 +550,9 @@ armor = client.Armor.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Armor records (raises on error).
+# list returns an Array of Armor entities, one per record (raises on error).
 armors = client.Armor.list
+armors.each { |item| puts item.data_get }
 ```
 
 
@@ -583,8 +587,9 @@ armor_set = client.ArmorSet.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of ArmorSet records (raises on error).
+# list returns an Array of ArmorSet entities, one per record (raises on error).
 armor_sets = client.ArmorSet.list
+armor_sets.each { |item| puts item.data_get }
 ```
 
 
@@ -619,8 +624,9 @@ charm = client.Charm.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Charm records (raises on error).
+# list returns an Array of Charm entities, one per record (raises on error).
 charms = client.Charm.list
+charms.each { |item| puts item.data_get }
 ```
 
 
@@ -655,8 +661,9 @@ decoration = client.Decoration.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Decoration records (raises on error).
+# list returns an Array of Decoration entities, one per record (raises on error).
 decorations = client.Decoration.list
+decorations.each { |item| puts item.data_get }
 ```
 
 
@@ -699,8 +706,9 @@ event = client.Event.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Event records (raises on error).
+# list returns an Array of Event entities, one per record (raises on error).
 events = client.Event.list
+events.each { |item| puts item.data_get }
 ```
 
 
@@ -738,8 +746,9 @@ item = client.Item.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Item records (raises on error).
+# list returns an Array of Item entities, one per record (raises on error).
 items = client.Item.list
+items.each { |item| puts item.data_get }
 ```
 
 
@@ -773,8 +782,9 @@ location = client.Location.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Location records (raises on error).
+# list returns an Array of Location entities, one per record (raises on error).
 locations = client.Location.list
+locations.each { |item| puts item.data_get }
 ```
 
 
@@ -815,8 +825,9 @@ monster = client.Monster.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Monster records (raises on error).
+# list returns an Array of Monster entities, one per record (raises on error).
 monsters = client.Monster.list
+monsters.each { |item| puts item.data_get }
 ```
 
 
@@ -852,8 +863,9 @@ motion_value = client.MotionValue.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of MotionValue records (raises on error).
+# list returns an Array of MotionValue entities, one per record (raises on error).
 motion_values = client.MotionValue.list
+motion_values.each { |item| puts item.data_get }
 ```
 
 
@@ -887,8 +899,9 @@ skill = client.Skill.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Skill records (raises on error).
+# list returns an Array of Skill entities, one per record (raises on error).
 skills = client.Skill.list
+skills.each { |item| puts item.data_get }
 ```
 
 
@@ -929,8 +942,9 @@ weapon = client.Weapon.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Weapon records (raises on error).
+# list returns an Array of Weapon entities, one per record (raises on error).
 weapons = client.Weapon.list
+weapons.each { |item| puts item.data_get }
 ```
 
 ## Features

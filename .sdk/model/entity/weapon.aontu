@@ -120,11 +120,9 @@ main: kit: entity: weapon: {
           }
           m: "GET"
           o: "/weapons"
-          q: {
-            exist: [
-              "p"
-              "q"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -172,8 +170,11 @@ main: kit: entity: weapon: {
           q: {
             exist: [
               "id"
-              "p"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

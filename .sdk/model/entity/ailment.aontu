@@ -76,11 +76,9 @@ main: kit: entity: ailment: {
           }
           m: "GET"
           o: "/ailments"
-          q: {
-            exist: [
-              "p"
-              "q"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -128,8 +126,11 @@ main: kit: entity: ailment: {
           q: {
             exist: [
               "id"
-              "p"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

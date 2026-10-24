@@ -77,11 +77,9 @@ main: kit: entity: charm: {
           }
           m: "GET"
           o: "/charms"
-          q: {
-            exist: [
-              "p"
-              "q"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -129,8 +127,11 @@ main: kit: entity: charm: {
           q: {
             exist: [
               "id"
-              "p"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { MonsterHunterWorldSDK, BaseFeature, stdutil } from '../../..'
+import { MonsterHunterWorldSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('AilmentEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('ailment hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of MonsterHunterWorldSDK.test(offline).Ailment().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of MonsterHunterWorldSDK.test(offline).Ailment()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = MonsterHunterWorldSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.Ailment().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of MonsterHunterWorldSDK.test().Ailment().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new MonsterHunterWorldSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.Ailment().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.Ailment().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = MonsterHunterWorldSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.Ailment().list({"p":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.MONSTER_HUNTER_WORLD_TEST_LIVE
@@ -51,7 +109,7 @@ describe('AilmentEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"description":{"a":true,"h":"Description","n":"description","r":false,"sh":"A short description of the ailment","t":"`$STRING`","key$":"description","index$":0},"id":{"a":true,"h":"Id","n":"id","r":false,"sh":"The ID of the ailment","t":"`$INTEGER`","key$":"id","index$":1},"name":{"a":true,"h":"Name","n":"name","r":false,"sh":"The name of the ailment","t":"`$STRING`","key$":"name","index$":2},"protection":{"a":true,"h":"Protection","n":"protection","r":false,"t":"`$OBJECT`","key$":"protection","index$":3},"recovery":{"a":true,"h":"Recovery","n":"recovery","r":false,"t":"`$OBJECT`","key$":"recovery","index$":4}},"id":{"field":"id","name":"id"},"name":"ailment","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /ailments","source":"openapi3","version":2},"g":{"query":[{"a":true,"k":"query","n":"p","or":"p","r":false,"t":"`$STRING`","index$":0},{"a":true,"k":"query","n":"q","or":"q","r":false,"t":"`$STRING`","index$":1}]},"k":"http","m":"GET","o":"/ailments","q":{"exist":["p","q"]},"r":{},"s":[{"lit":"ailments"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /ailments/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$INTEGER`","index$":0}],"query":[{"a":true,"k":"query","n":"p","or":"p","r":false,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/ailments/{id}","q":{"exist":["id","p"]},"r":{},"s":[{"lit":"ailments"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"ailment","name__orig":"ailment","Name":"Ailment","name_":"ailment","name-":"ailment","NAME":"AILMENT","index$":0}, {"active":true,"entity":"ailment","key$":"BasicAilmentFlow","kind":"basic","name":"BasicAilmentFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"ailment_ref01"}}],"index$":0},{"a":true,"d":{},"i":{"ref":"ailment_ref01","srcdatavar":"ailment_ref01_data","suffix":"_dt0"},"m":{"id":"ailment01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-ailment_ref01"}}],"index$":1}]}, 'Ailment', {"GET /ailments":{"protocol":"http","parameters":[{"name":"p","in":"query","description":"Projection parameter for filtering returned fields","required":false,"schema":{"type":"string"},"index$":0},{"name":"q","in":"query","description":"Query parameter for searching","required":false,"schema":{"type":"string"},"index$":1}]},"GET /ailments/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","description":"The ID of the ailment to retrieve","required":true,"schema":{"type":"integer"},"index$":0},{"name":"p","in":"query","description":"Projection parameter for filtering returned fields","required":false,"schema":{"type":"string"},"index$":1}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"description":{"a":true,"h":"Description","n":"description","r":false,"sh":"A short description of the ailment","t":"`$STRING`","key$":"description","index$":0},"id":{"a":true,"h":"Id","n":"id","r":false,"sh":"The ID of the ailment","t":"`$INTEGER`","key$":"id","index$":1},"name":{"a":true,"h":"Name","n":"name","r":false,"sh":"The name of the ailment","t":"`$STRING`","key$":"name","index$":2},"protection":{"a":true,"h":"Protection","n":"protection","r":false,"t":"`$OBJECT`","key$":"protection","index$":3},"recovery":{"a":true,"h":"Recovery","n":"recovery","r":false,"t":"`$OBJECT`","key$":"recovery","index$":4}},"id":{"field":"id","name":"id"},"name":"ailment","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /ailments","source":"openapi3","version":2},"g":{"query":[{"a":true,"k":"query","n":"p","or":"p","r":false,"t":"`$STRING`","index$":0},{"a":true,"k":"query","n":"q","or":"q","r":false,"t":"`$STRING`","index$":1}]},"k":"http","m":"GET","o":"/ailments","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"ailments"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /ailments/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$INTEGER`","index$":0}],"query":[{"a":true,"k":"query","n":"p","or":"p","r":false,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/ailments/{id}","q":{"exist":["id"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"ailments"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"ailment","name__orig":"ailment","Name":"Ailment","name_":"ailment","name-":"ailment","NAME":"AILMENT","index$":0}, {"active":true,"entity":"ailment","key$":"BasicAilmentFlow","kind":"basic","name":"BasicAilmentFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"ailment_ref01"}}],"index$":0},{"a":true,"d":{},"i":{"ref":"ailment_ref01","srcdatavar":"ailment_ref01_data","suffix":"_dt0"},"m":{"id":"ailment01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-ailment_ref01"}}],"index$":1}]}, 'Ailment', {"GET /ailments":{"protocol":"http","parameters":[{"name":"p","in":"query","description":"Projection parameter for filtering returned fields","required":false,"schema":{"type":"string"},"index$":0},{"name":"q","in":"query","description":"Query parameter for searching","required":false,"schema":{"type":"string"},"index$":1}]},"GET /ailments/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","description":"The ID of the ailment to retrieve","required":true,"schema":{"type":"integer"},"index$":0},{"name":"p","in":"query","description":"Projection parameter for filtering returned fields","required":false,"schema":{"type":"string"},"index$":1}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -79,6 +137,12 @@ describe('AilmentEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

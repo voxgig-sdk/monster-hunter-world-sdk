@@ -20,9 +20,23 @@ const PLAN = [
             "q": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "p",
             "q"
+        ],
+        "queryArgs": [
+            {
+                "name": "p",
+                "wire": "p"
+            },
+            {
+                "name": "q",
+                "wire": "q"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -93,8 +107,18 @@ const PLAN = [
             "p": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "p"
+        ],
+        "queryArgs": [
+            {
+                "name": "p",
+                "wire": "p"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -165,9 +189,23 @@ const PLAN = [
             "q": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "p",
             "q"
+        ],
+        "queryArgs": [
+            {
+                "name": "p",
+                "wire": "p"
+            },
+            {
+                "name": "q",
+                "wire": "q"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -258,8 +296,18 @@ const PLAN = [
             "p": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "p"
+        ],
+        "queryArgs": [
+            {
+                "name": "p",
+                "wire": "p"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -343,9 +391,23 @@ const PLAN = [
             "q": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "p",
             "q"
+        ],
+        "queryArgs": [
+            {
+                "name": "p",
+                "wire": "p"
+            },
+            {
+                "name": "q",
+                "wire": "q"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -446,8 +508,18 @@ const PLAN = [
             "p": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "p"
+        ],
+        "queryArgs": [
+            {
+                "name": "p",
+                "wire": "p"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -548,9 +620,23 @@ const PLAN = [
             "q": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "p",
             "q"
+        ],
+        "queryArgs": [
+            {
+                "name": "p",
+                "wire": "p"
+            },
+            {
+                "name": "q",
+                "wire": "q"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -609,8 +695,18 @@ const PLAN = [
             "p": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "p"
+        ],
+        "queryArgs": [
+            {
+                "name": "p",
+                "wire": "p"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -662,9 +758,23 @@ const PLAN = [
             "q": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "p",
             "q"
+        ],
+        "queryArgs": [
+            {
+                "name": "p",
+                "wire": "p"
+            },
+            {
+                "name": "q",
+                "wire": "q"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -707,8 +817,18 @@ const PLAN = [
             "p": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "p"
+        ],
+        "queryArgs": [
+            {
+                "name": "p",
+                "wire": "p"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -744,9 +864,23 @@ const PLAN = [
             "q": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "p",
             "q"
+        ],
+        "queryArgs": [
+            {
+                "name": "p",
+                "wire": "p"
+            },
+            {
+                "name": "q",
+                "wire": "q"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -797,8 +931,18 @@ const PLAN = [
             "p": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "p"
+        ],
+        "queryArgs": [
+            {
+                "name": "p",
+                "wire": "p"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -842,9 +986,23 @@ const PLAN = [
             "q": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "p",
             "q"
+        ],
+        "queryArgs": [
+            {
+                "name": "p",
+                "wire": "p"
+            },
+            {
+                "name": "q",
+                "wire": "q"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -879,8 +1037,18 @@ const PLAN = [
             "p": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "p"
+        ],
+        "queryArgs": [
+            {
+                "name": "p",
+                "wire": "p"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -908,9 +1076,23 @@ const PLAN = [
             "q": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "p",
             "q"
+        ],
+        "queryArgs": [
+            {
+                "name": "p",
+                "wire": "p"
+            },
+            {
+                "name": "q",
+                "wire": "q"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -947,8 +1129,18 @@ const PLAN = [
             "p": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "p"
+        ],
+        "queryArgs": [
+            {
+                "name": "p",
+                "wire": "p"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -978,9 +1170,23 @@ const PLAN = [
             "q": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "p",
             "q"
+        ],
+        "queryArgs": [
+            {
+                "name": "p",
+                "wire": "p"
+            },
+            {
+                "name": "q",
+                "wire": "q"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -1083,8 +1289,18 @@ const PLAN = [
             "p": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "p"
+        ],
+        "queryArgs": [
+            {
+                "name": "p",
+                "wire": "p"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -1203,9 +1419,23 @@ const PLAN = [
             "q": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "p",
             "q"
+        ],
+        "queryArgs": [
+            {
+                "name": "p",
+                "wire": "p"
+            },
+            {
+                "name": "q",
+                "wire": "q"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -1243,8 +1473,18 @@ const PLAN = [
             "p": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "p"
+        ],
+        "queryArgs": [
+            {
+                "name": "p",
+                "wire": "p"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -1275,9 +1515,23 @@ const PLAN = [
             "q": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "p",
             "q"
+        ],
+        "queryArgs": [
+            {
+                "name": "p",
+                "wire": "p"
+            },
+            {
+                "name": "q",
+                "wire": "q"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -1319,8 +1573,18 @@ const PLAN = [
             "p": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "p"
+        ],
+        "queryArgs": [
+            {
+                "name": "p",
+                "wire": "p"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -1355,9 +1619,23 @@ const PLAN = [
             "q": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "p",
             "q"
+        ],
+        "queryArgs": [
+            {
+                "name": "p",
+                "wire": "p"
+            },
+            {
+                "name": "q",
+                "wire": "q"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -1447,8 +1725,18 @@ const PLAN = [
             "p": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "p"
+        ],
+        "queryArgs": [
+            {
+                "name": "p",
+                "wire": "p"
+            }
         ],
         "auth": null,
         "status": 200,

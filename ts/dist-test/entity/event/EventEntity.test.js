@@ -54,6 +54,53 @@ const utility_1 = require("../../utility");
         const ent = testsdk.Event();
         (0, node_assert_1.default)(null != ent);
     });
+    class FailHook extends __1.BaseFeature {
+        name = 'failhook';
+        version = '0.0.1';
+        active = true;
+        unexpected = 0;
+        init() { }
+        PreSpec() { throw new Error('event hook failed'); }
+        PreUnexpected() { this.unexpected++; }
+    }
+    (0, node_test_1.test)('stream-error', async () => {
+        const offline = { net: { offline: true } };
+        await node_assert_1.default.rejects(async () => {
+            for await (const _item of __1.MonsterHunterWorldSDK.test(offline).Event().stream('list')) { }
+        }, /offline/);
+        for await (const _item of __1.MonsterHunterWorldSDK.test(offline).Event()
+            .stream('list', undefined, { ctrl: { throw: false } })) { }
+        if (null != __1.config.feature?.rbac) {
+            const denied = __1.MonsterHunterWorldSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } });
+            await node_assert_1.default.rejects(async () => {
+                for await (const _item of denied.Event().stream('list')) { }
+            }, (err) => 'rbac_denied' === err.code);
+        }
+    });
+    (0, node_test_1.test)('stream-ctrl', async () => {
+        const explain = {};
+        const ctrl = { explain };
+        for await (const _item of __1.MonsterHunterWorldSDK.test().Event().stream('list', undefined, { ctrl })) { }
+        node_assert_1.default.deepStrictEqual(Object.keys(ctrl), ['explain']);
+        (0, node_assert_1.default)(explain === ctrl.explain && 0 < Object.keys(explain).length);
+    });
+    (0, node_test_1.test)('unexpected', async () => {
+        const hook = new FailHook();
+        const client = new __1.MonsterHunterWorldSDK({ feature: { test: { active: true } }, extend: [hook] });
+        await node_assert_1.default.rejects(client.Event().list(), /hook failed/);
+        (0, node_assert_1.default)(0 < hook.unexpected);
+        const fired = hook.unexpected;
+        node_assert_1.default.strictEqual(await client.Event().list(undefined, { throw: false }), undefined);
+        (0, node_assert_1.default)(fired < hook.unexpected);
+    });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.MonsterHunterWorldSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.Event().list({ "p": 1 }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.MONSTER_HUNTER_WORLD_TEST_LIVE;
         for (const op of ['list', 'load']) {
@@ -62,7 +109,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "description": { "a": true, "h": "Description", "n": "description", "r": false, "sh": "A description of the event", "t": "`$STRING`", "key$": "description", "index$": 0 }, "endTimestamp": { "a": true, "fo": "date-time", "h": "End Timestamp", "n": "endTimestamp", "r": false, "sh": "The end time of the event", "t": "`$STRING`", "key$": "endTimestamp", "index$": 1 }, "exclusive": { "a": true, "h": "Exclusive", "n": "exclusive", "r": false, "sh": "Whether the event is exclusive to a platform", "t": "`$STRING`", "key$": "exclusive", "index$": 2 }, "expansion": { "a": true, "h": "Expansion", "n": "expansion", "r": false, "sh": "The expansion the event belongs to", "t": "`$STRING`", "key$": "expansion", "index$": 3 }, "id": { "a": true, "h": "Id", "n": "id", "r": false, "sh": "The ID of the event", "t": "`$INTEGER`", "key$": "id", "index$": 4 }, "location": { "a": true, "h": "Location", "n": "location", "r": false, "t": "`$OBJECT`", "key$": "location", "index$": 5 }, "name": { "a": true, "h": "Name", "n": "name", "r": false, "sh": "The name of the event", "t": "`$STRING`", "key$": "name", "index$": 6 }, "platform": { "a": true, "h": "Platform", "n": "platform", "r": false, "sh": "The platform for the event", "t": "`$STRING`", "key$": "platform", "index$": 7 }, "questRank": { "a": true, "h": "Quest Rank", "n": "questRank", "r": false, "sh": "The quest rank of the event", "t": "`$STRING`", "key$": "questRank", "index$": 8 }, "requirements": { "a": true, "h": "Requirements", "n": "requirements", "r": false, "sh": "Requirements for the event", "t": "`$STRING`", "key$": "requirements", "index$": 9 }, "startTimestamp": { "a": true, "fo": "date-time", "h": "Start Timestamp", "n": "startTimestamp", "r": false, "sh": "The start time of the event", "t": "`$STRING`", "key$": "startTimestamp", "index$": 10 }, "successConditions": { "a": true, "h": "Success Conditions", "n": "successConditions", "r": false, "sh": "Conditions for success", "t": "`$STRING`", "key$": "successConditions", "index$": 11 }, "type": { "a": true, "h": "Type", "n": "type", "r": false, "sh": "The type of event", "t": "`$STRING`", "key$": "type", "index$": 12 } }, "id": { "field": "id", "name": "id" }, "name": "event", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /events", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "k": "query", "n": "p", "or": "p", "r": false, "t": "`$STRING`", "index$": 0 }, { "a": true, "k": "query", "n": "q", "or": "q", "r": false, "t": "`$STRING`", "index$": 1 }] }, "k": "http", "m": "GET", "o": "/events", "q": { "exist": ["p", "q"] }, "r": {}, "s": [{ "lit": "events" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /events/{id}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "id", "or": "id", "r": true, "t": "`$INTEGER`", "index$": 0 }], "query": [{ "a": true, "k": "query", "n": "p", "or": "p", "r": false, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/events/{id}", "q": { "exist": ["id", "p"] }, "r": {}, "s": [{ "lit": "events" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "event", "name__orig": "event", "Name": "Event", "name_": "event", "name-": "event", "NAME": "EVENT", "index$": 5 }, { "active": true, "entity": "event", "key$": "BasicEventFlow", "kind": "basic", "name": "BasicEventFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "event_ref01" } }], "index$": 0 }, { "a": true, "d": {}, "i": { "ref": "event_ref01", "srcdatavar": "event_ref01_data", "suffix": "_dt0" }, "m": { "id": "event01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-event_ref01" } }], "index$": 1 }] }, 'Event', { "GET /events": { "protocol": "http", "parameters": [{ "name": "p", "in": "query", "description": "Projection parameter for filtering returned fields", "required": false, "schema": { "type": "string" }, "index$": 0 }, { "name": "q", "in": "query", "description": "Query parameter for searching", "required": false, "schema": { "type": "string" }, "index$": 1 }] }, "GET /events/{id}": { "protocol": "http", "parameters": [{ "name": "id", "in": "path", "description": "The ID of the event to retrieve", "required": true, "schema": { "type": "integer" }, "index$": 0 }, { "name": "p", "in": "query", "description": "Projection parameter for filtering returned fields", "required": false, "schema": { "type": "string" }, "index$": 1 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "description": { "a": true, "h": "Description", "n": "description", "r": false, "sh": "A description of the event", "t": "`$STRING`", "key$": "description", "index$": 0 }, "endTimestamp": { "a": true, "fo": "date-time", "h": "End Timestamp", "n": "endTimestamp", "r": false, "sh": "The end time of the event", "t": "`$STRING`", "key$": "endTimestamp", "index$": 1 }, "exclusive": { "a": true, "h": "Exclusive", "n": "exclusive", "r": false, "sh": "Whether the event is exclusive to a platform", "t": "`$STRING`", "key$": "exclusive", "index$": 2 }, "expansion": { "a": true, "h": "Expansion", "n": "expansion", "r": false, "sh": "The expansion the event belongs to", "t": "`$STRING`", "key$": "expansion", "index$": 3 }, "id": { "a": true, "h": "Id", "n": "id", "r": false, "sh": "The ID of the event", "t": "`$INTEGER`", "key$": "id", "index$": 4 }, "location": { "a": true, "h": "Location", "n": "location", "r": false, "t": "`$OBJECT`", "key$": "location", "index$": 5 }, "name": { "a": true, "h": "Name", "n": "name", "r": false, "sh": "The name of the event", "t": "`$STRING`", "key$": "name", "index$": 6 }, "platform": { "a": true, "h": "Platform", "n": "platform", "r": false, "sh": "The platform for the event", "t": "`$STRING`", "key$": "platform", "index$": 7 }, "questRank": { "a": true, "h": "Quest Rank", "n": "questRank", "r": false, "sh": "The quest rank of the event", "t": "`$STRING`", "key$": "questRank", "index$": 8 }, "requirements": { "a": true, "h": "Requirements", "n": "requirements", "r": false, "sh": "Requirements for the event", "t": "`$STRING`", "key$": "requirements", "index$": 9 }, "startTimestamp": { "a": true, "fo": "date-time", "h": "Start Timestamp", "n": "startTimestamp", "r": false, "sh": "The start time of the event", "t": "`$STRING`", "key$": "startTimestamp", "index$": 10 }, "successConditions": { "a": true, "h": "Success Conditions", "n": "successConditions", "r": false, "sh": "Conditions for success", "t": "`$STRING`", "key$": "successConditions", "index$": 11 }, "type": { "a": true, "h": "Type", "n": "type", "r": false, "sh": "The type of event", "t": "`$STRING`", "key$": "type", "index$": 12 } }, "id": { "field": "id", "name": "id" }, "name": "event", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /events", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "k": "query", "n": "p", "or": "p", "r": false, "t": "`$STRING`", "index$": 0 }, { "a": true, "k": "query", "n": "q", "or": "q", "r": false, "t": "`$STRING`", "index$": 1 }] }, "k": "http", "m": "GET", "o": "/events", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "events" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /events/{id}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "id", "or": "id", "r": true, "t": "`$INTEGER`", "index$": 0 }], "query": [{ "a": true, "k": "query", "n": "p", "or": "p", "r": false, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/events/{id}", "q": { "exist": ["id"] }, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "events" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "event", "name__orig": "event", "Name": "Event", "name_": "event", "name-": "event", "NAME": "EVENT", "index$": 5 }, { "active": true, "entity": "event", "key$": "BasicEventFlow", "kind": "basic", "name": "BasicEventFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "event_ref01" } }], "index$": 0 }, { "a": true, "d": {}, "i": { "ref": "event_ref01", "srcdatavar": "event_ref01_data", "suffix": "_dt0" }, "m": { "id": "event01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-event_ref01" } }], "index$": 1 }] }, 'Event', { "GET /events": { "protocol": "http", "parameters": [{ "name": "p", "in": "query", "description": "Projection parameter for filtering returned fields", "required": false, "schema": { "type": "string" }, "index$": 0 }, { "name": "q", "in": "query", "description": "Query parameter for searching", "required": false, "schema": { "type": "string" }, "index$": 1 }] }, "GET /events/{id}": { "protocol": "http", "parameters": [{ "name": "id", "in": "path", "description": "The ID of the event to retrieve", "required": true, "schema": { "type": "integer" }, "index$": 0 }, { "name": "p", "in": "query", "description": "Projection parameter for filtering returned fields", "required": false, "schema": { "type": "string" }, "index$": 1 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -80,6 +127,11 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)(event_ref01_data_dt0.id === event_ref01_data.id);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

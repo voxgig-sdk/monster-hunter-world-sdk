@@ -85,11 +85,9 @@ main: kit: entity: motion_value: {
           }
           m: "GET"
           o: "/motion-values"
-          q: {
-            exist: [
-              "p"
-              "q"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -137,8 +135,11 @@ main: kit: entity: motion_value: {
           q: {
             exist: [
               "id"
-              "p"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

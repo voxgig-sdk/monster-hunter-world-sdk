@@ -71,11 +71,9 @@ main: kit: entity: skill: {
           }
           m: "GET"
           o: "/skills"
-          q: {
-            exist: [
-              "p"
-              "q"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -123,8 +121,11 @@ main: kit: entity: skill: {
           q: {
             exist: [
               "id"
-              "p"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

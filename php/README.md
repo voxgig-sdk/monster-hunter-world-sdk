@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `$
 
 ## Install
 This package is not yet published to Packagist. Install it from the
-GitHub release tag (`php/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/monster-hunter-world-sdk/releases)), or
+GitHub release tag (`php/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/monster-hunter-world-sdk/tags)), or
 from a clone as a Composer path repository:
 
 ```bash
@@ -247,8 +247,8 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `($reqmatch, $ctrl): array` | Load a single entity by match criteria. |
-| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
+| `load` | `($reqmatch, $ctrl): mixed` | Load a single entity by match criteria, and return it. |
+| `list` | `(?array $reqmatch = null, $ctrl): mixed` | List entities matching the criteria (call with no argument to list all), one per record. |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -258,9 +258,9 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
-ops, a `list` for `list`) and throw on error. Wrap calls in
-`try`/`catch` to handle failures.
+Entity operations return the entity, and `list` an `array` of entities, one
+per record; an entity's `data_get()` reads its record (an `array`). They
+throw on error, so wrap calls in `try`/`catch` to handle failures.
 
 The `direct()` escape hatch never throws — it returns a result `array`
 you branch on via `$result["ok"]`:
@@ -510,7 +510,7 @@ $ailment = $client->Ailment()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Ailment records (throws on error).
+// list() returns an array of Ailment entities, one per record (throws on error).
 $ailments = $client->Ailment()->list();
 ```
 
@@ -554,7 +554,7 @@ $armor = $client->Armor()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Armor records (throws on error).
+// list() returns an array of Armor entities, one per record (throws on error).
 $armors = $client->Armor()->list();
 ```
 
@@ -590,7 +590,7 @@ $armor_set = $client->ArmorSet()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of ArmorSet records (throws on error).
+// list() returns an array of ArmorSet entities, one per record (throws on error).
 $armor_sets = $client->ArmorSet()->list();
 ```
 
@@ -626,7 +626,7 @@ $charm = $client->Charm()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Charm records (throws on error).
+// list() returns an array of Charm entities, one per record (throws on error).
 $charms = $client->Charm()->list();
 ```
 
@@ -662,7 +662,7 @@ $decoration = $client->Decoration()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Decoration records (throws on error).
+// list() returns an array of Decoration entities, one per record (throws on error).
 $decorations = $client->Decoration()->list();
 ```
 
@@ -706,7 +706,7 @@ $event = $client->Event()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Event records (throws on error).
+// list() returns an array of Event entities, one per record (throws on error).
 $events = $client->Event()->list();
 ```
 
@@ -745,7 +745,7 @@ $item = $client->Item()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Item records (throws on error).
+// list() returns an array of Item entities, one per record (throws on error).
 $items = $client->Item()->list();
 ```
 
@@ -780,7 +780,7 @@ $location = $client->Location()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Location records (throws on error).
+// list() returns an array of Location entities, one per record (throws on error).
 $locations = $client->Location()->list();
 ```
 
@@ -822,7 +822,7 @@ $monster = $client->Monster()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Monster records (throws on error).
+// list() returns an array of Monster entities, one per record (throws on error).
 $monsters = $client->Monster()->list();
 ```
 
@@ -859,7 +859,7 @@ $motion_value = $client->MotionValue()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of MotionValue records (throws on error).
+// list() returns an array of MotionValue entities, one per record (throws on error).
 $motion_values = $client->MotionValue()->list();
 ```
 
@@ -894,7 +894,7 @@ $skill = $client->Skill()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Skill records (throws on error).
+// list() returns an array of Skill entities, one per record (throws on error).
 $skills = $client->Skill()->list();
 ```
 
@@ -936,7 +936,7 @@ $weapon = $client->Weapon()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Weapon records (throws on error).
+// list() returns an array of Weapon entities, one per record (throws on error).
 $weapons = $client->Weapon()->list();
 ```
 

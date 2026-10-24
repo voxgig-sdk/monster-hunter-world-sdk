@@ -176,13 +176,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/ailments",
-                  "q": {
-                    "exist": [
-                      "p",
-                      "q"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "ailments"
@@ -233,11 +232,14 @@
                   "o": "/ailments/{id}",
                   "q": {
                     "exist": [
-                      "id",
-                      "p"
+                      "id"
                     ]
                   },
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "ailments"
@@ -404,13 +406,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/armor",
-                  "q": {
-                    "exist": [
-                      "p",
-                      "q"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "armor"
@@ -461,11 +462,14 @@
                   "o": "/armor/{id}",
                   "q": {
                     "exist": [
-                      "id",
-                      "p"
+                      "id"
                     ]
                   },
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "armor"
@@ -573,13 +577,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/armor/sets",
-                  "q": {
-                    "exist": [
-                      "p",
-                      "q"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "armor"
@@ -633,11 +636,14 @@
                   "o": "/armor/sets/{id}",
                   "q": {
                     "exist": [
-                      "id",
-                      "p"
+                      "id"
                     ]
                   },
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "armor"
@@ -747,13 +753,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/charms",
-                  "q": {
-                    "exist": [
-                      "p",
-                      "q"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "charms"
@@ -804,11 +809,14 @@
                   "o": "/charms/{id}",
                   "q": {
                     "exist": [
-                      "id",
-                      "p"
+                      "id"
                     ]
                   },
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "charms"
@@ -916,13 +924,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/decorations",
-                  "q": {
-                    "exist": [
-                      "p",
-                      "q"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "decorations"
@@ -973,11 +980,14 @@
                   "o": "/decorations/{id}",
                   "q": {
                     "exist": [
-                      "id",
-                      "p"
+                      "id"
                     ]
                   },
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "decorations"
@@ -1150,13 +1160,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/events",
-                  "q": {
-                    "exist": [
-                      "p",
-                      "q"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "events"
@@ -1207,11 +1216,14 @@
                   "o": "/events/{id}",
                   "q": {
                     "exist": [
-                      "id",
-                      "p"
+                      "id"
                     ]
                   },
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "events"
@@ -1343,13 +1355,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/items",
-                  "q": {
-                    "exist": [
-                      "p",
-                      "q"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "items"
@@ -1400,11 +1411,14 @@
                   "o": "/items/{id}",
                   "q": {
                     "exist": [
-                      "id",
-                      "p"
+                      "id"
                     ]
                   },
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "items"
@@ -1504,13 +1518,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/locations",
-                  "q": {
-                    "exist": [
-                      "p",
-                      "q"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "locations"
@@ -1561,11 +1574,14 @@
                   "o": "/locations/{id}",
                   "q": {
                     "exist": [
-                      "id",
-                      "p"
+                      "id"
                     ]
                   },
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "locations"
@@ -1721,13 +1737,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/monsters",
-                  "q": {
-                    "exist": [
-                      "p",
-                      "q"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "monsters"
@@ -1778,11 +1793,14 @@
                   "o": "/monsters/{id}",
                   "q": {
                     "exist": [
-                      "id",
-                      "p"
+                      "id"
                     ]
                   },
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "monsters"
@@ -1898,13 +1916,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/motion-values",
-                  "q": {
-                    "exist": [
-                      "p",
-                      "q"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "motion-values"
@@ -1955,11 +1972,14 @@
                   "o": "/motion-values/{id}",
                   "q": {
                     "exist": [
-                      "id",
-                      "p"
+                      "id"
                     ]
                   },
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "motion-values"
@@ -2059,13 +2079,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/skills",
-                  "q": {
-                    "exist": [
-                      "p",
-                      "q"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "skills"
@@ -2116,11 +2135,14 @@
                   "o": "/skills/{id}",
                   "q": {
                     "exist": [
-                      "id",
-                      "p"
+                      "id"
                     ]
                   },
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "skills"
@@ -2276,13 +2298,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/weapons",
-                  "q": {
-                    "exist": [
-                      "p",
-                      "q"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "weapons"
@@ -2333,11 +2354,14 @@
                   "o": "/weapons/{id}",
                   "q": {
                     "exist": [
-                      "id",
-                      "p"
+                      "id"
                     ]
                   },
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "weapons"
@@ -2681,6 +2705,7 @@
             },
             "optspec": {
               "clearTimer": "`$FUNCTION`",
+              "now": "`$FUNCTION`",
               "setTimer": "`$FUNCTION`"
             },
             "strict": false
@@ -3386,7 +3411,7 @@
       "optspec": {
         "allow": {
           "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
-          "op": "create,update,load,list,remove,command,direct,graphql"
+          "op": "create,update,patch,load,list,remove,command,direct,graphql"
         },
         "apikey": "",
         "auth": {
@@ -3439,6 +3464,11 @@
         "top": {
           "active": true
         }
+      },
+      "publisher": {
+        "name": "",
+        "security": "",
+        "url": ""
       },
       "repo": {
         "host": "github.com",
@@ -3669,7 +3699,10 @@
             "version": "0.0.1"
           },
           "superseded": [],
-          "title": "Go MCP server"
+          "title": "Go MCP server",
+          "tool": {
+            "write": false
+          }
         },
         "lua": {
           "active": true,
@@ -4046,6 +4079,17 @@
           "base": "",
           "strict": true
         }
+      },
+      "text": {
+        "about_md": "",
+        "docs_url": "",
+        "entity_desc": {},
+        "homepage": "",
+        "meta_source": "",
+        "summary": "",
+        "tagline": "",
+        "title": "",
+        "website": ""
       }
     }
   },

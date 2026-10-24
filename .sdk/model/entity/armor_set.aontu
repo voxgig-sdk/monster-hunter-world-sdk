@@ -78,11 +78,9 @@ main: kit: entity: armor_set: {
           }
           m: "GET"
           o: "/armor/sets"
-          q: {
-            exist: [
-              "p"
-              "q"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -133,8 +131,11 @@ main: kit: entity: armor_set: {
           q: {
             exist: [
               "id"
-              "p"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

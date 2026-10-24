@@ -99,11 +99,9 @@ main: kit: entity: item: {
           }
           m: "GET"
           o: "/items"
-          q: {
-            exist: [
-              "p"
-              "q"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -151,8 +149,11 @@ main: kit: entity: item: {
           q: {
             exist: [
               "id"
-              "p"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

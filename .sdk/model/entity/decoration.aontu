@@ -78,11 +78,9 @@ main: kit: entity: decoration: {
           }
           m: "GET"
           o: "/decorations"
-          q: {
-            exist: [
-              "p"
-              "q"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -130,8 +128,11 @@ main: kit: entity: decoration: {
           q: {
             exist: [
               "id"
-              "p"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

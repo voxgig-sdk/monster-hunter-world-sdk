@@ -135,11 +135,9 @@ main: kit: entity: event: {
           }
           m: "GET"
           o: "/events"
-          q: {
-            exist: [
-              "p"
-              "q"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -187,8 +185,11 @@ main: kit: entity: event: {
           q: {
             exist: [
               "id"
-              "p"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

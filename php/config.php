@@ -93,6 +93,7 @@ class MonsterHunterWorldConfig
           ],
           'optspec' => [
             'clearTimer' => '`$FUNCTION`',
+            'now' => '`$FUNCTION`',
             'setTimer' => '`$FUNCTION`',
           ],
           'strict' => false,
@@ -194,11 +195,10 @@ class MonsterHunterWorldConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'p',
-                      'q',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -250,8 +250,11 @@ class MonsterHunterWorldConfig
                   'select' => [
                     'exist' => [
                       'id',
-                      'p',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -380,11 +383,10 @@ class MonsterHunterWorldConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'p',
-                      'q',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -436,8 +438,11 @@ class MonsterHunterWorldConfig
                   'select' => [
                     'exist' => [
                       'id',
-                      'p',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -527,11 +532,10 @@ class MonsterHunterWorldConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'p',
-                      'q',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -587,8 +591,11 @@ class MonsterHunterWorldConfig
                   'select' => [
                     'exist' => [
                       'id',
-                      'p',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -673,11 +680,10 @@ class MonsterHunterWorldConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'p',
-                      'q',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -729,8 +735,11 @@ class MonsterHunterWorldConfig
                   'select' => [
                     'exist' => [
                       'id',
-                      'p',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -816,11 +825,10 @@ class MonsterHunterWorldConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'p',
-                      'q',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -872,8 +880,11 @@ class MonsterHunterWorldConfig
                   'select' => [
                     'exist' => [
                       'id',
-                      'p',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -1008,11 +1019,10 @@ class MonsterHunterWorldConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'p',
-                      'q',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -1064,8 +1074,11 @@ class MonsterHunterWorldConfig
                   'select' => [
                     'exist' => [
                       'id',
-                      'p',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -1169,11 +1182,10 @@ class MonsterHunterWorldConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'p',
-                      'q',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -1225,8 +1237,11 @@ class MonsterHunterWorldConfig
                   'select' => [
                     'exist' => [
                       'id',
-                      'p',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -1306,11 +1321,10 @@ class MonsterHunterWorldConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'p',
-                      'q',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -1362,8 +1376,11 @@ class MonsterHunterWorldConfig
                   'select' => [
                     'exist' => [
                       'id',
-                      'p',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -1485,11 +1502,10 @@ class MonsterHunterWorldConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'p',
-                      'q',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -1541,8 +1557,11 @@ class MonsterHunterWorldConfig
                   'select' => [
                     'exist' => [
                       'id',
-                      'p',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -1634,11 +1653,10 @@ class MonsterHunterWorldConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'p',
-                      'q',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -1690,8 +1708,11 @@ class MonsterHunterWorldConfig
                   'select' => [
                     'exist' => [
                       'id',
-                      'p',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -1771,11 +1792,10 @@ class MonsterHunterWorldConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'p',
-                      'q',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -1827,8 +1847,11 @@ class MonsterHunterWorldConfig
                   'select' => [
                     'exist' => [
                       'id',
-                      'p',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -1950,11 +1973,10 @@ class MonsterHunterWorldConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'p',
-                      'q',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -2006,8 +2028,11 @@ class MonsterHunterWorldConfig
                   'select' => [
                     'exist' => [
                       'id',
-                      'p',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],

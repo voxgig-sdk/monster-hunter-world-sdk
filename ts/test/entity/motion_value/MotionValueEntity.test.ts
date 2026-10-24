@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { MonsterHunterWorldSDK, BaseFeature, stdutil } from '../../..'
+import { MonsterHunterWorldSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('MotionValueEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('motion_value hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of MonsterHunterWorldSDK.test(offline).MotionValue().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of MonsterHunterWorldSDK.test(offline).MotionValue()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = MonsterHunterWorldSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.MotionValue().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of MonsterHunterWorldSDK.test().MotionValue().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new MonsterHunterWorldSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.MotionValue().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.MotionValue().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = MonsterHunterWorldSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.MotionValue().list({"p":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.MONSTER_HUNTER_WORLD_TEST_LIVE
@@ -51,7 +109,7 @@ describe('MotionValueEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"damageType":{"a":true,"h":"Damage Type","n":"damageType","r":false,"sh":"The type of damage","t":"`$STRING`","key$":"damageType","index$":0},"exhaust":{"a":true,"h":"Exhaust","n":"exhaust","r":false,"sh":"Exhaust value","t":"`$INTEGER`","key$":"exhaust","index$":1},"hits":{"a":true,"h":"Hits","n":"hits","r":false,"sh":"Hit information","t":"`$ARRAY`","key$":"hits","index$":2},"id":{"a":true,"h":"Id","n":"id","r":false,"sh":"The ID of the motion value","t":"`$INTEGER`","key$":"id","index$":3},"stun":{"a":true,"h":"Stun","n":"stun","r":false,"sh":"Stun value","t":"`$INTEGER`","key$":"stun","index$":4},"weaponType":{"a":true,"h":"Weapon Type","n":"weaponType","r":false,"sh":"The type of weapon","t":"`$STRING`","key$":"weaponType","index$":5}},"id":{"field":"id","name":"id"},"name":"motion_value","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /motion-values","source":"openapi3","version":2},"g":{"query":[{"a":true,"k":"query","n":"p","or":"p","r":false,"t":"`$STRING`","index$":0},{"a":true,"k":"query","n":"q","or":"q","r":false,"t":"`$STRING`","index$":1}]},"k":"http","m":"GET","o":"/motion-values","q":{"exist":["p","q"]},"r":{},"s":[{"lit":"motion-values"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /motion-values/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$INTEGER`","index$":0}],"query":[{"a":true,"k":"query","n":"p","or":"p","r":false,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/motion-values/{id}","q":{"exist":["id","p"]},"r":{},"s":[{"lit":"motion-values"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"motion_value","name__orig":"motion_value","Name":"MotionValue","name_":"motion_value","name-":"motion-value","NAME":"MOTION_VALUE","index$":9}, {"active":true,"entity":"motion_value","key$":"BasicMotionValueFlow","kind":"basic","name":"BasicMotionValueFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"motion_value_ref01"}}],"index$":0},{"a":true,"d":{},"i":{"ref":"motion_value_ref01","srcdatavar":"motion_value_ref01_data","suffix":"_dt0"},"m":{"id":"motion_value01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-motion_value_ref01"}}],"index$":1}]}, 'MotionValue', {"GET /motion-values":{"protocol":"http","parameters":[{"name":"p","in":"query","description":"Projection parameter for filtering returned fields","required":false,"schema":{"type":"string"},"index$":0},{"name":"q","in":"query","description":"Query parameter for searching","required":false,"schema":{"type":"string"},"index$":1}]},"GET /motion-values/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","description":"The ID of the motion value to retrieve","required":true,"schema":{"type":"integer"},"index$":0},{"name":"p","in":"query","description":"Projection parameter for filtering returned fields","required":false,"schema":{"type":"string"},"index$":1}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"damageType":{"a":true,"h":"Damage Type","n":"damageType","r":false,"sh":"The type of damage","t":"`$STRING`","key$":"damageType","index$":0},"exhaust":{"a":true,"h":"Exhaust","n":"exhaust","r":false,"sh":"Exhaust value","t":"`$INTEGER`","key$":"exhaust","index$":1},"hits":{"a":true,"h":"Hits","n":"hits","r":false,"sh":"Hit information","t":"`$ARRAY`","key$":"hits","index$":2},"id":{"a":true,"h":"Id","n":"id","r":false,"sh":"The ID of the motion value","t":"`$INTEGER`","key$":"id","index$":3},"stun":{"a":true,"h":"Stun","n":"stun","r":false,"sh":"Stun value","t":"`$INTEGER`","key$":"stun","index$":4},"weaponType":{"a":true,"h":"Weapon Type","n":"weaponType","r":false,"sh":"The type of weapon","t":"`$STRING`","key$":"weaponType","index$":5}},"id":{"field":"id","name":"id"},"name":"motion_value","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /motion-values","source":"openapi3","version":2},"g":{"query":[{"a":true,"k":"query","n":"p","or":"p","r":false,"t":"`$STRING`","index$":0},{"a":true,"k":"query","n":"q","or":"q","r":false,"t":"`$STRING`","index$":1}]},"k":"http","m":"GET","o":"/motion-values","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"motion-values"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /motion-values/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$INTEGER`","index$":0}],"query":[{"a":true,"k":"query","n":"p","or":"p","r":false,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/motion-values/{id}","q":{"exist":["id"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"motion-values"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"motion_value","name__orig":"motion_value","Name":"MotionValue","name_":"motion_value","name-":"motion-value","NAME":"MOTION_VALUE","index$":9}, {"active":true,"entity":"motion_value","key$":"BasicMotionValueFlow","kind":"basic","name":"BasicMotionValueFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"motion_value_ref01"}}],"index$":0},{"a":true,"d":{},"i":{"ref":"motion_value_ref01","srcdatavar":"motion_value_ref01_data","suffix":"_dt0"},"m":{"id":"motion_value01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-motion_value_ref01"}}],"index$":1}]}, 'MotionValue', {"GET /motion-values":{"protocol":"http","parameters":[{"name":"p","in":"query","description":"Projection parameter for filtering returned fields","required":false,"schema":{"type":"string"},"index$":0},{"name":"q","in":"query","description":"Query parameter for searching","required":false,"schema":{"type":"string"},"index$":1}]},"GET /motion-values/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","description":"The ID of the motion value to retrieve","required":true,"schema":{"type":"integer"},"index$":0},{"name":"p","in":"query","description":"Projection parameter for filtering returned fields","required":false,"schema":{"type":"string"},"index$":1}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -79,6 +137,12 @@ describe('MotionValueEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

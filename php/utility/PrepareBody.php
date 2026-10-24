@@ -3,11 +3,16 @@ declare(strict_types=1);
 
 // MonsterHunterWorld SDK utility: prepare_body
 
+require_once __DIR__ . '/Media.php';
+
 class MonsterHunterWorldPrepareBody
 {
     public static function call(MonsterHunterWorldContext $ctx): mixed
     {
         if ($ctx->op->input === 'data') {
+            if (MonsterHunterWorldMedia::isRawRequest($ctx->point)) {
+                return MonsterHunterWorldMedia::rawBody($ctx->reqdata);
+            }
             $body = ($ctx->utility->transform_request)($ctx);
             // PHP cannot tell an empty map from an empty list, and this
             // vendored struct answers [] where the canonical transform
